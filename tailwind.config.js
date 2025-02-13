@@ -1,18 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-	darkMode: "selector",
 	theme: {
 		extend: {
 			colors: {
-				text: {
-					primary: "var(--text)",
-					secondary: "var(--text2)",
-				},
-				background: {
-					primary: "var(--background)",
-					secondary: "var(--background2)",
-				},
+				text: "var(--text)",
+				background: "var(--background)",
+				primary: "var(--primary)",
+				secondary: "var(--secondary)",
+				accent: "var(--accent)",
 			},
 		},
 	},

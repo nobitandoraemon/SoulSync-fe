@@ -8,10 +8,7 @@ const ThemeProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		console.log(theme);
-		localStorage.setItem("theme", theme);
-		document.body.classList.remove("dark", "light");
-		document.body.classList.add(theme);
+		document.body.classList.toggle(theme);
 	}, [theme]);
 
 	const ThemeContext = createContext({ theme, toggleTheme });
