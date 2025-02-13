@@ -5,7 +5,7 @@ const Layout = () => {
 	return (
 		<>
 			<Header />
-			<main className="bg-slate-300 mx-auto max-w-screen-md">
+			<main className="">
 				<Outlet />
 			</main>
 			<Footer />

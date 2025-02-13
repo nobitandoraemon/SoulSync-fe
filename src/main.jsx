@@ -5,9 +5,9 @@ import App from "./App.jsx";
 import ThemeProvider from "./context/themeprovider.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Layout from "./components/ui/layout.jsx";
-import About from "./pages/about.jsx";
 import Chat from "./pages/chat.jsx";
-import Contact from "./pages/contact.jsx";
+import Auth from "./pages/auth.jsx";
+import User from "./pages/user.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
@@ -16,9 +16,9 @@ createRoot(document.getElementById("root")).render(
 				<Routes>
 					<Route path="/" element={<Layout />}>
 						<Route index element={<App />} />
-						<Route path="/about" element={<About />} />
 						<Route path="/chat" element={<Chat />} />
-						<Route path="/contact" element={<Contact />} />
+						<Route path="/auth" element={<Auth />} />
+						<Route path="/user" element={<User />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
