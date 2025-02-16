@@ -1,16 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from "daisyui";
+
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		extend: {
-			colors: {
-				text: "var(--text)",
-				background: "var(--background)",
-				primary: "var(--primary)",
-				secondary: "var(--secondary)",
-				accent: "var(--accent)",
-			},
-		},
+		extend: {},
 	},
-	plugins: [],
+	plugins: [daisyui],
+	daisyui: {
+		themes: ["valentine", "halloween"],
+	},
 };
