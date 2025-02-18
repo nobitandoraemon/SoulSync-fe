@@ -16,10 +16,10 @@ createRoot(document.getElementById("root")).render(
 				<Routes>
 					<Route path="/" element={<Layout />}>
 						<Route index element={<App />} />
-						<Route path="/chat" element={<Chat />} />
 						<Route path="/auth" element={<Auth />} />
 						<Route path="/user" element={<User />} />
 					</Route>
+					<Route path="/chat" element={<Chat />} />
 				</Routes>
 			</BrowserRouter>
 		</ThemeProvider>
