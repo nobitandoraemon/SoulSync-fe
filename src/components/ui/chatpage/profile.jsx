@@ -1,40 +1,46 @@
+import { TbZodiacLibra } from "react-icons/tb";
+import { motion } from "framer-motion";
+
 const Profile = () => {
 	return (
-		<section className="flex flex-col items-center">
-			<div className="stats shadow">
-				<div className="stat">
-					<div className="stat-figure text-secondary">
-						<div className="avatar online">
-							<div className="w-16 rounded-full">
-								<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-							</div>
-						</div>
+		<section className="flex flex-col items-center h-full">
+			<div className="flex flex-col items-center">
+				<motion.div
+					initial={{ scale: 0 }}
+					animate={{ scale: 1 }}
+					transition={{ duration: 0.5 }}
+					className="w-24 h-24 rounded-full bg-primary/50 flex items-center justify-center"
+				>
+					<div className="avatar online">
+						<img
+							src="https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN"
+							className="rounded-full"
+						/>
 					</div>
-					<div className="stat-value">My Profile</div>
-					<div className="stat-title my-2">Username</div>
-					<div className="stat-desc text-secondary">Location ...</div>
-					<div className="badge badge-primary badge-outline mt-4 text-center">
-						Libra
-					</div>
-				</div>
+				</motion.div>
+				<h1 className="text-2xl font-bold mt-4">Phùng Quang Anh</h1>
+				<p className="text-gray-500 text-sm mt-2">October 1 2000</p>
 			</div>
-			<div className="divider divider-secondary"></div>
-			<div className="card bg-base-100 shadow-xl">
-				<div className="card-body">
-					<h2 className="card-title">About </h2>
-					<p>Cause when a heart breaks and it don&apos;t break even</p>
-					<div className="card-actions justify-end">
-						<button className="btn btn-primary">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24 24"
-								fill="currentColor"
-								className="size-6"
-							>
-								<path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-							</svg>
-						</button>
-					</div>
+			<div className="divider"></div>
+
+			<div className="grid grid-cols-6 grid-rows-6 gap-4 w-full flex-1">
+				<div className="grid place-content-center card bg-primary/50 col-span-2 row-span-4">
+					1
+				</div>
+				<div className="grid place-content-center card bg-primary/50 col-span-2 row-span-2 col-start-3">
+					2
+				</div>
+				<div className="grid place-content-center card bg-primary/50 col-span-2 row-span-2 col-start-5">
+					3
+				</div>
+				<div className="grid place-content-center card bg-primary/50 col-span-4 row-span-2 col-start-3 row-start-3">
+					4
+				</div>
+				<div className="grid place-content-center card bg-primary/50 col-span-3 row-span-2 row-start-5">
+					5
+				</div>
+				<div className="grid place-content-center card bg-primary/50 col-span-3 row-span-2 col-start-4 row-start-5">
+					6
 				</div>
 			</div>
 		</section>

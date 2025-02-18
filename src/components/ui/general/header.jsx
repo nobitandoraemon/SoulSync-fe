@@ -2,6 +2,7 @@ import ToggleTheme from "../toggletheme";
 import { Link } from "react-router";
 import { useScroll } from "../../../hooks/useScroll";
 import { cn } from "../../../lib/utils";
+import Logo from "./logo";
 
 const Header = () => {
 	const isScroll = useScroll();
@@ -9,11 +10,10 @@ const Header = () => {
 		<div
 			className={cn(
 				"container mx-auto translate-y-2",
-				isScroll &&
-					"fixed left-0 right-0 top-1 z-50 glass rounded-xl backdrop-blur-md"
+				isScroll && "fixed left-0 right-0 top-1 z-50 rounded-xl "
 			)}
 		>
-			<div className="navbar bg-base-100 shadow-lg rounded-xl">
+			<div className="navbar bg-base-100 backdrop-blur-md glass shadow-lg rounded-xl">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<div
@@ -50,8 +50,9 @@ const Header = () => {
 					</div>
 				</div>
 				<div className="navbar-center">
-					<Link to="/" className="btn btn-ghost text-xl">
-						SoulSync
+					<Link to="/" className="text-xl flex justify-center items-center">
+						<Logo />
+						<span className="text-2xl font-bold">Soul Sync</span>
 					</Link>
 				</div>
 				<div className="navbar-end">
@@ -65,7 +66,7 @@ const Header = () => {
 							<div className="w-10 rounded-full">
 								<img
 									alt="User avatar"
-									src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+									src="https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN"
 								/>
 							</div>
 						</div>

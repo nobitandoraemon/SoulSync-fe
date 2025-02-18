@@ -16,7 +16,7 @@ const Content = ({ isActive, content }) => {
 	}, []);
 
 	return !isLoading ? (
-		<div className="w-[30%] p-4 bg-secondary/5 text-secondary-content">
+		<div className="w-[30%] p-4 bg-secondary/5 text-secondary-content max-h-screen overflow-y-clip">
 			{content[isActive - 1].component}
 		</div>
 	) : (

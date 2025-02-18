@@ -2,9 +2,9 @@ import Content from "../components/ui/chatpage/content";
 import SideBar from "../components/ui/chatpage/sidebar";
 import { useState } from "react";
 import Profile from "../components/ui/chatpage/profile";
-import ChatLists from "../components/ui/chatpage/chatlists";
-import { UserIcon, ChatIcon } from "../components/ui/general/icon";
+import { UserIcon, InfoIcon } from "../components/ui/general/icon";
 import ChatBox from "../components/ui/chatpage/chatbox";
+import Info from "../components/ui/chatpage/info";
 
 const content = [
 	{
@@ -12,10 +12,11 @@ const content = [
 		icon: <UserIcon />,
 		component: <Profile />,
 	},
+
 	{
 		id: 2,
-		icon: <ChatIcon />,
-		component: <ChatLists />,
+		icon: <InfoIcon />,
+		component: <Info />,
 	},
 ];
 

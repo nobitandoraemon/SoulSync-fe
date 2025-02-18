@@ -1,9 +1,9 @@
-import { Link } from "react-router";
-import logo from "../../../assets/logo.png";
 import ToggleTheme from "../../ui/toggletheme";
 import { cn } from "../../../lib/utils";
+import Logo from "../general/logo";
+import { Link } from "react-router";
 
-const SideBar = ({ isActive, toggleActive, content }) => {
+const SideBar = ({ toggleActive, content }) => {
 	return (
 		<aside
 			className={cn(
@@ -11,11 +11,9 @@ const SideBar = ({ isActive, toggleActive, content }) => {
 				"shadow-sm"
 			)}
 		>
-			<div>
-				<Link to="/">
-					<img src={logo} alt="logo" className="w-14 h-14" />
-				</Link>
-			</div>
+			<Link to="/">
+				<Logo />
+			</Link>
 
 			{content.map((item) => {
 				return (
@@ -33,7 +31,7 @@ const SideBar = ({ isActive, toggleActive, content }) => {
 				<ToggleTheme className="btn btn-circle" />
 				<div className="avatar online">
 					<div className="w-12 rounded-full">
-						<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+						<img src="https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN" />
 					</div>
 				</div>
 			</div>
