@@ -8,12 +8,8 @@ import Team from "./components/ui/team";
 function App() {
 	return (
 		<>
-			<Hero />
-			<Features />
-			<Rating />
+			
 			<Team />
-			<FAQ />
-			<Contact />
 		</>
 	);
 }
