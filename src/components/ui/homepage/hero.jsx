@@ -32,7 +32,7 @@ const Hero = () => {
 							<button className="btn btn-primary">Sign in</button>
 							<button className="btn btn-secondary">Sign up</button>
 						</div>
-						<div className="stats mt-4">
+						{/* <div className="stats mt-4">
 							<div className="stat">
 								<div className="stat-figure text-secondary">
 									<svg
@@ -95,7 +95,7 @@ const Hero = () => {
 								<div className="stat-value">1,200</div>
 								<div className="stat-desc">↘︎ 90 (14%)</div>
 							</div>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>
