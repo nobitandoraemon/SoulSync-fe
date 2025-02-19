@@ -1,6 +1,6 @@
 const Footer = () => {
 	return (
-		<footer className="footer bg-neutral text-neutral-content p-10">
+		<footer className="footer flex justify-between bg-neutral text-neutral-content py-10 px-28">
 			<aside>
 				<svg
 					width="50"

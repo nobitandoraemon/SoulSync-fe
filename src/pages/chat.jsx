@@ -26,7 +26,7 @@ const Chat = () => {
 		setActive(id);
 	};
 	return (
-		<div className="w-screen h-screen flex">
+		<div className="w-screen flex min-h-screen">
 			<SideBar
 				content={content}
 				isActive={isActive}

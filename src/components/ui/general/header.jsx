@@ -7,13 +7,8 @@ import Logo from "./logo";
 const Header = () => {
 	const isScroll = useScroll();
 	return (
-		<div
-			className={cn(
-				"container mx-auto translate-y-2",
-				isScroll && "fixed left-0 right-0 top-1 z-50 rounded-xl "
-			)}
-		>
-			<div className="navbar bg-base-100 backdrop-blur-md glass shadow-lg rounded-xl">
+		<div className={cn(isScroll && "fixed left-0 right-0 top-0 z-50 ")}>
+			<div className="navbar bg-base-100 backdrop-blur-md glass shadow-lg">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<div
@@ -45,6 +40,9 @@ const Header = () => {
 							</li>
 							<li>
 								<Link to="/chat">Chat</Link>
+							</li>
+							<li>
+								<Link to="/login">Login</Link>
 							</li>
 						</ul>
 					</div>

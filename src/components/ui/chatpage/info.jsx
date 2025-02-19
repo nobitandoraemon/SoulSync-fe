@@ -16,13 +16,13 @@ const Info = () => {
 					</div>
 					<div className="stat-value text-xl">Người dùng ẩn danh</div>
 					<div className="stat-title my-2">#1020</div>
-					<div className="stat-desc text-secondary">Vĩnh Phúc, VN</div>
+					<div className="stat-desc text-secondary">Cà Mau, VN</div>
 					<div className="flex gap-4">
 						<div className="badge badge-primary badge-outline mt-4 text-center">
 							<span className="mr-2">Sư Tử</span>
 							<TbZodiacLeo />
 						</div>
-						<div className="badge badge-accent badge-outline mt-4 text-center">
+						<div className="badge badge-info badge-outline mt-4 text-center">
 							<span className="mr-2">20+ tuổi</span>
 							<ChatIcon />
 						</div>
@@ -36,7 +36,7 @@ const Info = () => {
 					<h2 className="card-title">Favorite Quote</h2>
 					<p>Dẫu có lỗi lầm, em vẫn sẽ không bao giờ tha thứ cho anh</p>
 					<div className="card-actions justify-end">
-						<button className="btn btn-primary">
+						<button className="btn btn-success">
 							<motion.svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 24 24"
