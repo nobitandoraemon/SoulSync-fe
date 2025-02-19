@@ -9,6 +9,7 @@ import Chat from "./pages/chat.jsx";
 import Auth from "./pages/auth.jsx";
 import User from "./pages/user.jsx";
 import Login from "./pages/login.jsx";
+import Reg from "./pages/reg.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
 						<Route path="/auth" element={<Auth />} />
 						<Route path="/user" element={<User />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/reg" element={<Reg />} />
 					</Route>
 					<Route path="/chat" element={<Chat />} />
 				</Routes>

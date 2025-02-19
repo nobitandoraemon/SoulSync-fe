@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Header = () => {
 	return (
 		<div className="absolute top-0 left-0 right-0 p-4 min-h-[80px] flex shadow-lg bg-primary/10 backdrop-blur-lg">
@@ -11,7 +13,7 @@ const Header = () => {
 			</div>
 			<ul className="menu bg-base-200 lg:menu-horizontal rounded-box place-content-center">
 				<li>
-					<a>
+					<Link to="/">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							className="h-5 w-5"
@@ -27,7 +29,7 @@ const Header = () => {
 							/>
 						</svg>
 						Trang chủ
-					</a>
+					</Link>
 				</li>
 				<li>
 					<a
