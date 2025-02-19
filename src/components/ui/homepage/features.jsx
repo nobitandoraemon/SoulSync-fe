@@ -23,7 +23,7 @@ const Features = () => {
 							excepturi exercitationem quasi. In deleniti eaque aut repudiandae
 							et a id nisi.
 						</p>
-						<div className="stats shadow text-center">
+						<div className="stats stats-vertical md:stats-horizontal shadow text-center">
 							<div className="stat place-items-center">
 								<div className="stat-title mb-4 btn btn-primary btn-outline">
 									<SiWechat size={24} />
