@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import { useScroll } from "../../../hooks/useScroll";
 import { cn } from "../../../lib/utils";
 import Logo from "./logo";
-import { useState } from "react";
 
 const Header = () => {
 	const isScroll = useScroll();
@@ -42,7 +41,6 @@ const Header = () => {
 							<li>
 								<Link to="/chat">Chat</Link>
 							</li>
-
 							<li>
 								<Link to="/login">Login</Link>
 							</li>

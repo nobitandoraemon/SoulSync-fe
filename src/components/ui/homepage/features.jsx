@@ -13,7 +13,7 @@ const Features = () => {
 			<div className="py-16">
 				<div className="hero-content text-neutral-content text-center">
 					<div className="max-w-lg flex flex-col items-center">
-						<div className="badge badge-secondary top-6 mb-12">Features</div>
+						<div className="badge badge-secondary top-6 mb-4">Features</div>
 						<h1 className="mb-12 text-5xl font-bold">
 							Syncing your
 							<span className="text-accent"> Destiny</span>

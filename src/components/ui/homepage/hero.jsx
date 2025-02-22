@@ -15,7 +15,7 @@ const Hero = () => {
 							</div>
 						</div>
 					</div>
-					<div className="flex flex-col justify-center items-center">
+					<div className="flex flex-col justify-center items-center md:items-start">
 						<div className="badge badge-accent mb-4">Brand new</div>
 						<h1 className="text-4xl md:text-5xl font-bold text-wrap w-3/4">
 							Everything you

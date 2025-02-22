@@ -20,7 +20,7 @@ const questions = [
 const FAQ = () => {
 	return (
 		<div className="p-16 flex flex-col items-center">
-			<div className="badge badge-secondary top-6 mb-12">
+			<div className="badge badge-secondary top-6 mb-4 mt-12">
 				Frequently Asked Questions
 			</div>
 

@@ -60,8 +60,8 @@ const RatingItem = ({ user, date, stars, comments, avatar }) => {
 
 const Rating = () => {
 	return (
-		<div className="max-w-screen-md mx-auto p-8">
-			<div className="w-full grid place-content-center mb-12">
+		<div className="max-w-screen-md mx-auto p-8 mt-12">
+			<div className="w-full grid place-content-center mb-4">
 				<span className="badge badge-success">Feedback</span>
 			</div>
 			<RatingItem
