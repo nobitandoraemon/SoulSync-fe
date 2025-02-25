@@ -1,11 +1,11 @@
 import Content from "./content";
 import ChatBox from "./chatbox";
 
-const ChatContainer = ({ content, isActive, isScroll }) => {
+const ChatContainer = ({ socket, content, isActive, isScroll }) => {
 	return (
 		<>
 			<Content content={content} isActive={isActive} isScroll={isScroll} />
-			<ChatBox />
+			<ChatBox socket={socket} />
 		</>
 	);
 };

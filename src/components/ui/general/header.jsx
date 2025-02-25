@@ -8,7 +8,7 @@ const Header = () => {
 	const isScroll = useScroll();
 	return (
 		<div className={cn(isScroll && "fixed left-0 right-0 top-0 z-50 ")}>
-			<div className="navbar bg-base-100 backdrop-blur-md glass shadow-lg">
+			<div className="shadow-lg navbar bg-base-100 backdrop-blur-md glass">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<div
@@ -18,7 +18,7 @@ const Header = () => {
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className="h-5 w-5"
+								className="w-5 h-5"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -33,13 +33,10 @@ const Header = () => {
 						</div>
 						<ul
 							tabIndex={0}
-							className="dropdown-content menu menu-sm top-5 bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+							className="z-50 p-2 mt-3 shadow dropdown-content menu menu-sm top-5 bg-base-100 rounded-box w-52"
 						>
 							<li>
 								<Link to="/">Homepage</Link>
-							</li>
-							<li>
-								<Link to="/chat">Chat</Link>
 							</li>
 							<li>
 								<Link to="/login">Login</Link>
@@ -51,7 +48,7 @@ const Header = () => {
 					</div>
 				</div>
 				<div className="navbar-center">
-					<Link to="/" className="text-xl flex justify-center items-center">
+					<Link to="/" className="flex items-center justify-center text-xl">
 						<Logo />
 						<span className="text-2xl font-bold">Soul Sync</span>
 					</Link>

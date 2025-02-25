@@ -12,24 +12,24 @@ const Setting = ({ user, isScroll }) => {
 		>
 			<Header user={user} isLoggin={true} />
 			<div
-				className="hero min-h-screen mt-16"
+				className="min-h-screen mt-16 hero"
 				style={{
 					backgroundImage:
 						"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
 				}}
 			>
 				<div className="hero-overlay bg-opacity-60"></div>
-				<div className="hero-content text-neutral-content text-center w-4/5">
+				<div className="w-4/5 text-center hero-content text-neutral-content">
 					<div className="w-full">
-						<div className="card bg-base-200 py-8">
+						<div className="py-8 card bg-base-200">
 							<div className="avatar indicator size-36 -top-[50%] left-[50%] -translate-x-1/2">
-								<span className="indicator-item badge badge-outline badge-lg badge-secondary">
+								<span className="indicator-item badge badge-lg badge-accent">
 									{user.zodiac}
 								</span>
 								<img src={user.avatar} alt="" className="rounded-full" />
 							</div>
-							<div className="card-body items-center text-center">
-								<ul className="flex gap-6 items-center text-primary mb-8">
+							<div className="items-center text-center card-body">
+								<ul className="flex items-center gap-6 mb-8 text-primary">
 									{user.social.map((item) => {
 										return (
 											<motion.a
@@ -50,7 +50,9 @@ const Setting = ({ user, isScroll }) => {
 									})}
 								</ul>
 								<div className="flex flex-col gap-4 mb-8">
-									<h2 className="font-extrabold text-3xl">{user.name}</h2>
+									<h2 className="text-3xl font-extrabold text-accent">
+										{user.name}
+									</h2>
 									<p className="flex items-center justify-center gap-2 text-secondary-content/70">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +77,7 @@ const Setting = ({ user, isScroll }) => {
 									</p>
 								</div>
 								<div className="flex flex-col gap-4 mb-8">
-									<h3 className="flex text-xl items-center justify-center gap-2 text-secondary-content">
+									<h3 className="flex items-center justify-center gap-2 text-xl text-secondary-content">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
@@ -95,11 +97,11 @@ const Setting = ({ user, isScroll }) => {
 									</h3>
 								</div>
 								<div className="divider"></div>
-								<p className="prose mb-4">
+								<div className="mb-4 prose">
 									<blockquote>{user.quote}</blockquote>
-								</p>
-								<div className="card-actions w-1/3">
-									<button className="btn btn-primary w-full">
+								</div>
+								<div className="w-1/3 card-actions">
+									<button className="w-full btn btn-primary">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"

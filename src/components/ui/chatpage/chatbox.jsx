@@ -1,10 +1,16 @@
+import { useEffect, useState } from "react";
 import ChatBody from "./chatbody";
 import ChatInput from "./chatinput";
 import Header from "./header";
 
-const ChatBox = () => {
+const ChatBox = ({ socket }) => {
+	const [messages, setMessages] = useState([]);
+
+	useEffect(() => {
+		socket.on("messageResponse", (data) => setMessages([...messages, data]));
+	}, [socket, messages]);
 	return (
-		<div className="p-4 bg-secondary/20 flex-1 relative flex flex-col">
+		<div className="relative flex flex-col flex-1 p-4 bg-secondary/20">
 			<Header
 				user={{
 					name: "Người dùng ẩn danh",
@@ -14,8 +20,8 @@ const ChatBox = () => {
 				}}
 				isLoggin={true}
 			/>
-			<ChatBody />
-			<ChatInput />
+			<ChatBody messages={messages} />
+			<ChatInput socket={socket} />
 		</div>
 	);
 };

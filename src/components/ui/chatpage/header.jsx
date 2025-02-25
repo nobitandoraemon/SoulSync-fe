@@ -1,13 +1,19 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const SubNav = ({ isLoggin }) => {
+	const navigate = useNavigate();
+	const handleLeaveChat = () => {
+		localStorage.removeItem("userName");
+		navigate("/");
+		window.location.reload();
+	};
 	return (
 		<ul className="menu bg-base-200 lg:menu-horizontal rounded-box place-content-center">
 			<li>
 				<Link to="/">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						className="h-5 w-5"
+						className="w-5 h-5"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"
@@ -22,14 +28,14 @@ const SubNav = ({ isLoggin }) => {
 					Trang chủ
 				</Link>
 			</li>
-			<li>
+			<li onClick={handleLeaveChat}>
 				<a
 					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
 					target="_blank"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						className="h-5 w-5"
+						className="w-5 h-5"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"
@@ -102,7 +108,7 @@ const MainNav = ({ isLoggin }) => {
 const Header = ({ user, isLoggin }) => {
 	return (
 		<div className="absolute top-0 left-0 right-0 p-4 min-h-[80px] flex shadow-lg bg-primary/10 backdrop-blur-lg">
-			<div className="flex items-center gap-4 mr-4 flex-1 float-left">
+			<div className="flex items-center flex-1 float-left gap-4 mr-4">
 				<div className="avatar online">
 					<div className="w-12 rounded-full">
 						<img src={user.avatar} />

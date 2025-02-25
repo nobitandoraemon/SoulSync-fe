@@ -28,14 +28,14 @@ const content = [
 	},
 ];
 
-const Chat = () => {
+const Chat = ({ socket }) => {
 	const [isActive, setActive] = useState(3);
 	const toggleActive = (id) => {
 		setActive(id);
 	};
 	const isScroll = useScroll();
 	return (
-		<div className="w-screen flex max-w-full min-h-screen">
+		<div className="flex w-screen max-w-full min-h-screen">
 			<SideBar
 				content={content}
 				isActive={isActive}
@@ -47,6 +47,7 @@ const Chat = () => {
 					content={content}
 					isActive={isActive}
 					isScroll={isScroll}
+					socket={socket}
 				/>
 			)}
 			{isActive === 3 && (
