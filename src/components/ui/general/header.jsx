@@ -1,0 +1,97 @@
+import ToggleTheme from "../toggletheme";
+import { Link } from "react-router";
+import { useScroll } from "../../../hooks/useScroll";
+import { cn } from "../../../lib/utils";
+import Logo from "./logo";
+import { useState } from "react";
+
+const Header = () => {
+	const isScroll = useScroll();
+	return (
+		<div className={cn(isScroll && "fixed left-0 right-0 top-0 z-50 ")}>
+			<div className="navbar bg-base-100 backdrop-blur-md glass shadow-lg">
+				<div className="navbar-start">
+					<div className="dropdown">
+						<div
+							tabIndex={0}
+							role="button"
+							className="btn btn-ghost btn-circle"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								className="h-5 w-5"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									d="M4 6h16M4 12h16M4 18h7"
+								/>
+							</svg>
+						</div>
+						<ul
+							tabIndex={0}
+							className="dropdown-content menu menu-sm top-5 bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+						>
+							<li>
+								<Link to="/">Homepage</Link>
+							</li>
+							<li>
+								<Link to="/chat">Chat</Link>
+							</li>
+
+							<li>
+								<Link to="/login">Login</Link>
+							</li>
+							<li>
+								<Link to="/reg">Register</Link>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div className="navbar-center">
+					<Link to="/" className="text-xl flex justify-center items-center">
+						<Logo />
+						<span className="text-2xl font-bold">Soul Sync</span>
+					</Link>
+				</div>
+				<div className="navbar-end">
+					<ToggleTheme className="btn btn-ghost btn-circle" />
+					<div className="dropdown dropdown-end">
+						<div
+							tabIndex={0}
+							role="button"
+							className="btn btn-ghost btn-circle avatar"
+						>
+							<div className="w-10 rounded-full">
+								<img
+									alt="User avatar"
+									src="https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN"
+								/>
+							</div>
+						</div>
+						<ul
+							tabIndex={0}
+							className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+						>
+							<li>
+								<a className="justify-between">
+									Profile
+									<span className="badge">New</span>
+								</a>
+							</li>
+							<li>
+								<a>Logout</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default Header;
