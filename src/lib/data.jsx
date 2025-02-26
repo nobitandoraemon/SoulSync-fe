@@ -1,3 +1,4 @@
+import { title } from "motion/react-client";
 import {
 	TbZodiacAries,
 	TbZodiacAquarius,

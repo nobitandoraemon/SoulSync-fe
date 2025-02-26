@@ -76,6 +76,9 @@ const Header = () => {
 							<li>
 								<Link to="/">Homepage</Link>
 							</li>
+							<li>
+								<Link to="/test">Test</Link>
+							</li>
 							{user ? (
 								<li>
 									<Link to="/chat">Chat</Link>

@@ -7,14 +7,12 @@ const Aries = [
 			tinhcach: "",
 			other: "",
 		},
-		truyenthuyet: "",
 		tinhcach: [
 			{ title: "tinh cach 1", content: "...." },
 			{ title: "tinh cach 2", content: "...." },
 			{ title: "tinh cach 3", content: "...." },
 			{ title: "tinh cach 4", content: "...." },
 		],
-		sunghiep: "",
 		tinhyeu: [
 			{ title: "tinh yeu 1", content: "...." },
 			{ title: "tinh yeu 2", content: "...." },
@@ -34,14 +32,12 @@ const Aries = [
 			tinhcach: "",
 			other: "",
 		},
-		truyenthuyet: "",
 		tinhcach: [
 			{ title: "tinh cach 1", content: "...." },
 			{ title: "tinh cach 2", content: "...." },
 			{ title: "tinh cach 3", content: "...." },
 			{ title: "tinh cach 4", content: "...." },
 		],
-		sunghiep: "",
 		tinhyeu: [
 			{ title: "tinh yeu 1", content: "...." },
 			{ title: "tinh yeu 2", content: "...." },

@@ -6,6 +6,7 @@ import Profile from "../components/ui/chatpage/profile";
 import Info from "../components/ui/chatpage/info";
 import Setting from "../components/ui/chatpage/setting";
 import { SideBar, ChatContainer, useScroll } from "../config/components";
+import { div } from "motion/react-client";
 
 const otherUser = {
 	name: "Người dùng ẩn danh",
