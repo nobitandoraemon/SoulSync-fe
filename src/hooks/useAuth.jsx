@@ -30,6 +30,26 @@ const AuthProvider = ({ children }) => {
 		}
 	};
 
+	const regAction = async (data) => {
+		try {
+			const response = await fetch("your-api-endpoint/auth/reg", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(data),
+			});
+			const res = await response.json();
+			if (res.data) {
+				navigate("/login");
+				return;
+			}
+			throw new Error(res.message);
+		} catch (err) {
+			console.error(err);
+		}
+	};
+
 	const logOut = () => {
 		setUser(null);
 		setToken("");
@@ -37,7 +57,9 @@ const AuthProvider = ({ children }) => {
 		navigate("/login");
 	};
 	return (
-		<AuthContext.Provider value={{ token, user, loginAction, logOut }}>
+		<AuthContext.Provider
+			value={{ token, user, loginAction, regAction, logOut }}
+		>
 			{children}
 		</AuthContext.Provider>
 	);
