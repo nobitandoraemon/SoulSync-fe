@@ -56,6 +56,9 @@ import Logo from "../components/ui/general/logo.jsx";
 //Other
 import ToggleTheme from "../components/ui/toggletheme.jsx";
 
+//Test
+import TestPage from "../pages/test.jsx";
+
 export {
 	Layout,
 	Chat,
@@ -94,4 +97,5 @@ export {
 	ToggleTheme,
 	useAuth,
 	useScroll,
+	TestPage,
 };
