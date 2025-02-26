@@ -55,6 +55,7 @@ import Logo from "../components/ui/general/logo.jsx";
 
 //Other
 import ToggleTheme from "../components/ui/toggletheme.jsx";
+import DatePick from "../components/ui/datepicker.jsx";
 
 //Test
 import TestPage from "../pages/test.jsx";
@@ -98,4 +99,5 @@ export {
 	useAuth,
 	useScroll,
 	TestPage,
+	DatePick,
 };
