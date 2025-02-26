@@ -11,6 +11,7 @@ function App() {
 			<Hero />
 			<Features />
 			<Rating />
+			<div></div>
 			<Team />
 			<FAQ />
 			<Contact />
