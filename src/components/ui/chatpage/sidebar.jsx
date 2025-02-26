@@ -1,8 +1,7 @@
-import ToggleTheme from "../../ui/toggletheme";
+import { ToggleTheme, Logo } from "../../../config/components";
 import { cn } from "../../../lib/utils";
-import Logo from "../general/logo";
 import { Link } from "react-router";
-const SideBar = ({ toggleActive, content, isScroll }) => {
+const SideBar = ({ toggleActive, content, isScroll, user }) => {
 	return (
 		<aside
 			className={cn(
@@ -20,18 +19,18 @@ const SideBar = ({ toggleActive, content, isScroll }) => {
 					<li
 						key={item.id}
 						onClick={() => toggleActive(item.id)}
-						className="flex items-center justify-center rounded-full w-full text-primary hover:text-secondary transition-colors"
+						className="flex items-center justify-center w-full transition-colors rounded-full text-primary hover:text-secondary"
 					>
 						<a>{item.icon}</a>
 					</li>
 				);
 			})}
 
-			<div className="mt-auto flex flex-col items-center gap-8">
+			<div className="flex flex-col items-center gap-8 mt-auto">
 				<ToggleTheme className="btn btn-circle" />
 				<div className="avatar online">
 					<div className="w-12 rounded-full">
-						<img src="https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN" />
+						<img src={user.avatar} />
 					</div>
 				</div>
 			</div>

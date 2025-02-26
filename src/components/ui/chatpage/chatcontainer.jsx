@@ -1,11 +1,15 @@
-import Content from "./content";
-import ChatBox from "./chatbox";
+import { ChatBox, Content } from "../../../config/components";
 
-const ChatContainer = ({ socket, content, isActive, isScroll }) => {
+const ChatContainer = ({ socket, content, isActive, isScroll, user }) => {
 	return (
 		<>
-			<Content content={content} isActive={isActive} isScroll={isScroll} />
-			<ChatBox socket={socket} />
+			<Content
+				user={user}
+				content={content}
+				isActive={isActive}
+				isScroll={isScroll}
+			/>
+			<ChatBox socket={socket} user={user} />
 		</>
 	);
 };

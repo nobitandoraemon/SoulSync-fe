@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
-import { useAuth } from "../hooks/useAuth";
+import { Link } from "react-router";
+import { useAuth } from "../config/components";
 
 const Login = () => {
-	const navigate = useNavigate();
 	const [input, setInput] = useState({
 		username: "",
 		password: "",

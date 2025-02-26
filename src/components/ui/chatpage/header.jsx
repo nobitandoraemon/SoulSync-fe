@@ -105,7 +105,7 @@ const MainNav = ({ isLoggin }) => {
 	);
 };
 
-const Header = ({ user, isLoggin }) => {
+const ChatHeader = ({ user, isLoggin }) => {
 	return (
 		<div className="absolute top-0 left-0 right-0 p-4 min-h-[80px] flex shadow-lg bg-primary/10 backdrop-blur-lg">
 			<div className="flex items-center flex-1 float-left gap-4 mr-4">
@@ -127,4 +127,4 @@ const Header = ({ user, isLoggin }) => {
 	);
 };
 
-export default Header;
+export default ChatHeader;

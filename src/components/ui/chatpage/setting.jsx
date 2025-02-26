@@ -1,5 +1,5 @@
 import { cn } from "../../../lib/utils";
-import Header from "./header";
+import { ChatHeader } from "../../../config/components";
 import { motion } from "motion/react";
 
 const Setting = ({ user, isScroll }) => {
@@ -10,7 +10,7 @@ const Setting = ({ user, isScroll }) => {
 				isScroll && "ml-[72px]"
 			)}
 		>
-			<Header user={user} isLoggin={true} />
+			<ChatHeader user={user} isLoggin={true} />
 			<div
 				className="min-h-screen mt-16 hero"
 				style={{
