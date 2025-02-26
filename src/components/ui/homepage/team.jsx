@@ -1,8 +1,9 @@
-import { FaFacebookF, FaGithub } from "react-icons/fa6";
+import { FaFacebookF, FaGithub, FaInstagram } from "react-icons/fa6";
 import { motion } from "motion/react";
+
 const Member = ({ avatar, social, name, role }) => {
 	return (
-		<div className="card w-48 flex flex-col justify-center items-center">
+		<div className="card w-48 flex flex-col justify-center items-center shadow-md hover:shadow-2xl">
 			<div className="avatar w-full">
 				<div className="rounded-xl">
 					<img src={avatar} />
@@ -38,8 +39,8 @@ const Member = ({ avatar, social, name, role }) => {
 
 const Team = () => {
 	return (
-		<div className="hero mx-auto p-8 bg-primary flex flex-col items-center">
-			<div className="w-full grid place-content-center mb-4">
+		<div className="hero mx-auto p-8 bg-primary/80 flex flex-col items-center">
+			<div className="w-full grid place-content-center mb-4 mt-12">
 				<span className="badge badge-accent">Team</span>
 			</div>
 
@@ -60,6 +61,10 @@ const Team = () => {
 							{
 								icon: <FaGithub />,
 								href: "https://github.com/1020phug",
+							},
+							{
+								icon: <FaInstagram />,
+								href: "https://instagram.com/1020phug",
 							},
 						]}
 						name="Phùng Quang Anh"

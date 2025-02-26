@@ -1,9 +1,8 @@
 import { Outlet } from "react-router";
-import Header from "./general/header";
-import Footer from "./general/footer";
+import { Header, Footer } from "../../config/components";
 const Layout = () => {
 	return (
-		<div className="min-h-screen max-w-screen overflow-x-hidden">
+		<div className="min-h-screen overflow-x-hidden max-w-screen">
 			<Header />
 			<main className="min-h-[80vh]">
 				<Outlet />

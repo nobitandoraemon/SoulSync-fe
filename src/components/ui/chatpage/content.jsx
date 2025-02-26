@@ -1,7 +1,7 @@
-import { use } from "react";
 import { useState, useEffect } from "react";
+import { cn } from "../../../lib/utils";
 
-const Content = ({ isActive, content }) => {
+const Content = ({ isActive, content, isScroll }) => {
 	const [isLoading, setLoading] = useState(true);
 	const handleLoading = () => {
 		setLoading(false);
@@ -16,7 +16,12 @@ const Content = ({ isActive, content }) => {
 	}, []);
 
 	return !isLoading ? (
-		<div className="w-[30%] p-4 bg-secondary/5 text-secondary-content overflow-y-scroll">
+		<div
+			className={cn(
+				"w-[30%] p-4 bg-secondary/5 text-secondary-content overflow-hidden",
+				isScroll && "ml-[72px]"
+			)}
+		>
 			{content[isActive - 1].component}
 		</div>
 	) : (

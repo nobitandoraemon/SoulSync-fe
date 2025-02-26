@@ -1,30 +1,37 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
-import ThemeProvider from "./context/themeprovider.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Layout from "./components/ui/layout.jsx";
-import Chat from "./pages/chat.jsx";
-import Auth from "./pages/auth.jsx";
-import User from "./pages/user.jsx";
-import Login from "./pages/login.jsx";
-import Reg from "./pages/reg.jsx";
+import {
+	Layout,
+	Chat,
+	Login,
+	Reg,
+	AuthProvider,
+	App,
+	ThemeProvider,
+	PrivateRoute,
+	TestPage,
+} from "./config/components.js";
+import { socket } from "./config/socket.js";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<ThemeProvider>
 			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<Layout />}>
-						<Route index element={<App />} />
-						<Route path="/auth" element={<Auth />} />
-						<Route path="/user" element={<User />} />
-						<Route path="/login" element={<Login />} />
-						<Route path="/reg" element={<Reg />} />
-					</Route>
-					<Route path="/chat" element={<Chat />} />
-				</Routes>
+				<AuthProvider>
+					<Routes>
+						<Route path="/" element={<Layout socket={socket} />}>
+							<Route index element={<App socket={socket} />} />
+							<Route path="/login" element={<Login socket={socket} />} />
+							<Route path="/reg" element={<Reg socket={socket} />} />
+							<Route path="/test" element={<TestPage socket={socket} />} />
+						</Route>
+						<Route element={<PrivateRoute />}>
+							<Route path="/chat" element={<Chat socket={socket} />} />
+						</Route>
+					</Routes>
+				</AuthProvider>
 			</BrowserRouter>
 		</ThemeProvider>
 	</StrictMode>

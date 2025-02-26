@@ -1,11 +1,28 @@
-const ChatInput = () => {
+import { useState } from "react";
+
+const ChatInput = ({ socket }) => {
+	const [message, setMessage] = useState("");
+	const handleMessage = (e) => {
+		e.preventDefault();
+		if (message.trim() && localStorage.getItem("userName")) {
+			socket.emit("message", {
+				text: message,
+				name: localStorage.getItem("userName"),
+				id: `${socket.id}${Math.random()}`,
+				socketID: socket.id,
+			});
+		}
+		setMessage("");
+	};
 	return (
-		<div className="absolute left-0 bottom-0 right-0">
-			<label className="input input-bordered flex items-center gap-2">
+		<form className="absolute bottom-0 left-0 right-0" onSubmit={handleMessage}>
+			<label className="flex items-center gap-2 input input-bordered">
 				<input
 					type="text"
 					className="grow"
 					placeholder="What's on your mind? ..."
+					value={message}
+					onChange={(e) => setMessage(e.target.value)}
 				/>
 				<kbd className="kbd kbd-sm">Enter</kbd>
 				<kbd className="kbd kbd-sm">
@@ -23,7 +40,7 @@ const ChatInput = () => {
 					</svg>
 				</kbd>
 			</label>
-		</div>
+		</form>
 	);
 };
 

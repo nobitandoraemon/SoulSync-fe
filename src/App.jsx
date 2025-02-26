@@ -1,9 +1,11 @@
-import Contact from "./components/ui/homepage/contact";
-import Features from "./components/ui/homepage/features";
-import FAQ from "./components/ui/homepage/faq";
-import Hero from "./components/ui/homepage/hero";
-import Rating from "./components/ui/homepage/rating";
-import Team from "./components/ui/homepage/team";
+import {
+	Contact,
+	Features,
+	FAQ,
+	Hero,
+	Rating,
+	Team,
+} from "./config/components";
 
 function App() {
 	return (

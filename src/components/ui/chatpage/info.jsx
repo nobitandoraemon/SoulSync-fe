@@ -2,28 +2,27 @@ import { TbZodiacLeo } from "react-icons/tb";
 import { motion } from "framer-motion";
 import { ChatIcon } from "../general/icon";
 
-const Info = () => {
+const Info = ({ user }) => {
 	return (
 		<section className="flex flex-col items-center">
-			<div className="stats shadow">
+			<div className="shadow stats">
 				<div className="stat">
 					<div className="stat-figure text-secondary">
 						<div className="avatar online">
 							<div className="w-16 rounded-full">
-								<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+								<img src={user.avatar} />
 							</div>
 						</div>
 					</div>
-					<div className="stat-value text-xl">Người dùng ẩn danh</div>
-					<div className="stat-title my-2">#1020</div>
-					<div className="stat-desc text-secondary">Cà Mau, VN</div>
+					<div className="text-xl stat-value">{user.name}</div>
+					<div className="my-2 stat-title">{`#${user.id}`}</div>
+					<div className="stat-desc text-secondary">{user.location}</div>
 					<div className="flex gap-4">
-						<div className="badge badge-primary badge-outline mt-4 text-center">
-							<span className="mr-2">Sư Tử</span>
-							<TbZodiacLeo />
+						<div className="mt-4 text-center badge badge-primary badge-outline">
+							<span>{user.zodiac}</span>
 						</div>
-						<div className="badge badge-info badge-outline mt-4 text-center">
-							<span className="mr-2">20+ tuổi</span>
+						<div className="mt-4 text-center badge badge-info badge-outline">
+							<span className="mr-2">{user.age} tuổi</span>
 							<ChatIcon />
 						</div>
 					</div>
@@ -31,11 +30,11 @@ const Info = () => {
 			</div>
 			<div className="divider divider-secondary"></div>
 
-			<div className="card bg-base-100 shadow-xl h-40">
+			<div className="h-40 shadow-xl card bg-base-100">
 				<div className="card-body">
 					<h2 className="card-title">Favorite Quote</h2>
-					<p>Dẫu có lỗi lầm, em vẫn sẽ không bao giờ tha thứ cho anh</p>
-					<div className="card-actions justify-end">
+					<p className="overflow-hidden max-h-20 text-ellipsis">{user.quote}</p>
+					<div className="justify-end card-actions">
 						<button className="btn btn-success">
 							<motion.svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -59,33 +58,33 @@ const Info = () => {
 				</div>
 			</div>
 
-			<div className="carousel w-full mt-2 rounded">
-				<div id="item1" className="carousel-item w-full">
+			<div className="w-full mt-2 rounded carousel">
+				<div id="item1" className="w-full carousel-item">
 					<img
 						src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
 						className="w-full"
 					/>
 				</div>
-				<div id="item2" className="carousel-item w-full">
+				<div id="item2" className="w-full carousel-item">
 					<img
 						src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
 						className="w-full"
 					/>
 				</div>
-				<div id="item3" className="carousel-item w-full">
+				<div id="item3" className="w-full carousel-item">
 					<img
 						src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
 						className="w-full"
 					/>
 				</div>
-				<div id="item4" className="carousel-item w-full">
+				<div id="item4" className="w-full carousel-item">
 					<img
 						src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
 						className="w-full"
 					/>
 				</div>
 			</div>
-			<div className="flex w-full justify-center gap-2 py-2">
+			<div className="flex justify-center w-full gap-2 py-2">
 				<a href="#item1" className="btn btn-xs">
 					1
 				</a>
