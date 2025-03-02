@@ -9,7 +9,17 @@ export default {
 		"./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
 	],
 	theme: {
-		extend: {},
+		extend: {
+			animation: {
+				"infinite-scroll": "infinite-scroll 40s linear infinite",
+			},
+			keyframes: {
+				"infinite-scroll": {
+					from: { transform: "translateX(0)" },
+					to: { transform: "translateX(calc(-80% - 2rem))" },
+				},
+			},
+		},
 	},
 	plugins: [require("@tailwindcss/typography"), daisyui, scrollbarHide],
 	daisyui: {

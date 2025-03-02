@@ -6,8 +6,7 @@ const Setting = ({ user, isScroll }) => {
 	return (
 		<div
 			className={cn(
-				"flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide",
-				isScroll && "ml-[72px]"
+				"flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
 			)}
 		>
 			<ChatHeader user={user} isLoggin={true} />

@@ -3,7 +3,7 @@ import { TbZodiacLeo } from "react-icons/tb";
 
 const ChatBox = ({ chat, sendMessage, socketIO, matchedUser }) => {
 	return (
-		<div className="relative flex flex-col flex-1 p-4 bg-secondary/20">
+		<div className="relative flex flex-col flex-1 p-4 mb-16 md:mb-0 bg-secondary/20">
 			<ChatHeader
 				user={{
 					name: "Người dùng ẩn danh",

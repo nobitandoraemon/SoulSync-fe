@@ -40,16 +40,16 @@ const Reg = () => {
 				theme={theme === "halloween" ? "dark" : "light"}
 			/>
 			<div className="hero-overlay bg-opacity-60"></div>
-			<div className="w-full text-center hero-content text-neutral-content">
-				<div className="flex flex-row w-4/5 gap-8">
-					<div className="flex flex-col w-2/3 space-y-8 text-wrap">
+			<div className="py-16 text-center hero-content text-neutral-content">
+				<div className="flex flex-col gap-8 items-center-center md:flex-row md:w-4/5">
+					<div className="flex flex-col space-y-8 md:w-2/3 text-wrap">
 						<h1 className="mb-5 text-5xl font-bold">Sign Up Now</h1>
 						<p className="mb-5 text-wrap">
 							Tìm nửa kia cho mình ngay lúc này ! Ngoài ra bạn còn có thể tra
 							cứu và tìm hiểu sâu hơn về bản thân 😊
 						</p>
 					</div>
-					<div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
+					<div className="w-full max-w-sm mx-auto shadow-2xl card bg-base-100 shrink-0">
 						<form className="card-body" onSubmit={handleSubmit}>
 							<div className="form-control">
 								<label className="label">

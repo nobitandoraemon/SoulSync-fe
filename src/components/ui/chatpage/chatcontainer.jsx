@@ -42,7 +42,7 @@ const ChatContainer = ({ socket, content, isActive, isScroll, user }) => {
 	return (
 		<>
 			{!matchedUser ? (
-				<div>
+				<div className="max-w-[80%] mx-auto flex items-center justify-between">
 					<input
 						type="text"
 						placeholder="Enter username"

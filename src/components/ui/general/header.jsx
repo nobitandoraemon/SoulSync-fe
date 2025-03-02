@@ -87,9 +87,9 @@ const Header = () => {
 							<li>
 								<Link to="/">Homepage</Link>
 							</li>
-							<li>
+							{/* <li>
 								<Link to="/test">Test</Link>
-							</li>
+							</li> */}
 							{token ? (
 								<li>
 									<Link to="/chat">Chat</Link>

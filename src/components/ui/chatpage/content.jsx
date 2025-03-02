@@ -18,8 +18,7 @@ const Content = ({ isActive, content, isScroll }) => {
 	return !isLoading ? (
 		<div
 			className={cn(
-				"w-[30%] p-4 bg-secondary/5 text-secondary-content overflow-hidden",
-				isScroll && "ml-[72px]"
+				"hidden md:w-[30%] p-4 bg-secondary/5 text-secondary-content overflow-hidden"
 			)}
 		>
 			{content[isActive - 1].component}
