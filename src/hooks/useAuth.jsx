@@ -21,6 +21,7 @@ const AuthProvider = ({ children }) => {
 			.post(`${API}/auth/login`, data)
 			.then((res) => {
 				const token = res.data.accessToken;
+				localStorage.setItem("username", data.username);
 				Cookies.set("jwt", token);
 				setToken_(token);
 				toast("Login successfully");
@@ -58,6 +59,7 @@ const AuthProvider = ({ children }) => {
 			})
 			.then((res) => {
 				console.log(res.status === 204 && "Đăng xuất thành công");
+				localStorage.removeItem("username");
 				Cookies.remove("jwt");
 				localStorage.removeItem("token");
 				setToken_();

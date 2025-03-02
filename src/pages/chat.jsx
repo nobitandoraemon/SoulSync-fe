@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaFacebookF, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbZodiacLibra, TbZodiacLeo } from "react-icons/tb";
 import { UserIcon, InfoIcon, SettingIcon } from "../components/ui/general/icon";
