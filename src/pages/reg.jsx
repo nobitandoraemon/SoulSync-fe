@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
+import { ToastContainer } from "react-toastify";
+import { ThemeContext } from "../context/themeprovider";
+import { useContext } from "react";
 
 const Reg = () => {
+	const { theme } = useContext(ThemeContext);
 	const auth = useAuth();
 	const [form, setForm] = useState({
 		username: "",
@@ -18,7 +22,6 @@ const Reg = () => {
 		e.preventDefault();
 		if (form.username !== "" && form.password !== "") {
 			auth.regAction(form);
-			return;
 		} else {
 			alert("Please provide a valid input");
 		}
@@ -31,6 +34,11 @@ const Reg = () => {
 					"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
 			}}
 		>
+			<ToastContainer
+				limit={1}
+				autoClose={3000}
+				theme={theme === "halloween" ? "dark" : "light"}
+			/>
 			<div className="hero-overlay bg-opacity-60"></div>
 			<div className="w-full text-center hero-content text-neutral-content">
 				<div className="flex flex-row w-4/5 gap-8">

@@ -1,11 +1,13 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import Cookies from "js-cookie";
-
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 const AuthContext = createContext();
 const API = "https://soulsync-api.onrender.com";
 
 const AuthProvider = ({ children }) => {
+	const navigate = useNavigate();
 	// State to hold the authentication token
 	const [token, setToken_] = useState(localStorage.getItem("token"));
 
@@ -21,21 +23,48 @@ const AuthProvider = ({ children }) => {
 				const token = res.data.accessToken;
 				Cookies.set("jwt", token);
 				setToken_(token);
+				toast("Login successfully");
+				setTimeout(() => {
+					navigate("/chat");
+				}, 3000);
 			})
 			.catch((err) => {
 				console.log(err);
+				toast("Login failed");
 			});
 	};
 
-	const logOut = () => {
+	const regAction = (data) => {
 		axios
-			.post(`${API}/auth/logout`)
+			.post(`${API}/register`, data)
 			.then((res) => {
 				console.log(res);
+				toast("Register successfully");
+				setTimeout(() => {
+					navigate("/login");
+				}, 3000);
+			})
+			.catch((err) => {
+				console.log(err);
+				toast("Register failed");
+			});
+	};
+	const logOut = () => {
+		axios
+			.post(`${API}/auth/logout`, {
+				cookies: {
+					jwt: Cookies.get("jwt"),
+				},
+			})
+			.then((res) => {
+				console.log(res.status === 204 && "Đăng xuất thành công");
 				Cookies.remove("jwt");
-
 				localStorage.removeItem("token");
 				setToken_();
+				toast("Logout successfully");
+				setTimeout(() => {
+					navigate("/login");
+				}, 3000);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -58,6 +87,7 @@ const AuthProvider = ({ children }) => {
 			token,
 			setToken,
 			loginAction,
+			regAction,
 			logOut,
 		}),
 		[token]

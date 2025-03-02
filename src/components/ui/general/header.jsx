@@ -6,8 +6,11 @@ import {
 	Logo,
 	useScroll,
 } from "../../../config/components";
+import { ToastContainer } from "react-toastify";
+import { ThemeContext } from "../../../context/themeprovider";
+import { useContext } from "react";
 
-const UserProfile = ({ user }) => {
+const UserProfile = ({ user, handleLogOut }) => {
 	return (
 		<div className="dropdown dropdown-end">
 			<div
@@ -29,7 +32,7 @@ const UserProfile = ({ user }) => {
 						<span className="badge">New</span>
 					</Link>
 				</li>
-				<li>
+				<li onClick={handleLogOut}>
 					<Link to="/">Logout</Link>
 				</li>
 			</ul>
@@ -39,13 +42,21 @@ const UserProfile = ({ user }) => {
 
 const Header = () => {
 	const isScroll = useScroll();
-	const { user } = useAuth();
+	const { token } = useAuth();
+	const { theme } = useContext(ThemeContext);
+	const auth = useAuth();
 	const userprofile = {
 		avatar:
 			"https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN",
 	};
+	const handleLogOut = () => auth.logOut();
 	return (
 		<div className={cn(isScroll && "fixed left-0 right-0 top-0 z-50 ")}>
+			<ToastContainer
+				limit={1}
+				autoClose={3000}
+				theme={theme === "halloween" ? "dark" : "light"}
+			/>
 			<div className="shadow-lg navbar bg-base-100 backdrop-blur-md glass">
 				<div className="navbar-start">
 					<div className="dropdown">
@@ -79,7 +90,7 @@ const Header = () => {
 							<li>
 								<Link to="/test">Test</Link>
 							</li>
-							{user ? (
+							{token ? (
 								<li>
 									<Link to="/chat">Chat</Link>
 								</li>
@@ -104,7 +115,9 @@ const Header = () => {
 				</div>
 				<div className="navbar-end">
 					<ToggleTheme className="btn btn-ghost btn-circle" />
-					{user && <UserProfile user={userprofile} />}
+					{token && (
+						<UserProfile user={userprofile} handleLogOut={handleLogOut} />
+					)}
 				</div>
 			</div>
 		</div>

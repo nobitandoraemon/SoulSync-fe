@@ -1,6 +1,6 @@
+import ZodiacInfo from "../components/ui/zodiacinfo";
 import { DatePick } from "../config/components";
-import { zodiacInfo } from "../lib/data";
-
+import { aries } from "../lib/data";
 const TestPage = () => {
 	const handleSubmit = (e) => {
 		console.log(e.target.value);
@@ -8,8 +8,9 @@ const TestPage = () => {
 	return (
 		<div className="max-w-screen-lg p-4 mx-auto">
 			{/* <div className="w-56" onKeyDown={handleSubmit}>
-				<DatePick />
-			</div> */}
+                <DatePick />
+            </div> */}
+			<ZodiacInfo zodiac={aries} />
 		</div>
 	);
 };
