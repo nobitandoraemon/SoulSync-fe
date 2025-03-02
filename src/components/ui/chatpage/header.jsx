@@ -1,11 +1,12 @@
 import { Link, useNavigate } from "react-router";
+import { useAuth } from "../../../config/components";
 
 const SubNav = ({ isLoggin }) => {
+	const auth = useAuth();
 	const navigate = useNavigate();
 	const handleLeaveChat = () => {
-		localStorage.removeItem("userName");
+		auth.logOut();
 		navigate("/");
-		window.location.reload();
 	};
 	return (
 		<ul className="menu bg-base-200 lg:menu-horizontal rounded-box place-content-center">
@@ -30,7 +31,7 @@ const SubNav = ({ isLoggin }) => {
 			</li>
 			<li onClick={handleLeaveChat}>
 				<a
-					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
+					// href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
 					target="_blank"
 				>
 					<svg
@@ -79,12 +80,20 @@ const SubNav = ({ isLoggin }) => {
 };
 
 const MainNav = ({ isLoggin }) => {
+	const auth = useAuth();
+	const navigate = useNavigate();
+
+	const handleLogOut = () => {
+		auth.logOut();
+		navigate("/");
+	};
 	return (
 		<div className="dropdown dropdown-end">
 			<div
 				tabIndex={0}
 				role="button"
 				className="btn btn-ghost btn-circle avatar"
+				onClick={handleLogOut}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

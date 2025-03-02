@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useLayoutEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../config/components";
 
 const Login = () => {
+	const navigate = useNavigate();
 	const [input, setInput] = useState({
 		username: "",
 		password: "",
@@ -14,11 +15,10 @@ const Login = () => {
 		e.preventDefault();
 		if (input.username !== "" && input.password !== "") {
 			auth.loginAction(input);
-			return;
+			navigate("/chat");
 		} else {
 			alert("Please provide a valid input");
 		}
-		localStorage.setItem("userName", input.username);
 	};
 
 	const handleInput = (e) => {
@@ -28,6 +28,12 @@ const Login = () => {
 			[name]: value,
 		}));
 	};
+	const token = localStorage.getItem("token");
+
+	useLayoutEffect(() => {
+		if (token) navigate("/chat");
+	}, [token]);
+
 	return (
 		<div
 			className="min-h-screen hero bg-base"

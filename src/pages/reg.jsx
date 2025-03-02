@@ -17,7 +17,7 @@ const Reg = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (form.username !== "" && form.password !== "") {
-			auth.loginAction(form);
+			auth.regAction(form);
 			return;
 		} else {
 			alert("Please provide a valid input");
