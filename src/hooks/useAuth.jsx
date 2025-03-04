@@ -10,7 +10,6 @@ const AuthProvider = ({ children }) => {
 	const navigate = useNavigate();
 	// State to hold the authentication token
 	const [token, setToken_] = useState(localStorage.getItem("token"));
-
 	// Function to set the authentication token
 	const setToken = (newToken) => {
 		setToken_(newToken);

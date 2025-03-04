@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
-import { ToastContainer } from "react-toastify";
-import { ThemeContext } from "../context/themeprovider";
-import { useContext } from "react";
+import Toast from "../hooks/useToast";
 
 const Reg = () => {
-	const { theme } = useContext(ThemeContext);
 	const auth = useAuth();
 	const [form, setForm] = useState({
 		username: "",
@@ -34,11 +31,7 @@ const Reg = () => {
 					"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
 			}}
 		>
-			<ToastContainer
-				limit={1}
-				autoClose={3000}
-				theme={theme === "halloween" ? "dark" : "light"}
-			/>
+			<Toast />
 			<div className="hero-overlay bg-opacity-60"></div>
 			<div className="py-16 text-center hero-content text-neutral-content">
 				<div className="flex flex-col gap-8 items-center-center md:flex-row md:w-4/5">

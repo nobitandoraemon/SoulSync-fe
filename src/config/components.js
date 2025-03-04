@@ -13,6 +13,7 @@ import App from "../App.jsx";
 import AuthProvider from "../hooks/useAuth.jsx";
 import { useAuth } from "../hooks/useAuth.jsx";
 import { useScroll } from "../hooks/useScroll.js";
+import Toast from "../hooks/useToast.jsx";
 
 //Context
 import ThemeProvider from "../context/themeprovider.jsx";
@@ -98,6 +99,7 @@ export {
 	ToggleTheme,
 	useAuth,
 	useScroll,
+	Toast,
 	TestPage,
 	DatePick,
 };

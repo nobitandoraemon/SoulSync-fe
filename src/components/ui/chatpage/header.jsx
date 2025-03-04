@@ -1,8 +1,6 @@
 import { Link } from "react-router";
 import { useAuth } from "../../../config/components";
-import { ToastContainer } from "react-toastify";
-import { ThemeContext } from "../../../context/themeprovider";
-import { useContext } from "react";
+import { Toast } from "../../../config/components";
 
 const SubNav = ({ isLoggin }) => {
 	const auth = useAuth();
@@ -114,14 +112,9 @@ const MainNav = ({ isLoggin }) => {
 };
 
 const ChatHeader = ({ user, isLoggin }) => {
-	const { theme } = useContext(ThemeContext);
 	return (
 		<div className="absolute top-0 left-0 right-0 p-4 min-h-[80px] flex shadow-lg bg-primary/10 backdrop-blur-lg">
-			<ToastContainer
-				limit={1}
-				autoClose={3000}
-				theme={theme === "halloween" ? "dark" : "light"}
-			/>
+			<Toast />
 			<div className="flex items-center flex-1 float-left gap-4 mr-4">
 				<div className="avatar online">
 					<div className="w-12 rounded-full">

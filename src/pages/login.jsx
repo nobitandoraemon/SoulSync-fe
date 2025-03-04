@@ -1,12 +1,9 @@
 import { useLayoutEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../config/components";
-import { ToastContainer } from "react-toastify";
-import { ThemeContext } from "../context/themeprovider";
-import { useContext } from "react";
+import Toast from "../hooks/useToast";
 
 const Login = () => {
-	const { theme } = useContext(ThemeContext);
 	const navigate = useNavigate();
 	const [input, setInput] = useState({
 		username: "",
@@ -45,11 +42,7 @@ const Login = () => {
 					"url(https://images.squarespace-cdn.com/content/v1/5eac45f88da144413f9b5763/b85d7659-1901-4859-b33a-04356e135fb7/myles-munroe-3-principles-of-biblical-dating-and-courting.jpg)",
 			}}
 		>
-			<ToastContainer
-				limit={1}
-				autoClose={3000}
-				theme={theme === "halloween" ? "dark" : "light"}
-			/>
+			<Toast />
 			<div className="flex-col hero-content lg:flex-row-reverse">
 				<div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
 					<form className="card-body" onSubmit={handleSubmit}>

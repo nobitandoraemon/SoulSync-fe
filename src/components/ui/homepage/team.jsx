@@ -123,10 +123,10 @@ const Team = () => {
 				Meeting our team.
 			</h2>
 
-			<div className="inline-flex w-[90%] overflow-hidden flex-nowrap [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] mb-8">
+			<div className="inline-flex w-[90%] overflow-hidden flex-nowrap [mask-image:_linear-gradient(to_right,transparent_0,_black_100px,_black_calc(100%-100px),transparent_100%)] mb-8">
 				<ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll">
-					{[...members, ...members].map((item) => {
-						return <Member {...item} key={item.name} />;
+					{[...members, ...members, ...members].map((item, idx) => {
+						return <Member {...item} key={idx} />;
 					})}
 				</ul>
 			</div>
