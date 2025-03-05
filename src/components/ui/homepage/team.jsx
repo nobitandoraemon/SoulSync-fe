@@ -124,7 +124,7 @@ const Team = () => {
 			</h2>
 
 			<div className="inline-flex w-[90%] overflow-hidden flex-nowrap [mask-image:_linear-gradient(to_right,transparent_0,_black_100px,_black_calc(100%-100px),transparent_100%)] mb-8">
-				<ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll">
+				<ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll hover:[animation-play-state:paused]">
 					{[...members, ...members, ...members].map((item, idx) => {
 						return <Member {...item} key={idx} />;
 					})}

@@ -51,13 +51,17 @@ const Header = () => {
 	};
 	const handleLogOut = () => auth.logOut();
 	return (
-		<div className={cn(isScroll && "fixed left-0 right-0 top-0 z-50 ")}>
+		<div
+			className={cn(
+				isScroll && "fixed left-0 right-0 top-0 z-50 shadow-sm blur-sm"
+			)}
+		>
 			<ToastContainer
 				limit={1}
 				autoClose={3000}
 				theme={theme === "halloween" ? "dark" : "light"}
 			/>
-			<div className="shadow-lg navbar bg-base-100 backdrop-blur-md glass">
+			<div className="navbar bg-base-100">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<div

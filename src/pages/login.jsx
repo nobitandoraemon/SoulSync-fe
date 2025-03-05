@@ -28,11 +28,11 @@ const Login = () => {
 			[name]: value,
 		}));
 	};
-	const isLoggin = localStorage.getItem("token");
+	const token = localStorage.getItem("token");
 
 	useLayoutEffect(() => {
-		if (isLoggin) navigate("/chat");
-	}, [isLoggin]);
+		if (token) navigate("/chat");
+	}, []);
 
 	return (
 		<div

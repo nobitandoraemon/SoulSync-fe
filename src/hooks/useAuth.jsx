@@ -20,8 +20,9 @@ const AuthProvider = ({ children }) => {
 			.then((res) => {
 				const token = res.data.accessToken;
 				localStorage.setItem("token", token);
-				setToken_(token);
+				localStorage.setItem("username", data.username);
 				toast("Login successfully");
+				setToken_(token);
 				setTimeout(() => {
 					navigate("/chat");
 				}, 3000);
@@ -53,6 +54,7 @@ const AuthProvider = ({ children }) => {
 			.then((res) => {
 				console.log(res.status === 204 && "Đăng xuất thành công");
 				localStorage.removeItem("token");
+				localStorage.removeItem("username");
 				setToken_();
 				toast("Logout successfully");
 				setTimeout(() => {

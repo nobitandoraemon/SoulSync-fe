@@ -26,12 +26,12 @@ const Reg = () => {
 			alert("Please provide a valid input");
 		}
 	};
-	const isLoggin = localStorage.getItem("token");
+	const token = localStorage.getItem("token");
 
 	useLayoutEffect(() => {
-		if (isLoggin) toast("You are logged in");
+		if (token) toast("You are logged in");
 		navigate("/chat");
-	}, [isLoggin]);
+	}, []);
 	return (
 		<div
 			className="min-h-screen hero"

@@ -4,6 +4,7 @@ import { io } from "socket.io-client";
 
 const ChatContainer = ({ socket, content, isActive, isScroll, user }) => {
 	const [username, setUsername] = useState(localStorage.getItem("username"));
+	const [otherUser, setOtherUser] = useState(""); //
 	const [chat, setChat] = useState([]);
 	const [socketIO, setSocketIO] = useState(socket);
 	const [matchedUser, setMatchedUser] = useState(null);
@@ -35,7 +36,7 @@ const ChatContainer = ({ socket, content, isActive, isScroll, user }) => {
 
 	const requestMatch = () => {
 		if (socketIO) {
-			socketIO.emit("ok", {}); // Request a match
+			socketIO.emit("ok", { username }); // Request a match
 		}
 	};
 
@@ -46,8 +47,8 @@ const ChatContainer = ({ socket, content, isActive, isScroll, user }) => {
 					<input
 						type="text"
 						placeholder="Enter username"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
+						value={otherUser}
+						onChange={(e) => setOtherUser(e.target.value)}
 					/>
 					<button onClick={requestMatch}>Find a Match</button>
 				</div>
