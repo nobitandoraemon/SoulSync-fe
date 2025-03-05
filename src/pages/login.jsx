@@ -28,7 +28,7 @@ const Login = () => {
 			[name]: value,
 		}));
 	};
-	const isLoggin = localStorage.getItem("soulsync");
+	const isLoggin = localStorage.getItem("token");
 
 	useLayoutEffect(() => {
 		if (isLoggin) navigate("/chat");

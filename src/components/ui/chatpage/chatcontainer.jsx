@@ -35,7 +35,7 @@ const ChatContainer = ({ socket, content, isActive, isScroll, user }) => {
 
 	const requestMatch = () => {
 		if (socketIO) {
-			socketIO.emit("ok", { username }); // Request a match
+			socketIO.emit("ok", {}); // Request a match
 		}
 	};
 

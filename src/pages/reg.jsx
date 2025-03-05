@@ -26,7 +26,7 @@ const Reg = () => {
 			alert("Please provide a valid input");
 		}
 	};
-	const isLoggin = localStorage.getItem("soulsync");
+	const isLoggin = localStorage.getItem("token");
 
 	useLayoutEffect(() => {
 		if (isLoggin) toast("You are logged in");

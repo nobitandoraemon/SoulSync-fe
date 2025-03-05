@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 const AuthContext = createContext();
@@ -20,9 +19,7 @@ const AuthProvider = ({ children }) => {
 			.post(`${API}/auth/login`, data)
 			.then((res) => {
 				const token = res.data.accessToken;
-				localStorage.setItem("username", data.username);
-				localStorage.setItem("soulsync", true);
-				Cookies.set("jwt", token);
+				localStorage.setItem("token", token);
 				setToken_(token);
 				toast("Login successfully");
 				setTimeout(() => {
@@ -52,15 +49,9 @@ const AuthProvider = ({ children }) => {
 	};
 	const logOut = () => {
 		axios
-			.post(`${API}/auth/logout`, {
-				cookies: {
-					jwt: Cookies.get("jwt"),
-				},
-			})
+			.post(`${API}/auth/logout`)
 			.then((res) => {
 				console.log(res.status === 204 && "Đăng xuất thành công");
-				localStorage.removeItem("username");
-				Cookies.remove("jwt");
 				localStorage.removeItem("token");
 				setToken_();
 				toast("Logout successfully");
@@ -76,10 +67,8 @@ const AuthProvider = ({ children }) => {
 	useEffect(() => {
 		if (token) {
 			axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-			localStorage.setItem("token", token);
 		} else {
 			delete axios.defaults.headers.common["Authorization"];
-			localStorage.removeItem("token");
 		}
 	}, [token]);
 
