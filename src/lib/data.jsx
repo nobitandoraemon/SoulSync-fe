@@ -18,18 +18,18 @@ export const zodiacInfo = [
   {
     id: 1,
     sex: "male",
-    sign: "Aries",
+    sign: "Bạch Dương",
     icon: <TbZodiacAries />,
     tabs: [
       {
-        label: "Tong Quan",
+        label: "Tổng quan",
         content: [
           "Cung Bạch Dương (Aries) còn được gọi là cung Dương Cưu là cung chiêm tinh đầu tiên trong vòng hoàng đạo. Cung này được bảo hộ bởi sao Hỏa – vị thần chiến tranh trong thần thoại Hy Lạp. Cung Bạch Dương bắt nguồn từ truyền thuyết về con cừu vàng Aries - biểu tượng của sự bảo vệ và lòng dũng cảm. Vì vậy, biểu tượng của cung này là một con cừu (cũng có khi được gọi là dê). Người thuộc cung Bạch Dương có sinh nhật rơi vào khoảng thời gian từ 21/3 – 19/4",
           "Biểu tượng của cung Bạch Dương là con chiên. Con chiên thường được miêu tả như một loài động vật mạnh mẽ, có khả năng chịu đựng và quyết tâm. Điều này phản ánh tính cách của người thuộc cung Bạch Dương. Họ thích đảm đương vai trò lãnh đạo và sẵn lòng đứng lên bảo vệ những người yếu đuối.",
         ],
       },
       {
-        label: "Tinh Cach",
+        label: "Tính cách",
         content: [
           "Bạn là những người có khí chất, có thành tựu và mạnh mẽ. Những người này thẳng thắn, bộc trực, dám lăn xả và theo đuổi những lý tưởng riêng của mình. ",
           "Bạn có thể không quá “ngầu” như Bọ Cạp hay lãng tử tiêu sái như Thiên Bình nhưng chàng toát lên vẻ hoang dã, mạnh mẽ, lúc nào cũng có chút tinh nghịch, trẻ con nhưng lại rất tin cậy.",
@@ -37,7 +37,7 @@ export const zodiacInfo = [
         ],
       },
       {
-        label: "Tinh Yeu",
+        label: "Tình yêu",
         content: [
           "Trong tình yêu, Bạch Dương là những người yêu rất nồng nhiệt, mãnh liệt và chân thành. Họ luôn bộc lộ sự ấm áp, quan tâm và chăm sóc người yêu rất chu đáo. Họ mạnh mẽ, quyết đoán và không ngại bày tỏ tình cảm.",
           "Bạn không thích sự ràng buộc, gò bó hay giả dối trong mối quan hệ. Bạch Dương cũng rất thẳng thắn, chân thành, nghĩ gì nói đó nên là người rất dễ đoán bởi họ không hề mưu mô, toan tính với ai cả",
