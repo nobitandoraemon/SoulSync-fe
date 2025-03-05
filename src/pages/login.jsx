@@ -28,11 +28,11 @@ const Login = () => {
 			[name]: value,
 		}));
 	};
-	const token = localStorage.getItem("token");
+	const isLoggin = localStorage.getItem("soulsync");
 
 	useLayoutEffect(() => {
-		if (token) navigate("/chat");
-	}, [token]);
+		if (isLoggin) navigate("/chat");
+	}, [isLoggin]);
 
 	return (
 		<div

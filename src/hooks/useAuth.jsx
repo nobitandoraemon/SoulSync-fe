@@ -21,6 +21,7 @@ const AuthProvider = ({ children }) => {
 			.then((res) => {
 				const token = res.data.accessToken;
 				localStorage.setItem("username", data.username);
+				localStorage.setItem("soulsync", true);
 				Cookies.set("jwt", token);
 				setToken_(token);
 				toast("Login successfully");

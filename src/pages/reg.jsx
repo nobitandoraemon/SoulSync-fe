@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 import Toast from "../hooks/useToast";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Reg = () => {
+	const navigate = useNavigate();
 	const auth = useAuth();
 	const [form, setForm] = useState({
 		username: "",
@@ -23,6 +26,12 @@ const Reg = () => {
 			alert("Please provide a valid input");
 		}
 	};
+	const isLoggin = localStorage.getItem("soulsync");
+
+	useLayoutEffect(() => {
+		if (isLoggin) toast("You are logged in");
+		navigate("/chat");
+	}, [isLoggin]);
 	return (
 		<div
 			className="min-h-screen hero"
