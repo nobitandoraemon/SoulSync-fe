@@ -1,6 +1,34 @@
 import { div } from "motion/react-m";
 import { zodiacInfo } from "../../lib/data";
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
+
+const CountdownPopup = () => {
+  const [countdown, setCountdown] = useState(5);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    if (countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    } else {
+      setIsVisible(false);
+    }
+  }, [countdown]);
+
+  return (
+    isVisible && (
+      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+          <p className="text-lg font-semibold">
+            Closing in {countdown} seconds...
+          </p>
+        </div>
+      </div>
+    )
+  );
+};
+
 const Button = ({ children }) => {
   return (
     <Link to="/" className="btn btn-primary m-6">
@@ -31,12 +59,28 @@ const Tab = ({ tab }) => (
       className="tab min-w-32"
       aria-label={tab.label}
     />
-    <div className="tab-content bg-base-100 border-base-300 p-6 min-h-[50vh] w-full rounded-3xl">
+    <div className="tab-content bg-base-100 border-base-300 p-6 h-[65vh] rounded-3xl overflow-y-auto break-words">
       {tab.content.map((item, index) => {
         return (
           <ul key={index}>
-            <li>{item}</li>
-            <br />
+            {item.type === "text" ? (
+              <>
+                <li>{item.value}</li>
+                <br />
+              </>
+            ) : item.type === "image" ? (
+              <li>
+                <img
+                  src={item.value}
+                  alt="Zodiac"
+                  className="w-full h-auto rounded-lg mb-5"
+                />
+              </li>
+            ) : item.type === "h2" ? (
+              <li>
+                <h2 className="text-xl font-bold mb-3">{item.value}</h2>
+              </li>
+            ) : null}
           </ul>
         );
       })}
@@ -51,7 +95,7 @@ const ZodiacInfo = ({ zodiac }) => {
           return <Tab key={index} tab={tabs} />;
         })}
       </div>
-      <Button> Matching</Button>
+      <Button onClick={() => <CountdownPopup />}>Matching</Button>
     </div>
   );
 };
