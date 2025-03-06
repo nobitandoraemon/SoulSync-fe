@@ -14,6 +14,7 @@
     "axios": "^1.8.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
     "dotenv": "^16.4.7",
     "js-cookie": "^3.0.5",
     "motion": "^12.4.3",

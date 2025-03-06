@@ -94,8 +94,12 @@ const Header = () => {
 								<li>
 									<Link to="/chat">Chat</Link>
 								</li>
+								
 							) : (
 								<>
+								<li>
+									<Link to="/test">Test</Link>
+								</li>
 									<li>
 										<Link to="/login">Login</Link>
 									</li>
