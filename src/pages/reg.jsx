@@ -26,11 +26,13 @@ const Reg = () => {
 			alert("Please provide a valid input");
 		}
 	};
-	const token = localStorage.getItem("token");
 
 	useLayoutEffect(() => {
-		if (token) toast("You are logged in");
-		navigate("/chat");
+		const token = localStorage.getItem("token");
+		if (token) {
+			toast("You are logged in");
+			navigate("/chat");
+		}
 	}, []);
 	return (
 		<div

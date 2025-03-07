@@ -21,7 +21,12 @@ export default {
 			},
 		},
 	},
-	plugins: [require("@tailwindcss/typography"), daisyui, scrollbarHide],
+	plugins: [
+		require("@tailwindcss/typography"),
+		daisyui,
+		scrollbarHide,
+		require("tailwindcss-animated"),
+	],
 	daisyui: {
 		themes: ["valentine", "halloween"],
 	},

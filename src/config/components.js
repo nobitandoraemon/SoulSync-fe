@@ -8,6 +8,7 @@ import Chat from "../pages/chat.jsx";
 import Login from "../pages/login.jsx";
 import Reg from "../pages/reg.jsx";
 import App from "../App.jsx";
+import NotFound from "../pages/notfound.jsx";
 
 //Hooks
 import AuthProvider from "../hooks/useAuth.jsx";
@@ -32,6 +33,7 @@ import Info from "../components/ui/chatpage/info.jsx";
 import Profile from "../components/ui/chatpage/profile.jsx";
 import Setting from "../components/ui/chatpage/setting.jsx";
 import SideBar from "../components/ui/chatpage/sidebar.jsx";
+import Waiting from "../components/ui/chatpage/waiting.jsx";
 
 //Homepage//
 import Contact from "../components/ui/homepage/contact";
@@ -67,6 +69,7 @@ export {
 	Login,
 	Reg,
 	App,
+	NotFound,
 	AuthProvider,
 	ThemeProvider,
 	ThemeContext,
@@ -80,6 +83,7 @@ export {
 	Info,
 	Profile,
 	Setting,
+	Waiting,
 	SideBar,
 	Contact,
 	Features,

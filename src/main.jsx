@@ -12,6 +12,7 @@ import {
 	ThemeProvider,
 	PrivateRoute,
 	TestPage,
+	NotFound,
 } from "./config/components.js";
 import { socket } from "./config/socket.js";
 
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")).render(
 							<Route path="/login" element={<Login />} />
 							<Route path="/reg" element={<Reg />} />
 							<Route path="/test" element={<TestPage />} />
+							<Route path="*" element={<NotFound />} />
 						</Route>
 						<Route element={<PrivateRoute />}>
 							<Route path="/chat" element={<Chat socket={socket} />} />

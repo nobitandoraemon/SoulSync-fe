@@ -28,9 +28,9 @@ const Login = () => {
 			[name]: value,
 		}));
 	};
-	const token = localStorage.getItem("token");
 
 	useLayoutEffect(() => {
+		const token = localStorage.getItem("token");
 		if (token) navigate("/chat");
 	}, []);
 

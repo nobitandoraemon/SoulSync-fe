@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
 				const token = res.data.accessToken;
 				localStorage.setItem("token", token);
 				localStorage.setItem("username", data.username);
-				toast("Login successfully");
+				toast("Login successfully", { type: "success" });
 				setToken_(token);
 				setTimeout(() => {
 					navigate("/chat");
@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
 			})
 			.catch((err) => {
 				console.log(err);
-				toast("Login failed");
+				toast("Login failed", { type: "error" });
 			});
 	};
 
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
 			.post(`${API}/register`, data)
 			.then((res) => {
 				console.log(res);
-				toast("Register successfully");
+				toast("Register successfully", { type: "success" });
 				setTimeout(() => {
 					navigate("/login");
 				}, 3000);
@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
 				localStorage.removeItem("token");
 				localStorage.removeItem("username");
 				setToken_();
-				toast("Logout successfully");
+				toast("Logout successfully", { type: "success" });
 				setTimeout(() => {
 					navigate("/login");
 				}, 3000);

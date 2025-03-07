@@ -78,17 +78,21 @@ const members = [
 
 const Member = ({ avatar, social, name, role }) => {
 	return (
-		<li className="flex flex-col items-center justify-center w-48 shadow-md md:w-56 card bg-secondary/20 hover:shadow-2xl">
+		<li className="flex flex-col items-center justify-center w-48 overflow-hidden shadow-sm md:w-56 card bg-neutral/90 hover:shadow-md">
 			<div className="w-full avatar">
-				<div className="rounded-xl">
+				<div className="w-full">
 					<img src={avatar} />
 				</div>
 			</div>
-			<div className="flex flex-col items-center my-2">
-				<h1 className="text-xl font-extrabold text-primary-content">{name}</h1>
-				<h2 className="text-primary-content/65">{role}</h2>
+			<div className="flex flex-col items-center my-2 cursor-context-menu">
+				<h1 className="hover:animate-jump animate-duration-[2000ms] animate-delay-1000 animate-ease-in-out animate-alternate animate-fill-both text-xl font-extrabold tracking-wider text-primary stroke-accent drop-shadow-2xl hover:text-neutral-content">
+					{name}
+				</h1>
+				<h2 className="tracking-widest text-accent text-md text-pretty">
+					{role}
+				</h2>
 			</div>
-			<div className="flex items-center gap-4 mt-2 mb-6 text-primary-content">
+			<div className="flex items-center gap-4 mt-2 mb-6 text-neutral-content">
 				{social.map((item) => {
 					return (
 						<motion.a
@@ -124,7 +128,7 @@ const Team = () => {
 			</h2>
 
 			<div className="inline-flex w-[90%] overflow-hidden flex-nowrap [mask-image:_linear-gradient(to_right,transparent_0,_black_100px,_black_calc(100%-100px),transparent_100%)] mb-8">
-				<ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll hover:[animation-play-state:paused]">
+				<ul className="flex items-center py-4 justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll hover:[animation-play-state:paused]">
 					{[...members, ...members, ...members].map((item, idx) => {
 						return <Member {...item} key={idx} />;
 					})}

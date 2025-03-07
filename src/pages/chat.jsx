@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaFacebookF, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbZodiacLibra, TbZodiacLeo } from "react-icons/tb";
 import { UserIcon, InfoIcon, SettingIcon } from "../components/ui/general/icon";
 import Profile from "../components/ui/chatpage/profile";
 import Info from "../components/ui/chatpage/info";
 import Setting from "../components/ui/chatpage/setting";
-import { SideBar, ChatContainer, useScroll } from "../config/components";
+import { SideBar, ChatContainer, useScroll, Toast } from "../config/components";
 
 const otherUser = {
 	name: "Người dùng ẩn danh",
@@ -80,11 +80,21 @@ const content = [
 
 const Chat = ({ socket }) => {
 	const [isActive, setActive] = useState(3);
+	const [isLoading, setIsLoading] = useState(true);
 	const toggleActive = (id) => {
 		setActive(id);
 	};
 	const isScroll = useScroll();
-	return (
+	const handleLoading = () => {
+		setIsLoading(false);
+	};
+	useEffect(() => {
+		setInterval(() => handleLoading, 3000);
+		return () => {
+			clearInterval(handleLoading);
+		};
+	}, []);
+	return !isLoading ? (
 		<div className="flex w-screen max-w-full min-h-screen">
 			<SideBar
 				content={content}
@@ -103,6 +113,11 @@ const Chat = ({ socket }) => {
 				/>
 			)}
 			{isActive === 3 && <Setting user={user} isScroll={isScroll} />}
+		</div>
+	) : (
+		<div className="flex items-center justify-center w-screen h-screen">
+			<Toast />
+			<span className=" loading loading-spinner text-primary"></span>
 		</div>
 	);
 };

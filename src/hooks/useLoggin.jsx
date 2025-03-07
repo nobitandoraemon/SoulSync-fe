@@ -1,15 +1,14 @@
 import { useLayoutEffect } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
 
 const useLoggin = () => {
-	const navigate = useNavigate();
 	useLayoutEffect(() => {
 		const isLoggin = localStorage.getItem("token");
 		if (!isLoggin) {
-			toast("You are not logged in");
-			window.location.href = "/login";
-			navigate("/login");
+			toast("You need to log in", { type: "warning" });
+			setTimeout(() => {
+				window.location.href = "/login";
+			}, 3000);
 		} else {
 			return;
 		}
