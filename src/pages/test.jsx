@@ -1,6 +1,8 @@
 import ZodiacInfo from "../components/ui/zodiacinfo";
 import { DatePick } from "../config/components";
 import { zodiacInfo } from "../lib/data";
+import MessageFetcher from "../lib/messageMethod";
+import MessageUpdater from "../lib/messageMethod";
 const TestPage = () => {
   const handleSubmit = (e) => {
     console.log(e.target.value);
@@ -10,7 +12,8 @@ const TestPage = () => {
       {/* <div className="w-56" onKeyDown={handleSubmit}>
 				<DatePick />
 			</div> */}
-      <ZodiacInfo zodiac={zodiacInfo[0]} />
+      {/*<ZodiacInfo zodiac={zodiacInfo[0]} />*/}
+      <MessageFetcher />
     </div>
   );
 };

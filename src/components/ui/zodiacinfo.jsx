@@ -3,26 +3,32 @@ import { zodiacInfo } from "../../lib/data";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
 
-const CountdownPopup = () => {
-  const [countdown, setCountdown] = useState(5);
-  const [isVisible, setIsVisible] = useState(true);
-
+const CountdownPopup = ({
+  isVisible,
+  countdown,
+  setCountdown,
+  setIsVisible,
+}) => {
   useEffect(() => {
-    if (countdown > 0) {
+    if (isVisible && countdown > 0) {
       const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
       return () => clearTimeout(timer);
-    } else {
+    } else if (countdown === 0) {
       setIsVisible(false);
     }
-  }, [countdown]);
+  }, [countdown, isVisible]);
 
   return (
     isVisible && (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
         <div className="bg-white p-6 rounded-lg shadow-lg text-center">
           <p className="text-lg font-semibold">
-            Closing in {countdown} seconds...
+            Are you ready to find your destiny
           </p>
+          <p className="text-lg font-semibold">
+            You have {countdown} seconds left...
+          </p>
+          <Button>Matching</Button>
         </div>
       </div>
     )
@@ -50,6 +56,13 @@ const Button = ({ children }) => {
     </Link>
   );
 };
+const PopsUpButton = ({ children, event }) => {
+  return (
+    <button onClick={event} className="btn btn-primary m-6">
+      {children}
+    </button>
+  );
+};
 const Tab = ({ tab }) => (
   <>
     <input
@@ -59,7 +72,7 @@ const Tab = ({ tab }) => (
       className="tab min-w-32"
       aria-label={tab.label}
     />
-    <div className="tab-content bg-base-100 border-base-300 p-6 h-[65vh] rounded-3xl overflow-y-auto break-words">
+    <div className="tab-content bg-base-100 border-base-300 p-6 h-[65vh] rounded-3xl overflow-y-auto break-words ">
       {tab.content.map((item, index) => {
         return (
           <ul key={index}>
@@ -73,7 +86,7 @@ const Tab = ({ tab }) => (
                 <img
                   src={item.value}
                   alt="Zodiac"
-                  className="w-full h-auto rounded-lg mb-5"
+                  className="w-[85%] h-[80%] rounded-lg mb-5 mx-auto"
                 />
               </li>
             ) : item.type === "h2" ? (
@@ -88,6 +101,14 @@ const Tab = ({ tab }) => (
   </>
 );
 const ZodiacInfo = ({ zodiac }) => {
+  const [countdown, setCountdown] = useState(30);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const startPopsUp = () => {
+    setCountdown(30);
+    setIsVisible(true);
+  };
+
   return (
     <div className="flex flex-col items-center">
       <div className="tabs tabs-boxed w-full p-3">
@@ -95,7 +116,13 @@ const ZodiacInfo = ({ zodiac }) => {
           return <Tab key={index} tab={tabs} />;
         })}
       </div>
-      <Button onClick={() => <CountdownPopup />}>Matching</Button>
+      <PopsUpButton event={startPopsUp}>Start Matching</PopsUpButton>
+      <CountdownPopup
+        isVisible={isVisible}
+        countdown={countdown}
+        setCountdown={setCountdown}
+        setIsVisible={setIsVisible}
+      />
     </div>
   );
 };

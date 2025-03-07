@@ -30,6 +30,7 @@ export const zodiacInfo = [
             value:
               "Cung Bạch Dương (Aries) còn được gọi là cung Dương Cưu là cung chiêm tinh đầu tiên trong vòng hoàng đạo. Cung này được bảo hộ bởi sao Hỏa – vị thần chiến tranh trong thần thoại Hy Lạp. Cung Bạch Dương bắt nguồn từ truyền thuyết về con cừu vàng Aries - biểu tượng của sự bảo vệ và lòng dũng cảm. Vì vậy, biểu tượng của cung này là một con cừu (cũng có khi được gọi là dê). Người thuộc cung Bạch Dương có sinh nhật rơi vào khoảng thời gian từ 21/3 – 19/4",
           },
+          { type: "image", value: "./src/image/12_zodiac.svg" },
           {
             type: "text",
             value:
