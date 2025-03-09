@@ -1,72 +1,99 @@
-import { useContext, createContext, useState } from "react";
+import axios from "axios";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
-
 const AuthContext = createContext();
+const API = "https://soulsync-api.onrender.com";
 
 const AuthProvider = ({ children }) => {
-	const [user, setUser] = useState(null);
-	const [token, setToken] = useState(localStorage.getItem("site") || "");
 	const navigate = useNavigate();
-	const loginAction = async (data) => {
-		try {
-			const response = await fetch("your-api-endpoint/auth/login", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(data),
-			});
-			const res = await response.json();
-			if (res.data) {
-				setUser(res.data.user);
-				setToken(res.token);
-				localStorage.setItem("site", res.token);
-				navigate("/chat");
-				return;
-			}
-			throw new Error(res.message);
-		} catch (err) {
-			console.error(err);
-		}
+	// State to hold the authentication token
+	const [token, setToken_] = useState(localStorage.getItem("token"));
+	// Function to set the authentication token
+	const setToken = (newToken) => {
+		setToken_(newToken);
 	};
 
-	const regAction = async (data) => {
-		try {
-			const response = await fetch("your-api-endpoint/auth/reg", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(data),
+	const loginAction = (data) => {
+		axios
+			.post(`${API}/auth/login`, data)
+			.then((res) => {
+				const token = res.data.accessToken;
+				localStorage.setItem("token", token);
+				localStorage.setItem("username", data.username);
+				toast("Login successfully", { type: "success" });
+				setToken_(token);
+				setTimeout(() => {
+					navigate("/chat");
+				}, 3000);
+			})
+			.catch((err) => {
+				console.log(err);
+				toast("Login failed", { type: "error" });
 			});
-			const res = await response.json();
-			if (res.data) {
-				navigate("/login");
-				return;
-			}
-			throw new Error(res.message);
-		} catch (err) {
-			console.error(err);
-		}
 	};
 
+	const regAction = (data) => {
+		axios
+			.post(`${API}/register`, data)
+			.then((res) => {
+				console.log(res);
+				toast("Register successfully", { type: "success" });
+				setTimeout(() => {
+					navigate("/login");
+				}, 3000);
+			})
+			.catch((err) => {
+				console.log(err);
+				toast("Register failed");
+			});
+	};
 	const logOut = () => {
-		setUser(null);
-		setToken("");
-		localStorage.removeItem("site");
-		navigate("/login");
+		axios
+			.post(`${API}/auth/logout`)
+			.then((res) => {
+				console.log(res.status === 204 && "Đăng xuất thành công");
+				localStorage.removeItem("token");
+				localStorage.removeItem("username");
+				setToken_();
+				toast("Logout successfully", { type: "success" });
+				setTimeout(() => {
+					navigate("/login");
+				}, 3000);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
+
+	useEffect(() => {
+		if (token) {
+			axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+		} else {
+			delete axios.defaults.headers.common["Authorization"];
+		}
+	}, [token]);
+
+	// Memoized value of the authentication context
+	const contextValue = useMemo(
+		() => ({
+			token,
+			setToken,
+			loginAction,
+			regAction,
+			logOut,
+		}),
+		[token]
+	);
+
+	// Provide the authentication context to the children components
 	return (
-		<AuthContext.Provider
-			value={{ token, user, loginAction, regAction, logOut }}
-		>
-			{children}
-		</AuthContext.Provider>
+		<AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
 	);
 };
-
-export default AuthProvider;
 
 export const useAuth = () => {
 	return useContext(AuthContext);
 };
+
+export default AuthProvider;

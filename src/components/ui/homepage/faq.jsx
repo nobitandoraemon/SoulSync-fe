@@ -19,20 +19,20 @@ const questions = [
 
 const FAQ = () => {
 	return (
-		<div className="p-16 flex flex-col items-center">
-			<div className="badge badge-secondary top-6 mb-4 mt-12">
+		<div className="flex flex-col items-center pt-8 pb-16 min-h-[30vh]">
+			<div className="mt-12 mb-4 badge badge-secondary top-6">
 				Frequently Asked Questions
 			</div>
 
-			<div className="join join-vertical w-4/5 bg-base-200">
+			<div className="w-4/5 join join-vertical bg-base-200">
 				{questions.map((question, idx) => {
 					return (
 						<div
 							key={idx}
-							className="collapse collapse-arrow join-item border-base-300 border"
+							className="border collapse collapse-arrow join-item border-base-300"
 						>
 							<input type="radio" name="my-accordion-4" defaultChecked />
-							<div className="collapse-title text-xl font-medium">
+							<div className="text-xl font-medium collapse-title">
 								{question.ques}
 							</div>
 							<div className="collapse-content">

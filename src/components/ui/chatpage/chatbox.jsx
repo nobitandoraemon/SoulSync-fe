@@ -1,16 +1,9 @@
-import { useEffect, useState } from "react";
-
 import { ChatBody, ChatInput, ChatHeader } from "../../../config/components";
 import { TbZodiacLeo } from "react-icons/tb";
 
-const ChatBox = ({ socket, user }) => {
-	const [messages, setMessages] = useState([]);
-
-	useEffect(() => {
-		socket.on("messageResponse", (data) => setMessages([...messages, data]));
-	}, [socket, messages]);
+const ChatBox = ({ chat, sendMessage, socketIO, matchedUser }) => {
 	return (
-		<div className="relative flex flex-col flex-1 p-4 bg-secondary/20">
+		<div className="relative flex flex-col flex-1 w-full p-4 mb-16 md:mb-0 bg-secondary/20">
 			<ChatHeader
 				user={{
 					name: "Người dùng ẩn danh",
@@ -23,8 +16,12 @@ const ChatBox = ({ socket, user }) => {
 				}}
 				isLoggin={true}
 			/>
-			<ChatBody messages={messages} />
-			<ChatInput socket={socket} />
+			<ChatBody chat={chat} socketIO={socketIO} matchedUser={matchedUser} />
+			<ChatInput
+				sendMessage={sendMessage}
+				matchedUser={matchedUser}
+				socketIO={socketIO}
+			/>
 		</div>
 	);
 };
