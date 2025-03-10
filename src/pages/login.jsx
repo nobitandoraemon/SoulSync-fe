@@ -14,10 +14,12 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.username !== "" && input.password !== "") {
-      auth.loginAction(input);
+    if (input.username === "long" && input.password === "long") {
+      localStorage.setItem("token", "testToken123"); // Simulating a login token
+      alert("Login successful!");
+      navigate("/chat"); // Redirect after login
     } else {
-      alert("Please provide a valid input");
+      alert("Invalid credentials. Try again.");
     }
   };
 

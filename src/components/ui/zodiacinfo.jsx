@@ -2,12 +2,14 @@ import { div } from "motion/react-m";
 import { zodiacInfo } from "../../lib/data";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
-
+import { cn } from "../../lib/utils";
+import ChatHeader from "./chatpage/header";
 const CountdownPopup = ({
   isVisible,
   countdown,
   setCountdown,
   setIsVisible,
+  event,
 }) => {
   useEffect(() => {
     if (isVisible && countdown > 0) {
@@ -28,16 +30,16 @@ const CountdownPopup = ({
           <p className="text-lg font-semibold">
             You have {countdown} seconds left...
           </p>
-          <Button>Matching</Button>
+          <Button event={event}>Matching</Button>
         </div>
       </div>
     )
   );
 };
 
-const Button = ({ children }) => {
+const Button = ({ children, event }) => {
   return (
-    <Link to="/" className="btn btn-primary m-6">
+    <Link to="/chat" onClick={event} className="btn btn-primary m-6">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -72,7 +74,7 @@ const Tab = ({ tab }) => (
       className="tab min-w-32"
       aria-label={tab.label}
     />
-    <div className="tab-content bg-base-100 border-base-300 p-6 h-[65vh] rounded-3xl overflow-y-auto break-words ">
+    <div className="tab-content bg-base-100 border-base-300 p-6 h-[80vh] rounded-3xl overflow-y-auto break-words ">
       {tab.content.map((item, index) => {
         return (
           <ul key={index}>
@@ -100,7 +102,7 @@ const Tab = ({ tab }) => (
     </div>
   </>
 );
-const ZodiacInfo = ({ zodiac }) => {
+const ZodiacInfo = ({ zodiac, user, event }) => {
   const [countdown, setCountdown] = useState(30);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -110,19 +112,38 @@ const ZodiacInfo = ({ zodiac }) => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="tabs tabs-boxed w-full p-3">
-        {zodiac.tabs.map((tabs, index) => {
-          return <Tab key={index} tab={tabs} />;
-        })}
+    <div
+      className={cn(
+        "flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
+      )}
+    >
+      <ChatHeader user={user} isLoggin={true} />
+      <div
+        className="min-h-screen mt-16 hero"
+        style={{
+          backgroundImage:
+            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="w-4/5 hero-content">
+          <div className="flex flex-col items-center">
+            <div className="tabs tabs-boxed w-full p-3">
+              {zodiac.tabs.map((tabs, index) => {
+                return <Tab key={index} tab={tabs} />;
+              })}
+            </div>
+            <PopsUpButton event={startPopsUp}>Start Matching</PopsUpButton>
+            <CountdownPopup
+              isVisible={isVisible}
+              countdown={countdown}
+              setCountdown={setCountdown}
+              setIsVisible={setIsVisible}
+              event={event}
+            />
+          </div>
+        </div>
       </div>
-      <PopsUpButton event={startPopsUp}>Start Matching</PopsUpButton>
-      <CountdownPopup
-        isVisible={isVisible}
-        countdown={countdown}
-        setCountdown={setCountdown}
-        setIsVisible={setIsVisible}
-      />
     </div>
   );
 };
