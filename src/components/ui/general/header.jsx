@@ -6,8 +6,11 @@ import {
 	Logo,
 	useScroll,
 } from "../../../config/components";
+import { ToastContainer } from "react-toastify";
+import { ThemeContext } from "../../../context/themeprovider";
+import { useContext } from "react";
 
-const UserProfile = ({ user }) => {
+const UserProfile = ({ user, handleLogOut }) => {
 	return (
 		<div className="dropdown dropdown-end">
 			<div
@@ -21,7 +24,7 @@ const UserProfile = ({ user }) => {
 			</div>
 			<ul
 				tabIndex={0}
-				className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+				className="menu menu-sm bg-accent text-accent-content text-pretty dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
 			>
 				<li>
 					<Link to="/chat" className="justify-between">
@@ -29,7 +32,7 @@ const UserProfile = ({ user }) => {
 						<span className="badge">New</span>
 					</Link>
 				</li>
-				<li>
+				<li onClick={handleLogOut}>
 					<Link to="/">Logout</Link>
 				</li>
 			</ul>
@@ -39,14 +42,26 @@ const UserProfile = ({ user }) => {
 
 const Header = () => {
 	const isScroll = useScroll();
-	const { user } = useAuth();
+	const { token } = useAuth();
+	const { theme } = useContext(ThemeContext);
+	const auth = useAuth();
 	const userprofile = {
 		avatar:
 			"https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN",
 	};
+	const handleLogOut = () => auth.logOut();
 	return (
-		<div className={cn(isScroll && "fixed left-0 right-0 top-0 z-50 ")}>
-			<div className="shadow-lg navbar bg-base-100 backdrop-blur-md glass">
+		<div
+			className={cn(
+				isScroll && "fixed left-0 right-0 top-0 z-50 shadow-sm backdrop-blur-sm"
+			)}
+		>
+			<ToastContainer
+				limit={1}
+				autoClose={3000}
+				theme={theme === "halloween" ? "dark" : "light"}
+			/>
+			<div className="navbar bg-primary/80 text-primary-content">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<div
@@ -71,15 +86,15 @@ const Header = () => {
 						</div>
 						<ul
 							tabIndex={0}
-							className="z-50 p-2 mt-3 shadow dropdown-content menu menu-sm top-5 bg-base-100 rounded-box w-52"
+							className="z-50 p-2 mt-3 shadow dropdown-content menu menu-sm top-5 bg-accent text-accent-content text-pretty rounded-box w-52"
 						>
 							<li>
 								<Link to="/">Homepage</Link>
 							</li>
-							<li>
+							{/* <li>
 								<Link to="/test">Test</Link>
-							</li>
-							{user ? (
+							</li> */}
+							{token ? (
 								<li>
 									<Link to="/chat">Chat</Link>
 								</li>
@@ -104,7 +119,9 @@ const Header = () => {
 				</div>
 				<div className="navbar-end">
 					<ToggleTheme className="btn btn-ghost btn-circle" />
-					{user && <UserProfile user={userprofile} />}
+					{token && (
+						<UserProfile user={userprofile} handleLogOut={handleLogOut} />
+					)}
 				</div>
 			</div>
 		</div>

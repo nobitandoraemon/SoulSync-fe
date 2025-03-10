@@ -1,6 +1,6 @@
 const RatingItem = ({ user, date, stars, comments, avatar }) => {
 	return (
-		<div className="flex flex-col gap-4 max-h-48 px-8 py-2">
+		<div className="flex flex-col gap-4 px-8 py-2 max-h-48">
 			<div className="flex items-center gap-4">
 				<div className="shrink-0 avatar">
 					<div className="w-24 rounded-full">
@@ -9,49 +9,49 @@ const RatingItem = ({ user, date, stars, comments, avatar }) => {
 				</div>
 				<div className="flex flex-col space-y-2">
 					<div className="w-fit">
-						<span className="text-secondary font-extrabold text-lg">
+						<span className="text-lg font-extrabold text-secondary">
 							{user}
 						</span>
 					</div>
 					<div className="w-12">
-						<span className="text-primary font-bold text-md">{date}</span>
+						<span className="font-bold text-primary text-md">{date}</span>
 					</div>
 					<div className="rating">
 						<input
 							type="radio"
 							name="rating-1"
-							className="mask mask-star"
+							className="bg-orange-400 mask mask-star"
 							disabled
 						/>
 						<input
 							type="radio"
 							name="rating-1"
-							className="mask mask-star"
+							className="bg-orange-400 mask mask-star"
 							disabled
 						/>
 						<input
 							type="radio"
 							name="rating-1"
-							className="mask mask-star"
+							className="bg-orange-400 mask mask-star"
 							disabled
 						/>
 						<input
 							type="radio"
 							name="rating-1"
-							className="mask mask-star"
+							className="bg-orange-400 mask mask-star"
 							disabled
 						/>
 						<input
 							type="radio"
 							name="rating-1"
-							className="mask mask-star"
+							className="bg-orange-400 mask mask-star"
 							disabled
 							defaultChecked
 						/>
 					</div>
 				</div>
 			</div>
-			<div className="h-fit w-full">
+			<div className="w-full h-fit">
 				<p className="text-bold">{comments}</p>
 			</div>
 		</div>
@@ -60,8 +60,8 @@ const RatingItem = ({ user, date, stars, comments, avatar }) => {
 
 const Rating = () => {
 	return (
-		<div className="max-w-screen-md mx-auto p-8 mt-12">
-			<div className="w-full grid place-content-center mb-4">
+		<div className="max-w-screen-md p-8 mx-auto mt-12">
+			<div className="grid w-full mb-4 place-content-center">
 				<span className="badge badge-success">Feedback</span>
 			</div>
 			<RatingItem

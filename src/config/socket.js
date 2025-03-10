@@ -1,2 +1,5 @@
-import socketIO from "socket.io-client";
-export const socket = socketIO.connect("http://localhost:4000");
+import { io } from "socket.io-client";
+export const socket = io("https://soulsync-api.onrender.com", {
+	withCredentials: true,
+	autoConnect: false,
+});

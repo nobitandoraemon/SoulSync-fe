@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
+import Toast from "../hooks/useToast";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Reg = () => {
+	const navigate = useNavigate();
 	const auth = useAuth();
 	const [form, setForm] = useState({
 		username: "",
@@ -17,12 +21,19 @@ const Reg = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (form.username !== "" && form.password !== "") {
-			auth.loginAction(form);
-			return;
+			auth.regAction(form);
 		} else {
 			alert("Please provide a valid input");
 		}
 	};
+
+	useLayoutEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			toast("You are logged in");
+			navigate("/chat");
+		}
+	}, []);
 	return (
 		<div
 			className="min-h-screen hero"
@@ -31,17 +42,18 @@ const Reg = () => {
 					"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
 			}}
 		>
+			<Toast />
 			<div className="hero-overlay bg-opacity-60"></div>
-			<div className="w-full text-center hero-content text-neutral-content">
-				<div className="flex flex-row w-4/5 gap-8">
-					<div className="flex flex-col w-2/3 space-y-8 text-wrap">
+			<div className="py-16 text-center hero-content text-neutral-content">
+				<div className="flex flex-col gap-8 items-center-center md:flex-row md:w-4/5">
+					<div className="flex flex-col space-y-8 md:w-2/3 text-wrap">
 						<h1 className="mb-5 text-5xl font-bold">Sign Up Now</h1>
 						<p className="mb-5 text-wrap">
 							Tìm nửa kia cho mình ngay lúc này ! Ngoài ra bạn còn có thể tra
 							cứu và tìm hiểu sâu hơn về bản thân 😊
 						</p>
 					</div>
-					<div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
+					<div className="w-full max-w-sm mx-auto shadow-2xl card bg-base-100 shrink-0">
 						<form className="card-body" onSubmit={handleSubmit}>
 							<div className="form-control">
 								<label className="label">

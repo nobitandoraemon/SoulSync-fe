@@ -1,11 +1,11 @@
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
+import { useAuth } from "../../../config/components";
+import { Toast } from "../../../config/components";
 
 const SubNav = ({ isLoggin }) => {
-	const navigate = useNavigate();
+	const auth = useAuth();
 	const handleLeaveChat = () => {
-		localStorage.removeItem("userName");
-		navigate("/");
-		window.location.reload();
+		auth.logOut();
 	};
 	return (
 		<ul className="menu bg-base-200 lg:menu-horizontal rounded-box place-content-center">
@@ -30,7 +30,7 @@ const SubNav = ({ isLoggin }) => {
 			</li>
 			<li onClick={handleLeaveChat}>
 				<a
-					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
+					// href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
 					target="_blank"
 				>
 					<svg
@@ -79,12 +79,18 @@ const SubNav = ({ isLoggin }) => {
 };
 
 const MainNav = ({ isLoggin }) => {
+	const auth = useAuth();
+
+	const handleLogOut = () => {
+		auth.logOut();
+	};
 	return (
 		<div className="dropdown dropdown-end">
 			<div
 				tabIndex={0}
 				role="button"
 				className="btn btn-ghost btn-circle avatar"
+				onClick={handleLogOut}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -108,6 +114,7 @@ const MainNav = ({ isLoggin }) => {
 const ChatHeader = ({ user, isLoggin }) => {
 	return (
 		<div className="absolute top-0 left-0 right-0 p-4 min-h-[80px] flex shadow-lg bg-primary/10 backdrop-blur-lg">
+			<Toast />
 			<div className="flex items-center flex-1 float-left gap-4 mr-4">
 				<div className="avatar online">
 					<div className="w-12 rounded-full">

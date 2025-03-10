@@ -1,8 +1,10 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useLayoutEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../config/components";
+import Toast from "../hooks/useToast";
 
 const Login = () => {
+	const navigate = useNavigate();
 	const [input, setInput] = useState({
 		username: "",
 		password: "",
@@ -14,11 +16,9 @@ const Login = () => {
 		e.preventDefault();
 		if (input.username !== "" && input.password !== "") {
 			auth.loginAction(input);
-			return;
 		} else {
 			alert("Please provide a valid input");
 		}
-		localStorage.setItem("userName", input.username);
 	};
 
 	const handleInput = (e) => {
@@ -28,6 +28,12 @@ const Login = () => {
 			[name]: value,
 		}));
 	};
+
+	useLayoutEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) navigate("/chat");
+	}, []);
+
 	return (
 		<div
 			className="min-h-screen hero bg-base"
@@ -36,6 +42,7 @@ const Login = () => {
 					"url(https://images.squarespace-cdn.com/content/v1/5eac45f88da144413f9b5763/b85d7659-1901-4859-b33a-04356e135fb7/myles-munroe-3-principles-of-biblical-dating-and-courting.jpg)",
 			}}
 		>
+			<Toast />
 			<div className="flex-col hero-content lg:flex-row-reverse">
 				<div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
 					<form className="card-body" onSubmit={handleSubmit}>
