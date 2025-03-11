@@ -92,9 +92,8 @@ const content = {
   mine: <Info user={user} />,
 };
 const Chat = ({ socket }) => {
-  const [isActive, setActive] = useState(3);
+  const [isActive, setActive] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [hasMatched, setHasMatched] = useState(true);
   const toggleActive = (id) => {
     setActive(id);
   };
