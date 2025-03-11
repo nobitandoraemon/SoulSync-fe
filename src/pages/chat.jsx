@@ -22,7 +22,7 @@ import ZodiacInfo from "../components/ui/zodiacinfo";
 import { zodiacInfo } from "../lib/data";
 const otherUser = {
   name: "Người dùng ẩn danh",
-  id: 1020,
+  id: 1021,
   age: 18,
   location: "Cần thơ, VN",
   zodiac: <TbZodiacLeo />,
@@ -72,23 +72,29 @@ const user = {
   quote: `Cause when a heart break, and it don't break even`,
 };
 
-const content = [
+const sideBarItems = [
   {
     id: 1,
     icon: <ChatIcon />,
-    component: <ZodiacInfo zodiac={zodiacInfo[0]} />,
   },
   {
     id: 2,
+    icon: <InfoIcon />,
+  },
+  {
+    id: 3,
     icon: <SettingIcon />,
-    component: <Setting user={user} />,
   },
 ];
 
+const content = {
+  other: <Info user={otherUser} />,
+  mine: <Info user={user} />,
+};
 const Chat = ({ socket }) => {
-  const [isActive, setActive] = useState(1);
+  const [isActive, setActive] = useState(3);
   const [isLoading, setIsLoading] = useState(true);
-  const [hasMatched, setHasMatched] = useState(false);
+  const [hasMatched, setHasMatched] = useState(true);
   const toggleActive = (id) => {
     setActive(id);
   };
@@ -107,20 +113,13 @@ const Chat = ({ socket }) => {
   return !isLoading ? (
     <div className="flex w-screen max-w-full min-h-screen">
       <SideBar
-        content={content}
+        content={sideBarItems}
         isActive={isActive}
         toggleActive={toggleActive}
         isScroll={isScroll}
         user={user}
       />
-      {isActive === 1 && !hasMatched && (
-        <ZodiacInfo
-          zodiac={zodiacInfo[0]}
-          user={user}
-          event={() => setHasMatched(true)}
-        />
-      )}
-      {isActive === 1 && hasMatched && (
+      {isActive === 1 && (
         <ChatContainer
           content={content}
           isActive={isActive}
@@ -129,7 +128,14 @@ const Chat = ({ socket }) => {
           user={user}
         />
       )}
-      {isActive === 2 && <Setting user={user} isScroll={isScroll} />}
+      {isActive === 2 && (
+        <ZodiacInfo
+          zodiac={zodiacInfo[0]}
+          user={user}
+          event={() => setActive(1)}
+        />
+      )}
+      {isActive === 3 && <Setting user={user} isScroll={isScroll} />}
     </div>
   ) : (
     <div className="flex items-center justify-center w-screen h-screen">

@@ -3,8 +3,34 @@ import { ChatBox, Content, Waiting } from "../../../config/components";
 import { io } from "socket.io-client";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import { TbZodiacLibra, TbZodiacLeo } from "react-icons/tb";
+import { FaFacebookF, FaGithub, FaInstagram } from "react-icons/fa6";
 const API = "https://soulsync-api.onrender.com";
+
+const otherUser = {
+  name: "Người dùng ẩn danh",
+  id: 1021,
+  age: 18,
+  location: "Cần thơ, VN",
+  zodiac: <TbZodiacLeo />,
+  avatar:
+    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+  social: [
+    {
+      icon: <FaFacebookF />,
+      href: "https://fb.me/1020phug",
+    },
+    {
+      icon: <FaGithub />,
+      href: "https://github.com/1020phug",
+    },
+    {
+      icon: <FaInstagram />,
+      href: "https://instagram.com/1020phug",
+    },
+  ],
+  quote: `I see tears in your eyes, I feel helpless inside`,
+};
 
 const ChatContainer = ({ socket, content, isActive, isScroll, user }) => {
   const [username, setUsername] = useState(localStorage.getItem("username")); // Lấy user hiện tại để gửi auth cho socket
@@ -45,7 +71,7 @@ const ChatContainer = ({ socket, content, isActive, isScroll, user }) => {
     return () => newSocket.close();
   }, [username]);
 
-  /*const requestMatch = () => {
+  const requestMatch = () => {
     // Gửi yêu cầu matching -> Nhận thống tin người sẽ match
     axios
       .post(`${API}/match`, { username })
@@ -60,52 +86,49 @@ const ChatContainer = ({ socket, content, isActive, isScroll, user }) => {
         console.log(err);
       });
   };
-*/
+
+  /*return (
+    <>
+      {
+        // Chưa có người sẽ match
+        !matchedUser ? (
+          <div className="max-w-[80%] mx-auto flex items-center justify-between">
+            <button className="btn btn-primary" onClick={requestMatch}>
+              Find a Match
+            </button>
+          </div>
+        ) : // Khi chấp nhận chat
+        ok ? (
+          <>
+            <Content
+              user={user}
+              content={content}
+              isActive={isActive}
+              isScroll={isScroll}
+            />
+            <ChatBox
+              chat={chat}
+              user={user}
+              socketIO={socketIO}
+              matchedUser={matchedUser}
+            />
+          </>
+        ) : (
+          //Vào phòng đợi, yêu cầu chấp nhận khi được hỏi
+          <Waiting ok={ok} setOk={setOk} requestMatch={requestMatch} />
+        )
+      }
+    </>
+  );*/
   return (
     <>
-      {/*
-				// Chưa có người sẽ match
-				!matchedUser ? (
-					<div className="max-w-[80%] mx-auto flex items-center justify-between">
-						<button className="btn btn-primary" onClick={requestMatch}>
-							Find a Match
-						</button>
-					</div>
-				) : // Khi chấp nhận chat
-				ok ? (
-					<>
-						<Content
-							user={user}
-							content={content}
-							isActive={isActive}
-							isScroll={isScroll}
-						/>
-						<ChatBox
-							chat={chat}
-							user={user}
-							socketIO={socketIO}
-							matchedUser={matchedUser}
-						/>
-					</>
-				) : (
-					//Vào phòng đợi, yêu cầu chấp nhận khi được hỏi
-					<Waiting ok={ok} setOk={setOk} requestMatch={requestMatch} />
-				)
-			*/}
-      <>
-        <Content
-          user={user}
-          content={content}
-          isActive={isActive}
-          isScroll={isScroll}
-        />
-        <ChatBox
-          chat={chat}
-          user={user}
-          socketIO={socketIO}
-          matchedUser={matchedUser}
-        />
-      </>
+      <ChatBox
+        chat={chat}
+        user={user}
+        socketIO={socketIO}
+        matchedUser={otherUser}
+        content={content}
+      />
     </>
   );
 };
