@@ -125,7 +125,6 @@ const Chat = ({ socket }) => {
 	const [username, setUsername] = useState(localStorage.getItem("username")); // Lấy user hiện tại để gửi auth cho socket
 	const [chat, setChat] = useState([]); // Lấy thống tin chat : messages
 	const [socketIO, setSocketIO] = useState(socket); // Lấy thống tin socket
-	const [match, setMatch] = useState(null); // Lấy thông tin người sẽ match
 	const [matchedUser, setMatchedUser] = useState(null); // Lấy thông tin người sau khi match
 	const [ok, setOk] = useState(false); // Check xem người dùng có chấp nhận vào Chat hay không
 	useEffect(() => {
@@ -154,11 +153,11 @@ const Chat = ({ socket }) => {
 		});
 		// Khi người dùng chấp nhận match
 		if (ok) {
-			newSocket.emit("ok", { username: match });
+			newSocket.emit("ok", { username: localStorage.getItem("matchedUser") });
 		}
 
 		return () => newSocket.close();
-	}, [username, ok]);
+	}, [username, ok, matchedUser]);
 
 	const requestMatch = () => {
 		// Gửi yêu cầu matching -> Nhận thống tin người sẽ match
@@ -166,7 +165,8 @@ const Chat = ({ socket }) => {
 			.post(`${API}/match`, { username })
 			.then((res) => {
 				toast("Request successfully", { type: "success" });
-				console.log(res);
+				localStorage.setItem("matchedUser", res.data.matchedUser.match);
+				setMatchedUser(res.data.matchedUser.match);
 				// setTimeout(() => {
 				// 	setMatch(res.data.username);
 				// }, 2000);
