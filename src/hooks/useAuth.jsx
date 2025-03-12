@@ -37,7 +37,6 @@ const AuthProvider = ({ children }) => {
 		axios
 			.post(`${API}/register`, data)
 			.then((res) => {
-				console.log(res);
 				toast("Register successfully", { type: "success" });
 				setTimeout(() => {
 					navigate("/login");

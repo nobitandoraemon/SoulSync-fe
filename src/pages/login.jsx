@@ -14,7 +14,7 @@ const Login = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (input.username === "long" && input.password === "long") {
+		if (input.username !== "" && input.password !== "long") {
 			localStorage.setItem("token", "testToken123"); // Simulating a login token
 			alert("Login successful!");
 			navigate("/chat"); // Redirect after login
