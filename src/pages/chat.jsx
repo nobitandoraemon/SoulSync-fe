@@ -177,6 +177,15 @@ const Chat = ({ socket }) => {
 			});
 	};
 
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+		} else {
+			delete axios.defaults.headers.common["Authorization"];
+		}
+	}, [token]);
+
 	return !isLoading ? (
 		<div className="flex w-screen max-w-full min-h-screen">
 			<SideBar
