@@ -184,7 +184,7 @@ const Chat = ({ socket }) => {
 		} else {
 			delete axios.defaults.headers.common["Authorization"];
 		}
-	}, [token]);
+	}, []);
 
 	return !isLoading ? (
 		<div className="flex w-screen max-w-full min-h-screen">
