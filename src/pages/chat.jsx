@@ -17,6 +17,7 @@ import {
 	Toast,
 	ChatHeader,
 } from "../config/components";
+import logo from "../image/12_zodiac.svg";
 
 import { io } from "socket.io-client";
 import axios from "axios";
@@ -110,6 +111,7 @@ const Chat = ({ socket }) => {
 	const handleLoading = () => {
 		setIsLoading(false);
 	};
+
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
 		setInterval(() => {
@@ -164,9 +166,10 @@ const Chat = ({ socket }) => {
 			.post(`${API}/match`, { username })
 			.then((res) => {
 				toast("Request successfully", { type: "success" });
-				setTimeout(() => {
-					setMatch(res.data.username);
-				}, 2000);
+				console.log(res);
+				// setTimeout(() => {
+				// 	setMatch(res.data.username);
+				// }, 2000);
 			})
 			.catch((err) => {
 				toast("Request failed", { type: "error" });
