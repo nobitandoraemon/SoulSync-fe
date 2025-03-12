@@ -43,8 +43,7 @@ const AuthProvider = ({ children }) => {
 				}, 3000);
 			})
 			.catch((err) => {
-				console.log(err);
-				toast("Register failed");
+				toast(err.response.data.message);
 			});
 	};
 	const logOut = () => {
