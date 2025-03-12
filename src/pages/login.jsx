@@ -51,9 +51,9 @@ const Login = () => {
 								<span className="label-text">Tên đăng nhập</span>
 							</label>
 							<input
-								type="text"
+								type="email"
 								name="username"
-								placeholder="Username"
+								placeholder="Email"
 								className="input input-bordered"
 								onChange={handleInput}
 								required
