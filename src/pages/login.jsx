@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../config/components";
 import Toast from "../hooks/useToast";
+import { toast } from "react-toastify";
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -14,12 +15,10 @@ const Login = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (input.username !== "" && input.password !== "long") {
-			localStorage.setItem("token", "testToken123"); // Simulating a login token
-			alert("Login successful!");
-			navigate("/chat"); // Redirect after login
+		if (input.username !== "" && input.password !== "") {
+			auth.loginAction(input);
 		} else {
-			alert("Invalid credentials. Try again.");
+			toast("Please provide a valid input");
 		}
 	};
 
