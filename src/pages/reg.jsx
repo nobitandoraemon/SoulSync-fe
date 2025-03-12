@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 import Toast from "../hooks/useToast";
@@ -27,7 +27,7 @@ const Reg = () => {
 		}
 	};
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const token = localStorage.getItem("token");
 		if (token) {
 			toast("You are logged in");
@@ -60,7 +60,7 @@ const Reg = () => {
 									<span className="label-text">Tên tài khoản</span>
 								</label>
 								<input
-									type="text"
+									type="email"
 									placeholder="Username"
 									name="username"
 									className="input input-bordered"

@@ -1,98 +1,98 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../config/components";
 import Toast from "../hooks/useToast";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [input, setInput] = useState({
-    username: "",
-    password: "",
-  });
+	const navigate = useNavigate();
+	const [input, setInput] = useState({
+		username: "",
+		password: "",
+	});
 
-  const auth = useAuth();
+	const auth = useAuth();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (input.username === "long" && input.password === "long") {
-      localStorage.setItem("token", "testToken123"); // Simulating a login token
-      alert("Login successful!");
-      navigate("/chat"); // Redirect after login
-    } else {
-      alert("Invalid credentials. Try again.");
-    }
-  };
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (input.username === "long" && input.password === "long") {
+			localStorage.setItem("token", "testToken123"); // Simulating a login token
+			alert("Login successful!");
+			navigate("/chat"); // Redirect after login
+		} else {
+			alert("Invalid credentials. Try again.");
+		}
+	};
 
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setInput((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+	const handleInput = (e) => {
+		const { name, value } = e.target;
+		setInput((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	};
 
-  useLayoutEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) navigate("/chat");
-  }, []);
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) navigate("/chat");
+	}, []);
 
-  return (
-    <div
-      className="min-h-screen hero bg-base"
-      style={{
-        backgroundImage:
-          "url(https://images.squarespace-cdn.com/content/v1/5eac45f88da144413f9b5763/b85d7659-1901-4859-b33a-04356e135fb7/myles-munroe-3-principles-of-biblical-dating-and-courting.jpg)",
-      }}
-    >
-      <Toast />
-      <div className="flex-col hero-content lg:flex-row-reverse">
-        <div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
-          <form className="card-body" onSubmit={handleSubmit}>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Tên đăng nhập</span>
-              </label>
-              <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                className="input input-bordered"
-                onChange={handleInput}
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Mật khẩu</span>
-              </label>
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                className="input input-bordered"
-                onChange={handleInput}
-                required
-              />
+	return (
+		<div
+			className="min-h-screen hero bg-base"
+			style={{
+				backgroundImage:
+					"url(https://images.squarespace-cdn.com/content/v1/5eac45f88da144413f9b5763/b85d7659-1901-4859-b33a-04356e135fb7/myles-munroe-3-principles-of-biblical-dating-and-courting.jpg)",
+			}}
+		>
+			<Toast />
+			<div className="flex-col hero-content lg:flex-row-reverse">
+				<div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
+					<form className="card-body" onSubmit={handleSubmit}>
+						<div className="form-control">
+							<label className="label">
+								<span className="label-text">Tên đăng nhập</span>
+							</label>
+							<input
+								type="email"
+								name="username"
+								placeholder="Email"
+								className="input input-bordered"
+								onChange={handleInput}
+								required
+							/>
+						</div>
+						<div className="form-control">
+							<label className="label">
+								<span className="label-text">Mật khẩu</span>
+							</label>
+							<input
+								type="password"
+								placeholder="Password"
+								name="password"
+								className="input input-bordered"
+								onChange={handleInput}
+								required
+							/>
 
-              <label className="label animate-pulse hover:text-primary">
-                <Link to="/reg" className="label-text-alt link link-hover">
-                  Chưa có tài khoản? Đăng ký ngay nào
-                </Link>
-              </label>
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
-            </div>
-            <div className="mt-6 form-control">
-              <button className="btn btn-primary">Login</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
+							<label className="label animate-pulse hover:text-primary">
+								<Link to="/reg" className="label-text-alt link link-hover">
+									Chưa có tài khoản? Đăng ký ngay nào
+								</Link>
+							</label>
+							<label className="label">
+								<a href="#" className="label-text-alt link link-hover">
+									Forgot password?
+								</a>
+							</label>
+						</div>
+						<div className="mt-6 form-control">
+							<button className="btn btn-primary">Login</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Login;

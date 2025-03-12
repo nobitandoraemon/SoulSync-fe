@@ -10,9 +10,12 @@ import {
 function App() {
 	return (
 		<>
-			
+			<Hero />
+			<Features />
+			<Rating />
 			<Team />
-
+			<FAQ />
+			<Contact />
 		</>
 	);
 }
