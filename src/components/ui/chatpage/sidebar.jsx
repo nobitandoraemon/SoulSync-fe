@@ -14,13 +14,14 @@ const SideBar = ({ toggleActive, content, isScroll, user }) => {
 				</Link>
 
 				{content.map((item) => {
+					const Icon = item.icon;
 					return (
 						<li
 							key={item.id}
 							onClick={() => toggleActive(item.id)}
 							className="transition-colors rounded-full md:flex md:items-center md:justify-center md:w-full text-primary hover:text-secondary"
 						>
-							<a>{item.icon}</a>
+							<a>{<Icon />}</a>
 						</li>
 					);
 				})}

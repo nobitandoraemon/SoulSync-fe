@@ -1,47 +1,150 @@
-import { aries } from "../../lib/data";
+import { div } from "motion/react-m";
+import { zodiacInfo } from "../../lib/data";
+import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { cn } from "../../lib/utils";
+import ChatHeader from "./chatpage/header";
+const CountdownPopup = ({
+	isVisible,
+	countdown,
+	setCountdown,
+	setIsVisible,
+	event,
+}) => {
+	useEffect(() => {
+		if (isVisible && countdown > 0) {
+			const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+			return () => clearTimeout(timer);
+		} else if (countdown === 0) {
+			setIsVisible(false);
+		}
+	}, [countdown, isVisible]);
 
-const InfoTabs = [
-	//Rieng arius
-	{
-		id: 1,
-		label: "Tổng quan",
-		content: aries.overall.gioithieu,
-	},
-	{
-		id: 2,
-		label: "Tổng quan",
-		content: aries.overall.gioithieu,
-	},
-	{
-		id: 3,
-		label: "Tổng quan",
-		content: aries.overall.gioithieu,
-	},
-];
-
-const InfoTab = ({ key, tab }) => {
 	return (
-		<>
-			<input
-				type="radio"
-				name="my_tabs_3"
-				className="tab min-w-32"
-				aria-label={tab.label}
-				key={key}
-			/>
-			<div className="p-6 rounded-lg min-h-[45vh] tab-content bg-base-100 border-base-300">
-				{tab.content}
+		isVisible && (
+			<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+				<div className="p-6 text-center bg-white rounded-lg shadow-lg">
+					<p className="text-lg font-semibold">
+						Are you ready to see your destiny
+					</p>
+					<p className="text-lg font-semibold">
+						You have {countdown} seconds left...
+					</p>
+					<Button event={event}>Matching</Button>
+				</div>
 			</div>
-		</>
+		)
 	);
 };
 
-const ZodiacInfo = ({ zodiac }) => {
+const Button = ({ children, event }) => {
 	return (
-		<div className="p-8 overflow-hidden tabs tabs-boxed">
-			{InfoTabs.map((tab) => {
-				return <InfoTab key={tab.id} tab={tab} />;
+		<Link to="/chat" onClick={event} className="m-6 btn btn-primary">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				strokeWidth="2.5"
+				stroke="currentColor"
+				className="size-[1.2em]"
+			>
+				<path
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+				/>
+			</svg>
+			{children}
+		</Link>
+	);
+};
+const PopsUpButton = ({ children, event }) => {
+	return (
+		<button onClick={event} className="m-6 btn btn-primary">
+			{children}
+		</button>
+	);
+};
+const Tab = ({ tab }) => (
+	<>
+		<input
+			defaultChecked={tab.label === "Tổng quan"}
+			type="radio"
+			name="tab_1"
+			className="tab min-w-32"
+			aria-label={tab.label}
+		/>
+		<div className="tab-content bg-base-100 border-base-300 p-6 h-[80vh] rounded-3xl overflow-y-auto break-words ">
+			{tab.content.map((item, index) => {
+				return (
+					<ul key={index}>
+						{item.type === "text" ? (
+							<>
+								<li>{item.value}</li>
+								<br />
+							</>
+						) : item.type === "image" ? (
+							<li>
+								<img
+									src={item.value}
+									alt="Zodiac"
+									className="w-[85%] h-[80%] rounded-lg mb-5 mx-auto"
+								/>
+							</li>
+						) : item.type === "h2" ? (
+							<li>
+								<h2 className="mb-3 text-xl font-bold">{item.value}</h2>
+							</li>
+						) : null}
+					</ul>
+				);
 			})}
+		</div>
+	</>
+);
+const ZodiacInfo = ({ zodiac, user, event, requestMatch }) => {
+	const [countdown, setCountdown] = useState(30);
+	const [isVisible, setIsVisible] = useState(false);
+
+	const startPopsUp = () => {
+		setCountdown(30);
+		setIsVisible(true);
+		requestMatch();
+	};
+
+	return (
+		<div
+			className={cn(
+				"flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
+			)}
+		>
+			<ChatHeader user={user} isLoggin={true} />
+			<div
+				className="min-h-screen mt-16 hero"
+				style={{
+					backgroundImage:
+						"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+				}}
+			>
+				<div className="hero-overlay bg-opacity-60"></div>
+				<div className="w-4/5 hero-content">
+					<div className="flex flex-col items-center">
+						<div className="w-full p-3 tabs tabs-boxed">
+							{zodiac.tabs.map((tabs, index) => {
+								return <Tab key={index} tab={tabs} />;
+							})}
+						</div>
+						<PopsUpButton event={startPopsUp}>Start Matching</PopsUpButton>
+						<CountdownPopup
+							isVisible={isVisible}
+							countdown={countdown}
+							setCountdown={setCountdown}
+							setIsVisible={setIsVisible}
+							event={event}
+						/>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };

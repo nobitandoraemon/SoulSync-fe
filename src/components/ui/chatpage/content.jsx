@@ -1,27 +1,24 @@
 import { useState, useEffect } from "react";
-import { cn } from "../../../lib/utils";
 
-const Content = ({ isActive, content, isScroll }) => {
-	const [isLoading, setLoading] = useState(true);
+const Content = ({ isActive, content, requestMatch }) => {
+	const [isLoading, setLoading] = useState(false);
 	const handleLoading = () => {
 		setLoading(false);
 	};
-	useEffect(() => {
-		setInterval(() => {
-			handleLoading();
-		}, 1500);
-		return () => {
-			clearInterval(handleLoading);
-		};
-	}, []);
-
+	/*useEffect(() => {
+    setInterval(() => {
+      handleLoading();
+    }, 1500);
+    return () => {
+      clearInterval(handleLoading);
+    };
+  }, []);*/
+	const Component = () => {
+		content[isActive].component;
+	};
 	return !isLoading ? (
-		<div
-			className={cn(
-				"hidden md:w-[30%] p-4 bg-secondary/5 text-secondary-content overflow-hidden"
-			)}
-		>
-			{content[isActive - 1].component}
+		<div className="md:w-[30%] p-4 bg-secondary/5 text-secondary-content overflow-hidden">
+			{<Component requestMatch={requestMatch} />}
 		</div>
 	) : (
 		<div className="w-[30%] p-4 flex justify-center items-center">

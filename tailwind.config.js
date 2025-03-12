@@ -11,7 +11,7 @@ export default {
 	theme: {
 		extend: {
 			animation: {
-				"infinite-scroll": "infinite-scroll 40s linear infinite",
+				"infinite-scroll": "infinite-scroll 60s linear infinite",
 			},
 			keyframes: {
 				"infinite-scroll": {
@@ -21,7 +21,12 @@ export default {
 			},
 		},
 	},
-	plugins: [require("@tailwindcss/typography"), daisyui, scrollbarHide],
+	plugins: [
+		require("@tailwindcss/typography"),
+		daisyui,
+		scrollbarHide,
+		require("tailwindcss-animated"),
+	],
 	daisyui: {
 		themes: ["valentine", "halloween"],
 	},

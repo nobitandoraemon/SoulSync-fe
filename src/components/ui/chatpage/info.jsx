@@ -1,4 +1,3 @@
-import { TbZodiacLeo } from "react-icons/tb";
 import { motion } from "framer-motion";
 import { ChatIcon } from "../general/icon";
 
@@ -59,25 +58,25 @@ const Info = ({ user }) => {
 			</div>
 
 			<div className="w-full mt-2 rounded carousel">
-				<div id="item1" className="w-full carousel-item">
+				<div id={`item1-${user.id}`} className="w-full carousel-item">
 					<img
 						src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
 						className="w-full"
 					/>
 				</div>
-				<div id="item2" className="w-full carousel-item">
+				<div id={`item2-${user.id}`} className="w-full carousel-item">
 					<img
 						src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
 						className="w-full"
 					/>
 				</div>
-				<div id="item3" className="w-full carousel-item">
+				<div id={`item3-${user.id}`} className="w-full carousel-item">
 					<img
 						src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
 						className="w-full"
 					/>
 				</div>
-				<div id="item4" className="w-full carousel-item">
+				<div id={`item4-${user.id}`} className="w-full carousel-item">
 					<img
 						src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
 						className="w-full"
@@ -85,16 +84,16 @@ const Info = ({ user }) => {
 				</div>
 			</div>
 			<div className="flex justify-center w-full gap-2 py-2">
-				<a href="#item1" className="btn btn-xs">
+				<a href={`#item1-${user.id}`} className="btn btn-xs">
 					1
 				</a>
-				<a href="#item2" className="btn btn-xs">
+				<a href={`#item2-${user.id}`} className="btn btn-xs">
 					2
 				</a>
-				<a href="#item3" className="btn btn-xs">
+				<a href={`#item3-${user.id}`} className="btn btn-xs">
 					3
 				</a>
-				<a href="#item4" className="btn btn-xs">
+				<a href={`#item4-${user.id}`} className="btn btn-xs">
 					4
 				</a>
 			</div>

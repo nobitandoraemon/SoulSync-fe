@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 const AuthContext = createContext();
@@ -10,7 +9,6 @@ const AuthProvider = ({ children }) => {
 	const navigate = useNavigate();
 	// State to hold the authentication token
 	const [token, setToken_] = useState(localStorage.getItem("token"));
-
 	// Function to set the authentication token
 	const setToken = (newToken) => {
 		setToken_(newToken);
@@ -21,17 +19,17 @@ const AuthProvider = ({ children }) => {
 			.post(`${API}/auth/login`, data)
 			.then((res) => {
 				const token = res.data.accessToken;
+				localStorage.setItem("token", token);
 				localStorage.setItem("username", data.username);
-				Cookies.set("jwt", token);
+				toast("Login successfully", { type: "success" });
 				setToken_(token);
-				toast("Login successfully");
 				setTimeout(() => {
 					navigate("/chat");
 				}, 3000);
 			})
 			.catch((err) => {
 				console.log(err);
-				toast("Login failed");
+				toast("Login failed", { type: "error" });
 			});
 	};
 
@@ -40,7 +38,7 @@ const AuthProvider = ({ children }) => {
 			.post(`${API}/register`, data)
 			.then((res) => {
 				console.log(res);
-				toast("Register successfully");
+				toast("Register successfully", { type: "success" });
 				setTimeout(() => {
 					navigate("/login");
 				}, 3000);
@@ -52,18 +50,13 @@ const AuthProvider = ({ children }) => {
 	};
 	const logOut = () => {
 		axios
-			.post(`${API}/auth/logout`, {
-				cookies: {
-					jwt: Cookies.get("jwt"),
-				},
-			})
+			.post(`${API}/auth/logout`)
 			.then((res) => {
 				console.log(res.status === 204 && "Đăng xuất thành công");
-				localStorage.removeItem("username");
-				Cookies.remove("jwt");
 				localStorage.removeItem("token");
+				localStorage.removeItem("username");
 				setToken_();
-				toast("Logout successfully");
+				toast("Logout successfully", { type: "success" });
 				setTimeout(() => {
 					navigate("/login");
 				}, 3000);
@@ -76,10 +69,8 @@ const AuthProvider = ({ children }) => {
 	useEffect(() => {
 		if (token) {
 			axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-			localStorage.setItem("token", token);
 		} else {
 			delete axios.defaults.headers.common["Authorization"];
-			localStorage.removeItem("token");
 		}
 	}, [token]);
 

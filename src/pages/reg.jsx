@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
-import { ToastContainer } from "react-toastify";
-import { ThemeContext } from "../context/themeprovider";
-import { useContext } from "react";
+import Toast from "../hooks/useToast";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Reg = () => {
-	const { theme } = useContext(ThemeContext);
+	const navigate = useNavigate();
 	const auth = useAuth();
 	const [form, setForm] = useState({
 		username: "",
@@ -26,6 +26,14 @@ const Reg = () => {
 			alert("Please provide a valid input");
 		}
 	};
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			toast("You are logged in");
+			navigate("/chat");
+		}
+	}, []);
 	return (
 		<div
 			className="min-h-screen hero"
@@ -34,11 +42,7 @@ const Reg = () => {
 					"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
 			}}
 		>
-			<ToastContainer
-				limit={1}
-				autoClose={3000}
-				theme={theme === "halloween" ? "dark" : "light"}
-			/>
+			<Toast />
 			<div className="hero-overlay bg-opacity-60"></div>
 			<div className="py-16 text-center hero-content text-neutral-content">
 				<div className="flex flex-col gap-8 items-center-center md:flex-row md:w-4/5">
@@ -56,7 +60,7 @@ const Reg = () => {
 									<span className="label-text">Tên tài khoản</span>
 								</label>
 								<input
-									type="text"
+									type="email"
 									placeholder="Username"
 									name="username"
 									className="input input-bordered"

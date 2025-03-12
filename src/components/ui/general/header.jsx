@@ -24,7 +24,7 @@ const UserProfile = ({ user, handleLogOut }) => {
 			</div>
 			<ul
 				tabIndex={0}
-				className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+				className="menu menu-sm bg-accent text-accent-content text-pretty dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
 			>
 				<li>
 					<Link to="/chat" className="justify-between">
@@ -51,13 +51,17 @@ const Header = () => {
 	};
 	const handleLogOut = () => auth.logOut();
 	return (
-		<div className={cn(isScroll && "fixed left-0 right-0 top-0 z-50 ")}>
+		<div
+			className={cn(
+				isScroll && "fixed left-0 right-0 top-0 z-50 shadow-sm backdrop-blur-sm"
+			)}
+		>
 			<ToastContainer
 				limit={1}
 				autoClose={3000}
 				theme={theme === "halloween" ? "dark" : "light"}
 			/>
-			<div className="shadow-lg navbar bg-base-100 backdrop-blur-md glass">
+			<div className="navbar bg-primary/80 text-primary-content">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<div
@@ -82,7 +86,7 @@ const Header = () => {
 						</div>
 						<ul
 							tabIndex={0}
-							className="z-50 p-2 mt-3 shadow dropdown-content menu menu-sm top-5 bg-base-100 rounded-box w-52"
+							className="z-50 p-2 mt-3 shadow dropdown-content menu menu-sm top-5 bg-accent text-accent-content text-pretty rounded-box w-52"
 						>
 							<li>
 								<Link to="/">Homepage</Link>
@@ -94,12 +98,8 @@ const Header = () => {
 								<li>
 									<Link to="/chat">Chat</Link>
 								</li>
-								
 							) : (
 								<>
-								<li>
-									<Link to="/test">Test</Link>
-								</li>
 									<li>
 										<Link to="/login">Login</Link>
 									</li>

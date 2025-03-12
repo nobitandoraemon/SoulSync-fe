@@ -1,164 +1,236 @@
 import { title } from "motion/react-client";
 import {
-	TbZodiacAries,
-	TbZodiacAquarius,
-	TbZodiacCancer,
-	TbZodiacCapricorn,
-	TbZodiacGemini,
-	TbZodiacLeo,
-	TbZodiacLibra,
-	TbZodiacPisces,
-	TbZodiacSagittarius,
-	TbZodiacScorpio,
-	TbZodiacTaurus,
-	TbZodiacVirgo,
+  TbZodiacAries,
+  TbZodiacAquarius,
+  TbZodiacCancer,
+  TbZodiacCapricorn,
+  TbZodiacGemini,
+  TbZodiacLeo,
+  TbZodiacLibra,
+  TbZodiacPisces,
+  TbZodiacSagittarius,
+  TbZodiacScorpio,
+  TbZodiacTaurus,
+  TbZodiacVirgo,
 } from "react-icons/tb";
 
 export const zodiacInfo = [
-	{
-		id: 1,
-		sex: "male",
-		sign: "Aries",
-		icon: <TbZodiacAries />,
-	},
-	{
-		id: 2,
-		sex: "female",
-		sign: "Aries",
-		icon: <TbZodiacAries />,
-	},
-	{
-		id: 3,
-		sex: "male",
-		sign: "Taurus",
-		icon: <TbZodiacTaurus />,
-	},
-	{
-		id: 4,
-		sex: "female",
-		sign: "Taurus",
-		icon: <TbZodiacTaurus />,
-	},
-	{
-		id: 5,
-		sex: "male",
-		sign: "Gemini",
-		icon: <TbZodiacGemini />,
-	},
-	{
-		id: 6,
-		sex: "female",
-		sign: "Gemini",
-		icon: <TbZodiacGemini />,
-	},
-	{
-		id: 7,
-		sex: "male",
-		sign: "Cancer",
-		icon: <TbZodiacCancer />,
-	},
-	{
-		id: 8,
-		sex: "female",
-		sign: "Cancer",
-		icon: <TbZodiacCancer />,
-	},
-	{
-		id: 9,
-		sex: "male",
-		sign: "Leo",
-		icon: <TbZodiacLeo />,
-	},
-	{
-		id: 10,
-		sex: "female",
-		sign: "Leo",
-		icon: <TbZodiacLeo />,
-	},
-	{
-		id: 11,
-		sex: "male",
-		sign: "Virgo",
-		icon: <TbZodiacVirgo />,
-	},
-	{
-		id: 12,
-		sex: "female",
-		sign: "Virgo",
-		icon: <TbZodiacVirgo />,
-	},
-	{
-		id: 13,
-		sex: "male",
-		sign: "Libra",
-		icon: <TbZodiacLibra />,
-	},
-	{
-		id: 14,
-		sex: "female",
-		sign: "Libra",
-		icon: <TbZodiacLibra />,
-	},
-	{
-		id: 15,
-		sex: "male",
-		sign: "Scorpio",
-		icon: <TbZodiacScorpio />,
-	},
-	{
-		id: 16,
-		sex: "female",
-		sign: "Scorpio",
-		icon: <TbZodiacScorpio />,
-	},
-	{
-		id: 17,
-		sex: "male",
-		sign: "Sagittarius",
-		icon: <TbZodiacSagittarius />,
-	},
-	{
-		id: 18,
-		sex: "female",
-		sign: "Sagittarius",
-		icon: <TbZodiacSagittarius />,
-	},
-	{
-		id: 19,
-		sex: "male",
-		sign: "Capricorn",
-		icon: <TbZodiacCapricorn />,
-	},
-	{
-		id: 20,
-		sex: "female",
-		sign: "Capricorn",
-		icon: <TbZodiacCapricorn />,
-	},
-	{
-		id: 21,
-		sex: "male",
-		sign: "Aquarius",
-		icon: <TbZodiacAquarius />,
-	},
-	{
-		id: 22,
-		sex: "female",
-		sign: "Aquarius",
-		icon: <TbZodiacAquarius />,
-	},
-	{
-		id: 23,
-		sex: "male",
-		sign: "Pisces",
-		icon: <TbZodiacPisces />,
-	},
-	{
-		id: 24,
-		sex: "female",
-		sign: "Pisces",
-		icon: <TbZodiacPisces />,
-	},
+  {
+    id: 1,
+    sex: "male",
+    sign: "Bạch Dương",
+    icon: <TbZodiacAries />,
+    tabs: [
+      {
+        label: "Tổng quan",
+        content: [
+          { type: "h2", value: "Sơ lược về cung bạch dương" },
+          {
+            type: "text",
+            value:
+              "Cung Bạch Dương (Aries) còn được gọi là cung Dương Cưu là cung chiêm tinh đầu tiên trong vòng hoàng đạo. Cung này được bảo hộ bởi sao Hỏa – vị thần chiến tranh trong thần thoại Hy Lạp. Cung Bạch Dương bắt nguồn từ truyền thuyết về con cừu vàng Aries - biểu tượng của sự bảo vệ và lòng dũng cảm. Vì vậy, biểu tượng của cung này là một con cừu (cũng có khi được gọi là dê). Người thuộc cung Bạch Dương có sinh nhật rơi vào khoảng thời gian từ 21/3 – 19/4",
+          },
+          { type: "image", value: "./src/image/12_zodiac.svg" },
+          {
+            type: "text",
+            value:
+              "Biểu tượng của cung Bạch Dương là con chiên. Con chiên thường được miêu tả như một loài động vật mạnh mẽ, có khả năng chịu đựng và quyết tâm. Điều này phản ánh tính cách của người thuộc cung Bạch Dương. Họ thích đảm đương vai trò lãnh đạo và sẵn lòng đứng lên bảo vệ những người yếu đuối.",
+          },
+          { type: "image", value: "./src/image/Aries_logo.svg" },
+        ],
+      },
+      {
+        label: "Tính cách",
+        content: [
+          {
+            type: "text",
+            value:
+              "Bạn là những người có khí chất, có thành tựu và mạnh mẽ. Những người này thẳng thắn, bộc trực, dám lăn xả và theo đuổi những lý tưởng riêng của mình. ",
+          },
+          {
+            type: "text",
+            value:
+              "Bạn có thể không quá “ngầu” như Bọ Cạp hay lãng tử tiêu sái như Thiên Bình nhưng chàng toát lên vẻ hoang dã, mạnh mẽ, lúc nào cũng có chút tinh nghịch, trẻ con nhưng lại rất tin cậy.",
+          },
+          { type: "image", value: "./src/image/Aries_logo.svg" },
+          {
+            type: "text",
+            value:
+              "Sự nhiệt tình của bạn thể hiện rõ khi dành tâm huyết vào việc giúp đỡ người khác. Điều đó khiến anh chàng được mọi người yêu quý và kính trọng.",
+          },
+        ],
+      },
+      {
+        label: "Tình yêu",
+        content: [
+          {
+            type: "text",
+            value:
+              "Trong tình yêu, Bạch Dương là những người yêu rất nồng nhiệt, mãnh liệt và chân thành. Họ luôn bộc lộ sự ấm áp, quan tâm và chăm sóc người yêu rất chu đáo. Họ mạnh mẽ, quyết đoán và không ngại bày tỏ tình cảm.",
+          },
+          {
+            type: "text",
+            value:
+              "Bạn không thích sự ràng buộc, gò bó hay giả dối trong mối quan hệ. Bạch Dương cũng rất thẳng thắn, chân thành, nghĩ gì nói đó nên là người rất dễ đoán bởi họ không hề mưu mô, toan tính với ai cả",
+          },
+          { type: "image", value: "./src/image/Aries_logo.svg" },
+          {
+            type: "text",
+            value:
+              "Tuy nhiên, bạch dương cũng có những khuyết điểm trong tình yêu như thiếu nhẫn nại, hơi ba hoa và cả thèm chóng chán. Bạn phần thô lỗ, kiêu căng, luôn tin mình là đúng và bỏ ngoài tai lời khuyên của người khác. Bạn cũng có xu hướng ghen tuông và chiếm hữu cao khiến người yêu cảm thấy bị áp bức.",
+          },
+          {
+            type: "text",
+            value:
+              "Khi nam Bạch Dương yêu, họ thường rất tự tin và quyết đoán. Các anh chàng sẽ tỏ ra quan tâm, bảo vệ người yêu và thường thể hiện tình yêu bằng cách hành động hết sức chân thành. Sự lãng mạn và đam mê của họ thường là điểm nhấn trong mối quan hệ. Tuy nhiên, họ cũng có thể thể hiện sự cứng đầu, đôi khi dẫn đến xung đột trong tình yêu.",
+          },
+          {
+            type: "text",
+            value:
+              "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    sex: "female",
+    sign: "Aries",
+    icon: <TbZodiacAries />,
+  },
+  {
+    id: 3,
+    sex: "male",
+    sign: "Taurus",
+    icon: <TbZodiacTaurus />,
+  },
+  {
+    id: 4,
+    sex: "female",
+    sign: "Taurus",
+    icon: <TbZodiacTaurus />,
+  },
+  {
+    id: 5,
+    sex: "male",
+    sign: "Gemini",
+    icon: <TbZodiacGemini />,
+  },
+  {
+    id: 6,
+    sex: "female",
+    sign: "Gemini",
+    icon: <TbZodiacGemini />,
+  },
+  {
+    id: 7,
+    sex: "male",
+    sign: "Cancer",
+    icon: <TbZodiacCancer />,
+  },
+  {
+    id: 8,
+    sex: "female",
+    sign: "Cancer",
+    icon: <TbZodiacCancer />,
+  },
+  {
+    id: 9,
+    sex: "male",
+    sign: "Leo",
+    icon: <TbZodiacLeo />,
+  },
+  {
+    id: 10,
+    sex: "female",
+    sign: "Leo",
+    icon: <TbZodiacLeo />,
+  },
+  {
+    id: 11,
+    sex: "male",
+    sign: "Virgo",
+    icon: <TbZodiacVirgo />,
+  },
+  {
+    id: 12,
+    sex: "female",
+    sign: "Virgo",
+    icon: <TbZodiacVirgo />,
+  },
+  {
+    id: 13,
+    sex: "male",
+    sign: "Libra",
+    icon: <TbZodiacLibra />,
+  },
+  {
+    id: 14,
+    sex: "female",
+    sign: "Libra",
+    icon: <TbZodiacLibra />,
+  },
+  {
+    id: 15,
+    sex: "male",
+    sign: "Scorpio",
+    icon: <TbZodiacScorpio />,
+  },
+  {
+    id: 16,
+    sex: "female",
+    sign: "Scorpio",
+    icon: <TbZodiacScorpio />,
+  },
+  {
+    id: 17,
+    sex: "male",
+    sign: "Sagittarius",
+    icon: <TbZodiacSagittarius />,
+  },
+  {
+    id: 18,
+    sex: "female",
+    sign: "Sagittarius",
+    icon: <TbZodiacSagittarius />,
+  },
+  {
+    id: 19,
+    sex: "male",
+    sign: "Capricorn",
+    icon: <TbZodiacCapricorn />,
+  },
+  {
+    id: 20,
+    sex: "female",
+    sign: "Capricorn",
+    icon: <TbZodiacCapricorn />,
+  },
+  {
+    id: 21,
+    sex: "male",
+    sign: "Aquarius",
+    icon: <TbZodiacAquarius />,
+  },
+  {
+    id: 22,
+    sex: "female",
+    sign: "Aquarius",
+    icon: <TbZodiacAquarius />,
+  },
+  {
+    id: 23,
+    sex: "male",
+    sign: "Pisces",
+    icon: <TbZodiacPisces />,
+  },
+  {
+    id: 24,
+    sex: "female",
+    sign: "Pisces",
+    icon: <TbZodiacPisces />,
+  },
 ];
 
 export const aries = {
