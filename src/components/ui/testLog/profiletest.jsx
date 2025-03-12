@@ -369,17 +369,12 @@ const ProfileTest = () =>{
 
   const [step, setStep]  = useState(1);
   const [formData, setFormData] = useState({
-    username: 'jboyk5',
-    password: '',
     birthday: '',
     gender: '',
     zodiac: '',
-    hobbies: [],
     location: 'An Giang',
     fullname: '',
     phoneNumber: '',
-    quote: '',
-    image: '',
   })
 
   const renderStep = () => {
