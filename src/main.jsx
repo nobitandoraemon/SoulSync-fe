@@ -13,7 +13,6 @@ import {
 	PrivateRoute,
 	NotFound,
 } from "./config/components.js";
-import TestPage from "./pages/test.jsx";
 import { socket } from "./config/socket.js";
 
 createRoot(document.getElementById("root")).render(
@@ -27,7 +26,6 @@ createRoot(document.getElementById("root")).render(
 							<Route path="/login" element={<Login />} />
 							<Route path="/reg" element={<Reg />} />
 							<Route path="*" element={<NotFound />} />
-							<Route path="/test" element={<TestPage />} />
 						</Route>
 						<Route element={<PrivateRoute />}>
 							<Route path="/chat" element={<Chat socket={socket} />} />
