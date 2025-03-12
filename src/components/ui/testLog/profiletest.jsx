@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-
+import axios from 'axios'
 const VietnamProvinces = [
   "An Giang", "Ba Ria - Vung Tau", "Bac Giang", "Bac Kan", "Bac Lieu",
   "Bac Ninh", "Ben Tre", "Binh Dinh", "Binh Duong", "Binh Phuoc",
@@ -213,13 +213,18 @@ const Address = ({ setStep, formData, setFormData  }) =>{
     setFormData({ ...formData, phoneNumber: e.target.value })
   }
 
+
+  const handelEmailChange = (e) => {
+    setFormData({ ...formData, username: e.target.value })
+  }
+
   return(
   <div>
     <h1 className="font-bold text-3xl font-sans mt-4 ">Tell us more about you...</h1>
     <form className="flex flex-col gap-8 mt-10" onSubmit={Submit2}>
       <div className="flex flex-col gap-2">
-          <h2 className="text-sm">What's your email?</h2>
-          <input type="email" placeholder="Email" className=" border px-4 py-2  rounded-full shadow-md bg-white w-full " required  />
+          <h2 className="text-sm">What should we call you? (Optional)</h2>
+          <input type="text" placeholder="Nickname" className=" border px-4 py-2  rounded-full shadow-md bg-white w-full "  />
       </div> 
       <div className="flex flex-col gap-2">
           <h2 className="text-sm">What's your mobile number ?</h2>
@@ -304,7 +309,13 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
     const handleSubmit = (e) => {
       e.preventDefault();
       setFormData({...formData, zodiac: ZodiacSigns[i].name})
-      setStep(5);
+      console.log(formData)
+      axios.put(`https://soulsync-api.onrender.com/users/${formData.username}`, formData)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(err => console.error(err))
+      setStep(5)
     }
 
   return(
@@ -358,7 +369,7 @@ const ProfileTest = () =>{
 
   const [step, setStep]  = useState(1);
   const [formData, setFormData] = useState({
-    username: '',
+    username: 'jboyk5',
     password: '',
     birthday: '',
     gender: '',
