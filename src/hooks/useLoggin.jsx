@@ -1,7 +1,8 @@
 import { useLayoutEffect } from "react";
 import { toast } from "react-toastify";
 
-const useLoggin = () => {
+const useLoggin = (token) => {
+	
 	useLayoutEffect(() => {
 		const isLoggin = localStorage.getItem("token");
 		if (!isLoggin) {

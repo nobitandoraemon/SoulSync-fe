@@ -22,11 +22,11 @@ import logo from "../image/12_zodiac.svg";
 import { io } from "socket.io-client";
 import axios from "axios";
 import { toast } from "react-toastify";
-
-const API = "https://soulsync-api.onrender.com";
 import Waiting from "../components/ui/chatpage/waiting";
 import ZodiacInfo from "../components/ui/zodiacinfo";
 import { zodiacInfo } from "../lib/data";
+import useAxios from "../hooks/useAxios";
+
 const otherUser = {
 	name: "Người dùng ẩn danh",
 	id: 1021,
@@ -157,12 +157,12 @@ const Chat = ({ socket }) => {
 		}
 
 		return () => newSocket.close();
-	}, [username, ok, matchedUser]);
+	}, [username, ok]);
 
 	const requestMatch = () => {
 		// Gửi yêu cầu matching -> Nhận thống tin người sẽ match
-		axios
-			.post(`${API}/match`, { username })
+		useAxios
+			.post("/match", { username })
 			.then((res) => {
 				toast("Request successfully", { type: "success" });
 				localStorage.setItem("matchedUser", res.data.matchedUser.match);
@@ -176,15 +176,6 @@ const Chat = ({ socket }) => {
 				console.log(err);
 			});
 	};
-
-	useEffect(() => {
-		const token = localStorage.getItem("token");
-		if (token) {
-			axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-		} else {
-			delete axios.defaults.headers.common["Authorization"];
-		}
-	}, []);
 
 	return !isLoading ? (
 		<div className="flex w-screen max-w-full min-h-screen">

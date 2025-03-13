@@ -1,9 +1,8 @@
-import axios from "axios";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import useAxios from "./useAxios";
 const AuthContext = createContext();
-const API = "https://soulsync-api.onrender.com";
 
 const AuthProvider = ({ children }) => {
 	const navigate = useNavigate();
@@ -15,8 +14,8 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const loginAction = (data) => {
-		axios
-			.post(`${API}/auth/login`, data)
+		useAxios
+			.post("/auth/login", data)
 			.then((res) => {
 				const token = res.data.accessToken;
 				localStorage.setItem("token", token);
@@ -34,8 +33,8 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const regAction = (data) => {
-		axios
-			.post(`${API}/register`, data)
+		useAxios
+			.post("/register", data)
 			.then((res) => {
 				toast("Register successfully", { type: "success" });
 				setTimeout(() => {
@@ -47,8 +46,8 @@ const AuthProvider = ({ children }) => {
 			});
 	};
 	const logOut = () => {
-		axios
-			.post(`${API}/auth/logout`)
+		useAxios
+			.post("/auth/logout")
 			.then((res) => {
 				console.log(res.status === 204 && "Đăng xuất thành công");
 				localStorage.removeItem("token");
@@ -63,14 +62,6 @@ const AuthProvider = ({ children }) => {
 				console.log(err);
 			});
 	};
-
-	useEffect(() => {
-		if (token) {
-			axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-		} else {
-			delete axios.defaults.headers.common["Authorization"];
-		}
-	}, [token]);
 
 	// Memoized value of the authentication context
 	const contextValue = useMemo(
