@@ -4,8 +4,13 @@ import { useAuth } from "../hooks/useAuth";
 import Toast from "../hooks/useToast";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { useUser } from "../hooks/useUser";
 
 const Reg = () => {
+	const { user, authenticated } = useUser();
+	if (user || authenticated) {
+		navigate("/chat");
+	}
 	const navigate = useNavigate();
 	const auth = useAuth();
 	const [form, setForm] = useState({

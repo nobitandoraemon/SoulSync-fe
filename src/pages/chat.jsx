@@ -25,7 +25,6 @@ import { toast } from "react-toastify";
 import Waiting from "../components/ui/chatpage/waiting";
 import ZodiacInfo from "../components/ui/zodiacinfo";
 import { zodiacInfo } from "../lib/data";
-import useAxios from "../hooks/useAxios";
 
 const otherUser = {
 	name: "Người dùng ẩn danh",
@@ -161,7 +160,7 @@ const Chat = ({ socket }) => {
 
 	const requestMatch = () => {
 		// Gửi yêu cầu matching -> Nhận thống tin người sẽ match
-		useAxios
+		axios
 			.post("/match", { username: username })
 			.then((res) => {
 				toast("Request successfully", { type: "success" });

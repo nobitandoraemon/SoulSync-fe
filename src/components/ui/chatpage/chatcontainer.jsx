@@ -1,5 +1,5 @@
+import axios from "axios";
 import { ChatBox, Content, Waiting } from "../../../config/components";
-import useAxios from "../../../hooks/useAxios";
 
 const ChatContainer = ({
 	socketIO,
@@ -16,7 +16,7 @@ const ChatContainer = ({
 	setOk,
 }) => {
 	const test = () => {
-		useAxios
+		axios
 			.get(`/users/${localStorage.getItem("username")}`)
 			.then((res) => console.log(res));
 	};

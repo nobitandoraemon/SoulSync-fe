@@ -1,11 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../config/components";
 import Toast from "../hooks/useToast";
 import { toast } from "react-toastify";
+import { useUser } from "../hooks/useUser";
+import { APP_ROUTES } from "../lib/constants";
 
 const Login = () => {
 	const navigate = useNavigate();
+	const { user, authenticated } = useUser();
+
+	if (user || authenticated) {
+		navigate(APP_ROUTES.CHAT);
+	}
+
 	const [input, setInput] = useState({
 		username: "",
 		password: "",
@@ -29,11 +37,6 @@ const Login = () => {
 			[name]: value,
 		}));
 	};
-
-	useEffect(() => {
-		const token = localStorage.getItem("token");
-		if (token) navigate("/chat");
-	}, []);
 
 	return (
 		<div

@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
-import useAxios from "./useAxios";
 import axios from "axios";
+import { API_ROUTES, APP_ROUTES } from "../lib/constants";
+import { storeTokenInLocalStorage } from "../lib/common";
 const AuthContext = createContext();
-const API = "https://soulsync-api.onrender.com";
 const AuthProvider = ({ children }) => {
 	const navigate = useNavigate();
 	// State to hold the authentication token
@@ -14,46 +14,53 @@ const AuthProvider = ({ children }) => {
 		setToken_(newToken);
 	};
 
-	const loginAction = (data) => {
-		axios
-			.post(`${API}/auth/login`, data)
-			.then((res) => {
-				const token = res.data.accessToken;
-				localStorage.setItem("token", token);
-				localStorage.setItem("username", data.username);
-				toast("Login successfully", { type: "success" });
-				setToken_(token);
-				setTimeout(() => {
-					navigate("/chat");
-				}, 3000);
-			})
-			.catch((err) => {
-				console.log(err);
-				toast("Login failed", { type: "error" });
+	const loginAction = async (data) => {
+		try {
+			const response = await axios({
+				method: "POST",
+				data: data,
+				url: API_ROUTES.SIGN_IN,
 			});
+			if (response?.data?.accessToken) {
+				toast("Login successfully", { type: "success" });
+				storeTokenInLocalStorage(response.data.accessToken);
+				localStorage.setItem("username", data.username);
+			}
+			setTimeout(() => {
+				navigate(APP_ROUTES.CHAT);
+			}, 1500);
+		} catch (err) {
+			console.log(err);
+			toast("Login failed", { type: "error" });
+		}
 	};
 
-	const regAction = (data) => {
-		axios
-			.post(`${API}/register`, data)
-			.then((res) => {
-				toast("Register successfully", { type: "success" });
-				setTimeout(() => {
-					navigate("/login");
-				}, 3000);
-			})
-			.catch((err) => {
-				toast(err.response.data.message);
+	const regAction = async (data) => {
+		try {
+			const response = await axios({
+				method: "POST",
+				data: data,
+				url: API_ROUTES.SIGN_UP,
 			});
+			if (response) {
+				toast("Registration successfully", { type: "success" });
+				setTimeout(() => {
+					navigate(APP_ROUTES.SIGN_IN);
+				}, 1500);
+			}
+		} catch (err) {
+			console.log(err);
+			toast(`${err.response.data.message}`, { type: "error" });
+		}
 	};
 	const logOut = () => {
 		axios
-			.post(`${API}/auth/logout`)
+			.post(`/auth/logout`)
 			.then((res) => {
+				toast("Logout successfully", { type: "success" });
 				localStorage.removeItem("token");
 				localStorage.removeItem("username");
 				setToken_();
-				toast("Logout successfully", { type: "success" });
 				setTimeout(() => {
 					navigate("/login");
 				}, 3000);
