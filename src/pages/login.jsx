@@ -27,6 +27,7 @@ const Login = () => {
 				method: "POST",
 				data: input,
 				url: API_ROUTES.SIGN_IN,
+				withCredentials: true,
 			});
 			if (response?.data?.accessToken) {
 				toast("Login successfully", { type: "success" });

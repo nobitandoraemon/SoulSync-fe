@@ -30,6 +30,7 @@ const Reg = () => {
 				method: "POST",
 				data: form,
 				url: API_ROUTES.SIGN_UP,
+				withCredentials: true,
 			});
 			if (response?.data?.accessToken) {
 				toast("Register successfully", { type: "success" });
