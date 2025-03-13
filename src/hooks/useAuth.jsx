@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import useAxios from "./useAxios";
 import axios from "axios";
 const AuthContext = createContext();
-
+const API = "https://soulsync-api.onrender.com";
 const AuthProvider = ({ children }) => {
 	const navigate = useNavigate();
 	// State to hold the authentication token
@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
 
 	const loginAction = (data) => {
 		axios
-			.post("/auth/login", data)
+			.post(`${API}/auth/login`, data)
 			.then((res) => {
 				const token = res.data.accessToken;
 				localStorage.setItem("token", token);
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
 
 	const regAction = (data) => {
 		axios
-			.post("/register", data)
+			.post(`${API}/register`, data)
 			.then((res) => {
 				toast("Register successfully", { type: "success" });
 				setTimeout(() => {
@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
 	};
 	const logOut = () => {
 		axios
-			.post("/auth/logout")
+			.post(`${API}/auth/logout`)
 			.then((res) => {
 				localStorage.removeItem("token");
 				localStorage.removeItem("username");
