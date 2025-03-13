@@ -7,17 +7,15 @@ export function useUser() {
 	const [user, setUser] = useState(null);
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		async function getUserDetails() {
-			const user = await getUser();
-			if (!user) {
-				navigate(APP_ROUTES.SIGN_IN);
-				return;
-			}
-			setUser(user);
+	async function getUserDetails() {
+		const user = await getUser();
+		if (!user) {
+			navigate(APP_ROUTES.SIGN_IN);
+			return;
 		}
-		getUserDetails();
-	}, []);
+		setUser(user);
+	}
+	getUserDetails();
 
 	return { user };
 }
