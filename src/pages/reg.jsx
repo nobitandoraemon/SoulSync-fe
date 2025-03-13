@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import Toast from "../hooks/useToast";
 import { useNavigate } from "react-router";
@@ -8,8 +8,8 @@ import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import axios from "axios";
 
 const Reg = () => {
-	const { user, authenticated } = useUser();
-	if (user || authenticated) {
+	const token = localStorage.getItem("token");
+	if (token) {
 		navigate("/chat");
 	}
 	const navigate = useNavigate();
@@ -43,13 +43,6 @@ const Reg = () => {
 		}
 	};
 
-	useEffect(() => {
-		const token = localStorage.getItem("token");
-		if (token) {
-			toast("You are logged in");
-			navigate("/chat");
-		}
-	}, []);
 	return (
 		<div
 			className="min-h-screen hero"
