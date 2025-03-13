@@ -30,7 +30,7 @@ useAxios.interceptors.response.use(
 			try {
 				// Assume refreshToken is stored and available
 				const refreshToken = localStorage.getItem("refreshToken");
-				const response = await axios.post("/refresh", { token: refreshToken });
+				const response = await axios.get("/refresh", { token: refreshToken });
 				const newToken = response.data.accessToken;
 
 				// Update token in local storage and axios headers
