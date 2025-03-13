@@ -130,9 +130,7 @@ const NotCompletedBar = () => {
 
 const Locations = VietnamProvinces.map((location) => {
   return(
-    <>
       <option key={location} value={location}>{location}</option>
-    </>
   )
 })
 
@@ -398,9 +396,9 @@ const ProfileTest = () =>{
     const bars = []
     for(let i = 1; i < 5; i++) {
       if (i < step) {
-        bars.push(<CompletedBar />)
+        bars.push(<CompletedBar key={i} />)
       } else {
-        bars.push(<NotCompletedBar />)
+        bars.push(<NotCompletedBar key={i} />)
       }
     }
     return bars
