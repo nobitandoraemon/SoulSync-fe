@@ -1,4 +1,5 @@
 import { ChatBox, Content, Waiting } from "../../../config/components";
+import useAxios from "../../../hooks/useAxios";
 
 const ChatContainer = ({
 	socketIO,
@@ -14,13 +15,18 @@ const ChatContainer = ({
 	ok,
 	setOk,
 }) => {
+	const test = () => {
+		useAxios
+			.get(`/users/${localStorage.getItem("username")}`)
+			.then((res) => console.log(res));
+	};
 	return (
 		<>
 			{
 				// Chưa có người sẽ match
 				!matchedUser ? (
 					<div className="max-w-[80%] mx-auto flex items-center justify-between">
-						<button className="btn btn-primary" onClick={() => setActive(2)}>
+						<button className="btn btn-primary" onClick={test}>
 							Find a Match
 						</button>
 					</div>

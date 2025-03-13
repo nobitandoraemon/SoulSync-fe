@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import useAxios from "./useAxios";
+import axios from "axios";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -14,7 +15,7 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const loginAction = (data) => {
-		useAxios
+		axios
 			.post("/auth/login", data)
 			.then((res) => {
 				const token = res.data.accessToken;
@@ -33,7 +34,7 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const regAction = (data) => {
-		useAxios
+		axios
 			.post("/register", data)
 			.then((res) => {
 				toast("Register successfully", { type: "success" });
@@ -46,10 +47,9 @@ const AuthProvider = ({ children }) => {
 			});
 	};
 	const logOut = () => {
-		useAxios
+		axios
 			.post("/auth/logout")
 			.then((res) => {
-				console.log(res.status === 204 && "Đăng xuất thành công");
 				localStorage.removeItem("token");
 				localStorage.removeItem("username");
 				setToken_();
