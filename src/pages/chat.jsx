@@ -162,7 +162,7 @@ const Chat = ({ socket }) => {
 	const requestMatch = () => {
 		// Gửi yêu cầu matching -> Nhận thống tin người sẽ match
 		useAxios
-			.post("/match", { username })
+			.post("/match", { username: username })
 			.then((res) => {
 				toast("Request successfully", { type: "success" });
 				localStorage.setItem("matchedUser", res.data.matchedUser.match);
