@@ -4,6 +4,7 @@ export const API_ROUTES = {
 	SIGN_IN: `${API_URL}/auth/login`,
 	LOG_OUT: `${API_URL}/auth/logout`,
 	GET_USER: `${API_URL}/users`,
+	MATCH: `${API_URL}/match`,
 };
 
 export const APP_ROUTES = {
