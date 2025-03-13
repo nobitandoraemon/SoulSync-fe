@@ -9,7 +9,7 @@ import { storeTokenInLocalStorage } from "../lib/common";
 
 const Login = () => {
 	const navigate = useNavigate();
-	const user = useUser();
+	const { user } = useUser();
 
 	const [input, setInput] = useState({
 		username: "",
@@ -51,7 +51,7 @@ const Login = () => {
 		if (user) {
 			navigate(APP_ROUTES.CHAT);
 		}
-	}, []);
+	}, [user]); // Add user as a dependency to navigate when user changes
 
 	return (
 		<div

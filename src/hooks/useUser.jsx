@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 export function useUser() {
 	const [user, setUser] = useState(null);
 	const navigate = useNavigate();
+
 	useEffect(() => {
 		async function getUserDetails() {
 			const user = await getUser();
@@ -16,7 +17,7 @@ export function useUser() {
 			setUser(user);
 		}
 		getUserDetails();
-	});
+	}, []); // Empty dependency array to run only once on mount
 
 	return { user };
 }
