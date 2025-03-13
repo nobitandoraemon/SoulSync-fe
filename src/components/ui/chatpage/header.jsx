@@ -1,7 +1,7 @@
 import { Link } from "react-router";
-import { useAuth } from "../../../config/components";
 import { Toast, Profile } from "../../../config/components";
 import { useState } from "react";
+import { logOut } from "../../../lib/common";
 const MyInformationSideBar = ({ myInfo, clickable, setClickable }) => {
 	return (
 		<div className="drawer drawer-end">
@@ -105,10 +105,9 @@ const OtherInformationSideBar = ({ otherInfo, clickable, setClickable }) => {
 };
 
 const SubNav = ({ isLoggin, content }) => {
-	const auth = useAuth();
 	const [clickable, setClickable] = useState(true);
 	const handleLeaveChat = () => {
-		auth.logOut();
+		logOut();
 	};
 	return (
 		<ul className="menu md:bg-base-200 menu-horizontal rounded-box place-content-center">
@@ -197,10 +196,8 @@ const SubNav = ({ isLoggin, content }) => {
 };
 
 const MainNav = ({ isLoggin }) => {
-	const auth = useAuth();
-
 	const handleLogOut = () => {
-		auth.logOut();
+		logOut();
 	};
 	return (
 		<div className="dropdown dropdown-end">

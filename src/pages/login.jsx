@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { useAuth } from "../config/components";
 import Toast from "../hooks/useToast";
 import { toast } from "react-toastify";
 import { useUser } from "../hooks/useUser";
-import { APP_ROUTES } from "../lib/constants";
+import { APP_ROUTES, API_ROUTES } from "../lib/constants";
+import axios from "axios";
+import { storeTokenInLocalStorage } from "../lib/common";
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -19,14 +20,25 @@ const Login = () => {
 		password: "",
 	});
 
-	const auth = useAuth();
-
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (input.username !== "" && input.password !== "") {
-			auth.loginAction(input);
-		} else {
-			toast("Please provide a valid input");
+		try {
+			const response = await axios({
+				method: "POST",
+				data: input,
+				url: API_ROUTES.SIGN_IN,
+			});
+			if (response?.data?.accessToken) {
+				toast("Login successfully", { type: "success" });
+				storeTokenInLocalStorage(response.data.accessToken);
+				localStorage.setItem("username", input.username);
+			}
+			setTimeout(() => {
+				navigate(APP_ROUTES.CHAT);
+			}, 3000);
+		} catch (err) {
+			console.log(err);
+			toast("Login failed", { type: "error" });
 		}
 	};
 

@@ -7,7 +7,6 @@ import {
 	Chat,
 	Login,
 	Reg,
-	AuthProvider,
 	App,
 	ThemeProvider,
 	PrivateRoute,
@@ -19,19 +18,17 @@ createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<ThemeProvider>
 			<BrowserRouter>
-				<AuthProvider>
-					<Routes>
-						<Route path="/" element={<Layout />}>
-							<Route index element={<App />} />
-							<Route path="/login" element={<Login />} />
-							<Route path="/reg" element={<Reg />} />
-							<Route path="*" element={<NotFound />} />
-						</Route>
-						<Route element={<PrivateRoute />}>
-							<Route path="/chat" element={<Chat socket={socket} />} />
-						</Route>
-					</Routes>
-				</AuthProvider>
+				<Routes>
+					<Route path="/" element={<Layout />}>
+						<Route index element={<App />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/reg" element={<Reg />} />
+						<Route path="*" element={<NotFound />} />
+					</Route>
+					<Route element={<PrivateRoute />}>
+						<Route path="/chat" element={<Chat socket={socket} />} />
+					</Route>
+				</Routes>
 			</BrowserRouter>
 		</ThemeProvider>
 	</StrictMode>

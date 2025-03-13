@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { API_ROUTES } from "./constants";
 import axios from "axios";
 export function storeTokenInLocalStorage(token) {
@@ -7,7 +8,22 @@ export function storeTokenInLocalStorage(token) {
 export function getTokenFromLocalStorage() {
 	return localStorage.getItem("token");
 }
-
+export async function logOut() {
+	try {
+		await axios({
+			method: "POST",
+			url: API_ROUTES.LOG_OUT,
+		});
+		localStorage.removeItem("token");
+		localStorage.removeItem("username");
+		toast("Logout successfully", { type: "success" });
+		setTimeout(() => {
+			window.location.href = "/";
+		}, 3000);
+	} catch (err) {
+		toast(`	${err.response.data.message}`, { type: "error" });
+	}
+}
 export async function getAuthenticatedUser() {
 	const defaultReturnObject = { authenticated: false, user: null };
 	try {
@@ -20,7 +36,7 @@ export async function getAuthenticatedUser() {
 			method: "GET",
 			url: API_ROUTES.GET_USER + `/${username}`,
 			headers: {
-				Authorization: `Bearer ${token}`,
+				authorization: `Bearer ${token}`,
 			},
 		});
 		const { authenticated = false } = response.data;

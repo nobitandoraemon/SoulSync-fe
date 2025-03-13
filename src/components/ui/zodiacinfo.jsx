@@ -1,4 +1,3 @@
-import { div } from "motion/react-m";
 import { zodiacInfo } from "../../lib/data";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";

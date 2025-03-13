@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { useAuth } from "../hooks/useAuth";
 import Toast from "../hooks/useToast";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useUser } from "../hooks/useUser";
+import { APP_ROUTES, API_ROUTES } from "../lib/constants";
+import axios from "axios";
 
 const Reg = () => {
 	const { user, authenticated } = useUser();
@@ -12,7 +13,6 @@ const Reg = () => {
 		navigate("/chat");
 	}
 	const navigate = useNavigate();
-	const auth = useAuth();
 	const [form, setForm] = useState({
 		username: "",
 		password: "",
@@ -23,12 +23,23 @@ const Reg = () => {
 		setForm({ ...form, [name]: value });
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (form.username !== "" && form.password !== "") {
-			auth.regAction(form);
-		} else {
-			alert("Please provide a valid input");
+		try {
+			const response = await axios({
+				method: "POST",
+				data: form,
+				url: API_ROUTES.SIGN_UP,
+			});
+			if (response?.data?.accessToken) {
+				toast("Register successfully", { type: "success" });
+			}
+			setTimeout(() => {
+				navigate(APP_ROUTES.SIGN_IN);
+			}, 3000);
+		} catch (err) {
+			console.log(err);
+			toast(`${err.response.data.message}`, { type: "error" });
 		}
 	};
 
