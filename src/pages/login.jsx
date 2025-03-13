@@ -9,9 +9,9 @@ import { storeTokenInLocalStorage } from "../lib/common";
 
 const Login = () => {
 	const navigate = useNavigate();
-	const { user, authenticated } = useUser();
+	const user = useUser();
 
-	if (user || authenticated) {
+	if (user) {
 		navigate(APP_ROUTES.CHAT);
 	}
 

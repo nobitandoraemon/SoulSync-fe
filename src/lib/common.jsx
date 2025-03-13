@@ -24,12 +24,11 @@ export async function logOut() {
 		toast(`	${err.response.data.message}`, { type: "error" });
 	}
 }
-export async function getAuthenticatedUser() {
-	const defaultReturnObject = { authenticated: false, user: null };
+export async function getUser() {
 	try {
 		const token = getTokenFromLocalStorage();
 		if (!token) {
-			return defaultReturnObject;
+			return null;
 		}
 		const username = localStorage.getItem("username");
 		const response = await axios({
@@ -40,10 +39,9 @@ export async function getAuthenticatedUser() {
 			},
 			withCredentials: true,
 		});
-		const { authenticated = false } = response.data;
-		return authenticated ? response.data : false;
+		return response.data;
 	} catch (err) {
 		console.log("getAuthenticatedUser, Something Went Wrong", err);
-		return defaultReturnObject;
+		return null;
 	}
 }
