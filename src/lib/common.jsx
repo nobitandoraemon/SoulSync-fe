@@ -38,6 +38,7 @@ export async function getAuthenticatedUser() {
 			headers: {
 				authorization: `Bearer ${token}`,
 			},
+			withCredentials: true,
 		});
 		const { authenticated = false } = response.data;
 		return authenticated ? response.data : false;
