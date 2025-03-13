@@ -1,4 +1,3 @@
-import axios from "axios";
 import { ChatBox, Content, Waiting } from "../../../config/components";
 
 const ChatContainer = ({
@@ -15,20 +14,13 @@ const ChatContainer = ({
 	ok,
 	setOk,
 }) => {
-	const test = () => {
-		axios
-			.get(`/users/${localStorage.getItem("username")}`)
-			.then((res) => console.log(res));
-	};
 	return (
 		<>
 			{
 				// Chưa có người sẽ match
 				!matchedUser ? (
 					<div className="max-w-[80%] mx-auto flex items-center justify-between">
-						<button className="btn btn-primary" onClick={test}>
-							Find a Match
-						</button>
+						<button className="btn btn-primary">Find a Match</button>
 					</div>
 				) : // Khi chấp nhận chat
 				ok ? (

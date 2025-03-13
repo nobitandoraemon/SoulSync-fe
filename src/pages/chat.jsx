@@ -26,6 +26,7 @@ import Waiting from "../components/ui/chatpage/waiting";
 import ZodiacInfo from "../components/ui/zodiacinfo";
 import { zodiacInfo } from "../lib/data";
 import { API_ROUTES } from "../lib/constants";
+import { getTokenFromLocalStorage } from "../lib/common";
 
 const otherUser = {
 	name: "Người dùng ẩn danh",
@@ -159,23 +160,29 @@ const Chat = ({ socket }) => {
 		return () => newSocket.close();
 	}, [username, ok]);
 
-	const requestMatch = () => {
+	const requestMatch = async () => {
 		// Gửi yêu cầu matching -> Nhận thống tin người sẽ match
-		axios
-			.post(API_ROUTES.MATCH, { username: username })
-			.then((res) => {
-				toast("Request successfully", { type: "success" });
-				console.log(res);
-				localStorage.setItem("matchedUser", res.data.matchedUser.match);
-				setMatchedUser(res.data.matchedUser.match);
-				// setTimeout(() => {
-				// 	setMatch(res.data.username);
-				// }, 2000);
-			})
-			.catch((err) => {
-				toast("Request failed", { type: "error" });
-				console.log(err);
+		const token = getTokenFromLocalStorage();
+		try {
+			const response = await axios({
+				method: "POST",
+				data: { username: username },
+				headers: {
+					authorization: `Bearer ${token}`,
+				},
+				url: API_ROUTES.MATCH,
+				withCredentials: true,
 			});
+			if (response) {
+				toast("Request successfully", { type: "success" });
+				console.log(response);
+				localStorage.setItem("matchedUser", response.data.matchedUser.match);
+				setMatchedUser(response.data.matchedUser.match);
+			}
+		} catch (err) {
+			toast("Request failed", { type: "error" });
+			console.log(err);
+		}
 	};
 
 	return !isLoading ? (
