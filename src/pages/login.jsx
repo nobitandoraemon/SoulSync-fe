@@ -11,10 +11,6 @@ const Login = () => {
 	const navigate = useNavigate();
 	const user = useUser();
 
-	if (user) {
-		navigate(APP_ROUTES.CHAT);
-	}
-
 	const [input, setInput] = useState({
 		username: "",
 		password: "",
@@ -51,6 +47,11 @@ const Login = () => {
 		}));
 	};
 
+	useEffect(() => {
+		if (user) {
+			navigate(APP_ROUTES.CHAT);
+		}
+	}, []);
 
 	return (
 		<div
