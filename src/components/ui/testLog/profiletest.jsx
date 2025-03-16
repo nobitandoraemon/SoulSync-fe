@@ -339,7 +339,7 @@ setPro
 
     </div>
       <div className="mt-4">
-        <h3 className="text-[#f877dd] font-semibold">Description:</h3>
+        <h3 className="text-[#f877dd] font-semibold">Description</h3>
 
         <p className="text-gray-700">{ZodiacSigns[i].description}</p>
     </div>
