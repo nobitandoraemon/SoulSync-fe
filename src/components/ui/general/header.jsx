@@ -1,14 +1,10 @@
-import { Link, Navigate } from "react-router";
+import { Link } from "react-router";
 import { cn } from "../../../lib/utils";
-import {
-	useAuth,
-	ToggleTheme,
-	Logo,
-	useScroll,
-} from "../../../config/components";
+import { ToggleTheme, Logo, useScroll } from "../../../config/components";
 import { ToastContainer } from "react-toastify";
 import { ThemeContext } from "../../../context/themeprovider";
 import { useContext } from "react";
+import { logOut } from "../../../lib/common";
 
 const UserProfile = ({ user, handleLogOut }) => {
 	return (
@@ -42,14 +38,13 @@ const UserProfile = ({ user, handleLogOut }) => {
 
 const Header = () => {
 	const isScroll = useScroll();
-	const { token } = useAuth();
+	const token = localStorage.getItem("token");
 	const { theme } = useContext(ThemeContext);
-	const auth = useAuth();
 	const userprofile = {
 		avatar:
 			"https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN",
 	};
-	const handleLogOut = () => auth.logOut();
+	const handleLogOut = () => logOut();
 	return (
 		<div
 			className={cn(

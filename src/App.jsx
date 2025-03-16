@@ -5,11 +5,13 @@ import {
 	Hero,
 	Rating,
 	Team,
+	Toast,
 } from "./config/components";
 
 function App() {
 	return (
 		<>
+			<Toast />
 			<Hero />
 			<Features />
 			<Rating />

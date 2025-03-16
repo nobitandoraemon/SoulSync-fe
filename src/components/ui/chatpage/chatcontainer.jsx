@@ -20,9 +20,7 @@ const ChatContainer = ({
 				// Chưa có người sẽ match
 				!matchedUser ? (
 					<div className="max-w-[80%] mx-auto flex items-center justify-between">
-						<button className="btn btn-primary" onClick={() => setActive(2)}>
-							Find a Match
-						</button>
+						<button className="btn btn-primary">Find a Match</button>
 					</div>
 				) : // Khi chấp nhận chat
 				ok ? (

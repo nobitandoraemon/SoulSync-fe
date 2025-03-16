@@ -17,15 +17,17 @@ import {
 	Toast,
 	ChatHeader,
 } from "../config/components";
+import logo from "../image/12_zodiac.svg";
 
 import { io } from "socket.io-client";
 import axios from "axios";
 import { toast } from "react-toastify";
-
-const API = "https://soulsync-api.onrender.com";
 import Waiting from "../components/ui/chatpage/waiting";
 import ZodiacInfo from "../components/ui/zodiacinfo";
 import { zodiacInfo } from "../lib/data";
+import { API_ROUTES } from "../lib/constants";
+import { getTokenFromLocalStorage } from "../lib/common";
+
 const otherUser = {
 	name: "Người dùng ẩn danh",
 	id: 1021,
@@ -110,6 +112,7 @@ const Chat = ({ socket }) => {
 	const handleLoading = () => {
 		setIsLoading(false);
 	};
+
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
 		setInterval(() => {
@@ -123,7 +126,6 @@ const Chat = ({ socket }) => {
 	const [username, setUsername] = useState(localStorage.getItem("username")); // Lấy user hiện tại để gửi auth cho socket
 	const [chat, setChat] = useState([]); // Lấy thống tin chat : messages
 	const [socketIO, setSocketIO] = useState(socket); // Lấy thống tin socket
-	const [match, setMatch] = useState(null); // Lấy thông tin người sẽ match
 	const [matchedUser, setMatchedUser] = useState(null); // Lấy thông tin người sau khi match
 	const [ok, setOk] = useState(false); // Check xem người dùng có chấp nhận vào Chat hay không
 	useEffect(() => {
@@ -152,26 +154,35 @@ const Chat = ({ socket }) => {
 		});
 		// Khi người dùng chấp nhận match
 		if (ok) {
-			newSocket.emit("ok", { username: match });
+			newSocket.emit("ok", { username: localStorage.getItem("matchedUser") });
 		}
 
 		return () => newSocket.close();
 	}, [username, ok]);
 
-	const requestMatch = () => {
+	const requestMatch = async () => {
 		// Gửi yêu cầu matching -> Nhận thống tin người sẽ match
-		axios
-			.post(`${API}/match`, { username })
-			.then((res) => {
-				toast("Request successfully", { type: "success" });
-				setTimeout(() => {
-					setMatch(res.data.username);
-				}, 2000);
-			})
-			.catch((err) => {
-				toast("Request failed", { type: "error" });
-				console.log(err);
+		const token = getTokenFromLocalStorage();
+		try {
+			const response = await axios({
+				method: "POST",
+				data: { username: username },
+				headers: {
+					authorization: `Bearer ${token}`,
+				},
+				url: API_ROUTES.MATCH,
+				withCredentials: true,
 			});
+			if (response) {
+				toast("Request successfully", { type: "success" });
+				console.log(response);
+				localStorage.setItem("matchedUser", response.data.matchedUser.match);
+				setMatchedUser(response.data.matchedUser.match);
+			}
+		} catch (err) {
+			toast("Request failed", { type: "error" });
+			console.log(err);
+		}
 	};
 
 	return !isLoading ? (
