@@ -6,10 +6,10 @@ import { useUser } from "../hooks/useUser";
 import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import axios from "axios";
 import { storeTokenInLocalStorage } from "../lib/common";
+import { refreshToken } from "../lib/common"; // Import hàm refreshToken
 
-const Login = () => {
+const Login = ({ user }) => {
 	const navigate = useNavigate();
-	const { user } = useUser();
 
 	const [input, setInput] = useState({
 		username: "",
@@ -49,10 +49,23 @@ const Login = () => {
 	};
 
 	useEffect(() => {
-		if (user) {
-			navigate(APP_ROUTES.FORM);
-		}
-	}, [user]); // Add user as a dependency to navigate when user changes
+
+		const checkUser = async () => {
+			if (user) {
+        if (!user.gender) {
+          navigate(APP_ROUTES.FORM);
+        } else {
+          const newToken = await refreshToken(); // Gọi hàm refreshToken
+          if (newToken) {
+            // Nếu có token mới, có thể điều hướng đến trang chat hoặc thực hiện hành động khác
+            navigate(APP_ROUTES.CHAT);
+          }
+        }
+        }
+		};
+
+		checkUser();
+	}, []);
 
 	return (
 		<div

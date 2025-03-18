@@ -25,12 +25,6 @@ const SideBar = ({ toggleActive, content, isScroll, user }) => {
 						</li>
 					);
 				})}
-				<li
-					className="flex items-center justify-center transition-colors rounded-full md:hidden text-primary hover:text-secondary"
-					onClick={() => toggleActive(4)}
-				>
-					<ChatIcon />
-				</li>
 
 				<div className="flex items-center gap-8 md:mt-auto md:flex-col">
 					<ToggleTheme className="btn btn-circle" />

@@ -1,13 +1,17 @@
-import { Navigate, Outlet } from "react-router";
+import { useNavigate, Outlet } from "react-router";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import { APP_ROUTES } from "../lib/constants";
 const PrivateRoute = () => {
 	const token = localStorage.getItem("token");
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		if (!token) {
-			toast("You need to log in", { type: "warning" });
-			setTimeout(() => {}, 3000);
-			return <Navigate to="/login" replace />;
+			toast("You are not logged in", { type: "warning" });
+			setTimeout(() => {
+				navigate(APP_ROUTES.SIGN_IN);
+			}, 1500);
 		}
 	}, [token]);
 	return <Outlet />;
