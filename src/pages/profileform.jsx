@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import { useNavigate } from "react-router";
-import { getTokenFromLocalStorage } from "../lib/common";
+import { getTokenFromLocalStorage, getUser } from "../lib/common";
 import { toast } from "react-toastify";
 
 const VietnamProvinces = [
@@ -760,6 +760,7 @@ const ThankYou = ({ setStep, formData, setFormData }) => {
 };
 
 const ProfileForm = () => {
+	const navigate = useNavigate();
 	const [step, setStep] = useState(1);
 	const [formData, setFormData] = useState({
 		birthday: "",
@@ -823,6 +824,17 @@ const ProfileForm = () => {
 				);
 		}
 	};
+
+	useEffect(() => {
+		const { user } = getUser();
+
+		if (!user) {
+			toast("You are not logged in", { type: "warning" });
+			setTimeout(() => {
+				navigate(APP_ROUTES.SIGN_IN);
+			});
+		}
+	}, []);
 
 	const RenderProgressBar = () => {
 		const bars = [];
