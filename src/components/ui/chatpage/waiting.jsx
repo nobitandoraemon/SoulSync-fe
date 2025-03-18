@@ -1,6 +1,6 @@
 const Waiting = ({ ok, setOk, requestMatch }) => {
 	return (
-		<form className="absolute bottom-0 left-0 right-0">
+		<form className="max-w-[80%] mx-auto flex items-center justify-between">
 			<h1>Are you ready?</h1>
 			<button className="btn" onClick={() => setOk(true)}>
 				Okay

@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import Toast from "../hooks/useToast";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import axios from "axios";
+import { useUser } from "../hooks/useUser";
 
 const Reg = () => {
-	const token = localStorage.getItem("token");
-	if (token) {
-		navigate("/chat");
-	}
+	const { user } = useUser();
+
 	const navigate = useNavigate();
 	const [form, setForm] = useState({
 		username: "",
@@ -42,6 +41,15 @@ const Reg = () => {
 			toast(`${err.response.data.message}`, { type: "error" });
 		}
 	};
+
+	useEffect(() => {
+		if (user) {
+			toast("You are already logged in", { type: "info" });
+			setTimeout(() => {
+				navigate(APP_ROUTES.CHAT);
+			}, 3000);
+		}
+	}, [user]);
 
 	return (
 		<div

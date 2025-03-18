@@ -108,7 +108,6 @@ const ZodiacInfo = ({ zodiac, user, event, requestMatch }) => {
 	const startPopsUp = () => {
 		setCountdown(30);
 		setIsVisible(true);
-		requestMatch();
 	};
 
 	return (
