@@ -8,7 +8,7 @@ import axios from "axios";
 import { storeTokenInLocalStorage } from "../lib/common";
 import { refreshToken } from "../lib/common"; // Import hàm refreshToken
 
-const Login = ({user}) => {
+const Login = ({ user }) => {
 	const navigate = useNavigate();
 
 	const [input, setInput] = useState({
@@ -61,7 +61,7 @@ const Login = ({user}) => {
 		};
 
 		checkUser();
-	}, [user]);
+	}, []);
 
 	return (
 		<div
