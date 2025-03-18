@@ -13,7 +13,7 @@ import {
 	NotFound,
 } from "./config/components.js";
 import { socket } from "./config/socket.js";
-import TestPage from "./pages/form.jsx";
+import FormPage from "./pages/form.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
@@ -24,7 +24,7 @@ createRoot(document.getElementById("root")).render(
 						<Route index element={<App />} />
 						<Route path="/login" element={<Login />} />
 						<Route path="/reg" element={<Reg />} />
-						<Route path="/form" element={<TestPage />} />
+						<Route path="/form" element={<FormPage />} />
 						<Route path="*" element={<NotFound />} />
 					</Route>
 					<Route element={<PrivateRoute />}>

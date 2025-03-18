@@ -1,13 +1,13 @@
 import ZodiacInfo from "../components/ui/zodiacinfo";
 import UserUpdate from "../components/ui/userUpdate";
-import ProfileTest from "../components/ui/testLog/profiletest";
+import ProfileForm from "./profileform";
 
-const TestPage = () => {
+const FormPage = () => {
   return (
     <div className="max-w-screen-lg p-4 mx-auto">
-      <ProfileTest/>
+      <ProfileForm/>
     </div>
   );
 };
 
-export default TestPage;
+export default FormPage;

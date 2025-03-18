@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
-import { APP_ROUTES, API_ROUTES } from "../../../lib/constants";
+import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import { useNavigate } from "react-router";
 
 
@@ -373,7 +373,7 @@ const ThankYou = ({ setStep, formData, setFormData }) => {
   const navigate = useNavigate(); // Initialize the navigate function
 
   const handleSubmitForm = () => {
-    console.log(formData); // Log the form data (optional)
+    console.log(formData);
     navigate(APP_ROUTES.CHAT); // Navigate to the CHAT page
   };
 
@@ -393,7 +393,7 @@ const ThankYou = ({ setStep, formData, setFormData }) => {
   );
 };
 
-const ProfileTest = () =>{
+const ProfileForm = () =>{
 
   const [step, setStep]  = useState(1);
   const [formData, setFormData] = useState({
@@ -449,4 +449,4 @@ const ProfileTest = () =>{
   )
 }
 
-export default ProfileTest 
+export default ProfileForm
