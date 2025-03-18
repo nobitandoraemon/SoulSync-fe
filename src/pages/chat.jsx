@@ -152,6 +152,7 @@ const Chat = ({ socket }) => {
 		newSocket.on("message", (data) => {
 			setChat((prevChat) => [...prevChat, data]);
 		});
+
 		// Ngắt kết nối socket
 		newSocket.on("disconnect", () => {
 			console.log("Disconnected from server");
