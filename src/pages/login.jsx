@@ -16,6 +16,7 @@ const Login = () => {
 		password: "",
 	});
 
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
@@ -31,7 +32,7 @@ const Login = () => {
 				localStorage.setItem("username", input.username);
 			}
 			setTimeout(() => {
-				navigate(APP_ROUTES.CHAT);
+				navigate(APP_ROUTES.FORM);
 			}, 3000);
 		} catch (err) {
 			console.log(err);
@@ -49,7 +50,7 @@ const Login = () => {
 
 	useEffect(() => {
 		if (user) {
-			navigate(APP_ROUTES.CHAT);
+			navigate(APP_ROUTES.FORM);
 		}
 	}, [user]); // Add user as a dependency to navigate when user changes
 

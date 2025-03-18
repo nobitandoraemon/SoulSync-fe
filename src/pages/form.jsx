@@ -5,7 +5,6 @@ import ProfileTest from "../components/ui/testLog/profiletest";
 const TestPage = () => {
   return (
     <div className="max-w-screen-lg p-4 mx-auto">
-      <UserUpdate />
       <ProfileTest/>
     </div>
   );
