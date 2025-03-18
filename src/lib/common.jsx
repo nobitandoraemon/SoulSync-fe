@@ -55,7 +55,7 @@ export async function refreshToken() {
 
 	try {
 		const response = await axios({
-			method: "POST",
+			method: "GET",
 			url: API_ROUTES.REFRESH_TOKEN, // Đường dẫn API để refresh token
 			headers: {
 				authorization: `Bearer ${token}`,
