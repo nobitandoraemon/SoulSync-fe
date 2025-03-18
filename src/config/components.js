@@ -9,6 +9,7 @@ import Login from "../pages/login.jsx";
 import Reg from "../pages/reg.jsx";
 import App from "../App.jsx";
 import NotFound from "../pages/notfound.jsx";
+import FormPage from "../pages/form.jsx";
 
 //Hooks
 import { useScroll } from "../hooks/useScroll.js";
@@ -84,6 +85,7 @@ export {
 	FAQ,
 	Hero,
 	Rating,
+	FormPage,
 	Team,
 	Footer,
 	Header,

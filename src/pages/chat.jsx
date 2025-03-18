@@ -27,6 +27,7 @@ import ZodiacInfo from "../components/ui/zodiacinfo";
 import { zodiacInfo } from "../lib/data";
 import { API_ROUTES } from "../lib/constants";
 import { getTokenFromLocalStorage } from "../lib/common";
+import { useUser } from "../hooks/useUser";
 
 const otherUser = {
 	name: "Người dùng ẩn danh",
@@ -102,7 +103,6 @@ const content = {
 const Chat = ({ socket }) => {
 	// Check tab active bên sidebar
 	const [isActive, setActive] = useState(3);
-
 	const [loading, setLoading] = useState(false);
 	const [showCountdown, setShowCountdown] = useState(false);
 	const [countdown, setCountdown] = useState(30);
@@ -122,7 +122,7 @@ const Chat = ({ socket }) => {
 		const loadingInterval = setInterval(() => {
 			handleLoading();
 		}, 1500);
-		
+
 		return () => {
 			clearInterval(loadingInterval);
 		};
