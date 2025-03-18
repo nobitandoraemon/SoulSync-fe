@@ -16,6 +16,7 @@ const Login = ({ user }) => {
 		password: "",
 	});
 
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
@@ -31,7 +32,7 @@ const Login = ({ user }) => {
 				localStorage.setItem("username", input.username);
 			}
 			setTimeout(() => {
-				navigate(APP_ROUTES.CHAT);
+				navigate(APP_ROUTES.FORM);
 			}, 3000);
 		} catch (err) {
 			console.log(err);
@@ -48,16 +49,19 @@ const Login = ({ user }) => {
 	};
 
 	useEffect(() => {
+
 		const checkUser = async () => {
 			if (user) {
-				navigate(APP_ROUTES.CHAT);
-			} else {
-				const newToken = await refreshToken(); // Gọi hàm refreshToken
-				if (newToken) {
-					// Nếu có token mới, có thể điều hướng đến trang chat hoặc thực hiện hành động khác
-					navigate(APP_ROUTES.CHAT);
-				}
-			}
+        if (!user.gender) {
+          navigate(APP_ROUTES.FORM);
+        } else {
+          const newToken = await refreshToken(); // Gọi hàm refreshToken
+          if (newToken) {
+            // Nếu có token mới, có thể điều hướng đến trang chat hoặc thực hiện hành động khác
+            navigate(APP_ROUTES.CHAT);
+          }
+        }
+        }
 		};
 
 		checkUser();

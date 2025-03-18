@@ -119,11 +119,12 @@ const Chat = ({ socket }) => {
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
-		setInterval(() => {
+		const loadingInterval = setInterval(() => {
 			handleLoading();
 		}, 1500);
+		
 		return () => {
-			clearInterval(handleLoading);
+			clearInterval(loadingInterval);
 		};
 	}, []);
 
