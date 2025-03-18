@@ -13,6 +13,7 @@ export async function logOut() {
 		await axios({
 			method: "POST",
 			url: API_ROUTES.LOG_OUT,
+			withCredentials: true,
 		});
 		localStorage.removeItem("token");
 		localStorage.removeItem("username");
@@ -43,5 +44,31 @@ export async function getUser() {
 	} catch (err) {
 		console.log("getAuthenticatedUser, Something Went Wrong", err);
 		return null;
+	}
+}
+
+export async function refreshToken() {
+	const token = getTokenFromLocalStorage();
+	if (!token) {
+		return null; // Không có token, không cần refresh
+	}
+
+	try {
+		const response = await axios({
+			method: "POST",
+			url: API_ROUTES.REFRESH_TOKEN, // Đường dẫn API để refresh token
+			headers: {
+				authorization: `Bearer ${token}`,
+			},
+			withCredentials: true,
+		});
+
+		if (response?.data?.accessToken) {
+			storeTokenInLocalStorage(response.data.accessToken); // Lưu token mới
+			return response.data.accessToken;
+		}
+	} catch (err) {
+		console.error("Failed to refresh token", err);
+		return null; // Nếu refresh không thành công, trả về null
 	}
 }

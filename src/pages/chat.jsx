@@ -102,6 +102,10 @@ const content = {
 const Chat = ({ socket }) => {
 	// Check tab active bên sidebar
 	const [isActive, setActive] = useState(3);
+
+	const [loading, setLoading] = useState(false);
+	const [showCountdown, setShowCountdown] = useState(false);
+	const [countdown, setCountdown] = useState(30);
 	const toggleActive = (id) => {
 		setActive(id);
 	};
@@ -160,8 +164,21 @@ const Chat = ({ socket }) => {
 		return () => newSocket.close();
 	}, [username, ok]);
 
+	const startCountdown = () => {
+		const countdownInterval = setInterval(() => {
+			setCountdown((prevCountdown) => {
+				if (prevCountdown <= 1) {
+					clearInterval(countdownInterval);
+					setShowCountdown(false);
+					setCountdown(30);
+				}
+				return prevCountdown - 1;
+			});
+		}, 1000);
+	};
+
 	const requestMatch = async () => {
-		// Gửi yêu cầu matching -> Nhận thống tin người sẽ match
+		setLoading(true);
 		const token = getTokenFromLocalStorage();
 		try {
 			const response = await axios({
@@ -174,12 +191,16 @@ const Chat = ({ socket }) => {
 				withCredentials: true,
 			});
 			if (response) {
+				setLoading(false);
+				setShowCountdown(true);
+				startCountdown();
 				toast("Request successfully", { type: "success" });
 				console.log(response);
 				localStorage.setItem("matchedUser", response.data.matchedUser.match);
 				setMatchedUser(response.data.matchedUser.match);
 			}
 		} catch (err) {
+			setLoading(false);
 			toast("Request failed", { type: "error" });
 			console.log(err);
 		}
@@ -229,5 +250,17 @@ const Chat = ({ socket }) => {
 		</div>
 	);
 };
+
+// {showCountdown && (
+//     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+//         <div className="p-6 text-center bg-white rounded-lg shadow-lg">
+//             <p className="text-lg font-semibold">
+//                 Do you want to enter the chat room? {countdown}s
+//             </p>
+//             <button onClick={handleOk} className="btn btn-primary">OK</button>
+//             <button onClick={handleNo} className="btn btn-secondary">No</button>
+//         </div>
+//     </div>
+// )}
 
 export default Chat;
