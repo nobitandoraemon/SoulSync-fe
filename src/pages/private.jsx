@@ -14,7 +14,7 @@ const PrivateRoute = () => {
 				navigate(APP_ROUTES.SIGN_IN);
 			}, 1500);
 		}
-	}, [user]);
+	}, []);
 	return <Outlet />;
 };
 
