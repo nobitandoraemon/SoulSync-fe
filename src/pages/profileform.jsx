@@ -241,7 +241,7 @@ const TellUs = ({setStep, formData, setFormData }) => {
       <h1 className="font-bold text-3xl font-sans mt-4 ">Nói một chút về bạn...</h1>
       <form className="flex flex-col gap-8 mt-10" onSubmit={Submit1} >
         <div className="flex flex-col gap-2">
-          <h2 className="text-sm">Tên bạn là gì ?</h2>
+          <h2 className="text-sm">Tn bạn là gì ?</h2>
           <div className="">
             <input type="text" placeholder="Tên của bạn" className="flex items-center gap-2 px-4 py-2 border rounded-full shadow-md bg-white w-full " required value={formData.fullname} onChange={handleNameChange}   />
           </div>
@@ -543,3 +543,4 @@ const ProfileForm = () =>{
 }
 
 export default ProfileForm
+
