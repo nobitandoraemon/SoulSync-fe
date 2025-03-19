@@ -10,6 +10,7 @@ import Reg from "../pages/reg.jsx";
 import App from "../App.jsx";
 import NotFound from "../pages/notfound.jsx";
 import FormPage from "../pages/form.jsx";
+import MatchPage from "../pages/match.jsx";
 
 //Hooks
 import { useScroll } from "../hooks/useScroll.js";
@@ -66,6 +67,7 @@ export {
 	Reg,
 	App,
 	NotFound,
+	MatchPage,
 	ThemeProvider,
 	ThemeContext,
 	PrivateRoute,

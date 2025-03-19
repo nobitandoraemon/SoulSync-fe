@@ -29,7 +29,7 @@ export function useUser() {
 			}
 		}
 		getUserDetails();
-	}, []); // Empty dependency array to run only once on mount
+	}, [user]); // Empty dependency array to run only once on mount
 
 	return { user };
 }
