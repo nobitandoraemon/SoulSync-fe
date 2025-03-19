@@ -499,7 +499,7 @@ const ProfileForm = () =>{
   })
 
   useEffect(() => {
-    localStorage.setItem('userData' , JSON.stringtify(formData))
+    localStorage.setItem("userData" , JSON.stringify(formData))
   }, [formData])
   
   const renderStep = () => {
