@@ -229,7 +229,7 @@ const TellUs = ({setStep, formData, setFormData }) => {
   const Submit1 = (e) => {
     e.preventDefault()
     console.log(formData)
-    if (e.target.checkValidity() && selectedGender !== null){
+    if (e.target.checkValidity() ){
       setStep(2)
   } else(
       alert('Choose your gender')
