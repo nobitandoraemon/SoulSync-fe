@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
-import { getUser, refreshToken, getTokenFromLocalStorage } from "../lib/common"; // Import refreshToken và getTokenFromLocalStorage
+import {
+	getUser,
+	refreshToken,
+	getTokenFromLocalStorage,
+	checkValidity,
+	logOut,
+} from "../lib/common"; // Import refreshToken và getTokenFromLocalStorage
 import { APP_ROUTES } from "../lib/constants";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 export function useUser() {
 	const [user, setUser] = useState(null);
@@ -14,22 +21,23 @@ export function useUser() {
 				navigate(APP_ROUTES.SIGN_IN);
 				return;
 			}
-
-			const newToken = await refreshToken(); // Gọi hàm refreshToken
-			if (newToken) {
-				// Nếu có token mới, tiếp tục lấy thông tin người dùng
-				const user = await getUser();
-				if (!user) {
-					navigate(APP_ROUTES.SIGN_IN);
-					return;
-				}
-				setUser(user);
+			//Check token validity
+			const userData = await getUser();
+			if (userData) {
+				setUser(userData);
 			} else {
-				navigate(APP_ROUTES.SIGN_IN); // Nếu không có token mới, điều hướng đến trang đăng nhập
+				toast("Token is not valid", { type: "warning" });
+				toast("Please login again", { type: "info" });
+
+				localStorage.removeItem("token");
+				localStorage.removeItem("username");
+				setTimeout(() => {
+					navigate(APP_ROUTES.SIGN_IN);
+				}, 1500);
 			}
 		}
 		getUserDetails();
-	}, [user]); // Empty dependency array to run only once on mount
+	}, []); // Empty dependency array to run only once on mount
 
 	return { user };
 }

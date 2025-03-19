@@ -661,7 +661,7 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 		e.preventDefault();
 		const updatedFormData = { ...formData, zodiac: i };
 		setFormData(updatedFormData);
-		// console.log(updatedFormData);
+		console.log(updatedFormData);
 		const token = getTokenFromLocalStorage();
 		const username = localStorage.getItem("username");
 		try {

@@ -1,43 +1,29 @@
 import { useNavigate, Outlet } from "react-router";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
-import { APP_ROUTES, API_ROUTES } from "../lib/constants";
-import axios from "axios";
+import { useEffect } from "react";
+import { APP_ROUTES } from "../lib/constants";
+import { useUser } from "../hooks/useUser";
+import { getTokenFromLocalStorage } from "../lib/common";
 const PrivateRoute = () => {
+	const { user } = useUser();
 	const navigate = useNavigate();
-	const [user, setUser] = useState(null);
 
-	const token = localStorage.getItem("token");
-	const username = localStorage.getItem("username");
-	// useEffect(() => {
-	// 	if (!token) {
-	// 		toast("You are not logged in", { type: "warning" });
-	// 		setTimeout(() => {
-	// 			navigate(APP_ROUTES.SIGN_IN);
-	// 		}, 1500);
-	// 	}
-	// }, []);
+	const token = getTokenFromLocalStorage();
+	useEffect(() => {
+		if (!token) {
+			toast("You are not logged in", { type: "warning" });
+			setTimeout(() => {
+				navigate(APP_ROUTES.SIGN_IN);
+			}, 1500);
+		}
+	}, []);
 
-	// useEffect(() => {
-	// 	const getUser = async () => {
-	// 		try {
-	// 			const res = await axios({
-	// 				method: "GET",
-	// 				url: API_ROUTES.GET_USER + `/${username}`,
-	// 				headers: {
-	// 					authorization: `Bearer ${token}`,
-	// 				},
-	// 				withCredentials: true,
-	// 			});
-	// 			setUser(res.data);
-	// 		} catch (err) {
-	// 			console.log(err);
-	// 		}
-	// 	};
+	useEffect(() => {
+		if (user) {
+			console.log("Get user data successfully");
+		}
+	}, [user]);
 
-	// 	getUser();
-	// 	console.log(user);
-	// }, [user, token]);
 	return <Outlet context={[user]} />;
 };
 

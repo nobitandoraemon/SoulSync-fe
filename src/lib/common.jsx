@@ -57,9 +57,6 @@ export async function refreshToken() {
 		const response = await axios({
 			method: "GET",
 			url: API_ROUTES.REFRESH_TOKEN, // Đường dẫn API để refresh token
-			headers: {
-				authorization: `Bearer ${token}`,
-			},
 			withCredentials: true,
 		});
 
@@ -70,5 +67,31 @@ export async function refreshToken() {
 	} catch (err) {
 		console.error("Failed to refresh token", err);
 		return null; // Nếu refresh không thành công, trả về null
+	}
+}
+
+export async function checkValidity() {
+	const token = getTokenFromLocalStorage();
+	const username = localStorage.getItem("username");
+	if (!token) {
+		return false;
+	}
+
+	try {
+		await axios({
+			method: "GET",
+			url: API_ROUTES.GET_USER + `/${username}`, // Đường dẫn API để get user
+			headers: {
+				authorization: `Bearer ${token}`,
+			},
+			withCredentials: true,
+		});
+		return true;
+	} catch (error) {
+		if (error.response && error.response.status === 401) {
+			return false; // Nếu nhận được 401 Unauthorized, token không hợp lệ
+		}
+		console.error("Error checking token validity:", error);
+		return false; // Nếu có lỗi khác, coi như token không hợp lệ
 	}
 }
