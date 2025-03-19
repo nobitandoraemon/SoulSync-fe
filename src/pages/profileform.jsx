@@ -229,7 +229,7 @@ const TellUs = ({setStep, formData, setFormData }) => {
   const Submit1 = (e) => {
     e.preventDefault()
     console.log(formData)
-    if (e.target.checkValidity() ){
+    if (e.target.checkValidity() && formData.gender ){
       setStep(2)
   } else(
       alert('Choose your gender')
@@ -415,7 +415,6 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
     e.preventDefault();
     const updatedFormData = { ...formData, zodiac: i };
     setFormData(updatedFormData);
-    console.log(updatedFormData);
     axios.put(`https://soulsync-api.onrender.com/users/${formData.username}`, updatedFormData)
       .then(response => {
         console.log(response);
@@ -499,6 +498,9 @@ const ProfileForm = () =>{
     hobby: '',
   })
 
+  useEffect(() => {
+    localStorage.setItem('userData' , JSON.stringtify(formData))
+  }, [formData])
   
   const renderStep = () => {
     switch (step) {
