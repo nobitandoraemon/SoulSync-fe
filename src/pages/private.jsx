@@ -37,7 +37,7 @@ const PrivateRoute = () => {
 
 		getUser();
 		console.log(user);
-	}, [user]);
+	}, []);
 	return <Outlet context={[user]} />;
 };
 
