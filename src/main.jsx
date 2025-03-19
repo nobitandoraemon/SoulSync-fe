@@ -11,9 +11,9 @@ import {
 	ThemeProvider,
 	PrivateRoute,
 	NotFound,
+	FormPage,
 } from "./config/components.js";
 import { socket } from "./config/socket.js";
-import FormPage from "./pages/form.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>

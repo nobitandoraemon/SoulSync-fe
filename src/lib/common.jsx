@@ -10,14 +10,14 @@ export function getTokenFromLocalStorage() {
 }
 export async function logOut() {
 	try {
-		await axios({
+		const response = await axios({
 			method: "POST",
 			url: API_ROUTES.LOG_OUT,
 			withCredentials: true,
 		});
 		localStorage.removeItem("token");
 		localStorage.removeItem("username");
-		toast("Logout successfully", { type: "success" });
+		toast(response.data.message, { type: "success" });
 		setTimeout(() => {
 			window.location.href = "/";
 		}, 3000);

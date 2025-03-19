@@ -23,8 +23,8 @@ const UserProfile = ({ user, handleLogOut }) => {
 				className="menu menu-sm bg-accent text-accent-content text-pretty dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
 			>
 				<li>
-					<Link to="/chat" className="justify-between">
-						Profile
+					<Link to="/form" className="justify-between">
+						Settings
 						<span className="badge">New</span>
 					</Link>
 				</li>
@@ -86,9 +86,9 @@ const Header = () => {
 							<li>
 								<Link to="/">Homepage</Link>
 							</li>
-							{/* <li>
+							<li>
 								<Link to="/form">Form</Link>
-							</li> */}
+							</li>
 							{token ? (
 								<li>
 									<Link to="/chat">Chat</Link>
