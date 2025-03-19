@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-export const socket = io("https://soulsync-api.onrender.com", {
+export const socket = io("http://localhost:3500", {
 	withCredentials: true,
 	autoConnect: false,
 });

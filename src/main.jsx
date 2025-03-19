@@ -14,7 +14,12 @@ import {
 	FormPage,
 	MatchPage,
 } from "./config/components.js";
-import { socket } from "./config/socket.js";
+import { io } from "socket.io-client";
+
+const socket = io("http://localhost:3500", {
+	withCredentials: true,
+	autoConnect: false,
+});
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>

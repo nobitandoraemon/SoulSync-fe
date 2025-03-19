@@ -1,4 +1,4 @@
-const API_URL = "https://soulsync-api.onrender.com";
+const API_URL = "http://localhost:3500";
 export const API_ROUTES = {
 	SIGN_UP: `${API_URL}/register`,
 	SIGN_IN: `${API_URL}/auth/login`,
