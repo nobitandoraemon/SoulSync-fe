@@ -18,26 +18,26 @@ const PrivateRoute = () => {
 	// 	}
 	// }, []);
 
-	useEffect(() => {
-		const getUser = async () => {
-			try {
-				const res = await axios({
-					method: "GET",
-					url: API_ROUTES.GET_USER + `/${username}`,
-					headers: {
-						authorization: `Bearer ${token}`,
-					},
-					withCredentials: true,
-				});
-				setUser(res.data);
-			} catch (err) {
-				console.log(err);
-			}
-		};
+	// useEffect(() => {
+	// 	const getUser = async () => {
+	// 		try {
+	// 			const res = await axios({
+	// 				method: "GET",
+	// 				url: API_ROUTES.GET_USER + `/${username}`,
+	// 				headers: {
+	// 					authorization: `Bearer ${token}`,
+	// 				},
+	// 				withCredentials: true,
+	// 			});
+	// 			setUser(res.data);
+	// 		} catch (err) {
+	// 			console.log(err);
+	// 		}
+	// 	};
 
-		getUser();
-		console.log(user);
-	}, []);
+	// 	getUser();
+	// 	console.log(user);
+	// }, [user, token]);
 	return <Outlet context={[user]} />;
 };
 

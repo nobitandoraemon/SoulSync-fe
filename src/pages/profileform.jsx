@@ -761,7 +761,6 @@ const ThankYou = ({ setStep, formData, setFormData }) => {
 };
 
 const ProfileForm = () => {
-	const [user, setUser] = useState(useUser());
 	const navigate = useNavigate();
 	const [step, setStep] = useState(1);
 	const [formData, setFormData] = useState({
@@ -827,8 +826,6 @@ const ProfileForm = () => {
 		}
 	};
 
-	
-
 	useEffect(() => {
 		const token = getTokenFromLocalStorage();
 
@@ -837,8 +834,6 @@ const ProfileForm = () => {
 			setTimeout(() => {
 				navigate(APP_ROUTES.SIGN_IN);
 			}, 1500);
-		} else {
-			console.log(user);
 		}
 	}, []);
 
