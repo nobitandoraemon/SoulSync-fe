@@ -13,12 +13,7 @@ const PrivateRoute = () => {
 			setTimeout(() => {
 				navigate(APP_ROUTES.SIGN_IN);
 			}, 1500);
-		} else if (!userProfile.gender || !userProfile.birthday || !userProfile.zodiac) {
-      toast("Please complete your profile!", { type: "warning" });
-      setTimeout(() => {
-        navigate(APP_ROUTES.FORM);
-      }, 1500);
-    }
+		} 
 	}, []);
 	return <Outlet />;
 };
