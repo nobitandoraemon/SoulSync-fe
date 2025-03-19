@@ -498,9 +498,6 @@ const ProfileForm = () =>{
     hobby: '',
   })
 
-  useEffect(() => {
-    localStorage.setItem("userData" , JSON.stringify(formData))
-  }, [formData])
   
   const renderStep = () => {
     switch (step) {
