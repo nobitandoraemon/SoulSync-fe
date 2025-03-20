@@ -26,14 +26,6 @@ const PrivateRoute = ({ socket }) => {
 
 	// ============ Get user data
 
-	useEffect(() => {
-		if (user) {
-			console.log("Get user data successfully");
-		} else {
-			console.log("Get user data failed");
-		}
-	}, [user]);
-
 	// ============ Get user data
 
 	// ======================================= Chat socket ==========================================
