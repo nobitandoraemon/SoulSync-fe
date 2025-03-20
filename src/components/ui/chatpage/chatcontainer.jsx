@@ -25,6 +25,7 @@ const ChatContainer = ({
 						matchedUser={matchedUser}
 						sendMessage={sendMessage}
 						user={user}
+						toggleFinding={toggleFinding}
 					/>
 				</>
 			)}

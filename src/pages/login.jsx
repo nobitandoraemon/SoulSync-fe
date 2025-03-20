@@ -31,7 +31,7 @@ const Login = ({ user }) => {
 				localStorage.setItem("username", input.username);
 			}
 			setTimeout(() => {
-				navigate(APP_ROUTES.FORM);
+				navigate(APP_ROUTES.MATCH);
 			}, 3000);
 		} catch (err) {
 			console.log(err);

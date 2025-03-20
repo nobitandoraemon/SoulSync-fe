@@ -3,17 +3,17 @@ import { SiAstro, SiSuperuser, SiWechat } from "react-icons/si";
 const Features = () => {
 	return (
 		<div
-			className="hero min-h-screen"
+			className="min-h-screen hero"
 			style={{
 				backgroundImage:
 					"url(https://images.squarespace-cdn.com/content/v1/5eac45f88da144413f9b5763/b85d7659-1901-4859-b33a-04356e135fb7/myles-munroe-3-principles-of-biblical-dating-and-courting.jpg)",
 			}}
 		>
-			<div className="hero-overlay bg-opacity-60"></div>
+			<div className="hero-overlay"></div>
 			<div className="py-16">
-				<div className="hero-content text-neutral-content text-center">
-					<div className="max-w-lg flex flex-col items-center">
-						<div className="badge badge-secondary top-6 mb-4">Features</div>
+				<div className="text-center hero-content text-neutral-content">
+					<div className="flex flex-col items-center max-w-lg">
+						<div className="mb-4 badge badge-secondary top-6">Features</div>
 						<h1 className="mb-12 text-5xl font-bold">
 							Syncing your
 							<span className="text-accent"> Destiny</span>
@@ -23,33 +23,33 @@ const Features = () => {
 							excepturi exercitationem quasi. In deleniti eaque aut repudiandae
 							et a id nisi.
 						</p>
-						<div className="stats stats-vertical md:stats-horizontal shadow-sm text-center">
+						<div className="text-center shadow-sm stats glass bg-base-100 stats-vertical md:stats-horizontal">
 							<div className="stat place-items-center">
-								<div className="stat-title mb-4 btn btn-primary btn-outline">
+								<div className="mb-4 stat-title btn btn-primary btn-outline">
 									<SiWechat size={24} />
 								</div>
-								<div className="stat-value text-primary mb-4">Chatting</div>
-								<div className="stat-desc text-primary mb-4">
+								<div className="mb-4 stat-value text-primary">Chatting</div>
+								<div className="mb-4 stat-desc text-primary">
 									Chat with your Destiny
 								</div>
 							</div>
 
 							<div className="stat place-items-center">
-								<div className="stat-title mb-4 btn btn-secondary btn-outline">
+								<div className="mb-4 stat-title btn btn-secondary btn-outline">
 									<SiSuperuser size={24} />
 								</div>
-								<div className="stat-value mb-4 text-secondary">Anonymous</div>
-								<div className="stat-desc mb-4 text-secondary">
+								<div className="mb-4 stat-value text-secondary">Anonymous</div>
+								<div className="mb-4 stat-desc text-secondary">
 									Completely hide your information Until
 								</div>
 							</div>
 
 							<div className="stat place-items-center">
-								<div className="stat-title mb-4 text-accent btn btn-accent btn-outline">
+								<div className="mb-4 stat-title text-accent btn btn-accent btn-outline">
 									<SiAstro size={24} />
 								</div>
-								<div className="stat-value mb-4 text-accent">Zodiac</div>
-								<div className="stat-desc mb-4 text-accent">
+								<div className="mb-4 stat-value text-accent">Zodiac</div>
+								<div className="mb-4 stat-desc text-accent">
 									Knowing more about your internal self
 								</div>
 							</div>

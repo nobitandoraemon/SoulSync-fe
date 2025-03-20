@@ -15,4 +15,5 @@ export const APP_ROUTES = {
 	CHAT: "/chat",
 	MATCH: "/match",
 	FORM: "/form",
+	HOME: "/",
 };
