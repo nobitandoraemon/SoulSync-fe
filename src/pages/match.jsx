@@ -9,10 +9,17 @@ import { APP_ROUTES } from "../lib/constants";
 const MatchPage = () => {
 	const { user, isFinding, toggleFinding } = useOutletContext();
 	const [isLoading, setIsLoading] = useState(true);
+	const navigate = useNavigate();
 	const handleLoading = () => {
 		setIsLoading(false);
 	};
-	const navigate = useNavigate();
+
+	const handleFinding = () => {
+		toggleFinding();
+		setTimeout(() => {
+			navigate(APP_ROUTES.CHAT);
+		}, 1000);
+	};
 	useEffect(() => {
 		if (user) {
 			console.log("Get user data successfully");
@@ -43,7 +50,7 @@ const MatchPage = () => {
 			<Toast />
 			<button
 				className="fixed z-50 p-6 shadow-sm top-8 right-4 btn-circle btn btn-primary animate-bounce size-28"
-				onClick={toggleFinding}
+				onClick={handleFinding}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
