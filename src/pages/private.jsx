@@ -20,7 +20,7 @@ const PrivateRoute = () => {
 				try {
 					const response = await axios({
 						method: "GET",
-						url: API_ROUTES.GET_USER + `/${username}`,
+						url: API_ROUTES.GET_USER + `/${FormData.username}`,
 						headers: {
 							authorization: `Bearer ${token}`,
 							"Content-Type": "application/json",
@@ -28,7 +28,7 @@ const PrivateRoute = () => {
 						withCredentials: true,
 					});
 					console.log(response);
-					if (!response.data.gender || !response.data.birthday || !response.data.zodiac ) {
+					if (!response.data.gender || !response.data.birthday || !response.data.zodiac  ) {
 						toast("Please fill out your missing information", { type: "warning" });
 			      setTimeout(() => {
 				      navigate(APP_ROUTES.FORM);
