@@ -54,7 +54,7 @@ const UserUpdate = () => {
             <input
               type="text"
               name="username"
-              className="w-full p-2 mt-1 border rounded-lg focus:ring focus:ring-blue-300"
+              className="w-full p-2 mt-1 border rounded-lg focus:ring-3 focus:ring-blue-300"
               value={formData.username}
               onChange={handleChange}
               required
@@ -68,7 +68,7 @@ const UserUpdate = () => {
             <input
               type="password"
               name="password"
-              className="w-full p-2 mt-1 border rounded-lg focus:ring focus:ring-blue-300"
+              className="w-full p-2 mt-1 border rounded-lg focus:ring-3 focus:ring-blue-300"
               value={formData.password}
               onChange={handleChange}
               required

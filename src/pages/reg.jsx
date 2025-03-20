@@ -5,11 +5,10 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import axios from "axios";
-import { useUser } from "../hooks/useUser";
+import { getTokenFromLocalStorage } from "../lib/common";
 
 const Reg = () => {
-	const { user } = useUser();
-
+	const token = getTokenFromLocalStorage();
 	const navigate = useNavigate();
 	const [form, setForm] = useState({
 		username: "",
@@ -43,13 +42,13 @@ const Reg = () => {
 	};
 
 	useEffect(() => {
-		if (user) {
+		if (token) {
 			toast("You are already logged in", { type: "info" });
 			setTimeout(() => {
 				navigate(APP_ROUTES.CHAT);
 			}, 3000);
 		}
-	}, [user]);
+	}, []);
 
 	return (
 		<div

@@ -6,11 +6,13 @@ export const API_ROUTES = {
 	LOG_OUT: `${API_URL}/auth/logout`,
 	GET_USER: `${API_URL}/users`,
 	MATCH: `${API_URL}/match`,
+	SOCKET: API_URL,
 };
 
 export const APP_ROUTES = {
 	SIGN_UP: "/reg",
 	SIGN_IN: "/login",
 	CHAT: "/chat",
+	MATCH: "/match",
 	FORM: "/form",
 };

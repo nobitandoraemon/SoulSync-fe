@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import axios from 'axios'
 import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import { useNavigate } from "react-router";
-
+import { getTokenFromLocalStorage } from "../lib/common";
+import { toast } from "react-toastify";
 
 const VietnamProvinces = [
   "An Giang", "Ba Ria - Vung Tau", "Bac Giang", "Bac Kan", "Bac Lieu",
@@ -331,97 +332,146 @@ const BirthDate = ({setStep, formData, setFormData }) => {
     setFormData({...formData, hobby: e.target.value})
   }
 
-  return(
-  <div>
-    <h1 className="font-bold text-3xl font-sans mt-4 ">Cho chúng tôi biết nhiều hơn về bạn...</h1>
-    <form className="flex flex-col gap-8 mt-10" onSubmit={submitBirthDate}>
-        <div className="flex flex-col gap-2">
-          <h2 className="text-sm">Ngày sinh của bạn là gì ?</h2>
-          <input type="date" name="date" placeholder="Birth Date" className=" border px-4 py-2  rounded-full shadow-md bg-white w-full " required value={formData.birthday} onChange={handleBirthChange}  />
-        </div>
-        <div className="flex flex-col gap-2">
-          <h2 className="text-sm">Sở thích của bạn là gì ? (Tuỳ Chọn) </h2>
-          <input type="text" name="hobby" placeholder="Your Hobby" className=" border px-4 py-2  rounded-full shadow-md bg-white w-full " value={formData.hobby} onChange={handleHobbyChange}  />
-          <div className="flex justify-between">
-            <button type="button" className="w-full bg-red-600 px-4 py-2 border shadow-md rounded-full text-white hover:bg-red-300 mt-8" onClick={() =>setStep(2)}>Trở lại</button>
-            <button type="submit" className="w-full bg-green-600 px-4 py-2 border shadow-md rounded-full text-white hover:bg-green-300 mt-8">Tiếp theo</button>
-            
-          </div>
-      </div>
-    </form>
-  </div>
-  )
-}
-const ShowPersonality = ({ setStep, formData, setFormData }) => {  
-  const DateArray = formData.birthday.split('-')
-  const Month = DateArray[1]
-  const Day = DateArray[2]
-  const StringNumber = `${Month}.${Day}`
-  const Indicator = Number(StringNumber)
+	return (
+		<div>
+			<h1 className="mt-4 font-sans text-3xl font-bold ">
+				Tell us more about you...
+			</h1>
+			<form className="flex flex-col gap-8 mt-10" onSubmit={submitBirthDate}>
+				<div className="flex flex-col gap-2">
+					<h2 className="text-sm">What's your birth date ?</h2>
+					<input
+						type="date"
+						name="date"
+						placeholder="Birth Date"
+						className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
+						required
+						value={formData.birthday}
+						onChange={handleBirthChange}
+					/>
+				</div>
+				<div className="flex flex-col gap-2">
+					<h2 className="text-sm">What's your hobby ? (Optional)</h2>
+					<input
+						type="text"
+						name="hobby"
+						placeholder="Your Hobby"
+						className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
+						required
+						value={formData.hobby}
+						onChange={handleHobbyChange}
+					/>
+					<div className="flex justify-between">
+						<button
+							type="button"
+							className="w-full px-4 py-2 mt-8 text-white bg-red-600 border rounded-full shadow-md hover:bg-red-300"
+							onClick={() => setStep(2)}
+						>
+							Back
+						</button>
+						<button
+							type="submit"
+							className="w-full px-4 py-2 mt-8 text-white bg-green-600 border rounded-full shadow-md hover:bg-green-300"
+						>
+							Next
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	);
+};
+const ShowPersonality = ({ setStep, formData, setFormData }) => {
+	const DateArray = formData.birthday.split("-");
+	const Month = DateArray[1];
+	const Day = DateArray[2];
+	const StringNumber = `${Month}.${Day}`;
+	const Indicator = Number(StringNumber);
 
-  let i = 0
-  if (formData.gender === 'Male') {
-    if (Indicator >= 4.20 && Indicator <= 5.20 ) {
-      i = 2
-    } else if (Indicator >= 5.21 && Indicator <= 6.20){
-      i = 4
-    } else if (Indicator >= 6.21 && Indicator <= 7.22){
-      i = 6
-    } else if (Indicator >= 7.23 && Indicator <= 8.22){
-      i = 8
-    } else if (Indicator >= 8.23 && Indicator <= 9.22){
-      i = 10
-    } else if (Indicator >= 9.23 && Indicator <= 10.22){
-      i = 12
-    } else if (Indicator >= 10.23 && Indicator <= 11.21){
-      i = 14
-    } else if (Indicator >= 11.22 && Indicator <= 12.21){
-      i = 16
-    } else if ((Indicator >= 12.22 && Indicator <= 12.31)  ||(Indicator >= 1.01 && Indicator <= 1.19) ){
-      i = 18
-    } else if (Indicator >= 1.20 && Indicator <= 2.18){
-      i = 20
-    } else if (Indicator >= 2.19 && Indicator <= 3.20){
-      i = 22
-    }
-  } else if (formData.gender === 'Female') {
-    if (Indicator >= 3.21 && Indicator <= 4.19 ) {
-      i = 1
-    } else if (Indicator >= 4.20 && Indicator <= 5.20 ) {
-      i = 3
-    } else if (Indicator >= 5.21 && Indicator <= 6.20){
-      i = 5
-    } else if (Indicator >= 6.21 && Indicator <= 7.22){
-      i = 7
-    } else if (Indicator >= 7.23 && Indicator <= 8.22){
-      i = 9
-    } else if (Indicator >= 8.23 && Indicator <= 9.22){
-      i = 11
-    } else if (Indicator >= 9.23 && Indicator <= 10.22){
-      i = 13
-    } else if (Indicator >= 10.23 && Indicator <= 11.21){
-      i = 15
-    } else if (Indicator >= 11.22 && Indicator <= 12.21){
-      i = 17
-    } else if ((Indicator >= 12.22 && Indicator <= 12.31)  ||(Indicator >= 1.01 && Indicator <= 1.19) ){
-      i = 19
-    } else if (Indicator >= 1.20 && Indicator <= 2.18){
-      i = 21
-    } else if (Indicator >= 2.19 && Indicator <= 3.20){
-      i = 23
-    }
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const updatedFormData = { ...formData, zodiac: i };
-    setFormData(updatedFormData);
-    axios.put(`https://soulsync-api.onrender.com/users/${formData.username}`, updatedFormData)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(err => console.error(err));
-    setStep(5);
-  };
+	let i = 0;
+	if (formData.gender === "Male") {
+		if (Indicator >= 4.2 && Indicator <= 5.2) {
+			i = 1;
+		} else if (Indicator >= 5.21 && Indicator <= 6.2) {
+			i = 3;
+		} else if (Indicator >= 6.21 && Indicator <= 7.22) {
+			i = 5;
+		} else if (Indicator >= 7.23 && Indicator <= 8.22) {
+			i = 7;
+		} else if (Indicator >= 8.23 && Indicator <= 9.22) {
+			i = 9;
+		} else if (Indicator >= 9.23 && Indicator <= 10.22) {
+			i = 11;
+		} else if (Indicator >= 10.23 && Indicator <= 11.21) {
+			i = 13;
+		} else if (Indicator >= 11.22 && Indicator <= 12.21) {
+			i = 15;
+		} else if (
+			(Indicator >= 12.22 && Indicator <= 12.31) ||
+			(Indicator >= 1.01 && Indicator <= 1.19)
+		) {
+			i = 17;
+		} else if (Indicator >= 1.2 && Indicator <= 2.18) {
+			i = 19;
+		} else if (Indicator >= 2.19 && Indicator <= 3.2) {
+			i = 21;
+		}
+	} else if (formData.gender === "Female") {
+		if (Indicator >= 3.21 && Indicator <= 4.19) {
+			i = 2;
+		} else if (Indicator >= 4.2 && Indicator <= 5.2) {
+			i = 4;
+		} else if (Indicator >= 5.21 && Indicator <= 6.2) {
+			i = 6;
+		} else if (Indicator >= 6.21 && Indicator <= 7.22) {
+			i = 8;
+		} else if (Indicator >= 7.23 && Indicator <= 8.22) {
+			i = 10;
+		} else if (Indicator >= 8.23 && Indicator <= 9.22) {
+			i = 12;
+		} else if (Indicator >= 9.23 && Indicator <= 10.22) {
+			i = 14;
+		} else if (Indicator >= 10.23 && Indicator <= 11.21) {
+			i = 16;
+		} else if (Indicator >= 11.22 && Indicator <= 12.21) {
+			i = 18;
+		} else if (
+			(Indicator >= 12.22 && Indicator <= 12.31) ||
+			(Indicator >= 1.01 && Indicator <= 1.19)
+		) {
+			i = 20;
+		} else if (Indicator >= 1.2 && Indicator <= 2.18) {
+			i = 22;
+		} else if (Indicator >= 2.19 && Indicator <= 3.2) {
+			i = 24;
+		}
+	}
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const updatedFormData = { ...formData, zodiac: i };
+		setFormData(updatedFormData);
+		// console.log(updatedFormData);
+		const token = getTokenFromLocalStorage();
+		const username = localStorage.getItem("username");
+		try {
+			const response = await axios(
+				{
+					method: "PUT",
+					url: API_ROUTES.GET_USER + `/${username}`,
+					headers: {
+						authorization: `Bearer ${token}`,
+					},
+					withCredentials: true,
+				},
+				updatedFormData
+			);
+			// console.log(response);
+		} catch (err) {
+			toast(err.response.data.message, { type: "error" });
+			console.log(err);
+		}
+		setStep(5);
+	};
 
   return(
   <div>
@@ -485,62 +535,92 @@ const ThankYou = ({ setStep, formData, setFormData }) => {
   );
 };
 
-const ProfileForm = () =>{
+const ProfileForm = () => {
+	const [step, setStep] = useState(1);
+	const [formData, setFormData] = useState({
+		birthday: "",
+		gender: "",
+		zodiac: "",
+		location: "An Giang",
+		fullname: "",
+		phoneNumber: "",
+		hobby: "",
+	});
 
-  const [step, setStep]  = useState(1);
-  const [formData, setFormData] = useState({
-    birthday: '',
-    gender: '',
-    zodiac: '',
-    location: 'An Giang',
-    fullname: '',
-    phoneNumber: '',
-    hobby: '',
-  })
+	const renderStep = () => {
+		switch (step) {
+			case 1:
+				return (
+					<TellUs
+						setStep={setStep}
+						formData={formData}
+						setFormData={setFormData}
+					/>
+				);
+			case 2:
+				return (
+					<Address
+						setStep={setStep}
+						formData={formData}
+						setFormData={setFormData}
+					/>
+				);
+			case 3:
+				return (
+					<BirthDate
+						setStep={setStep}
+						formData={formData}
+						setFormData={setFormData}
+					/>
+				);
+			case 4:
+				return (
+					<ShowPersonality
+						setStep={setStep}
+						formData={formData}
+						setFormData={setFormData}
+					/>
+				);
+			case 5:
+				return (
+					<ThankYou
+						setStep={setStep}
+						formData={formData}
+						setFormData={setFormData}
+					/>
+				);
+			default:
+				return (
+					<TellUs
+						setStep={setStep}
+						formData={formData}
+						setFormData={setFormData}
+					/>
+				);
+		}
+	};
 
-  
-  const renderStep = () => {
-    switch (step) {
-      case 1:
-        return <TellUs setStep={setStep} formData={formData} setFormData={setFormData} />;
-      case 2:
-        return <Address setStep={setStep} formData={formData} setFormData={setFormData} />;
-      case 3:
-        return <BirthDate setStep={setStep} formData={formData} setFormData={setFormData} />;
-      case 4:
-        return <ShowPersonality setStep={setStep} formData={formData} setFormData={setFormData} />;
-      case 5:
-        return <ThankYou setStep={setStep} formData={formData} setFormData={setFormData} />;
-      default:
-        return <TellUs setStep={setStep} formData={formData} setFormData={setFormData} />;
-    }
-  };
+	const RenderProgressBar = () => {
+		const bars = [];
+		for (let i = 1; i < 5; i++) {
+			if (i < step) {
+				bars.push(<CompletedBar key={i} />);
+			} else {
+				bars.push(<NotCompletedBar key={i} />);
+			}
+		}
+		return bars;
+	};
 
-  const RenderProgressBar = () => {
-    const bars = []
-    for(let i = 1; i < 5; i++) {
-      if (i < step) {
-        bars.push(<CompletedBar key={i} />)
-      } else {
-        bars.push(<NotCompletedBar key={i} />)
-      }
-    }
-    return bars
-  }
-  
-  
-
-  return(
-    <div className="bg-[#fdf3f7] w-1/3 mx-auto my-4 p-4 min-w-[500px] rounded-3xl shadow-md">
-      <div className="bg-[#fdf3f7] p-6 ">
-      <div className="flex justify-center gap-5">
-        {RenderProgressBar()}
-      </div>
-        {renderStep()}
-      </div>
-    </div>
-  )
-}
+	return (
+		<div className="bg-white w-1/3 mx-auto my-4 p-4 min-w-[500px]">
+			<div className="bg-[#fdf3f7] p-6 rounded-3xl shadow-md">
+				<div className="flex justify-center gap-5">{RenderProgressBar()}</div>
+				{renderStep()}
+			</div>
+		</div>
+	);
+};
 
 export default ProfileForm
 

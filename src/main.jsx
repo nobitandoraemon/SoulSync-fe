@@ -12,6 +12,7 @@ import {
 	PrivateRoute,
 	NotFound,
 	FormPage,
+	MatchPage,
 } from "./config/components.js";
 import { socket } from "./config/socket.js";
 
@@ -24,10 +25,11 @@ createRoot(document.getElementById("root")).render(
 						<Route index element={<App />} />
 						<Route path="/login" element={<Login />} />
 						<Route path="/reg" element={<Reg />} />
-						<Route path="/form" element={<FormPage />} />
 						<Route path="*" element={<NotFound />} />
 					</Route>
-					<Route element={<PrivateRoute />}>
+					<Route element={<PrivateRoute socket={socket} />}>
+						<Route path="/form" element={<FormPage />} />
+						<Route path="/match" element={<MatchPage />} />
 						<Route path="/chat" element={<Chat socket={socket} />} />
 					</Route>
 				</Routes>

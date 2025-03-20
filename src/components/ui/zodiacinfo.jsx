@@ -1,5 +1,5 @@
 import { zodiacInfo } from "../../lib/data";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
 import ChatHeader from "./chatpage/header";
@@ -101,14 +101,28 @@ const Tab = ({ tab }) => (
 		</div>
 	</>
 );
-const ZodiacInfo = ({ zodiac, user, event, requestMatch }) => {
+const ZodiacInfo = ({ zodiac, user, toggleFinding }) => {
 	const [countdown, setCountdown] = useState(30);
 	const [isVisible, setIsVisible] = useState(false);
 
-	const startPopsUp = () => {
-		setCountdown(30);
-		setIsVisible(true);
+	const navigate = useNavigate();
+
+	const handleMatching = () => {
+		toggleFinding();
+		setTimeout(() => {
+			navigate("/chat");
+		}, 2000);
+		// setCountdown(30);
+		// setIsVisible(true);
 	};
+
+	useEffect(() => {
+		if (user) {
+			console.log("Get user data successfully");
+		} else {
+			console.log("Get user data failed");
+		}
+	}, [user]);
 
 	return (
 		<div
@@ -116,30 +130,23 @@ const ZodiacInfo = ({ zodiac, user, event, requestMatch }) => {
 				"flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
 			)}
 		>
-			<ChatHeader user={user} isLoggin={true} />
+			{user && <ChatHeader user={user} />}
 			<div
 				className="min-h-screen mt-16 hero"
-				style={{
-					backgroundImage:
-						"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-				}}
+				// style={{
+				// 	backgroundImage:
+				// 		"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+				// }}
 			>
 				<div className="hero-overlay bg-opacity-60"></div>
 				<div className="w-4/5 hero-content">
 					<div className="flex flex-col items-center">
-						<div className="w-full p-3 tabs tabs-boxed">
+						<div className="w-full p-3 tabs tabs-box">
 							{zodiac.tabs.map((tabs, index) => {
 								return <Tab key={index} tab={tabs} />;
 							})}
 						</div>
-						<PopsUpButton event={startPopsUp}>Start Matching</PopsUpButton>
-						<CountdownPopup
-							isVisible={isVisible}
-							countdown={countdown}
-							setCountdown={setCountdown}
-							setIsVisible={setIsVisible}
-							event={event}
-						/>
+						<PopsUpButton event={handleMatching}>Start Matching</PopsUpButton>
 					</div>
 				</div>
 			</div>

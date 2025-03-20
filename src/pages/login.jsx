@@ -102,17 +102,18 @@ const Login = ({ user }) => {
 								onChange={handleInput}
 								required
 							/>
-
-							<label className="label animate-pulse hover:text-primary">
-								<Link to="/reg" className="label-text-alt link link-hover">
-									Chưa có tài khoản? Đăng ký ngay nào
-								</Link>
-							</label>
-							<label className="label">
-								<a href="#" className="label-text-alt link link-hover">
-									Forgot password?
-								</a>
-							</label>
+							<div className="flex flex-col mt-6 space-y-2">
+								<label className="label animate-pulse hover:text-primary">
+									<Link to="/reg" className="label-text-alt link link-hover">
+										Chưa có tài khoản? Đăng ký ngay nào
+									</Link>
+								</label>
+								<label className="label">
+									<a href="#" className="label-text-alt link link-hover">
+										Forgot password?
+									</a>
+								</label>
+							</div>
 						</div>
 						<div className="mt-6 form-control">
 							<button className="btn btn-primary">Login</button>

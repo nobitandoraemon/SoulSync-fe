@@ -1,8 +1,26 @@
 import { useOutletContext } from "react-router";
+import ZodiacInfo from "../components/ui/zodiacinfo";
+import { zodiacInfo } from "../lib/data";
+import { useEffect } from "react";
+
 const MatchPage = () => {
-	const [user] = useOutletContext();
-	console.log(user);
-	return <div>Match Page here</div>;
+	const { user, isFinding, toggleFinding } = useOutletContext();
+	useEffect(() => {
+		if (user) {
+			console.log("Get user data successfully");
+		} else {
+			console.log("Get user data failed");
+		}
+	}, [user]);
+	return (
+		<>
+			<ZodiacInfo
+				zodiac={zodiacInfo[0]}
+				user={user}
+				toggleFinding={toggleFinding}
+			/>
+		</>
+	);
 };
 
 export default MatchPage;
