@@ -88,7 +88,7 @@ const Header = () => {
 							</li>
 							{token ? (
 								<li>
-									<Link to="/chat">Chat</Link>
+									<Link to="/match">Match</Link>
 								</li>
 							) : (
 								<>

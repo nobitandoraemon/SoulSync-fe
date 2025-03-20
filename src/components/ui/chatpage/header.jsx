@@ -1,5 +1,5 @@
-import { Link } from "react-router";
-import { Toast, Profile } from "../../../config/components";
+import { Link, useNavigate } from "react-router";
+import { Toast } from "../../../config/components";
 import { useState } from "react";
 import { logOut } from "../../../lib/common";
 const MyInformationSideBar = ({ myInfo, clickable, setClickable }) => {
@@ -104,7 +104,7 @@ const OtherInformationSideBar = ({ otherInfo, clickable, setClickable }) => {
 	);
 };
 
-const SubNav = ({ isLoggin, content }) => {
+const SubNav = ({ user }) => {
 	const [clickable, setClickable] = useState(true);
 	const handleLeaveChat = () => {
 		logOut();
@@ -132,7 +132,7 @@ const SubNav = ({ isLoggin, content }) => {
 			</li>
 			<li className="bg-base-200" onClick={handleLeaveChat}>
 				<a
-					// href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
+					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
 					target="_blank"
 				>
 					<svg
@@ -170,7 +170,7 @@ const SubNav = ({ isLoggin, content }) => {
 			<li className="bg-base-200">
 				<a>
 					<span className="hidden md:block">Trạng thái</span>
-					{isLoggin ? (
+					{user ? (
 						<span className="badge badge-xs badge-success"></span>
 					) : (
 						<span className="badge badge-xs badge-warning"></span>
@@ -179,14 +179,14 @@ const SubNav = ({ isLoggin, content }) => {
 			</li>
 			<li className="bg-base-200">
 				<OtherInformationSideBar
-					otherInfo={content.other}
+					// otherInfo={content.other}
 					clickable={clickable}
 					setClickable={setClickable}
 				/>
 			</li>
 			<li className="bg-base-200 rounded-r-3xl">
 				<MyInformationSideBar
-					myInfo={content.mine}
+					// myInfo={content.mine}
 					clickable={clickable}
 					setClickable={setClickable}
 				/>
@@ -195,40 +195,13 @@ const SubNav = ({ isLoggin, content }) => {
 	);
 };
 
-const MainNav = ({ isLoggin }) => {
-	const handleLogOut = () => {
-		logOut();
+const ChatHeader = ({ user }) => {
+	const navigate = useNavigate();
+	const handleOut = () => {
+		navigate("/");
 	};
 	return (
-		<div className="dropdown dropdown-end">
-			<div
-				tabIndex={0}
-				role="button"
-				className="btn btn-ghost btn-circle avatar"
-				onClick={handleLogOut}
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					strokeWidth={1.5}
-					stroke="currentColor"
-					className="size-6"
-				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
-					/>
-				</svg>
-			</div>
-		</div>
-	);
-};
-
-const ChatHeader = ({ user }) => {
-	return (
-		<div className="absolute flex flex-col items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[80px] shadow-lg bg-primary/10 backdrop-blur-lg">
+		<div className="fixed flex items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[60px] shadow-lg bg-primary/10 backdrop-blur-lg z-50">
 			<Toast />
 			<div className="flex flex-row items-center flex-1 float-left gap-4 mr-4">
 				<div className="avatar online">
@@ -236,9 +209,32 @@ const ChatHeader = ({ user }) => {
 						<img src="https://avatars.githubusercontent.com/u/84665790?v=4" />
 					</div>
 				</div>
-				<span className="overflow-hidden truncate text-ellipsis badge badge-lg ">
+				<span className="hidden overflow-hidden truncate md:block text-ellipsis badge badge-lg ">
 					{user.username}
 				</span>
+			</div>
+			<div className="dropdown dropdown-end">
+				<div
+					tabIndex={0}
+					role="button"
+					className="btn btn-ghost btn-circle avatar"
+					onClick={handleOut}
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						strokeWidth={1.5}
+						stroke="currentColor"
+						className="size-6"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
+						/>
+					</svg>
+				</div>
 			</div>
 		</div>
 	);
