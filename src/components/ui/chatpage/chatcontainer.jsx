@@ -2,7 +2,7 @@ import { ChatBox } from "../../../config/components";
 
 const ChatContainer = ({
 	isFinding,
-	setIsFinding,
+	toggleFinding,
 	content,
 	isScroll,
 	socket,
@@ -18,7 +18,7 @@ const ChatContainer = ({
 }) => {
 	return (
 		<>
-			{isMatched && (
+			{matchedUser && (
 				<>
 					<ChatBox
 						chat={chat}

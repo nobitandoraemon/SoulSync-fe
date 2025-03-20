@@ -1,6 +1,8 @@
 import { Link } from "react-router";
+import { getTokenFromLocalStorage } from "../../../lib/common";
 
 const Hero = () => {
+	const token = getTokenFromLocalStorage();
 	return (
 		<div className="container mx-auto">
 			<div className="min-h-screen hero">
@@ -31,12 +33,20 @@ const Hero = () => {
 							aliquam labore fuga? Rem.
 						</p>
 						<div className="flex items-center gap-2">
-							<Link to="/login" className="btn btn-primary">
-								Sign in
-							</Link>
-							<Link to="/reg" className="btn btn-secondary">
-								Sign up
-							</Link>
+							{!token ? (
+								<>
+									<Link to="/login" className="btn btn-primary">
+										Sign in
+									</Link>
+									<Link to="/reg" className="btn btn-secondary">
+										Sign up
+									</Link>
+								</>
+							) : (
+								<Link to="/match" className="btn btn-primary btn-lg">
+									Match Now
+								</Link>
+							)}
 						</div>
 					</div>
 				</div>

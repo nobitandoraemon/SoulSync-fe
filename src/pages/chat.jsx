@@ -19,7 +19,7 @@ const Chat = ({ socket }) => {
 		failMessage,
 		setFailMessage,
 		isFinding,
-		setIsFinding,
+		toggleFinding,
 		isRefuse,
 		setIsRefuse,
 		sendMessage,
@@ -30,7 +30,11 @@ const Chat = ({ socket }) => {
 	//Màn hình loading
 	const [isLoading, setIsLoading] = useState(true);
 	const handleLoading = () => {
-		setIsLoading(false);
+		if (isMatched) {
+			setIsLoading(false);
+		} else {
+			setIsLoading(true);
+		}
 	};
 
 	// Khi người dùng chấp nhận match
@@ -40,7 +44,7 @@ const Chat = ({ socket }) => {
 			console.log("ok");
 
 			socket.emit("ok", {});
-			setOk(false);
+			// setOk(false);
 		}
 	}, [ok]);
 
@@ -49,7 +53,7 @@ const Chat = ({ socket }) => {
 			console.log("find");
 
 			socket.emit("find", {});
-			setIsFinding(false);
+			toggleFinding();
 		}
 	}, [isFinding]);
 
@@ -58,7 +62,7 @@ const Chat = ({ socket }) => {
 			console.log("refuse");
 
 			socket.emit("refuse", {});
-			setIsRefuse(false);
+			// setIsRefuse(false);
 		}
 	}, [isRefuse]);
 
@@ -86,7 +90,7 @@ const Chat = ({ socket }) => {
 		<div className="flex w-screen max-w-full min-h-screen">
 			<ChatContainer
 				isFinding={isFinding}
-				setIsFinding={setIsFinding}
+				toggleFinding={toggleFinding}
 				isScroll={isScroll}
 				socket={socket}
 				matchedUser={matchedUser}
@@ -104,6 +108,14 @@ const Chat = ({ socket }) => {
 		<div className="flex items-center justify-center w-screen h-screen">
 			<Toast />
 			<span className=" loading loading-spinner text-primary"></span>
+			<div className="inline-grid *:[grid-area:1/1] mr-8">
+				<div className="status status-error animate-ping"></div>
+				<div className="status status-error"></div>
+			</div>{" "}
+			<span className="text-2xl animate-pulse">
+				{" "}
+				We &lsquo; re finding you a match
+			</span>
 		</div>
 	);
 };

@@ -7,7 +7,7 @@ import Toast from "../hooks/useToast";
 
 const FormPage = () => {
 	const navigate = useNavigate();
-	const [user] = useOutletContext();
+	const { user } = useOutletContext();
 	useEffect(() => {
 		if (user) {
 			if (user.gender) {
