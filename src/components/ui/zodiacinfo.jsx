@@ -83,11 +83,11 @@ const Tab = ({ tab }) => (
 								<br />
 							</>
 						) : item.type === "image" ? (
-							<li>
+							<li className="w-[80%]">
 								<img
 									src={item.value}
 									alt="Zodiac"
-									className="w-[85%] h-[80%] rounded-lg mb-5 mx-auto"
+									className="mx-auto mb-5 rounded-lg max-w-[768px]"
 								/>
 							</li>
 						) : item.type === "h2" ? (

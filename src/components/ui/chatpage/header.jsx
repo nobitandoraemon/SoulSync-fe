@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import { Toast } from "../../../config/components";
 import { useState } from "react";
-import { logOut } from "../../../lib/common";
+import { APP_ROUTES } from "../../../lib/constants";
 const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 	return (
 		<div className="drawer drawer-end">
@@ -106,9 +106,6 @@ const OtherInformationSideBar = ({ matchedUser, clickable, setClickable }) => {
 
 const SubNav = ({ matchedUser }) => {
 	const [clickable, setClickable] = useState(true);
-	const handleLeaveChat = () => {
-		logOut();
-	};
 	return (
 		<ul className="menu md:bg-base-200 menu-horizontal rounded-box place-content-center">
 			{/* <li className="bg-base-200 rounded-l-3xl">
@@ -130,7 +127,7 @@ const SubNav = ({ matchedUser }) => {
 					<span className="hidden md:block">Trang chủ</span>
 				</Link>
 			</li> */}
-			<li className="bg-base-200" onClick={handleLeaveChat}>
+			<li className="bg-base-200" onClick={useNavigate(APP_ROUTES.HOME)}>
 				<a
 					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
 					target="_blank"
@@ -198,7 +195,7 @@ const SubNav = ({ matchedUser }) => {
 const ChatHeader = ({ user, matchedUser }) => {
 	const navigate = useNavigate();
 	const handleOut = () => {
-		navigate("/");
+		navigate(APP_ROUTES.HOME);
 	};
 	return (
 		<div className="fixed flex items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[60px] shadow-lg bg-primary/10 backdrop-blur-lg z-50">
@@ -213,12 +210,11 @@ const ChatHeader = ({ user, matchedUser }) => {
 					{user.username}
 				</span>
 			</div>
-			<div className="dropdown dropdown-end">
+			<div className="dropdown dropdown-end" onClick={handleOut}>
 				<div
 					tabIndex={0}
 					role="button"
 					className="btn btn-ghost btn-circle avatar"
-					onClick={handleOut}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
