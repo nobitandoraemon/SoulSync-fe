@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { ChatBox, Content, Waiting } from "../../../config/components";
-import { useNavigate } from "react-router";
+import { useNavigate, useOutletContext } from "react-router";
+import { useOutlet } from "react-router";
 const ChatContainer = ({
   socketIO,
   content,
@@ -8,30 +10,27 @@ const ChatContainer = ({
   toggleActive,
   isScroll,
   user,
-  matchedUser,
   requestMatch,
   chat,
   ok,
   setOk,
 }) => {
+  const [matchedUser] = useOutletContext();
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/match");
   };
-  return (
-    <>
-      {
-        // Chưa có người sẽ match
-        !matchedUser ? (
-          <div className="max-w-[80%] mx-auto flex items-center justify-between">
-            <button
-              onClick={() => handleNavigate()}
-              className="btn btn-primary"
-            >
-              Find a Match
-            </button>
-          </div>
-        ) : (
+  useEffect(() => {
+    if (!matchedUser) handleNavigate();
+  }, [matchedUser, navigate]);
+
+  if (!matchedUser) return null;
+  else
+    return (
+      <>
+        {
+          // Chưa có người sẽ match
+
           // Khi chấp nhận chat
           <>
             {/* <Content
@@ -49,10 +48,9 @@ const ChatContainer = ({
               content={content}
             />
           </>
-        )
-      }
-    </>
-  );
+        }
+      </>
+    );
 };
 
 export default ChatContainer;

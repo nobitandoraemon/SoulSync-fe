@@ -28,7 +28,7 @@ import { zodiacInfo } from "../lib/data";
 import { API_ROUTES } from "../lib/constants";
 import { getTokenFromLocalStorage } from "../lib/common";
 import { useUser } from "../hooks/useUser";
-import { Navigate, useNavigate } from "react-router";
+import { Navigate, useNavigate, useOutletContext } from "react-router";
 const otherUser = {
   name: "Người dùng ẩn danh",
   id: 1021,
@@ -103,9 +103,6 @@ const content = {
 const Chat = ({ socket }) => {
   // Check tab active bên sidebar
   const [isActive, setActive] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [showCountdown, setShowCountdown] = useState(false);
-  const [countdown, setCountdown] = useState(30);
   const toggleActive = (id) => {
     setActive(id);
   };
@@ -130,8 +127,8 @@ const Chat = ({ socket }) => {
   const [username, setUsername] = useState(localStorage.getItem("username")); // Lấy user hiện tại để gửi auth cho socket
   const [chat, setChat] = useState([]); // Lấy thống tin chat : messages
   const [socketIO, setSocketIO] = useState(socket); // Lấy thống tin socket
-  const [matchedUser, setMatchedUser] = useState(null); // Lấy thông tin người sau khi match
   const [ok, setOk] = useState(false); // Check xem người dùng có chấp nhận vào Chat hay không
+  const [matchedUser, setMatchedUser] = useOutletContext();
   useEffect(() => {
     // Khởi tạo socket, gửi auth cho socket
     const newSocket = io("https://soulsync-api.onrender.com", {
@@ -165,48 +162,6 @@ const Chat = ({ socket }) => {
     return () => newSocket.close();
   }, [username, ok]);
 
-  const startCountdown = () => {
-    const countdownInterval = setInterval(() => {
-      setCountdown((prevCountdown) => {
-        if (prevCountdown <= 1) {
-          clearInterval(countdownInterval);
-          setShowCountdown(false);
-          setCountdown(30);
-        }
-        return prevCountdown - 1;
-      });
-    }, 1000);
-  };
-
-  const requestMatch = async () => {
-    setLoading(true);
-    const token = getTokenFromLocalStorage();
-    try {
-      const response = await axios({
-        method: "POST",
-        data: { username: username },
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-        url: API_ROUTES.MATCH,
-        withCredentials: true,
-      });
-      if (response) {
-        setLoading(false);
-        setShowCountdown(true);
-        startCountdown();
-        toast("Request successfully", { type: "success" });
-        console.log(response);
-        localStorage.setItem("matchedUser", response.data.matchedUser.match);
-        setMatchedUser(response.data.matchedUser.match);
-      }
-    } catch (err) {
-      setLoading(false);
-      toast("Request failed", { type: "error" });
-      console.log(err);
-    }
-  };
-
   return !isLoading ? (
     <div className="flex w-screen max-w-full min-h-screen">
       {isActive === 1 && (
@@ -218,21 +173,9 @@ const Chat = ({ socket }) => {
           socket={socket}
           user={user}
           matchedUser={matchedUser}
-          requestMatch={requestMatch}
           chat={chat}
           ok={ok}
           setOk={setOk}
-        />
-      )}
-      {isActive === 2 && (
-        <ZodiacInfo
-          zodiac={zodiacInfo[0]}
-          user={user}
-          event={() => {
-            setOk(true);
-            toggleActive(1);
-          }}
-          requestMatch={requestMatch}
         />
       )}
     </div>
