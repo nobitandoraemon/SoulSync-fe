@@ -19,7 +19,7 @@ const FormPage = () => {
 		}
 	}, [user]);
 	return (
-		<div className="max-w-screen-lg p-4 mx-auto">
+		<div className="max-w-(--breakpoint-lg) p-4 mx-auto">
 			<Toast />
 			<ProfileForm />
 		</div>

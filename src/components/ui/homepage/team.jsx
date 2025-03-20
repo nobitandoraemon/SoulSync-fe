@@ -78,7 +78,7 @@ const members = [
 
 const Member = ({ avatar, social, name, role }) => {
 	return (
-		<li className="flex flex-col items-center justify-center w-48 overflow-hidden shadow-sm md:w-56 card bg-neutral/90 hover:shadow-md">
+		<li className="flex flex-col items-center justify-center w-48 overflow-hidden shadow-xs md:w-56 card bg-neutral/90 hover:shadow-md">
 			<div className="w-full avatar">
 				<div className="w-full">
 					<img src={avatar} />

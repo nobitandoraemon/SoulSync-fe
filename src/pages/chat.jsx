@@ -107,7 +107,6 @@ const Chat = ({ socket }) => {
 	) : (
 		<div className="flex items-center justify-center w-screen h-screen">
 			<Toast />
-			<span className=" loading loading-spinner text-primary"></span>
 			<div className="inline-grid *:[grid-area:1/1] mr-8">
 				<div className="status status-error animate-ping"></div>
 				<div className="status status-error"></div>
@@ -116,6 +115,7 @@ const Chat = ({ socket }) => {
 				{" "}
 				We &lsquo; re finding you a match
 			</span>
+			<span className="ml-8 loading loading-spinner text-primary"></span>
 		</div>
 	);
 };

@@ -14,7 +14,7 @@ const Hero = () => {
 								<img
 									src="https://cf.ltkcdn.net/dating/images/orig/313360-2121x1414-man-giving-flowers-to-girlfriend.jpg"
 									alt="phone"
-									className="aspect-[9/16] w-full object-cover object-center"
+									className="aspect-9/16 w-full object-cover object-center"
 								/>
 							</div>
 						</div>

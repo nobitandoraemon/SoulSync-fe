@@ -4,7 +4,7 @@ import { ChatIcon } from "../general/icon";
 const Info = ({ user }) => {
 	return (
 		<section className="flex flex-col items-center">
-			<div className="shadow stats">
+			<div className="shadow-sm stats">
 				<div className="stat">
 					<div className="stat-figure text-secondary">
 						<div className="avatar online">
@@ -57,7 +57,7 @@ const Info = ({ user }) => {
 				</div>
 			</div>
 
-			<div className="w-full mt-2 rounded carousel">
+			<div className="w-full mt-2 rounded-sm carousel">
 				<div id={`item1-${user.id}`} className="w-full carousel-item">
 					<img
 						src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"

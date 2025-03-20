@@ -11,7 +11,7 @@ const Contact = () => {
 		>
 			<div className="hero-overlay bg-opacity-60"></div>
 
-			<div className="flex-col max-w-screen-lg mx-auto hero-content lg:flex-row-reverse">
+			<div className="flex-col max-w-(--breakpoint-lg) mx-auto hero-content lg:flex-row-reverse">
 				<div className="font-extrabold text-center text-accent lg:text-right">
 					<h1 className="text-5xl">Contact Us</h1>
 					<p className="py-6">
@@ -58,7 +58,7 @@ const Contact = () => {
 							<input type="text" className="grow" placeholder="Your message" />
 						</label>
 						<motion.button
-							className="mt-4 rounded btn btn-neutral"
+							className="mt-4 rounded-sm btn btn-neutral"
 							whileHover={{
 								scale: 1.1,
 							}}
