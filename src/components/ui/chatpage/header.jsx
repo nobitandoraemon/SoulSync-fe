@@ -192,7 +192,7 @@ const SubNav = ({ matchedUser }) => {
 	);
 };
 
-const ChatHeader = ({ user, matchedUser }) => {
+const ChatHeader = ({ user, matchedUser, toggleFinding }) => {
 	const navigate = useNavigate();
 	const handleOut = () => {
 		navigate(APP_ROUTES.HOME);
@@ -201,36 +201,35 @@ const ChatHeader = ({ user, matchedUser }) => {
 		<div className="fixed flex items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[60px] shadow-lg bg-primary/10 backdrop-blur-lg z-50">
 			<Toast />
 			<div className="flex flex-row items-center flex-1 float-left gap-4 mr-4">
-				<div className="avatar online">
+				<div className="hidden avatar online md:block">
 					<div className="w-12 rounded-full">
-						<img src="https://avatars.githubusercontent.com/u/84665790?v=4" />
+						<img src={user.image} />
 					</div>
 				</div>
 				<span className="hidden overflow-hidden truncate md:block text-ellipsis badge badge-lg ">
 					{user.username}
 				</span>
 			</div>
-			<div className="dropdown dropdown-end" onClick={handleOut}>
-				<div
-					tabIndex={0}
-					role="button"
-					className="btn btn-ghost btn-circle avatar"
+
+			<div
+				role="button"
+				className="btn btn-ghost btn-circle"
+				onClick={handleOut}
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth={1.5}
+					stroke="currentColor"
+					className="size-6"
 				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						strokeWidth={1.5}
-						stroke="currentColor"
-						className="size-6"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
-						/>
-					</svg>
-				</div>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
+					/>
+				</svg>
 			</div>
 		</div>
 	);
