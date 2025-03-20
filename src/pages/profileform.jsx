@@ -665,17 +665,16 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 		const token = getTokenFromLocalStorage();
 		const username = localStorage.getItem("username");
 		try {
-			const response = await axios(
-				{
-					method: "PUT",
-					url: API_ROUTES.GET_USER + `/${username}`,
-					headers: {
-						authorization: `Bearer ${token}`,
-					},
-					withCredentials: true,
+			const response = await axios({
+				method: "PUT",
+				url: API_ROUTES.GET_USER + `/${username}`,
+				headers: {
+					authorization: `Bearer ${token}`,
+					"Content-Type": "application/json", // Nếu gửi JSON
 				},
-				updatedFormData
-			);
+				data: updatedFormData, // Đặt data ở đây
+				withCredentials: true,
+			});
 			// console.log(response);
 		} catch (err) {
 			toast(err.response.data.message, { type: "error" });
