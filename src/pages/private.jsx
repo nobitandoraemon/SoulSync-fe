@@ -6,7 +6,8 @@ import axios from "axios";
 const PrivateRoute = () => {
 	const navigate = useNavigate();
 	const token = localStorage.getItem("token");
-	
+	const username = localStorage.getItem("username");
+
 	
 
 	useEffect(() => {
@@ -20,7 +21,7 @@ const PrivateRoute = () => {
 				try {
 					const response = await axios({
 						method: "GET",
-						url: API_ROUTES.GET_USER + `/${FormData.username}`,
+						url: API_ROUTES.GET_USER + `/${username}`,
 						headers: {
 							authorization: `Bearer ${token}`,
 							"Content-Type": "application/json",
