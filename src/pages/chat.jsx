@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChatContainer, useScroll, Toast } from "../config/components";
-
+import { cn } from "../lib/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useOutletContext } from "react-router";
@@ -86,7 +86,7 @@ const Chat = ({ socket }) => {
 		return () => {};
 	}, [matchedUser]);
 
-	return !isLoading ? (
+	return isMatched ? (
 		<div className="flex w-screen max-w-full min-h-screen">
 			<ChatContainer
 				isFinding={isFinding}
@@ -108,14 +108,24 @@ const Chat = ({ socket }) => {
 		<div className="flex items-center justify-center w-screen h-screen">
 			<Toast />
 			<div className="inline-grid *:[grid-area:1/1] mr-8">
-				<div className="status status-error animate-ping"></div>
-				<div className="status status-error"></div>
+				<div
+					className={cn("status animate-ping", {
+						"status-info": isFinding,
+						"status-error": !isFinding,
+					})}
+				></div>
+				<div
+					className={cn("status", {
+						"status-info": isFinding,
+						"status-error": !isFinding,
+					})}
+				></div>
 			</div>{" "}
 			<span className="text-2xl animate-pulse">
 				{" "}
-				We &lsquo; re finding you a match
+				{failMessage ? `${failMessage}` : "We're finding you a match"}
 			</span>
-			<span className="ml-8 loading loading-spinner text-primary"></span>
+			<span className="ml-8 loading loading-spinner text-info"></span>
 		</div>
 	);
 };

@@ -14,6 +14,11 @@ export function useUser() {
 			if (!token) {
 				navigate(APP_ROUTES.SIGN_IN);
 				return;
+			} else {
+				toast("You are logged in", { type: "info" });
+				setTimeout(() => {
+					navigate(APP_ROUTES.MATCH);
+				}, 1500);
 			}
 			//Check token validity
 			const userData = await getUser();
