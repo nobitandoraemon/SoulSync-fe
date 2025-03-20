@@ -2,24 +2,27 @@ import { Outlet } from "react-router";
 import { Header, Footer } from "../../config/components";
 import { useUser } from "../../hooks/useUser";
 import { useEffect } from "react";
-import { checkValidity } from "../../lib/common";
+import { checkValidity, getTokenFromLocalStorage } from "../../lib/common";
 import { toast } from "react-toastify";
 const Layout = () => {
 	const { user } = useUser();
+	const token = getTokenFromLocalStorage();
 	useEffect(() => {
-		if (user) {
-			console.log("Get user data successfully");
-		} else {
-			console.log("Get user data failed");
-			const handleReload = async () => {
-				const res = await checkValidity();
-				if (!res) {
-					toast("Session expired. Please log in again", { type: "error" });
-					localStorage.removeItem("token");
-					localStorage.removeItem("username");
-				}
-			};
-			handleReload();
+		if (token) {
+			if (user) {
+				console.log("Get user data successfully");
+			} else {
+				console.log("Get user data failed");
+				const handleReload = async () => {
+					const res = await checkValidity();
+					if (!res) {
+						toast("Session expired. Please log in again", { type: "error" });
+						localStorage.removeItem("token");
+						localStorage.removeItem("username");
+					}
+				};
+				handleReload();
+			}
 		}
 	}, [user]);
 	return (

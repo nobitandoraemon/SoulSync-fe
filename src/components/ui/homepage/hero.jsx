@@ -1,23 +1,15 @@
 import { Link } from "react-router";
 import { getTokenFromLocalStorage } from "../../../lib/common";
+import image from "../../../image/app.png";
 
 const Hero = () => {
 	const token = getTokenFromLocalStorage();
 	return (
 		<div className="container mx-auto">
 			<div className="min-h-screen hero">
-				<div className="flex-col hero-content lg:flex-row-reverse">
-					<div className="w-4/5 border mockup-phone md:w-1/2 aspect-auto">
-						<div className="camera -top-[1px]"></div>
-						<div className="display">
-							<div className="phone-1">
-								<img
-									src="https://cf.ltkcdn.net/dating/images/orig/313360-2121x1414-man-giving-flowers-to-girlfriend.jpg"
-									alt="phone"
-									className="aspect-9/16 w-full object-cover object-center"
-								/>
-							</div>
-						</div>
+				<div className="flex-col justify-between hero-content lg:flex-row-reverse">
+					<div className="w-3/4">
+						<img src={image} alt="phone" className="w-full" />
 					</div>
 					<div className="flex flex-col items-center justify-center md:items-start">
 						<div className="mb-4 badge badge-accent">Brand new</div>

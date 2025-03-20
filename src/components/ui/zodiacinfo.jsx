@@ -133,15 +133,15 @@ const ZodiacInfo = ({ zodiac, user, toggleFinding }) => {
 			{user && <ChatHeader user={user} />}
 			<div
 				className="min-h-screen mt-16 hero"
-				style={{
-					backgroundImage:
-						"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-				}}
+				// style={{
+				// 	backgroundImage:
+				// 		"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+				// }}
 			>
 				<div className="hero-overlay bg-opacity-60"></div>
 				<div className="w-4/5 hero-content">
 					<div className="flex flex-col items-center">
-						<div className="w-full p-3 tabs tabs-boxed">
+						<div className="w-full p-3 tabs tabs-box">
 							{zodiac.tabs.map((tabs, index) => {
 								return <Tab key={index} tab={tabs} />;
 							})}

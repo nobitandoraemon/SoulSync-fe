@@ -12,9 +12,10 @@ export function useUser() {
 		async function getUserDetails() {
 			const token = getTokenFromLocalStorage(); // Lấy token từ localStorage
 			if (!token) {
-				navigate(APP_ROUTES.SIGN_IN);
+				// navigate(APP_ROUTES.SIGN_IN);
 				return;
-			} else {
+			}
+			if (user) {
 				toast("You are logged in", { type: "info" });
 				setTimeout(() => {
 					navigate(APP_ROUTES.MATCH);

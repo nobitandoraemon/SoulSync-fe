@@ -44,7 +44,7 @@ const Chat = ({ socket }) => {
 			console.log("ok");
 
 			socket.emit("ok", {});
-			// setOk(false);
+			setOk(false);
 		}
 	}, [ok]);
 
@@ -62,7 +62,7 @@ const Chat = ({ socket }) => {
 			console.log("refuse");
 
 			socket.emit("refuse", {});
-			// setIsRefuse(false);
+			setIsRefuse(false);
 		}
 	}, [isRefuse]);
 
