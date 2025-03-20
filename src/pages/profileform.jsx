@@ -288,6 +288,9 @@ const Address = ({ setStep, formData, setFormData  }) =>{
     setFormData({ ...formData, phoneNumber: e.target.value })
   }
 
+  const handleQuoteChange = (e) => {
+    setFormData({ ...formData, quote: e.target.value})
+  }
 
 
   return(
@@ -297,6 +300,10 @@ const Address = ({ setStep, formData, setFormData  }) =>{
       <div className="flex flex-col gap-2">
           <h2 className="text-sm">Mình nên gọi bạn là gì ? (Tuỳ chọn)</h2>
           <input type="text" placeholder="Nickname" className=" border px-4 py-2  rounded-full shadow-md bg-white w-full "  />
+      </div> 
+      <div className="flex flex-col gap-2">
+          <h2 className="text-sm">Câu nói yêu thích của bạn là gì?</h2>
+          <input type="text" placeholder="Quote" className=" border px-4 py-2  rounded-full shadow-md bg-white w-full " required value={formData.quote} onChange={handleQuoteChange} />
       </div> 
       <div className="flex flex-col gap-2">
           <h2 className="text-sm">Số điện thoại của bạn là gì ?</h2>
@@ -324,13 +331,27 @@ const BirthDate = ({setStep, formData, setFormData }) => {
     }
   }
 
+  const [userHobby, setUserHobby] = useState([])
+
+  const handleHobbyChange = (hobby) => {
+    let updatedHobby;
+    if (userHobby.includes(hobby)){
+      updatedHobby = userHobby.filter((h) => h !== hobby)
+    } else {
+      updatedHobby = [...userHobby, hobby]
+    }
+    setUserHobby(updatedHobby);
+    setFormData({ ...formData, hobby: updatedHobby})
+  }
+
   const handleBirthChange = (e) => {
     setFormData({...formData, birthday: e.target.value})
   }
 
-  const handleHobbyChange = (e) => {
-    setFormData({...formData, hobby: e.target.value})
+  const avatarLinkChange = (e) => {
+    setFormData({ ...formData,avatar: e.target.value })
   }
+
 
 	return (
 		<div>
@@ -339,7 +360,7 @@ const BirthDate = ({setStep, formData, setFormData }) => {
 			</h1>
 			<form className="flex flex-col gap-8 mt-10" onSubmit={submitBirthDate}>
 				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">What's your birth date ?</h2>
+					<h2 className="text-sm">Ngày sinh của bạn là gì? </h2>
 					<input
 						type="date"
 						name="date"
@@ -351,16 +372,102 @@ const BirthDate = ({setStep, formData, setFormData }) => {
 					/>
 				</div>
 				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">What's your hobby ? (Optional)</h2>
+					<h2 className="text-sm">Sở thích của bạn là gì?</h2>
+					<div className="flex gap-1 justify-center items-center flex-wrap">
+          <button
+              type="button"
+              className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+                userHobby.includes('Games') ? "bg-gray-300" : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHobbyChange('Games')}
+            >
+              🎮 Chơi Game
+            </button>
+            <button
+              type="button"
+              className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+                userHobby.includes('Reading') ? "bg-gray-300" : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHobbyChange('Reading')}
+            >
+              📚 Đọc Sách
+            </button>
+            <button
+              type="button"
+              className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+                userHobby.includes('Painting') ? "bg-gray-300" : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHobbyChange('Painting')}
+            >
+              🎨 Vẽ
+            </button>
+            <button
+              type="button"
+              className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+                userHobby.includes('Music') ? "bg-gray-300" : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHobbyChange('Music')}
+            >
+              🎵 Nghe Nhạc
+            </button>
+            <button
+              type="button"
+              className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+                userHobby.includes('Photos') ? "bg-gray-300" : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHobbyChange('Photos')}
+            >
+              📷 Chụp Ảnh
+            </button>
+            <button
+              type="button"
+              className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+                userHobby.includes('Cooking') ? "bg-gray-300" : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHobbyChange('Cooking')}
+            >
+              🍳 Nấu Ăn
+            </button>
+            <button
+              type="button"
+              className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+                userHobby.includes('Travel') ? "bg-gray-300" : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHobbyChange('Travel')}
+            >
+              ✈️ Du Lịch
+            </button>
+            <button
+              type="button"
+              className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+                userHobby.includes('Garden') ? "bg-gray-300" : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHobbyChange('Garden')}
+            >
+              🌱 Trồng Cây
+            </button>
+            <button
+              type="button"
+              className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+                userHobby.includes('Movies') ? "bg-gray-300" : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleHobbyChange('Movies')}
+            >
+              🎥 Xem Phim
+            </button>
+          </div>
+          <div className="flex flex-col gap-2 mt-8">
+					<h2 className="text-sm">Link avatar mà bạn muốn gán (Tuỳ Chọn) </h2>
 					<input
 						type="text"
-						name="hobby"
-						placeholder="Your Hobby"
+						name="avatar-link"
+						placeholder="Avatar Link"
 						className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
 						required
-						value={formData.hobby}
-						onChange={handleHobbyChange}
+						value={formData.avatar}
+						onChange={avatarLinkChange}
 					/>
+				</div>
 					<div className="flex justify-between">
 						<button
 							type="button"
@@ -545,6 +652,8 @@ const ProfileForm = () => {
 		fullname: "",
 		phoneNumber: "",
 		hobby: "",
+    avatar: "",
+    quote: "",
 	});
 
 	const renderStep = () => {
