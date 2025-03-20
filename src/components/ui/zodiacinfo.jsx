@@ -1,5 +1,5 @@
 import { zodiacInfo } from "../../lib/data";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
 import ChatHeader from "./chatpage/header";
@@ -101,12 +101,17 @@ const Tab = ({ tab }) => (
 		</div>
 	</>
 );
-const ZodiacInfo = ({ zodiac, user, setIsFinding }) => {
+const ZodiacInfo = ({ zodiac, user, toggleFinding }) => {
 	const [countdown, setCountdown] = useState(30);
 	const [isVisible, setIsVisible] = useState(false);
 
+	const navigate = useNavigate();
+
 	const handleMatching = () => {
-		setIsFinding(true);
+		toggleFinding();
+		setTimeout(() => {
+			navigate("/chat");
+		}, 2000);
 		// setCountdown(30);
 		// setIsVisible(true);
 	};

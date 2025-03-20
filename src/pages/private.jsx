@@ -44,6 +44,8 @@ const PrivateRoute = ({ socket }) => {
 	socket.auth = { username };
 	socket.connect();
 
+	const toggleFinding = () => setIsFinding((prev) => !prev);
+
 	//nhận thông tin về user B sẽ match -> chuyển đến waiting room
 	socket.on("wait", (data) => {
 		const { A, B } = data;
@@ -90,7 +92,7 @@ const PrivateRoute = ({ socket }) => {
 
 	return (
 		<Outlet
-			context={[
+			context={{
 				user,
 				chat,
 				setChat,
@@ -103,11 +105,11 @@ const PrivateRoute = ({ socket }) => {
 				failMessage,
 				setFailMessage,
 				isFinding,
-				setIsFinding,
+				toggleFinding,
 				isRefuse,
 				setIsRefuse,
 				sendMessage,
-			]}
+			}}
 		/>
 	);
 };

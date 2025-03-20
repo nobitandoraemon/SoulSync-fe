@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useOutletContext } from "react-router";
 
 const Chat = ({ socket }) => {
-	const [
+	const {
 		user,
 		chat,
 		setChat,
@@ -23,7 +23,7 @@ const Chat = ({ socket }) => {
 		isRefuse,
 		setIsRefuse,
 		sendMessage,
-	] = useOutletContext();
+	} = useOutletContext();
 
 	//Check người dùng có đang cuộn trang
 	const isScroll = useScroll();
@@ -42,7 +42,7 @@ const Chat = ({ socket }) => {
 			socket.emit("ok", {});
 			setOk(false);
 		}
-	}, [ok, setOk]);
+	}, [ok]);
 
 	useEffect(() => {
 		if (isFinding) {
@@ -51,7 +51,7 @@ const Chat = ({ socket }) => {
 			socket.emit("find", {});
 			setIsFinding(false);
 		}
-	}, [isFinding, setIsFinding]);
+	}, [isFinding]);
 
 	useEffect(() => {
 		if (isRefuse) {
@@ -60,7 +60,7 @@ const Chat = ({ socket }) => {
 			socket.emit("refuse", {});
 			setIsRefuse(false);
 		}
-	}, [isRefuse, setIsRefuse]);
+	}, [isRefuse]);
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {

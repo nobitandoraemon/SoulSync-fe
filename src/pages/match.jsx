@@ -4,7 +4,7 @@ import { zodiacInfo } from "../lib/data";
 import { useEffect } from "react";
 
 const MatchPage = () => {
-	const [user, setIsFinding] = useOutletContext();
+	const { user, isFinding, toggleFinding } = useOutletContext();
 	useEffect(() => {
 		if (user) {
 			console.log("Get user data successfully");
@@ -17,7 +17,7 @@ const MatchPage = () => {
 			<ZodiacInfo
 				zodiac={zodiacInfo[0]}
 				user={user}
-				setIsFinding={setIsFinding}
+				toggleFinding={toggleFinding}
 			/>
 		</>
 	);
