@@ -101,13 +101,14 @@ const Tab = ({ tab }) => (
 		</div>
 	</>
 );
-const ZodiacInfo = ({ zodiac, user, event, requestMatch }) => {
+const ZodiacInfo = ({ zodiac, user, setIsFinding }) => {
 	const [countdown, setCountdown] = useState(30);
 	const [isVisible, setIsVisible] = useState(false);
 
-	const startPopsUp = () => {
-		setCountdown(30);
-		setIsVisible(true);
+	const handleMatching = () => {
+		setIsFinding(true);
+		// setCountdown(30);
+		// setIsVisible(true);
 	};
 
 	useEffect(() => {
@@ -124,7 +125,7 @@ const ZodiacInfo = ({ zodiac, user, event, requestMatch }) => {
 				"flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
 			)}
 		>
-			{user && <ChatHeader user={user} isLoggin={true} />}
+			{user && <ChatHeader user={user} />}
 			<div
 				className="min-h-screen mt-16 hero"
 				style={{
@@ -140,7 +141,7 @@ const ZodiacInfo = ({ zodiac, user, event, requestMatch }) => {
 								return <Tab key={index} tab={tabs} />;
 							})}
 						</div>
-						<PopsUpButton event={event}>Start Matching</PopsUpButton>
+						<PopsUpButton event={handleMatching}>Start Matching</PopsUpButton>
 					</div>
 				</div>
 			</div>
