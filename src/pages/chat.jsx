@@ -109,6 +109,15 @@ const Chat = ({ socket }) => {
 		};
 	}, []);
 
+	useEffect(() => {
+		if (!matchedUser) {
+			console.log("There's still no user to match");
+		} else {
+			console.log("UserMatched", matchedUser);
+		}
+		return () => {};
+	}, [matchedUser]);
+
 	const startCountdown = () => {
 		const countdownInterval = setInterval(() => {
 			setCountdown((prevCountdown) => {
