@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import daisyui from "daisyui";
+// import daisyui from "daisyui";
 import scrollbarHide from "tailwind-scrollbar-hide";
 
 export default {
@@ -23,11 +23,11 @@ export default {
 	},
 	plugins: [
 		require("@tailwindcss/typography"),
-		daisyui,
+		// daisyui,
 		scrollbarHide,
 		require("tailwindcss-animated"),
 	],
-	daisyui: {
-		themes: ["valentine", "halloween"],
-	},
+	// daisyui: {
+	// 	themes: ["valentine", "halloween"],
+	// },
 };
