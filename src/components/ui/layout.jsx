@@ -2,6 +2,8 @@ import { Outlet } from "react-router";
 import { Header, Footer } from "../../config/components";
 import { useUser } from "../../hooks/useUser";
 import { useEffect } from "react";
+import { checkValidity } from "../../lib/common";
+import { toast } from "react-toastify";
 const Layout = () => {
 	const { user } = useUser();
 	useEffect(() => {
@@ -9,9 +11,15 @@ const Layout = () => {
 			console.log("Get user data successfully");
 		} else {
 			console.log("Get user data failed");
-			localStorage.removeItem("token");
-			localStorage.removeItem("username");
-			window.location.href = "/";
+			const handleReload = async () => {
+				const res = await checkValidity();
+				if (!res) {
+					toast("Session expired. Please log in again", { type: "error" });
+					localStorage.removeItem("token");
+					localStorage.removeItem("username");
+				}
+			};
+			handleReload();
 		}
 	}, [user]);
 	return (
