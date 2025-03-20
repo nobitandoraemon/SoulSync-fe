@@ -9,6 +9,9 @@ const Layout = () => {
 			console.log("Get user data successfully");
 		} else {
 			console.log("Get user data failed");
+			localStorage.removeItem("token");
+			localStorage.removeItem("username");
+			window.location.href = "/";
 		}
 	}, [user]);
 	return (
