@@ -14,6 +14,7 @@ const ChatContainer = ({
 	isMatched,
 	setIsMatched,
 	sendMessage,
+	user,
 }) => {
 	return (
 		<>
@@ -23,6 +24,7 @@ const ChatContainer = ({
 						chat={chat}
 						matchedUser={matchedUser}
 						sendMessage={sendMessage}
+						user={user}
 					/>
 				</>
 			)}

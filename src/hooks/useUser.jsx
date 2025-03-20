@@ -1,11 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-	getUser,
-	refreshToken,
-	getTokenFromLocalStorage,
-	checkValidity,
-	logOut,
-} from "../lib/common"; // Import refreshToken và getTokenFromLocalStorage
+import { getUser, getTokenFromLocalStorage } from "../lib/common"; // Import refreshToken và getTokenFromLocalStorage
 import { APP_ROUTES } from "../lib/constants";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
@@ -26,8 +20,7 @@ export function useUser() {
 			if (userData) {
 				setUser(userData);
 			} else {
-				toast("Token is not valid", { type: "warning" });
-				toast("Please login again", { type: "info" });
+				toast("Token is expired, please login again", { type: "warning" });
 
 				localStorage.removeItem("token");
 				localStorage.removeItem("username");

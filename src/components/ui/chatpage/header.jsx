@@ -226,25 +226,20 @@ const MainNav = ({ isLoggin }) => {
 	);
 };
 
-const ChatHeader = ({ user, isLoggin, content }) => {
+const ChatHeader = ({ user }) => {
 	return (
 		<div className="absolute flex flex-col items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[80px] shadow-lg bg-primary/10 backdrop-blur-lg">
 			<Toast />
 			<div className="flex flex-row items-center flex-1 float-left gap-4 mr-4">
 				<div className="avatar online">
 					<div className="w-12 rounded-full">
-						<img src={user.avatar} />
+						<img src="https://avatars.githubusercontent.com/u/84665790?v=4" />
 					</div>
 				</div>
 				<span className="overflow-hidden truncate text-ellipsis badge badge-lg ">
-					{user.name} {!user.main && `#${user.id}`}{" "}
+					{user.username}
 				</span>
 			</div>
-			{user.main ? (
-				<MainNav user={user} isLoggin={isLoggin} />
-			) : (
-				<SubNav isLoggin={isLoggin} content={content} />
-			)}
 		</div>
 	);
 };

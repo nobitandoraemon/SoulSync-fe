@@ -27,7 +27,7 @@ createRoot(document.getElementById("root")).render(
 						<Route path="/reg" element={<Reg />} />
 						<Route path="*" element={<NotFound />} />
 					</Route>
-					<Route element={<PrivateRoute />}>
+					<Route element={<PrivateRoute socket={socket} />}>
 						<Route path="/form" element={<FormPage />} />
 						<Route path="/match" element={<MatchPage />} />
 						<Route path="/chat" element={<Chat socket={socket} />} />

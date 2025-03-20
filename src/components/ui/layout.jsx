@@ -5,7 +5,11 @@ import { useEffect } from "react";
 const Layout = () => {
 	const { user } = useUser();
 	useEffect(() => {
-		console.log("Get user data successfully");
+		if (user) {
+			console.log("Get user data successfully");
+		} else {
+			console.log("Get user data failed");
+		}
 	}, [user]);
 	return (
 		<div className="min-h-screen overflow-x-hidden max-w-screen">
