@@ -13,5 +13,6 @@ export const APP_ROUTES = {
 	SIGN_UP: "/reg",
 	SIGN_IN: "/login",
 	CHAT: "/chat",
+	MATCH: "/match",
 	FORM: "/form",
 };
