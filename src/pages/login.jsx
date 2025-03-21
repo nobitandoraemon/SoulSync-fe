@@ -79,7 +79,7 @@ const Login = ({ user }) => {
 					<form className="card-body" onSubmit={handleSubmit}>
 						<div className="form-control">
 							<label className="label">
-								<span className="label-text">Tên đăng nhập</span>
+								<span className="label-text">Email</span>
 							</label>
 							<input
 								type="email"
@@ -110,13 +110,13 @@ const Login = ({ user }) => {
 								</label>
 								<label className="label">
 									<a href="#" className="label-text-alt link link-hover">
-										Forgot password?
+										Quên mật khẩu?
 									</a>
 								</label>
 							</div>
 						</div>
 						<div className="mt-6 form-control">
-							<button className="btn btn-primary">Login</button>
+							<button className="btn btn-primary">Đăng nhập</button>
 						</div>
 					</form>
 				</div>
