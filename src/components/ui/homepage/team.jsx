@@ -123,8 +123,8 @@ const Team = () => {
 				<span className="badge badge-accent">Team</span>
 			</div>
 
-			<h2 className="mb-8 text-lg font-semibold tracking-wide">
-				Meeting our team.
+			<h2 className="mb-8 text-4xl font-semibold tracking-wide">
+				Gặp gỡ các thành viên
 			</h2>
 
 			<div className="inline-flex w-[90%] overflow-hidden flex-nowrap [mask-image:_linear-gradient(to_right,transparent_0,_black_100px,_black_calc(100%-100px),transparent_100%)] mb-8">
