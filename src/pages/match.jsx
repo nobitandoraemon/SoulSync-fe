@@ -106,6 +106,7 @@ const MatchPage = () => {
         console.log(response);
         localStorage.setItem("matchedUser", response.data.matchedUser.match);
         setMatchedUser(response.data.matchedUser.match);
+        console.log(matchedUser);
       }
     } catch (err) {
       setLoading(false);
@@ -121,7 +122,7 @@ const MatchPage = () => {
     return (
       <>
         <ZodiacInfo
-          zodiac={zodiacInfo[0]}
+          zodiac={zodiacInfo[testuser.zodiac - 1]}
           user={testuser}
           event={requestMatch}
         />

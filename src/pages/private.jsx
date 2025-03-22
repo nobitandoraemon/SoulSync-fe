@@ -11,7 +11,7 @@ const testuser = {
   job: "Website Developer",
   location: "Hà Nội, VN",
   id: "1020",
-  zodiac: <TbZodiacLibra />,
+  zodiac: 4,
   age: 25,
   avatar:
     "https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN",
@@ -36,6 +36,10 @@ const PrivateRoute = () => {
   const username = localStorage.getItem("username");
   const [matchedUser, setMatchedUser] = useState(null);
   const [user, setUser] = useState(null);
+  useEffect(() => {
+    console.log("Matched User Changed");
+    console.log(matchedUser);
+  }, [matchedUser]);
 
   // useEffect(() => {
   // 	if (!token) {
@@ -62,7 +66,7 @@ const PrivateRoute = () => {
         console.log(err);
       }
     };
-    getUser();
+    if (!user) getUser();
     console.log(user);
   });
 

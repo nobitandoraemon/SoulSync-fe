@@ -17,7 +17,7 @@ import {
   Toast,
   ChatHeader,
 } from "../config/components";
-import logo from "../image/12_zodiac.svg";
+import logo from "../assets/12_zodiac.svg";
 
 import { io } from "socket.io-client";
 import axios from "axios";
@@ -161,7 +161,12 @@ const Chat = ({ socket }) => {
 
     return () => newSocket.close();
   }, [username, ok]);
-
+  ///CHeck
+  useEffect(() => {
+    console.log("Matched User Changed");
+    console.log(matchedUser);
+  }, [matchedUser]);
+  ////
   return !isLoading ? (
     <div className="flex w-screen max-w-full min-h-screen">
       {isActive === 1 && (

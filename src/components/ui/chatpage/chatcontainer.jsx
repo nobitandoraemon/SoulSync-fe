@@ -10,22 +10,23 @@ const ChatContainer = ({
   toggleActive,
   isScroll,
   user,
+  matchedUser,
   requestMatch,
   chat,
   ok,
   setOk,
 }) => {
-  const [matchedUser] = useOutletContext();
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/match");
   };
   useEffect(() => {
     if (!matchedUser) handleNavigate();
-  }, [matchedUser, navigate]);
+  });
 
   if (!matchedUser) return null;
-  else
+  else {
+    console.log(matchedUser);
     return (
       <>
         {
@@ -51,6 +52,7 @@ const ChatContainer = ({
         }
       </>
     );
+  }
 };
 
 export default ChatContainer;
