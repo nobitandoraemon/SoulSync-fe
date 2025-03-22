@@ -41,7 +41,7 @@ const MatchPage = () => {
 		<div className="flex items-center justify-center w-screen h-screen ">
 			<Toast />
 			<span className="text-2xl animate-pulse">
-				We&apos;re analyzing your zodiac ...
+				Phân tích cung hoàng đạo ...
 			</span>
 			<span className="ml-8 loading loading-spinner text-info"></span>
 		</div>

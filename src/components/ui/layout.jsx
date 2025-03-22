@@ -16,7 +16,7 @@ const Layout = () => {
 				const handleReload = async () => {
 					const res = await checkValidity();
 					if (!res) {
-						toast("Session expired. Please log in again", { type: "error" });
+						toast("Hết thời gian chờ phiên. Vui lòng đăng nhập lại", { type: "error" });
 						localStorage.removeItem("token");
 						localStorage.removeItem("username");
 					}

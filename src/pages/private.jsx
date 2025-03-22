@@ -12,7 +12,7 @@ const PrivateRoute = () => {
 
 	useEffect(() => {
 		if (!token) {
-			toast("You are not logged in", { type: "warning" });
+			toast("Bạn chưa đăng nhập", { type: "warning" });
 			setTimeout(() => {
 				navigate(APP_ROUTES.SIGN_IN);
 			}, 1500);

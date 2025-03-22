@@ -15,22 +15,20 @@ const Features = () => {
 					<div className="flex flex-col items-center max-w-lg">
 						<div className="mb-4 badge badge-secondary top-6">Features</div>
 						<h1 className="mb-12 text-5xl font-bold">
-							Syncing your
-							<span className="text-accent"> Destiny</span>
+							Ghép đôi
+							<span className="text-accent"> Thông minh</span>
 						</h1>
 						<p className="mb-12">
-							Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-							excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-							et a id nisi.
+						Hệ thống ghép đôi thông minh của chúng tôi không chỉ đơn thuần là một thuật toán ngẫu nhiên mà là sự kết hợp tinh tế giữa các yếu tố quan trọng như cung hoàng đạo, vị trí địa lý và thần số học, giúp tạo ra những kết nối ý nghĩa và bền vững dựa trên sự tương thích sâu sắc giữa hai người. Bạn sẽ được trải nghiệm các tính năng hiện đại và tân tiến!
 						</p>
 						<div className="text-center shadow-sm stats glass bg-base-100 stats-vertical md:stats-horizontal">
 							<div className="stat place-items-center">
 								<div className="mb-4 stat-title btn btn-primary btn-outline">
 									<SiWechat size={24} />
 								</div>
-								<div className="mb-4 stat-value text-primary">Chatting</div>
+								<div className="mb-4 stat-value text-primary">Nhắn tin</div>
 								<div className="mb-4 stat-desc text-primary">
-									Chat with your Destiny
+									Tin nhắn hẹn hò thời gian thực
 								</div>
 							</div>
 
@@ -38,9 +36,9 @@ const Features = () => {
 								<div className="mb-4 stat-title btn btn-secondary btn-outline">
 									<SiSuperuser size={24} />
 								</div>
-								<div className="mb-4 stat-value text-secondary">Anonymous</div>
+								<div className="mb-4 stat-value text-secondary">Cung hoàng đạo</div>
 								<div className="mb-4 stat-desc text-secondary">
-									Completely hide your information Until
+									Hiểu rõ hơn về nội tại của bản thân
 								</div>
 							</div>
 
@@ -48,9 +46,9 @@ const Features = () => {
 								<div className="mb-4 stat-title text-accent btn btn-accent btn-outline">
 									<SiAstro size={24} />
 								</div>
-								<div className="mb-4 stat-value text-accent">Zodiac</div>
+								<div className="mb-4 stat-value text-accent">Ẩn danh</div>
 								<div className="mb-4 stat-desc text-accent">
-									Knowing more about your internal self
+									Hoàn toàn ẩn danh đến khi bạn muốn
 								</div>
 							</div>
 						</div>

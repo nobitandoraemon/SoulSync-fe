@@ -24,12 +24,12 @@ const UserProfile = ({ user, handleLogOut }) => {
 			>
 				<li>
 					<Link to="/form" className="justify-between">
-						Settings
+						Chỉnh sửa hồ sơ
 						<span className="badge">New</span>
 					</Link>
 				</li>
 				<li onClick={handleLogOut}>
-					<Link to="/">Logout</Link>
+					<Link to="/">Đăng xuất</Link>
 				</li>
 			</ul>
 		</div>
@@ -84,7 +84,7 @@ const Header = () => {
 							className="z-50 p-2 mt-3 shadow-sm dropdown-content menu menu-sm top-5 bg-accent text-accent-content text-pretty rounded-box w-52"
 						>
 							<li>
-								<Link to="/">Homepage</Link>
+								<Link to="/">Trang chủ</Link>
 							</li>
 							<li>
 								<Link to="/form">Form</Link>
@@ -96,10 +96,10 @@ const Header = () => {
 							) : (
 								<>
 									<li>
-										<Link to="/login">Login</Link>
+										<Link to="/login">Đăng nhập</Link>
 									</li>
 									<li>
-										<Link to="/reg">Register</Link>
+										<Link to="/reg">Đăng kí</Link>
 									</li>
 								</>
 							)}
