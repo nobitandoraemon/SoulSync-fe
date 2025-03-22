@@ -7,22 +7,7 @@ import Toast from "../hooks/useToast";
 
 const FormPage = () => {
 	const navigate = useNavigate();
-	const { user } = useOutletContext();
-	useEffect(() => {
-		if (user) {
-			if (user.gender) {
-				toast("You already have a profile", { type: "warning" });
-				setTimeout(() => {
-					navigate(APP_ROUTES.MATCH);
-				}, 3000);
-			} else {
-				toast("You need to have information", {
-					type: "warning",
-					autoClose: true,
-				});
-			}
-		}
-	}, [user]);
+	
 	return (
 		<div className="max-w-(--breakpoint-lg) p-4 mx-auto">
 			<Toast />
