@@ -11,7 +11,7 @@ const testuser = {
   job: "Website Developer",
   location: "Hà Nội, VN",
   id: "1020",
-  zodiac: 4,
+  zodiac: 2,
   age: 25,
   avatar:
     "https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN",
