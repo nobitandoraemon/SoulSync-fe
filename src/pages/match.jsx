@@ -66,6 +66,7 @@ import { useEffect, useState } from "react";
 import Toast from "../hooks/useToast";
 import { useNavigate } from "react-router";
 import { APP_ROUTES } from "../lib/constants";
+import { toast } from "react-toastify";
 
 const MatchPage = () => {
 	const { user, isFinding, toggleFinding } = useOutletContext();
@@ -85,7 +86,12 @@ const MatchPage = () => {
 		if (user) {
 			console.log("Get user data successfully");
 			if (!user.gender) {
-				navigate(APP_ROUTES.FORM);
+				toast("Bạn thiếu thông tin để có thể phân tích dữ liệu ...", {
+					type: "warning",
+				});
+				setTimeout(() => {
+					navigate(APP_ROUTES.FORM);
+				}, 2000);
 			}
 		} else {
 			console.log("Get user data failed");
@@ -129,13 +135,13 @@ const MatchPage = () => {
 				</svg>
 			</button>
 			<ZodiacInfo
-				zodiac={zodiacInfo[0]}
+				zodiac={zodiacInfo[user.zodiac - 1]}
 				user={user}
-				toggleFinding={toggleFinding}
+				// toggleFinding={toggleFinding}
 			/>
 		</div>
 	);
-// >>>>>>> main
+	// >>>>>>> main
 };
 
 // const LoadingPopup = () => {

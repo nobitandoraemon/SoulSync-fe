@@ -123,22 +123,18 @@ const PrivateRoute = ({ socket }) => {
 
 	//nhận thông tin về user B sẽ match -> chuyển đến waiting room
 	socket.on("wait", (data) => {
-		if (data) {
-			const { A, B } = data;
-			if (A.username == username) {
-				setMatchedUser(B);
-			} else {
-				setMatchedUser(A);
-			}
-			console.log(matchedUser);
+		const { A, B } = data;
+		if (A.username == username) {
+			setMatchedUser(B);
+		} else {
+			setMatchedUser(A);
 		}
+		console.log(matchedUser);
 	});
 
 	// server gửi về match -> cả 2 đã accept -> cho Chat
 	socket.on("match", (data) => {
-		if (data) {
-			setIsMatched(true);
-		}
+		setIsMatched(true);
 	});
 
 	socket.on("fail", (data) => {
@@ -192,7 +188,7 @@ const PrivateRoute = ({ socket }) => {
 			}}
 		/>
 	);
-// >>>>>>> main
+	// >>>>>>> main
 };
 
 export default PrivateRoute;

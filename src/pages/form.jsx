@@ -15,11 +15,6 @@ const FormPage = () => {
 				setTimeout(() => {
 					navigate(APP_ROUTES.MATCH);
 				}, 3000);
-			} else {
-				toast("You need to have information", {
-					type: "warning",
-					autoClose: 3000,
-				});
 			}
 		}
 	}, [user]);

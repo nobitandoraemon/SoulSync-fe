@@ -107,86 +107,86 @@ const Tab = ({ tab }) => (
 );
 // <<<<<<< origin/long
 const ZodiacInfo = ({ zodiac, user, event }) => {
-  return (
-    <div
-      className={cn(
-        "flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
-      )}
-    >
-      <ChatHeader user={user} isLoggin={true} />
-      <div
-        className="min-h-screen mt-16 hero"
-        style={{
-          backgroundImage:
-            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="w-4/5 hero-content">
-          <div className="flex flex-col items-center">
-            <div className="w-full p-3 tabs tabs-boxed">
-              {zodiac.tabs.map((tabs, index) => {
-                return <Tab key={index} tab={tabs} />;
-              })}
-            </div>
-            <PopsUpButton event={event}>Start Matching</PopsUpButton>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-// =======
-// const ZodiacInfo = ({ zodiac, user, toggleFinding }) => {
-// 	const [countdown, setCountdown] = useState(30);
-// 	const [isVisible, setIsVisible] = useState(false);
+	return (
+		<div
+			className={cn(
+				"flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
+			)}
+		>
+			<ChatHeader user={user} isLoggin={true} />
+			<div
+				className="min-h-screen bg-base-100 mt-16 hero"
+				style={{
+					backgroundImage:
+						"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+				}}
+			>
+				<div className="hero-overlay bg-opacity-60"></div>
+				<div className="w-4/5 hero-content bg-base-200 rounded-xl bg-opacity-60">
+					<div className="flex flex-col items-center">
+						<div className="w-full p-3 tabs tabs-boxed">
+							{zodiac.tabs.map((tabs, index) => {
+								return <Tab key={index} tab={tabs} />;
+							})}
+						</div>
+						{/* <PopsUpButton event={event}>Start Matching</PopsUpButton> */}
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+	// =======
+	// const ZodiacInfo = ({ zodiac, user, toggleFinding }) => {
+	// 	const [countdown, setCountdown] = useState(30);
+	// 	const [isVisible, setIsVisible] = useState(false);
 
-// 	const navigate = useNavigate();
+	// 	const navigate = useNavigate();
 
-// 	const handleMatching = () => {
-// 		toggleFinding();
-// 		setTimeout(() => {
-// 			navigate("/chat");
-// 		}, 2000);
-// 		// setCountdown(30);
-// 		// setIsVisible(true);
-// 	};
+	// 	const handleMatching = () => {
+	// 		toggleFinding();
+	// 		setTimeout(() => {
+	// 			navigate("/chat");
+	// 		}, 2000);
+	// 		// setCountdown(30);
+	// 		// setIsVisible(true);
+	// 	};
 
-// 	useEffect(() => {
-// 		if (user) {
-// 			console.log("Get user data successfully");
-// 		} else {
-// 			console.log("Get user data failed");
-// 		}
-// 	}, [user]);
+	// 	useEffect(() => {
+	// 		if (user) {
+	// 			console.log("Get user data successfully");
+	// 		} else {
+	// 			console.log("Get user data failed");
+	// 		}
+	// 	}, [user]);
 
-// 	return (
-// 		// <div
-// 		// 	className={cn(
-// 		// 		"flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
-// 		// 	)}
-// 		// >
-// 		<div
-// 			className="bg-center bg-cover top hero"
-// 			style={{
-// 				backgroundImage:
-// 					"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-// 			}}
-// 		>
-// 			<div className="hero-overlay bg-opacity-30"></div>
-// 			<div className="w-4/5 hero-content">
-// 				<div className="flex flex-col items-center">
-// 					<div className="w-full p-3 tabs tabs-box">
-// 						{zodiac.tabs.map((tabs, index) => {
-// 							return <Tab key={index} tab={tabs} />;
-// 						})}
-// 					</div>
-// 					{/* <PopsUpButton event={handleMatching}>Start Matching</PopsUpButton> */}
-// 				</div>
-// 			</div>
-// 		</div>
-// 		// </div>
-// 	);
-// >>>>>>> main
+	// 	return (
+	// 		// <div
+	// 		// 	className={cn(
+	// 		// 		"flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
+	// 		// 	)}
+	// 		// >
+	// 		<div
+	// 			className="bg-center bg-cover top hero"
+	// 			style={{
+	// 				backgroundImage:
+	// 					"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+	// 			}}
+	// 		>
+	// 			<div className="hero-overlay bg-opacity-30"></div>
+	// 			<div className="w-4/5 hero-content">
+	// 				<div className="flex flex-col items-center">
+	// 					<div className="w-full p-3 tabs tabs-box">
+	// 						{zodiac.tabs.map((tabs, index) => {
+	// 							return <Tab key={index} tab={tabs} />;
+	// 						})}
+	// 					</div>
+	// 					{/* <PopsUpButton event={handleMatching}>Start Matching</PopsUpButton> */}
+	// 				</div>
+	// 			</div>
+	// 		</div>
+	// 		// </div>
+	// 	);
+	// >>>>>>> main
 };
 
 export default ZodiacInfo;
