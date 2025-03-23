@@ -9,7 +9,7 @@ const Hero = () => {
 			<div className="min-h-screen hero">
 				<div className="flex justify-between items-center w-full">
 					<div className="flex flex-col gap-6 w-[60%]"> {/* description */}
-					  <div className="badge badge-accent ml-60  ">Brand new</div>
+					  <div className="badge badge-accent ml-60 min-w-24   ">Brand new</div>
 					  <div className="flex flex-col gap-2 ">
 						<h1 className=" text-5xl font-bold md:text-6xl text-wrap text-[#f317fd]">Tình Yêu Đích Thực</h1>
 						<h1 className="text-primary text-5xl font-bold md:text-6xl ! ">Chỉ Cần Một Cú Click!</h1>
