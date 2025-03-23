@@ -10,7 +10,7 @@ import {
 
 function App() {
 	return (
-		<>
+		<div className="bg-pink-100">
 			<Toast />
 			<Hero />
 			<Features />
@@ -18,7 +18,7 @@ function App() {
 			<Team />
 			<FAQ />
 			<Contact />
-		</>
+		</div>
 	);
 }
 

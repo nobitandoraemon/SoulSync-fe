@@ -21,10 +21,8 @@ const UserUpdate = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const token = localStorage.getItem("token"); // If authentication is required
-
       const response = await axios.put(
         "https://soulsync-api.onrender.com/users/1020phug",
         formData,

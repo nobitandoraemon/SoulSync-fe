@@ -86,6 +86,9 @@ const Header = () => {
 							<li>
 								<Link to="/">Trang chủ</Link>
 							</li>
+							{/* <li>
+								<Link to="/form">Form</Link>
+							</li> */}
 							{token ? (
 								<li>
 									<Link to="/match">Match</Link>
