@@ -115,7 +115,7 @@ const ZodiacSigns = [
 
 // 13
 { 
-  name: "Thiên Bình", gender: "Female", symbol: "♎", dates: "23/10 – 22/11", element: "Khí", 
+  name: "Thiên Bình", gender: "Female", symbol: "♎", dates: "23/9 – 22/10", element: "Khí", 
   personality: ["Duyên dáng", "Thanh lịch", "Công bằng", "Hòa nhã"], 
   description: "Thú vị là hai từ diễn tả đúng nhất nét tính cách của cô nàng Thiên Bình trong tính cách 12 cung hoàng đạo. Họ biết cách ứng xử khéo léo trong giao tiếp nên dễ dàng lọt vào “mắt xanh” của nhiều anh chàng xung quanh. Tuy nhiên, Thiên Bình nữ rất kén chọn khi yêu bởi họ không muốn chịu sự tổn thương." 
 },
@@ -463,7 +463,7 @@ const BirthDate = ({setStep, formData, setFormData }) => {
 						name="avatar-link"
 						placeholder="Avatar Link"
 						className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
-						required
+						
 						value={formData.avatar}
 						onChange={avatarLinkChange}
 					/>
@@ -498,59 +498,59 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 	let i = 0;
 	if (formData.gender === "Male") {
 		if (Indicator >= 4.2 && Indicator <= 5.2) {
-			i = 1;
+			i = 2;
 		} else if (Indicator >= 5.21 && Indicator <= 6.2) {
-			i = 3;
+			i = 4;
 		} else if (Indicator >= 6.21 && Indicator <= 7.22) {
-			i = 5;
+			i = 6;
 		} else if (Indicator >= 7.23 && Indicator <= 8.22) {
-			i = 7;
+			i = 8;
 		} else if (Indicator >= 8.23 && Indicator <= 9.22) {
-			i = 9;
+			i = 10;
 		} else if (Indicator >= 9.23 && Indicator <= 10.22) {
-			i = 11;
+			i = 12;
 		} else if (Indicator >= 10.23 && Indicator <= 11.21) {
-			i = 13;
+			i = 14;
 		} else if (Indicator >= 11.22 && Indicator <= 12.21) {
-			i = 15;
+			i = 16;
 		} else if (
 			(Indicator >= 12.22 && Indicator <= 12.31) ||
 			(Indicator >= 1.01 && Indicator <= 1.19)
 		) {
-			i = 17;
+			i = 18;
 		} else if (Indicator >= 1.2 && Indicator <= 2.18) {
-			i = 19;
+			i = 20;
 		} else if (Indicator >= 2.19 && Indicator <= 3.2) {
-			i = 21;
+			i = 22;
 		}
 	} else if (formData.gender === "Female") {
 		if (Indicator >= 3.21 && Indicator <= 4.19) {
-			i = 2;
+			i = 1;
 		} else if (Indicator >= 4.2 && Indicator <= 5.2) {
-			i = 4;
+			i = 3;
 		} else if (Indicator >= 5.21 && Indicator <= 6.2) {
-			i = 6;
+			i = 5;
 		} else if (Indicator >= 6.21 && Indicator <= 7.22) {
-			i = 8;
+			i = 7;
 		} else if (Indicator >= 7.23 && Indicator <= 8.22) {
-			i = 10;
+			i = 9;
 		} else if (Indicator >= 8.23 && Indicator <= 9.22) {
-			i = 12;
+			i = 11;
 		} else if (Indicator >= 9.23 && Indicator <= 10.22) {
-			i = 14;
+			i = 13;
 		} else if (Indicator >= 10.23 && Indicator <= 11.21) {
-			i = 16;
+			i = 15;
 		} else if (Indicator >= 11.22 && Indicator <= 12.21) {
-			i = 18;
+			i = 17;
 		} else if (
 			(Indicator >= 12.22 && Indicator <= 12.31) ||
 			(Indicator >= 1.01 && Indicator <= 1.19)
 		) {
-			i = 20;
+			i = 19;
 		} else if (Indicator >= 1.2 && Indicator <= 2.18) {
-			i = 22;
+			i = 21;
 		} else if (Indicator >= 2.19 && Indicator <= 3.2) {
-			i = 24;
+			i = 23;
 		}
 	}
 	const handleSubmit = async (e) => {
@@ -579,7 +579,8 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 		}
 		setStep(5);
 	};
-
+  console.log(Indicator)
+  console.log(`i is ${i}`)
   return(
   <div>
     <div className='flex flex-col items-center text-center mt-5'>
