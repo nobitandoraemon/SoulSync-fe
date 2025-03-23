@@ -11,13 +11,11 @@ const Contact = () => {
 		>
 			<div className="hero-overlay bg-opacity-60"></div>
 
-			<div className="flex-col max-w-screen-lg mx-auto hero-content lg:flex-row-reverse">
+			<div className="flex-col max-w-(--breakpoint-lg) mx-auto hero-content lg:flex-row-reverse">
 				<div className="font-extrabold text-center text-accent lg:text-right">
-					<h1 className="text-5xl">Contact Us</h1>
+					<h1 className="text-5xl">Liên hệ và Trợ giúp</h1>
 					<p className="py-6">
-						Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-						excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-						a id nisi.
+					Hãy để lại thông tin và tin nhắn của bạn, đội ngũ của chúng tôi sẽ xem xét và phản hồi trong thời gian sớm nhất. Chúng tôi luôn sẵn sàng lắng nghe ý kiến của bạn để cải thiện dịch vụ và mang đến trải nghiệm tốt hơn.
 					</p>
 				</div>
 				<div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
@@ -43,7 +41,7 @@ const Contact = () => {
 							>
 								<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
 							</svg>
-							<input type="text" className="grow" placeholder="Name" />
+							<input type="text" className="grow" placeholder="Tên" />
 						</label>
 						<label className="flex items-center gap-2 mb-2 input input-bordered">
 							<svg
@@ -55,16 +53,16 @@ const Contact = () => {
 								<path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
 							</svg>
 
-							<input type="text" className="grow" placeholder="Your message" />
+							<input type="text" className="grow" placeholder="Lời nhắn của bạn" />
 						</label>
 						<motion.button
-							className="mt-4 rounded btn btn-neutral"
+							className="mt-4 rounded-sm btn btn-neutral"
 							whileHover={{
 								scale: 1.1,
 							}}
 							transition={{ visualDuration: 0.15 }}
 						>
-							Send
+							Gửi
 						</motion.button>
 					</form>
 				</div>

@@ -31,7 +31,7 @@ const Login = ({ user }) => {
 				localStorage.setItem("username", input.username);
 			}
 			setTimeout(() => {
-				navigate(APP_ROUTES.FORM);
+				navigate(APP_ROUTES.MATCH);
 			}, 3000);
 		} catch (err) {
 			console.log(err);
@@ -79,7 +79,7 @@ const Login = ({ user }) => {
 					<form className="card-body" onSubmit={handleSubmit}>
 						<div className="form-control">
 							<label className="label">
-								<span className="label-text">Tên đăng nhập</span>
+								<span className="label-text">Email</span>
 							</label>
 							<input
 								type="email"
@@ -102,20 +102,21 @@ const Login = ({ user }) => {
 								onChange={handleInput}
 								required
 							/>
-
-							<label className="label animate-pulse hover:text-primary">
-								<Link to="/reg" className="label-text-alt link link-hover">
-									Chưa có tài khoản? Đăng ký ngay nào
-								</Link>
-							</label>
-							<label className="label">
-								<a href="#" className="label-text-alt link link-hover">
-									Forgot password?
-								</a>
-							</label>
+							<div className="flex flex-col mt-6 space-y-2">
+								<label className="label animate-pulse hover:text-primary">
+									<Link to="/reg" className="label-text-alt link link-hover">
+										Chưa có tài khoản? Đăng ký ngay nào
+									</Link>
+								</label>
+								<label className="label">
+									<a href="#" className="label-text-alt link link-hover">
+										Quên mật khẩu?
+									</a>
+								</label>
+							</div>
 						</div>
 						<div className="mt-6 form-control">
-							<button className="btn btn-primary">Login</button>
+							<button className="btn btn-primary">Đăng nhập</button>
 						</div>
 					</form>
 				</div>

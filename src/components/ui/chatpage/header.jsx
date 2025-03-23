@@ -1,8 +1,8 @@
-import { Link } from "react-router";
-import { Toast, Profile } from "../../../config/components";
+import { Link, useNavigate } from "react-router";
+import { Toast } from "../../../config/components";
 import { useState } from "react";
-import { logOut } from "../../../lib/common";
-const MyInformationSideBar = ({ myInfo, clickable, setClickable }) => {
+import { APP_ROUTES } from "../../../lib/constants";
+const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 	return (
 		<div className="drawer drawer-end">
 			<input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -46,8 +46,8 @@ const MyInformationSideBar = ({ myInfo, clickable, setClickable }) => {
 				></label>
 				<div className="grid grid-cols-1 menu bg-base-200 text-base-content h-screen max-w-[90vw] p-4 overflow-auto">
 					{/* Sidebar content here */}
-					<div className="m-2 shadow-sm card bg-primary w-96">
-						<div className="card-body">{myInfo}</div>
+					<div className="m-2 shadow-xs card bg-primary w-96">
+						<div className="card-body">{user.username}</div>
 					</div>
 					{/* Sidebar content end here */}
 				</div>
@@ -55,7 +55,7 @@ const MyInformationSideBar = ({ myInfo, clickable, setClickable }) => {
 		</div>
 	);
 };
-const OtherInformationSideBar = ({ otherInfo, clickable, setClickable }) => {
+const OtherInformationSideBar = ({ matchedUser, clickable, setClickable }) => {
 	return (
 		<div className="drawer">
 			<input id="other-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -94,8 +94,8 @@ const OtherInformationSideBar = ({ otherInfo, clickable, setClickable }) => {
 				></label>
 				<div className="grid grid-cols-1 menu bg-base-200 text-base-content h-screen max-w-[90vw] p-4 overflow-auto">
 					{/* Sidebar content here */}
-					<div className="m-2 shadow-sm card bg-primary w-96">
-						<div className="card-body">{otherInfo}</div>
+					<div className="m-2 shadow-xs card bg-primary w-96">
+						<div className="card-body">{matchedUser.username}</div>
 					</div>
 					{/* Sidebar content end here */}
 				</div>
@@ -104,14 +104,11 @@ const OtherInformationSideBar = ({ otherInfo, clickable, setClickable }) => {
 	);
 };
 
-const SubNav = ({ isLoggin, content }) => {
+const SubNav = ({ matchedUser }) => {
 	const [clickable, setClickable] = useState(true);
-	const handleLeaveChat = () => {
-		logOut();
-	};
 	return (
 		<ul className="menu md:bg-base-200 menu-horizontal rounded-box place-content-center">
-			<li className="bg-base-200 rounded-l-3xl">
+			{/* <li className="bg-base-200 rounded-l-3xl">
 				<Link to="/">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -129,10 +126,10 @@ const SubNav = ({ isLoggin, content }) => {
 					</svg>
 					<span className="hidden md:block">Trang chủ</span>
 				</Link>
-			</li>
-			<li className="bg-base-200" onClick={handleLeaveChat}>
+			</li> */}
+			<li className="bg-base-200" onClick={useNavigate(APP_ROUTES.HOME)}>
 				<a
-					// href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
+					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
 					target="_blank"
 				>
 					<svg
@@ -170,7 +167,7 @@ const SubNav = ({ isLoggin, content }) => {
 			<li className="bg-base-200">
 				<a>
 					<span className="hidden md:block">Trạng thái</span>
-					{isLoggin ? (
+					{matchedUser ? (
 						<span className="badge badge-xs badge-success"></span>
 					) : (
 						<span className="badge badge-xs badge-warning"></span>
@@ -179,14 +176,14 @@ const SubNav = ({ isLoggin, content }) => {
 			</li>
 			<li className="bg-base-200">
 				<OtherInformationSideBar
-					otherInfo={content.other}
+					// otherInfo={content.other}
 					clickable={clickable}
 					setClickable={setClickable}
 				/>
 			</li>
 			<li className="bg-base-200 rounded-r-3xl">
 				<MyInformationSideBar
-					myInfo={content.mine}
+					// myInfo={content.mine}
 					clickable={clickable}
 					setClickable={setClickable}
 				/>
@@ -195,17 +192,29 @@ const SubNav = ({ isLoggin, content }) => {
 	);
 };
 
-const MainNav = ({ isLoggin }) => {
-	const handleLogOut = () => {
-		logOut();
+const ChatHeader = ({ user, matchedUser, toggleFinding }) => {
+	const navigate = useNavigate();
+	const handleOut = () => {
+		navigate(APP_ROUTES.HOME);
 	};
 	return (
-		<div className="dropdown dropdown-end">
+		<div className="fixed flex items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[60px] shadow-lg bg-primary/10 backdrop-blur-lg z-50">
+			<Toast />
+			<div className="flex flex-row items-center flex-1 float-left gap-4 mr-4">
+				<div className="hidden avatar online md:block">
+					<div className="w-12 rounded-full">
+						<img src={user.image} />
+					</div>
+				</div>
+				<span className="hidden overflow-hidden truncate md:block text-ellipsis badge badge-lg ">
+					{user.username}
+				</span>
+			</div>
+
 			<div
-				tabIndex={0}
 				role="button"
-				className="btn btn-ghost btn-circle avatar"
-				onClick={handleLogOut}
+				className="btn btn-ghost btn-circle"
+				onClick={handleOut}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -222,29 +231,6 @@ const MainNav = ({ isLoggin }) => {
 					/>
 				</svg>
 			</div>
-		</div>
-	);
-};
-
-const ChatHeader = ({ user, isLoggin, content }) => {
-	return (
-		<div className="absolute flex flex-col items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[80px] shadow-lg bg-primary/10 backdrop-blur-lg">
-			<Toast />
-			<div className="flex flex-row items-center flex-1 float-left gap-4 mr-4">
-				<div className="avatar online">
-					<div className="w-12 rounded-full">
-						<img src={user.avatar} />
-					</div>
-				</div>
-				<span className="overflow-hidden truncate text-ellipsis badge badge-lg ">
-					{user.name} {!user.main && `#${user.id}`}{" "}
-				</span>
-			</div>
-			{user.main ? (
-				<MainNav user={user} isLoggin={isLoggin} />
-			) : (
-				<SubNav isLoggin={isLoggin} content={content} />
-			)}
 		</div>
 	);
 };

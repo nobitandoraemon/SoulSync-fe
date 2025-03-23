@@ -20,16 +20,16 @@ const UserProfile = ({ user, handleLogOut }) => {
 			</div>
 			<ul
 				tabIndex={0}
-				className="menu menu-sm bg-accent text-accent-content text-pretty dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
+				className="menu menu-sm bg-accent text-accent-content text-pretty dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow-sm"
 			>
 				<li>
 					<Link to="/form" className="justify-between">
-						Settings
+						Chỉnh sửa hồ sơ
 						<span className="badge">New</span>
 					</Link>
 				</li>
 				<li onClick={handleLogOut}>
-					<Link to="/">Logout</Link>
+					<Link to="/">Đăng xuất</Link>
 				</li>
 			</ul>
 		</div>
@@ -48,7 +48,7 @@ const Header = () => {
 	return (
 		<div
 			className={cn(
-				isScroll && "fixed left-0 right-0 top-0 z-50 shadow-sm backdrop-blur-sm"
+				isScroll && "fixed left-0 right-0 top-0 z-50 shadow-xs backdrop-blur-xs"
 			)}
 		>
 			<ToastContainer
@@ -81,22 +81,22 @@ const Header = () => {
 						</div>
 						<ul
 							tabIndex={0}
-							className="z-50 p-2 mt-3 shadow dropdown-content menu menu-sm top-5 bg-accent text-accent-content text-pretty rounded-box w-52"
+							className="z-50 p-2 mt-3 shadow-sm dropdown-content menu menu-sm top-5 bg-accent text-accent-content text-pretty rounded-box w-52"
 						>
 							<li>
-								<Link to="/">Homepage</Link>
+								<Link to="/">Trang chủ</Link>
 							</li>
 							{token ? (
 								<li>
-									<Link to="/chat">Chat</Link>
+									<Link to="/match">Match</Link>
 								</li>
 							) : (
 								<>
 									<li>
-										<Link to="/login">Login</Link>
+										<Link to="/login">Đăng nhập</Link>
 									</li>
 									<li>
-										<Link to="/reg">Register</Link>
+										<Link to="/reg">Đăng kí</Link>
 									</li>
 								</>
 							)}

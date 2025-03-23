@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { getUser, refreshToken, getTokenFromLocalStorage } from "../lib/common"; // Import refreshToken và getTokenFromLocalStorage
+import { getUser, getTokenFromLocalStorage } from "../lib/common"; // Import refreshToken và getTokenFromLocalStorage
 import { APP_ROUTES } from "../lib/constants";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 export function useUser() {
 	const [user, setUser] = useState(null);
@@ -11,25 +12,31 @@ export function useUser() {
 		async function getUserDetails() {
 			const token = getTokenFromLocalStorage(); // Lấy token từ localStorage
 			if (!token) {
-				navigate(APP_ROUTES.SIGN_IN);
+				// navigate(APP_ROUTES.SIGN_IN);
 				return;
 			}
-
-			const newToken = await refreshToken(); // Gọi hàm refreshToken
-			if (newToken) {
-				// Nếu có token mới, tiếp tục lấy thông tin người dùng
-				const user = await getUser();
-				if (!user) {
-					navigate(APP_ROUTES.SIGN_IN);
-					return;
-				}
-				setUser(user);
+			if (user) {
+				toast("You are logged in", { type: "info" });
+				setTimeout(() => {
+					navigate(APP_ROUTES.MATCH);
+				}, 1500);
+			}
+			//Check token validity
+			const userData = await getUser();
+			if (userData) {
+				setUser(userData);
 			} else {
-				navigate(APP_ROUTES.SIGN_IN); // Nếu không có token mới, điều hướng đến trang đăng nhập
+				toast("Token is expired, please login again", { type: "warning" });
+
+				localStorage.removeItem("token");
+				localStorage.removeItem("username");
+				setTimeout(() => {
+					navigate(APP_ROUTES.SIGN_IN);
+				}, 1500);
 			}
 		}
 		getUserDetails();
-	}, [user]); // Empty dependency array to run only once on mount
+	}, []); // Empty dependency array to run only once on mount
 
 	return { user };
 }

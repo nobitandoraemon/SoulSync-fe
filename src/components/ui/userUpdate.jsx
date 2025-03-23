@@ -36,10 +36,10 @@ const UserUpdate = () => {
         }
       );
 
-      setMessage(response.data.message || "User data updated successfully!");
+      setMessage(response.data.message || "Chỉnh sửa hồ sơ thành công");
     } catch (error) {
       setMessage(
-        error.response?.data?.error || "Failed to update user data. Try again."
+        error.response?.data?.error || "Có lỗi xảy ra khi chỉnh sửa. Vui lòng thử lại."
       );
     }
   };
@@ -56,7 +56,7 @@ const UserUpdate = () => {
             <input
               type="text"
               name="username"
-              className="w-full p-2 mt-1 border rounded-lg focus:ring focus:ring-blue-300"
+              className="w-full p-2 mt-1 border rounded-lg focus:ring-3 focus:ring-blue-300"
               value={formData.username}
               onChange={handleChange}
               required
@@ -70,7 +70,7 @@ const UserUpdate = () => {
             <input
               type="password"
               name="password"
-              className="w-full p-2 mt-1 border rounded-lg focus:ring focus:ring-blue-300"
+              className="w-full p-2 mt-1 border rounded-lg focus:ring-3 focus:ring-blue-300"
               value={formData.password}
               onChange={handleChange}
               required
@@ -81,7 +81,7 @@ const UserUpdate = () => {
             type="submit"
             className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-600"
           >
-            Update
+            Chỉnh sửa
           </button>
         </form>
 

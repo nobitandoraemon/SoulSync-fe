@@ -14,6 +14,7 @@ import {
 } from "react-icons/tb";
 
 export const zodiacInfo = [
+// <<<<<<< origin/long
   {
     id: 1,
     sex: "male",

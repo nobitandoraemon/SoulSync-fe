@@ -60,13 +60,13 @@ const RatingItem = ({ user, date, stars, comments, avatar }) => {
 
 const Rating = () => {
 	return (
-		<div className="max-w-screen-md p-8 mx-auto mt-12">
+		<div className="max-w-(--breakpoint-md) p-8 mx-auto mt-12">
 			<div className="grid w-full mb-4 place-content-center">
 				<span className="badge badge-success">Feedback</span>
 			</div>
 			<RatingItem
 				user="Phùng Quang Anh"
-				date="19/2/2025"
+				date="12/1/2025"
 				stars={5}
 				comments="Tôi và vợ cưới nhau nhờ dùng app này 🥰"
 				avatar="https://avatars.githubusercontent.com/u/84665790?v=4"
@@ -74,19 +74,19 @@ const Rating = () => {
 			<div className="divider"></div>
 
 			<RatingItem
-				user="Lò Vi Sóng"
-				date="19/2/2025"
+				user="Minh Anh"
+				date="15/2/2025"
 				stars={5}
-				comments="Em yêu anh Quang Anh 😘"
+				comments="Giao diện dễ sử dụng, ghép đôi nhanh chóng và đặc biệt là thông tin được bảo mật. Rất đáng để trải nghiệm!😘"
 				avatar="https://static.vecteezy.com/system/resources/thumbnails/048/938/320/small_2x/beautiful-smiling-girl-with-long-braided-hair-in-a-sweater-photo.jpeg"
 			/>
 			<div className="divider"></div>
 
 			<RatingItem
-				user="Khoai Thị Sắn"
+				user="Thu Hà"
 				date="19/2/2025"
 				stars={5}
-				comments="Định mệnh con Lò Vi Sóng!"
+				comments="Dịch vụ tuyệt vời! Chỉ sau một thời gian ngắn, mình đã tìm thấy một người thật sự hiểu và đồng điệu với mình."
 				avatar="https://i.pinimg.com/736x/2b/90/7e/2b907e8ab481caf2a0f2c9cd0b500a2d.jpg"
 			/>
 		</div>

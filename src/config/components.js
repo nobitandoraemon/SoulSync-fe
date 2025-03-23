@@ -27,13 +27,9 @@ import ChatBody from "../components/ui/chatpage/chatbody.jsx";
 import ChatBox from "../components/ui/chatpage/chatbox.jsx";
 import ChatContainer from "../components/ui/chatpage/chatcontainer.jsx";
 import ChatInput from "../components/ui/chatpage/chatinput.jsx";
-import Content from "../components/ui/chatpage/content.jsx";
 import ChatHeader from "../components/ui/chatpage/header.jsx";
 import Info from "../components/ui/chatpage/info.jsx";
 import Profile from "../components/ui/chatpage/profile.jsx";
-import Setting from "../components/ui/chatpage/setting.jsx";
-import SideBar from "../components/ui/chatpage/sidebar.jsx";
-import Waiting from "../components/ui/chatpage/waiting.jsx";
 
 //Homepage//
 import Contact from "../components/ui/homepage/contact";
@@ -75,13 +71,9 @@ export {
 	ChatBox,
 	ChatContainer,
 	ChatInput,
-	Content,
 	ChatHeader,
 	Info,
 	Profile,
-	Setting,
-	Waiting,
-	SideBar,
 	Contact,
 	Features,
 	FAQ,

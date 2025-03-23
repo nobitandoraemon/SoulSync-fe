@@ -1,58 +1,37 @@
-import { useEffect } from "react";
-import { ChatBox, Content, Waiting } from "../../../config/components";
-import { useNavigate, useOutletContext } from "react-router";
-import { useOutlet } from "react-router";
+
+import { ChatBox } from "../../../config/components";
 const ChatContainer = ({
-  socketIO,
-  content,
-  isActive,
-  setActive,
-  toggleActive,
-  isScroll,
-  user,
-  matchedUser,
-  requestMatch,
-  chat,
-  ok,
-  setOk,
+	isFinding,
+	toggleFinding,
+	content,
+	isScroll,
+	socket,
+	matchedUser,
+	chat,
+	ok,
+	setOk,
+	setIsRefuse,
+	isMatched,
+	setIsMatched,
+	sendMessage,
+	user,
 }) => {
-  const navigate = useNavigate();
-  const handleNavigate = () => {
-    navigate("/match");
-  };
-  useEffect(() => {
-    if (!matchedUser) handleNavigate();
-  });
 
-  if (!matchedUser) return null;
-  else {
-    console.log(matchedUser);
-    return (
-      <>
-        {
-          // Chưa có người sẽ match
-
-          // Khi chấp nhận chat
-          <>
-            {/* <Content
-							user={user}
-							content={content}
-							isActive={isActive}
-							isScroll={isScroll}
-							requestMatch={requestMatch}
-						/> */}
-            <ChatBox
-              chat={chat}
-              user={user}
-              socketIO={socketIO}
-              matchedUser={matchedUser}
-              content={content}
-            />
-          </>
-        }
-      </>
-    );
-  }
+	return (
+		<>
+			{matchedUser && (
+				<>
+					<ChatBox
+						chat={chat}
+						matchedUser={matchedUser}
+						sendMessage={sendMessage}
+						user={user}
+						toggleFinding={toggleFinding}
+					/>
+				</>
+			)}
+		</>
+	);
 };
 
 export default ChatContainer;
