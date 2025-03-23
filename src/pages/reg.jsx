@@ -60,9 +60,9 @@ const Reg = () => {
 		>
 			<Toast />
 			<div className="hero-overlay bg-opacity-60"></div>
-			<div className="py-16 text-center hero-content text-neutral-content">
+			<div className="py-16 text-center hero-content text-base-content">
 				<div className="flex flex-col gap-8 items-center-center md:flex-row md:w-4/5">
-					<div className="flex flex-col space-y-8 md:w-2/3 text-wrap">
+					<div className="flex flex-col items-center justify-center space-y-8 text-accent-content md:w-2/3 text-wrap">
 						<h1 className="mb-5 text-5xl font-bold">Sign Up Now</h1>
 						<p className="mb-5 text-wrap">
 							Tìm nửa kia cho mình ngay lúc này ! Ngoài ra bạn còn có thể tra

@@ -48,25 +48,30 @@ const PrivateRoute = ({ socket }) => {
 
 	//nhận thông tin về user B sẽ match -> chuyển đến waiting room
 	socket.on("wait", (data) => {
-		const { A, B } = data;
-		if (A.username == username) {
-			setMatchedUser(B);
-		} else {
-			setMatchedUser(A);
+		if (data) {
+			const { A, B } = data;
+			if (A.username == username) {
+				setMatchedUser(B);
+			} else {
+				setMatchedUser(A);
+			}
+			console.log(matchedUser);
 		}
-		console.log(matchedUser);
 	});
 
 	// server gửi về match -> cả 2 đã accept -> cho Chat
 	socket.on("match", (data) => {
-		console.log(data);
-		setIsMatched(true);
+		if (data) {
+			setIsMatched(true);
+		}
 	});
 
 	socket.on("fail", (data) => {
 		const { message } = data;
-		setFailMessage(message);
-		console.log(message);
+		if (message) {
+			setFailMessage(message);
+			console.log(message);
+		}
 	});
 
 	// Nhận thông tin chat từ server socket

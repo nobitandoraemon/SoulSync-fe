@@ -18,7 +18,7 @@ const FormPage = () => {
 			} else {
 				toast("You need to have information", {
 					type: "warning",
-					autoClose: true,
+					autoClose: 3000,
 				});
 			}
 		}

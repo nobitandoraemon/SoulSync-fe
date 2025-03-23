@@ -51,7 +51,6 @@ const Chat = ({ socket }) => {
 	useEffect(() => {
 		if (isFinding) {
 			console.log("find");
-
 			socket.emit("find", {});
 			toggleFinding();
 		}
