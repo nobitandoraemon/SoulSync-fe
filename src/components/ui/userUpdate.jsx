@@ -36,10 +36,10 @@ const UserUpdate = () => {
         }
       );
 
-      setMessage(response.data.message || "User data updated successfully!");
+      setMessage(response.data.message || "Chỉnh sửa hồ sơ thành công");
     } catch (error) {
       setMessage(
-        error.response?.data?.error || "Failed to update user data. Try again."
+        error.response?.data?.error || "Có lỗi xảy ra khi chỉnh sửa. Vui lòng thử lại."
       );
     }
   };
@@ -81,7 +81,7 @@ const UserUpdate = () => {
             type="submit"
             className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-600"
           >
-            Update
+            Chỉnh sửa
           </button>
         </form>
 

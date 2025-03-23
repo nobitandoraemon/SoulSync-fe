@@ -62,11 +62,10 @@ const Reg = () => {
 			<div className="hero-overlay bg-opacity-60"></div>
 			<div className="py-16 text-center hero-content text-base-content">
 				<div className="flex flex-col gap-8 items-center-center md:flex-row md:w-4/5">
-					<div className="flex flex-col items-center justify-center space-y-8 text-accent-content md:w-2/3 text-wrap">
-						<h1 className="mb-5 text-5xl font-bold">Sign Up Now</h1>
+					<div className="flex flex-col space-y-8 md:w-2/3 text-wrap">
+						<h1 className="mb-5 text-5xl font-bold">Đăng ký ngay</h1>
 						<p className="mb-5 text-wrap">
-							Tìm nửa kia cho mình ngay lúc này ! Ngoài ra bạn còn có thể tra
-							cứu và tìm hiểu sâu hơn về bản thân 😊
+						Tìm một nửa hoàn hảo ngay hôm nay! Kết nối, khám phá bản thân và trải nghiệm hành trình yêu thương thú vị. 💖
 						</p>
 					</div>
 					<div className="w-full max-w-sm mx-auto shadow-2xl card bg-base-100 shrink-0">
@@ -86,7 +85,7 @@ const Reg = () => {
 							</div>
 							<div className="form-control">
 								<label className="label">
-									<span className="label-text">Password</span>
+									<span className="label-text">Mật khẩu</span>
 								</label>
 								<input
 									type="password"
@@ -103,7 +102,7 @@ const Reg = () => {
 								</label>
 							</div>
 							<div className="mt-6 form-control">
-								<button className="btn btn-primary">Register</button>
+								<button className="btn btn-primary">Đăng ký</button>
 							</div>
 						</form>
 					</div>

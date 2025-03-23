@@ -1,5 +1,5 @@
-import { ChatBox } from "../../../config/components";
 
+import { ChatBox } from "../../../config/components";
 const ChatContainer = ({
 	isFinding,
 	toggleFinding,
@@ -16,6 +16,7 @@ const ChatContainer = ({
 	sendMessage,
 	user,
 }) => {
+
 	return (
 		<>
 			{matchedUser && (
