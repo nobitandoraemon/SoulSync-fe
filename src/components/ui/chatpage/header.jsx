@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router";
 import { Toast } from "../../../config/components";
 import { useState } from "react";
 import { APP_ROUTES } from "../../../lib/constants";
+import { toast } from "react-toastify";
 const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 	return (
 		<div className="drawer drawer-end">
@@ -144,28 +145,15 @@ const MainNav = ({ user, handleOut }) => {
 
 const SubNav = ({ matchedUser, user, handleOut }) => {
 	const [clickable, setClickable] = useState(true);
+	const handleQuit = () => {
+		toast.success("Đã kết thúc cuộc trò chuyện", {
+			type: "success",
+		});
+		handleOut();
+	};
 	return (
-		<ul className="menu md:bg-base-200 menu-horizontal rounded-box place-content-center">
-			{/* <li className="bg-base-200 rounded-l-3xl">
-				<Link to="/">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						className="w-5 h-5"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth="2"
-							d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-						/>
-					</svg>
-					<span className="hidden md:block">Trang chủ</span>
-				</Link>
-			</li> */}
-			<li className="bg-base-200" onClick={useNavigate(APP_ROUTES.HOME)}>
+		<ul className="menu md:bg-base-200 menu-horizontal rounded-box place-content-center w-screen">
+			<li className="bg-base-200" onClick={handleQuit}>
 				<a
 					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
 					target="_blank"
@@ -232,10 +220,13 @@ const SubNav = ({ matchedUser, user, handleOut }) => {
 	);
 };
 
-const ChatHeader = ({ user, matchedUser }) => {
+const ChatHeader = ({ user, matchedUser, handleLeave }) => {
 	const navigate = useNavigate();
 	const handleOut = () => {
-		navigate(APP_ROUTES.HOME);
+		handleLeave();
+		setTimeout(() => {
+			navigate(APP_ROUTES.HOME);
+		}, 2000);
 	};
 	return (
 		<div className="fixed flex items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[60px] shadow-lg bg-primary/10 backdrop-blur-lg z-50">

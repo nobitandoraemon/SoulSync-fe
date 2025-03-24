@@ -14,18 +14,18 @@ const ChatInput = ({ user, matchedUser, newSocket }) => {
 
 	return (
 		<form
-			className="flex flex-row items-center h-16 w-full px-4 bg-neutral-content rounded-xl"
+			className="fixed bottom-4 left-8 right-8 w-[90%] mx-auto flex flex-row items-center h-16 rounded-2xl"
 			onSubmit={handleMessage}
 		>
-			<label className="flex items-center gap-2 input input-bordered w-screen">
+			<label className="join w-full">
 				<input
 					type="text"
-					className="grow"
+					className="grow input join-item"
 					placeholder="What's on your mind? ..."
 					value={message}
 					onChange={(e) => setMessage(e.target.value)}
 				/>
-				<button type="submit" className="btn btn-ghost">
+				<button type="submit" className="btn btn-success join-item">
 					<kbd className="kbd kbd-sm">Enter</kbd>
 					<kbd className="kbd kbd-sm">
 						<svg
