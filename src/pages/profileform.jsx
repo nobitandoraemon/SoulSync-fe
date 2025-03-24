@@ -400,7 +400,7 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 
 	const Submit1 = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		// console.log(formData);
 		if (e.target.checkValidity() && formData.gender) {
 			setStep(2);
 		} else alert("Choose your gender");
@@ -488,7 +488,7 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 const Address = ({ setStep, formData, setFormData }) => {
 	const Submit2 = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		// console.log(formData);
 		if (e.target.checkValidity()) {
 			setStep(3);
 		}
@@ -561,7 +561,7 @@ const Address = ({ setStep, formData, setFormData }) => {
 const BirthDate = ({ setStep, formData, setFormData }) => {
 	const submitBirthDate = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		// console.log(formData);
 		if (e.target.checkValidity()) {
 			const formdata = new FormData(e.target);
 			const formValues = Object.fromEntries(formdata.entries());
@@ -815,7 +815,7 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 		e.preventDefault();
 		const updatedFormData = { ...formData, zodiac: i };
 		setFormData(updatedFormData);
-		console.log(updatedFormData);
+		// console.log(updatedFormData);
 		const token = getTokenFromLocalStorage();
 		const username = localStorage.getItem("username");
 		try {
@@ -829,7 +829,7 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 				data: updatedFormData, // Đặt data ở đây
 				withCredentials: true,
 			});
-			console.log(response);
+			// console.log(response);
 		} catch (err) {
 			toast(err.response.data.message, { type: "error" });
 			console.log(err);
@@ -895,7 +895,7 @@ const ThankYou = ({ setStep, formData, setFormData }) => {
 	const navigate = useNavigate(); // Initialize the navigate function
 
 	const handleSubmitForm = () => {
-		console.log(formData);
+		// console.log(formData);
 		navigate(APP_ROUTES.MATCH); // Navigate to the MATCH
 	};
 
