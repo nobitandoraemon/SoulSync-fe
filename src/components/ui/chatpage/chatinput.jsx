@@ -13,7 +13,10 @@ const ChatInput = ({ user, matchedUser, newSocket }) => {
 	};
 
 	return (
-		<form className="absolute bottom-0 left-0 right-0" onSubmit={handleMessage}>
+		<form
+			className="flex flex-row items-center h-16 w-full px-4 bg-neutral-content rounded-xl"
+			onSubmit={handleMessage}
+		>
 			<label className="flex items-center gap-2 input input-bordered w-screen">
 				<input
 					type="text"

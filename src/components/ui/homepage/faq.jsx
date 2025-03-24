@@ -19,7 +19,7 @@ const questions = [
 
 const FAQ = () => {
 	return (
-		<div className="flex flex-col items-center pt-8 pb-16 min-h-[30vh]">
+		<div className="flex flex-col items-center pt-8 pb-16 min-h-[60h]">
 			<div className="mt-12 mb-4 badge badge-secondary top-6">
 				Frequently Asked Questions
 			</div>
@@ -28,12 +28,12 @@ const FAQ = () => {
 				Các câu hỏi thường gặp
 			</h2>
 
-			<div className="w-4/5 join join-vertical bg-base-200">
+			<div className="w-4/5 join join-vertical bg-base-100 shadow-lg rounded-box overflow-hidden">
 				{questions.map((question, idx) => {
 					return (
 						<div
 							key={idx}
-							className="border collapse collapse-arrow join-item border-base-300"
+							className="border collapse collapse-arrow join-item border-base-300 rounded"
 						>
 							<input type="radio" name="my-accordion-4" defaultChecked />
 							<div className="text-xl font-medium collapse-title">
