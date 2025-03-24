@@ -69,7 +69,7 @@ import { APP_ROUTES } from "../lib/constants";
 import { toast } from "react-toastify";
 
 const MatchPage = () => {
-	const { user, isFinding, toggleFinding } = useOutletContext();
+	const { user, isFinding, setIsFinding } = useOutletContext();
 	const [isLoading, setIsLoading] = useState(true);
 	const navigate = useNavigate();
 	const handleLoading = () => {
@@ -77,7 +77,7 @@ const MatchPage = () => {
 	};
 
 	const handleFinding = () => {
-		toggleFinding();
+		setIsFinding((prev) => !prev);
 		setTimeout(() => {
 			navigate(APP_ROUTES.CHAT);
 		}, 1000);
@@ -134,89 +134,9 @@ const MatchPage = () => {
 					/>
 				</svg>
 			</button>
-			<ZodiacInfo
-				zodiac={zodiacInfo[user.zodiac - 1]}
-				user={user}
-				// toggleFinding={toggleFinding}
-			/>
+			<ZodiacInfo zodiac={zodiacInfo[user.zodiac - 1]} user={user} />
 		</div>
 	);
-	// >>>>>>> main
 };
-
-// const LoadingPopup = () => {
-//   return (
-//     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-//       <div className="p-6 bg-white rounded-lg shadow-lg flex flex-col items-center">
-//         <span className="loading loading-spinner loading-lg text-primary"></span>
-//         <p className="mt-4 text-lg font-semibold text-gray-700">
-//           Loading, please wait...
-//         </p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const MatchPage = () => {
-//   //user to test useOutletContext
-//   const [testuser] = useOutletContext();
-//   //
-//   const [username, setUsername] = useState(localStorage.getItem("username"));
-//   const [matchedUser, setMatchedUser] = useOutletContext();
-//   const [loading, setLoading] = useState(false);
-//   const [showCountdown, setShowCountdown] = useState(false);
-//   const [countdown, setCountdown] = useState(30);
-
-//   const requestMatch = async () => {
-//     setLoading(true);
-//     const token = getTokenFromLocalStorage();
-//     try {
-//       const response = await axios({
-//         method: "POST",
-//         data: { username: username },
-//         headers: {
-//           authorization: `Bearer ${token}`,
-//         },
-//         url: API_ROUTES.MATCH,
-//         withCredentials: true,
-//       });
-//       if (response.status === 200) {
-//         setLoading(false);
-//         //REAL SHOW COUNT DOWN HERE
-//         setShowCountdown(true);
-//         toast("Request successfully", { type: "success" });
-//         console.log(response);
-//         localStorage.setItem("matchedUser", response.data.matchedUser.match);
-//         setMatchedUser(response.data.matchedUser.match);
-//         console.log(matchedUser);
-//       }
-//     } catch (err) {
-//       setLoading(false);
-//       //TEST SHOW COUNT DOWN
-//       setShowCountdown(true);
-//       alert("YOU ARE AN F.A");
-//       toast("Request failed", { type: "error" });
-//       console.log(err);
-//     }
-//   };
-
-//   if (testuser)
-//     return (
-//       <>
-//         <ZodiacInfo
-//           zodiac={zodiacInfo[testuser.zodiac - 1]}
-//           user={testuser}
-//           event={requestMatch}
-//         />
-//         {!showCountdown && loading ? <LoadingPopup /> : <></>}
-//         <CountdownPopup
-//           countdown={countdown}
-//           setCountdown={setCountdown}
-//           showCountdown={showCountdown}
-//           setShowCountdown={setShowCountdown}
-//         />
-//       </>
-//     );
-// };
 
 export default MatchPage;

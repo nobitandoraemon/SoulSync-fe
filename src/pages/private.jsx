@@ -115,56 +115,63 @@ const PrivateRoute = ({ socket }) => {
 	const [failMessage, setFailMessage] = useState(""); //nếu be không tìm được đối tượng, hoặc đối phương từ chối, hoặc bản thân từ chối, thì server sẽ trả lại fail message để thông báo đến người còn lại
 	const [isFinding, setIsFinding] = useState(false); //check xem user có đang muốn match hay không
 	const [isRefuse, setIsRefuse] = useState(false); //check xem user có refuse hay không
-	//start socket, send username to socket-be
-	socket.auth = { username };
-	socket.connect();
+	const [newSocket, setNewSocket] = useState(socket);
+	useEffect(() => {
+		//start socket, send username to socket-be
+		newSocket.auth = { username };
+		newSocket.connect();
 
-	const toggleFinding = () => setIsFinding((prev) => !prev);
-
-	//nhận thông tin về user B sẽ match -> chuyển đến waiting room
-	socket.on("wait", (data) => {
-		const { A, B } = data;
-		if (A.username == username) {
-			setMatchedUser(B);
-		} else {
-			setMatchedUser(A);
-		}
-		console.log(matchedUser);
-	});
-
-	// server gửi về match -> cả 2 đã accept -> cho Chat
-	socket.on("match", (data) => {
-		setIsMatched(true);
-	});
-
-	socket.on("fail", (data) => {
-		const { message } = data;
-		if (message) {
-			setFailMessage(message);
-			console.log(message);
-		}
-	});
-
-	// Nhận thông tin chat từ server socket
-	socket.on("message", (data) => {
-		setChat((prevChat) => [...prevChat, data]);
-	});
-
-	// Kết nối socket
-	socket.on("connect", () => {
-		console.log("Connected to server");
-	});
-	// Ngắt kết nối socket
-	socket.on("disconnect", () => {
-		console.log("Disconnected from server");
-	});
-
-	const sendMessage = (content) => {
-		socket.emit("chat", {
-			receiver: matchedUser.username,
-			content: content,
+		//nhận thông tin về user B sẽ match -> chuyển đến waiting room
+		newSocket.on("wait", (data) => {
+			if (isFinding) {
+				const { A, B } = data;
+				if (A.username == username) {
+					setMatchedUser(B);
+				} else {
+					setMatchedUser(A);
+				}
+				console.log(matchedUser);
+			}
 		});
-	};
+
+		// server gửi về match -> cả 2 đã accept -> cho Chat
+		newSocket.on("match", (data) => {
+			setIsMatched(true);
+		});
+
+		newSocket.on("fail", (data) => {
+			const { message } = data;
+			if (message) {
+				setFailMessage(message);
+				console.log(message);
+			}
+		});
+
+		// Nhận thông tin chat từ server newSocket
+		newSocket.on("message", (data) => {
+			setChat((prevChat) => [...prevChat, data]);
+		});
+
+		// Kết nối newSocket
+		newSocket.on("connect", () => {
+			console.log("Connected to server");
+		});
+		// Ngắt kết nối newSocket
+		newSocket.on("disconnect", () => {
+			console.log("Disconnected from server");
+		});
+
+		const sendMessage = (content) => {
+			newSocket.emit("chat", {
+				receiver: matchedUser.username,
+				content: content,
+			});
+		};
+
+		return () => {
+			newSocket.close();
+		};
+	}, [newSocket, isFinding]);
 
 	return (
 		<Outlet
@@ -181,10 +188,11 @@ const PrivateRoute = ({ socket }) => {
 				failMessage,
 				setFailMessage,
 				isFinding,
-				toggleFinding,
+				setIsFinding,
+				newSocket,
+				setNewSocket,
 				isRefuse,
 				setIsRefuse,
-				sendMessage,
 			}}
 		/>
 	);

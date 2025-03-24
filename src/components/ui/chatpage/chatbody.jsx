@@ -1,11 +1,26 @@
-const ChatBody = ({ chat, user, matchedUser }) => {
-	console.log(chat);
+import { useEffect, useState } from "react";
+
+const ChatBody = ({ socket, user, matchedUser }) => {
+	const [chat, setChat] = useState([]);
+
+	// Xử lí nhận tin nhắn
+	const handleMessage = (data) => {
+		setChat((prevChat) => [...prevChat, data]);
+	};
+
+	// Nhận thông tin chat từ server socket
+
+	useEffect(() => {
+		socket.on("message", handleMessage);
+		return () => {
+			socket.off("message", handleMessage);
+		};
+	}, [socket]);
 	return (
 		<div className="flex-1 p-4 mt-20 mb-8 absolute top-0 left-0 right-0 bottom-16">
 			<div className="flex flex-col justify-end h-full">
 				{chat.map((message) => {
-					const isMainUser =
-						message.sender === localStorage.getItem("username") ? true : false;
+					const isMainUser = message.sender === user.username ? true : false;
 					return (
 						<div
 							key={message.id}

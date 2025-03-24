@@ -232,7 +232,7 @@ const SubNav = ({ matchedUser, user, handleOut }) => {
 	);
 };
 
-const ChatHeader = ({ user, matchedUser, toggleFinding }) => {
+const ChatHeader = ({ user, matchedUser }) => {
 	const navigate = useNavigate();
 	const handleOut = () => {
 		navigate(APP_ROUTES.HOME);

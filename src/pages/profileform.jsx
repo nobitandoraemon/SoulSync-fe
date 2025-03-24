@@ -896,7 +896,7 @@ const ThankYou = ({ setStep, formData, setFormData }) => {
 
 	const handleSubmitForm = () => {
 		console.log(formData);
-		navigate(APP_ROUTES.MATCH); // Navigate to the MATCH
+		window.location.href = "/match"; // Navigate to the MATCH
 	};
 
 	return (
