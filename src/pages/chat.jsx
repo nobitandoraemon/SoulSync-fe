@@ -2,10 +2,16 @@ import { useEffect, useState } from "react";
 import { useScroll, Toast, ChatBox } from "../config/components";
 import { cn } from "../lib/utils";
 import { useOutletContext, useNavigate } from "react-router";
-const PopUp = ({ ok, setOk, isRefuse, setIsRefuse, setMatchedUser }) => {
+const PopUp = ({
+	accept,
+	setAccept,
+	isRefuse,
+	setIsRefuse,
+	setMatchedUser,
+}) => {
 	const navigate = useNavigate();
-	const handleOk = () => {
-		setOk(true);
+	const handleAccept = () => {
+		setAccept(true);
 	};
 	const handleRefuse = () => {
 		setIsRefuse(true);
@@ -22,7 +28,7 @@ const PopUp = ({ ok, setOk, isRefuse, setIsRefuse, setMatchedUser }) => {
 				<p className="py-4">Bạn có muốn tiếp tục hay không ?</p>
 			</div>
 			<div className="w-full flex justify-center items-center gap-4">
-				<button className="btn btn-outline-info" onClick={handleOk}>
+				<button className="btn btn-outline-info" onClick={handleAccept}>
 					Đồng ý
 				</button>
 				<button className="btn btn-outline-warning" onClick={handleRefuse}>
@@ -39,8 +45,8 @@ const Chat = ({ socket }) => {
 		setChat,
 		matchedUser,
 		setMatchedUser,
-		ok,
-		setOk,
+		// ok,
+		// setOk,
 		isMatched,
 		setIsMatched,
 		failMessage,
@@ -49,8 +55,8 @@ const Chat = ({ socket }) => {
 		newSocket,
 		setNewSocket,
 		setIsFinding,
-		isRefuse,
-		setIsRefuse,
+		// isRefuse,
+		// setIsRefuse,
 		sendMessage,
 	} = useOutletContext();
 
@@ -58,7 +64,7 @@ const Chat = ({ socket }) => {
 	const isScroll = useScroll();
 	//Màn hình loading
 	const [isLoading, setIsLoading] = useState(true);
-	// const [accept, setAccept] = useState(false);
+	const [accept, setAccept] = useState(false);
 	const [isLeave, setIsLeave] = useState(false);
 	const handleLoading = () => {
 		if (isMatched) {
@@ -73,12 +79,13 @@ const Chat = ({ socket }) => {
 	// };
 
 	useEffect(() => {
-		if (ok) {
-			console.log("ok");
-			newSocket.emit("ok", {});
-			// setAccept(true);
-			setOk(false);
-		}
+		// if (ok) {
+		// 	console.log("ok");
+		// 	newSocket.emit("ok", {});
+		// 	// user marcg
+		// 	// setAccept(true);
+		// 	setOk(false);
+		// }
 
 		if (isFinding) {
 			console.log("find");
@@ -86,13 +93,13 @@ const Chat = ({ socket }) => {
 			setIsFinding(false);
 		}
 
-		if (isRefuse) {
-			console.log("refuse");
+		// if (isRefuse) {
+		// 	console.log("refuse");
 
-			newSocket.emit("refuse", {});
-			setMatchedUser(null);
-			setIsRefuse(false);
-		}
+		// 	newSocket.emit("refuse", {});
+		// 	setMatchedUser(null);
+		// 	setIsRefuse(false);
+		// }
 
 		if (isLeave) {
 			console.log("leave");
@@ -104,7 +111,7 @@ const Chat = ({ socket }) => {
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, ok, isFinding, isRefuse, isLeave]);
+	}, [newSocket, isFinding, isRefuse, isLeave]);
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
@@ -128,12 +135,14 @@ const Chat = ({ socket }) => {
 
 	return (
 		<>
-			{matchedUser ? (
+			{!accept && matchedUser ? (
 				<PopUp
-					ok={ok}
-					setOk={setOk}
-					isRefuse={isRefuse}
-					setIsRefuse={setIsRefuse}
+					// ok={ok}
+					// setOk={setOk}
+					accept={accept}
+					setAccept={setAccept}
+					// isRefuse={isRefuse}
+					// setIsRefuse={setIsRefuse}
 					setMatchedUser={setMatchedUser}
 				/>
 			) : (
@@ -160,7 +169,7 @@ const Chat = ({ socket }) => {
 					<span className="ml-8 loading loading-spinner text-info"></span>
 				</div>
 			)}
-			{isMatched && (
+			{accept && (
 				<div className="flex w-screen max-w-full min-h-screen">
 					<ChatBox
 						isFinding={isFinding}
@@ -168,9 +177,9 @@ const Chat = ({ socket }) => {
 						socket={socket}
 						matchedUser={matchedUser}
 						chat={chat}
-						ok={ok}
-						setOk={setOk}
-						setIsRefuse={setIsRefuse}
+						// ok={ok}
+						// setOk={setOk}
+						// setIsRefuse={setIsRefuse}
 						isMatched={isMatched}
 						setIsMatched={setIsMatched}
 						sendMessage={sendMessage}

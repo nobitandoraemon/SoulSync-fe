@@ -183,8 +183,8 @@ const PrivateRoute = ({ socket }) => {
 				setChat,
 				matchedUser,
 				setMatchedUser,
-				ok,
-				setOk,
+				// ok,
+				// setOk,
 				isMatched,
 				setIsMatched,
 				failMessage,
@@ -193,8 +193,8 @@ const PrivateRoute = ({ socket }) => {
 				setIsFinding,
 				newSocket,
 				setNewSocket,
-				isRefuse,
-				setIsRefuse,
+				// isRefuse,
+				// setIsRefuse,
 			}}
 		/>
 	);
