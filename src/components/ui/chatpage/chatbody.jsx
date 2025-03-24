@@ -4,11 +4,6 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 	const [chat, setChat] = useState([]);
 	const lastMessage = useRef(null);
 
-	const handleScroll = (e) => {
-		e.preventDefault();
-		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
-	};
-
 	// Xử lí nhận tin nhắn
 	const handleMessage = (data) => {
 		setChat((prevChat) => [...prevChat, data]);
@@ -24,7 +19,7 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 	}, [newSocket]);
 
 	useEffect(() => {
-		handleScroll();
+		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
 	return (
 		<div className="flex flex-col overflow-x-auto h-full p-6 mt-12 mb-8">
