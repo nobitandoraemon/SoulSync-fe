@@ -386,7 +386,7 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 	const [selectedGender, setSelectedGender] = useState(null);
 
 	const handleNameChange = (e) => {
-		setFormData({ ...formData, fullname: e.target.value });
+		setFormData({ ...formData, fullName: e.target.value });
 	};
 
 	const handleGenderChange = (gender) => {
@@ -580,7 +580,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 			updatedHobby = [...userHobby, hobby];
 		}
 		setUserHobby(updatedHobby);
-		setFormData({ ...formData, hobby: updatedHobby });
+		setFormData({ ...formData, hobbies: updatedHobby });
 	};
 
 	const handleBirthChange = (e) => {
@@ -588,7 +588,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 	};
 
 	const avatarLinkChange = (e) => {
-		setFormData({ ...formData, avatar: e.target.value });
+		setFormData({ ...formData, image: e.target.value });
 	};
 
 	return (
@@ -815,7 +815,7 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 		e.preventDefault();
 		const updatedFormData = { ...formData, zodiac: i };
 		setFormData(updatedFormData);
-		// console.log(updatedFormData);
+		console.log(updatedFormData);
 		const token = getTokenFromLocalStorage();
 		const username = localStorage.getItem("username");
 		try {
@@ -829,7 +829,7 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 				data: updatedFormData, // Đặt data ở đây
 				withCredentials: true,
 			});
-			// console.log(response);
+			console.log(response);
 		} catch (err) {
 			toast(err.response.data.message, { type: "error" });
 			console.log(err);
@@ -922,10 +922,10 @@ const ProfileForm = () => {
 		gender: "",
 		zodiac: "",
 		location: "An Giang",
-		fullname: "",
+		fullName: "",
 		phoneNumber: "",
-		hobby: "",
-		avatar: "",
+		hobbies: "",
+		image: "",
 		quote: "",
 	});
 
