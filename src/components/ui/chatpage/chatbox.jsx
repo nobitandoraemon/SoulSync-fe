@@ -1,6 +1,6 @@
 import { ChatBody, ChatInput, ChatHeader } from "../../../config/components";
 
-const ChatBox = ({ chat, sendMessage, matchedUser, user, socket }) => {
+const ChatBox = ({ chat, sendMessage, matchedUser, user, newSocket }) => {
 	return (
 		<div className="flex flex-col w-screen h-screen md:h-auto">
 			<div className="relative z-50 items-center justify-center w-full">
@@ -8,7 +8,7 @@ const ChatBox = ({ chat, sendMessage, matchedUser, user, socket }) => {
 			</div>
 			<div className="relative flex flex-col flex-1 w-full p-4 mb-16 md:mb-0 bg-secondary/20">
 				<ChatBody
-					socket={socket}
+					newSocket={newSocket}
 					user={user}
 					chat={chat}
 					matchedUser={matchedUser}
@@ -17,7 +17,7 @@ const ChatBox = ({ chat, sendMessage, matchedUser, user, socket }) => {
 					user={user}
 					sendMessage={sendMessage}
 					matchedUser={matchedUser}
-					socket={socket}
+					newSocket={newSocket}
 				/>
 			</div>
 		</div>

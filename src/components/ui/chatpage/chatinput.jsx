@@ -1,10 +1,10 @@
 import { useState } from "react";
-const ChatInput = ({ user, matchedUser, socket }) => {
+const ChatInput = ({ user, matchedUser, newSocket }) => {
 	const [message, setMessage] = useState("");
 	const handleMessage = (e) => {
 		e.preventDefault();
 		if (message.trim() && localStorage.getItem("username")) {
-			socket.emit("chat", {
+			newSocket.emit("chat", {
 				receiver: matchedUser.username,
 				content: message,
 			});

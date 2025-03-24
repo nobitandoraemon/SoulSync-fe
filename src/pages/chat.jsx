@@ -41,8 +41,8 @@ const PopUp = ({
 const Chat = ({ socket }) => {
 	const {
 		user,
-		chat,
-		setChat,
+		// chat,
+		// setChat,
 		matchedUser,
 		setMatchedUser,
 		// ok,
@@ -146,7 +146,7 @@ const Chat = ({ socket }) => {
 					setMatchedUser={setMatchedUser}
 				/>
 			)}
-			{!accept && !matchedUser && (
+			{!matchedUser && (
 				<div className="flex items-center justify-center w-screen h-screen">
 					<Toast />
 					<div className="inline-grid *:[grid-area:1/1] mr-8">
@@ -175,9 +175,9 @@ const Chat = ({ socket }) => {
 					<ChatBox
 						isFinding={isFinding}
 						isScroll={isScroll}
-						socket={socket}
+						newSocket={newSocket}
 						matchedUser={matchedUser}
-						chat={chat}
+						// chat={chat}
 						// ok={ok}
 						// setOk={setOk}
 						// setIsRefuse={setIsRefuse}

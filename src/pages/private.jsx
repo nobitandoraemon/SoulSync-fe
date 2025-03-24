@@ -108,7 +108,7 @@ const PrivateRoute = ({ socket }) => {
 	// Check tab active bên sidebar
 
 	const [username, setUsername] = useState(localStorage.getItem("username")); // Lấy user hiện tại để gửi auth cho socket
-	const [chat, setChat] = useState([]); // Lấy thống tin chat : messages
+	// const [chat, setChat] = useState([]); // Lấy thống tin chat : messages
 	const [matchedUser, setMatchedUser] = useState(null); // Lấy thông tin người sau khi match
 	const [ok, setOk] = useState(false); // Check xem người dùng có chấp nhận vào Chat hay không
 	const [isMatched, setIsMatched] = useState(false); //2 người dùng cùng chấp nhận chat chưa
@@ -117,9 +117,9 @@ const PrivateRoute = ({ socket }) => {
 	const [isRefuse, setIsRefuse] = useState(false); //check xem user có refuse hay không
 	const [newSocket, setNewSocket] = useState(socket);
 	useEffect(() => {
-		// //start socket, send username to socket-be
-		// newSocket.auth = { username };
-		// newSocket.connect();
+		//start socket, send username to socket-be
+		newSocket.auth = { username };
+		newSocket.connect();
 
 		//nhận thông tin về user B sẽ match -> chuyển đến waiting room
 		newSocket.on("wait", (data) => {
@@ -150,9 +150,9 @@ const PrivateRoute = ({ socket }) => {
 		});
 
 		// Nhận thông tin chat từ server newSocket
-		newSocket.on("message", (data) => {
-			setChat((prevChat) => [...prevChat, data]);
-		});
+		// newSocket.on("message", (data) => {
+		// 	setChat((prevChat) => [...prevChat, data]);
+		// });
 
 		// Kết nối newSocket
 		newSocket.on("connect", () => {
