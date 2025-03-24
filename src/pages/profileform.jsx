@@ -995,7 +995,7 @@ const ProfileForm = () => {
 	};
 
 	return (
-		<div className="w-1/3 mx-auto my-4 p-4 min-w-[500px]">
+		<div className="lg:w-1/3 mx-auto my-4 p-4 lg:min-w-[500px]">
 			<div className="bg-[#fdf3f7] p-6 rounded-3xl shadow-md">
 				<div className="flex justify-center gap-5">{RenderProgressBar()}</div>
 				{renderStep()}
