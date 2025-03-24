@@ -1,4 +1,4 @@
-
+import { useEffect } from "react";
 import { ChatBox } from "../../../config/components";
 const ChatContainer = ({
 	isFinding,
@@ -16,7 +16,11 @@ const ChatContainer = ({
 	sendMessage,
 	user,
 }) => {
-
+	useEffect(() => {
+		if (matchedUser) {
+			console.log("Found!");
+		}
+	}, [matchedUser]);
 	return (
 		<>
 			{matchedUser && (

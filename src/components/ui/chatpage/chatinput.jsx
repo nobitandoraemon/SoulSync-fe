@@ -1,29 +1,18 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-const API = "https://soulsync-api.onrender.com";
-const ChatInput = ({ socketIO, matchedUser }) => {
+const ChatInput = ({ socketIO, matchedUser, sendMessage, user }) => {
 	const [message, setMessage] = useState("");
-	const [user, setUser] = useState({});
 	const handleMessage = (e) => {
 		e.preventDefault();
 		if (message.trim() && localStorage.getItem("username")) {
-			socketIO.emit("chat", {
-				receiver: user,
-				content: message,
-			});
+			sendMessage(message);
+			setMessage("");
 		}
 		setMessage("");
 	};
 
-	useEffect(() => {
-		axios
-			.get(`${API}/users/${localStorage.getItem("username")}`)
-			.then((res) => setUser(res.data))
-			.catch((err) => console.log(err, "Chưa có người dùng"));
-	}, [user]);
 	return (
 		<form className="absolute bottom-0 left-0 right-0" onSubmit={handleMessage}>
-			<label className="flex items-center gap-2 input input-bordered">
+			<label className="flex items-center gap-2 input input-bordered w-screen">
 				<input
 					type="text"
 					className="grow"

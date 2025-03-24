@@ -1,11 +1,11 @@
-const ChatBody = ({ chat }) => {
+const ChatBody = ({ chat, user, matchedUser }) => {
 	console.log(chat);
 	return (
-		<div className="flex-1 p-4 mt-20 mb-8">
+		<div className="flex-1 p-4 mt-20 mb-8 absolute top-0 left-0 right-0 bottom-16">
 			<div className="flex flex-col justify-end h-full">
 				{chat.map((message) => {
 					const isMainUser =
-						message.receiver.username === localStorage.getItem("username");
+						message.sender === localStorage.getItem("username") ? true : false;
 					return (
 						<div
 							key={message.id}
@@ -13,7 +13,10 @@ const ChatBody = ({ chat }) => {
 						>
 							<div className="chat-image avatar">
 								<div className="w-10 rounded-full">
-									<img alt="User Avatar" src={message.receiver.avatar} />
+									<img
+										alt="User Avatar"
+										src={isMainUser ? user.image : matchedUser.image}
+									/>
 								</div>
 							</div>
 							<div className="chat-header">
