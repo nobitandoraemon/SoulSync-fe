@@ -26,7 +26,7 @@ const Login = ({ user }) => {
 				withCredentials: true,
 			});
 			if (response?.data?.accessToken) {
-				toast("Login successfully", { type: "success" });
+				toast("Đăng nhập thành công", { type: "success" });
 				storeTokenInLocalStorage(response.data.accessToken);
 				localStorage.setItem("username", input.username);
 			}
@@ -35,7 +35,7 @@ const Login = ({ user }) => {
 			}, 3000);
 		} catch (err) {
 			console.log(err);
-			toast("Login failed", { type: "error" });
+			toast("Đăng nhập thất bại", { type: "error" });
 		}
 	};
 
