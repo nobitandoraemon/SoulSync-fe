@@ -136,7 +136,9 @@ const PrivateRoute = ({ socket }) => {
 
 		// server gửi về match -> cả 2 đã accept -> cho Chat
 		newSocket.on("match", (data) => {
-			setIsMatched(true);
+			if (data.message === "Sucessfull") {
+				setIsMatched(true);
+			}
 		});
 
 		newSocket.on("fail", (data) => {

@@ -37,7 +37,7 @@ const Reg = () => {
 				localStorage.setItem("temp", form.username);
 				setTimeout(() => {
 					toast("Vui lòng xác thực tài khoản", { type: "info" });
-					navigate(APP_ROUTES.VERIFY);
+					navigate(APP_ROUTES.OTP);
 				}, 3000);
 			}
 		} catch (err) {

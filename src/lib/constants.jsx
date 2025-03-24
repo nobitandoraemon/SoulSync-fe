@@ -7,7 +7,7 @@ export const API_ROUTES = {
 	GET_USER: `${API_URL}/users`,
 	MATCH: `${API_URL}/match`,
 	SOCKET: API_URL,
-	VERIFY: `${API_URL}/verify-otp`,
+	VERIFY: `${API_URL}/otp/verify-otp`,
 };
 
 export const APP_ROUTES = {
@@ -17,4 +17,5 @@ export const APP_ROUTES = {
 	MATCH: "/match",
 	FORM: "/form",
 	HOME: "/",
+	OTP: "/verify-otp",
 };

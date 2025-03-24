@@ -104,7 +104,7 @@ const Chat = ({ socket }) => {
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, ok, isFinding, isRefuse, isLeave, isMatched]);
+	}, [newSocket, ok, isFinding, isRefuse, isLeave]);
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
