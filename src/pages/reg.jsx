@@ -5,7 +5,10 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import axios from "axios";
-import { getTokenFromLocalStorage } from "../lib/common";
+import {
+	getTokenFromLocalStorage,
+	storeTokenInLocalStorage,
+} from "../lib/common";
 
 const Reg = () => {
 	const token = getTokenFromLocalStorage();
@@ -29,12 +32,14 @@ const Reg = () => {
 				url: API_ROUTES.SIGN_UP,
 				withCredentials: true,
 			});
-			if (response?.data?.accessToken) {
-				toast("Register successfully", { type: "success" });
+			if (response?.data?.message) {
+				toast(`${response.data.message}`, { type: "success" });
+				localStorage.setItem("temp", form.username);
+				setTimeout(() => {
+					toast("Vui lòng xác thực tài khoản", { type: "info" });
+					navigate(APP_ROUTES.VERIFY);
+				}, 3000);
 			}
-			setTimeout(() => {
-				navigate(APP_ROUTES.SIGN_IN);
-			}, 3000);
 		} catch (err) {
 			console.log(err);
 			toast(`${err.response.data.message}`, { type: "error" });
@@ -65,7 +70,8 @@ const Reg = () => {
 					<div className="flex flex-col space-y-8 md:w-2/3 text-wrap">
 						<h1 className="mb-5 text-5xl font-bold">Đăng ký ngay</h1>
 						<p className="mb-5 text-wrap">
-						Tìm một nửa hoàn hảo ngay hôm nay! Kết nối, khám phá bản thân và trải nghiệm hành trình yêu thương thú vị. 💖
+							Tìm một nửa hoàn hảo ngay hôm nay! Kết nối, khám phá bản thân và
+							trải nghiệm hành trình yêu thương thú vị. 💖
 						</p>
 					</div>
 					<div className="w-full max-w-sm mx-auto shadow-2xl card bg-base-100 shrink-0">

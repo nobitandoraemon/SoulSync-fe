@@ -13,6 +13,7 @@ import {
 	NotFound,
 	FormPage,
 	MatchPage,
+	OTPPage,
 } from "./config/components.js";
 import { socket } from "./config/socket.js";
 
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")).render(
 						<Route path="/login" element={<Login />} />
 						<Route path="/reg" element={<Reg />} />
 						<Route path="*" element={<NotFound />} />
+						<Route path="/verify-otp" element={<OTPPage />} />
 					</Route>
 					<Route element={<PrivateRoute socket={socket} />}>
 						<Route path="/form" element={<FormPage />} />

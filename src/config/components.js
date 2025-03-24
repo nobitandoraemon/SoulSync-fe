@@ -11,6 +11,7 @@ import App from "../App.jsx";
 import NotFound from "../pages/notfound.jsx";
 import FormPage from "../pages/form.jsx";
 import MatchPage from "../pages/match.jsx";
+import OTPPage from "../pages/otp.jsx";
 
 //Hooks
 import { useScroll } from "../hooks/useScroll.js";
@@ -64,6 +65,7 @@ export {
 	App,
 	NotFound,
 	MatchPage,
+	OTPPage,
 	ThemeProvider,
 	ThemeContext,
 	PrivateRoute,
