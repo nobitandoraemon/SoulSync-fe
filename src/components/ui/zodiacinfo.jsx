@@ -56,13 +56,15 @@ const ZodiacInfo = ({ zodiac, user, event }) => {
 				"flex-1 flex flex-col bg-secondary/20 relative scrollbar-hide"
 			)}
 		>
-			<ChatHeader user={user} isLoggin={true} />
+			{/* <ChatHeader user={user} isLoggin={true} /> */}
 			<div
-				className="min-h-screen bg-base-100 mt-16 hero"
-				style={{
-					backgroundImage:
-						"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-				}}
+				className="min-h-screen bg-base-100 py-16 hero"
+				// style={{
+				// 	backgroundImage:
+				// 		"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+				// 	backgroundPosition: "center",
+				// 	backgroundSize: "cover",
+				// }}
 			>
 				<div className="hero-overlay bg-opacity-60"></div>
 				<div className="w-4/5 hero-content bg-base-200 rounded-xl bg-opacity-60">

@@ -26,7 +26,6 @@ import ThemeContext from "../context/themeprovider.jsx";
 //Chatpage//
 import ChatBody from "../components/ui/chatpage/chatbody.jsx";
 import ChatBox from "../components/ui/chatpage/chatbox.jsx";
-import ChatContainer from "../components/ui/chatpage/chatcontainer.jsx";
 import ChatInput from "../components/ui/chatpage/chatinput.jsx";
 import ChatHeader from "../components/ui/chatpage/header.jsx";
 import Info from "../components/ui/chatpage/info.jsx";
@@ -71,7 +70,6 @@ export {
 	PrivateRoute,
 	ChatBody,
 	ChatBox,
-	ChatContainer,
 	ChatInput,
 	ChatHeader,
 	Info,

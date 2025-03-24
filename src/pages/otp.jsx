@@ -1,9 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useLayoutEffect, useEffect } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
+import { useNavigate, useOutletContext } from "react-router";
 import axios from "axios";
 import { API_ROUTES, APP_ROUTES } from "../lib/constants";
 import Toast from "../hooks/useToast";
+import { useUser } from "../hooks/useUser";
 
 const OTPInput = ({ otp, setOtp }) => {
 	const inputs = useRef([]);
@@ -65,6 +66,7 @@ const OTPInput = ({ otp, setOtp }) => {
 };
 
 const OTPPage = () => {
+	const [user] = useOutletContext();
 	const [username, setUsername] = useState(localStorage.getItem("temp") || "");
 	const [showOtpInput, setShowOtpInput] = useState(false);
 	const [otp, setOtp] = useState(Array(6).fill(""));
@@ -97,6 +99,14 @@ const OTPPage = () => {
 		}
 	};
 
+	useEffect(() => {
+		if (user) {
+			toast("Bạn đã đăng nhập", { type: "info" });
+			setTimeout(() => {
+				navigate(APP_ROUTES.MATCH);
+			}, 3000);
+		}
+	}, [user]);
 	return (
 		<div
 			className="hero bg-base min-h-screen"

@@ -1,11 +1,37 @@
 import { useEffect, useState } from "react";
-import { ChatContainer, useScroll, Toast, ChatBox } from "../config/components";
+import { useScroll, Toast, ChatBox } from "../config/components";
 import { cn } from "../lib/utils";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { useOutletContext } from "react-router";
-// >>>>>>> main
-
+import { useOutletContext, useNavigate } from "react-router";
+const PopUp = ({ ok, setOk, isRefuse, setIsRefuse, setMatchedUser }) => {
+	const navigate = useNavigate();
+	const handleOk = () => {
+		setOk(true);
+	};
+	const handleRefuse = () => {
+		setIsRefuse(true);
+		setTimeout(() => {
+			navigate("/match");
+		}, 2000);
+	};
+	return (
+		<div className="flex w-screen max-w-full min-h-screen">
+			<div className="flex flex-col items-center justify-center gap-8">
+				<h3 className="font-bold text-lg">
+					Chúc mừng ! Chúng tôi đã tìm được đối cho bạn !
+				</h3>
+				<p className="py-4">Bạn có muốn tiếp tục hay không ?</p>
+			</div>
+			<div className="w-full flex justify-center items-center gap-4">
+				<button className="btn btn-outline-info" onClick={handleOk}>
+					Đồng ý
+				</button>
+				<button className="btn btn-outline-warning" onClick={handleRefuse}>
+					Không
+				</button>
+			</div>
+		</div>
+	);
+};
 const Chat = ({ socket }) => {
 	const {
 		user,
@@ -32,7 +58,8 @@ const Chat = ({ socket }) => {
 	const isScroll = useScroll();
 	//Màn hình loading
 	const [isLoading, setIsLoading] = useState(true);
-	const [accept, setAccept] = useState(false);
+	// const [accept, setAccept] = useState(false);
+	const [isLeave, setIsLeave] = useState(false);
 	const handleLoading = () => {
 		if (isMatched) {
 			setIsLoading(false);
@@ -41,11 +68,15 @@ const Chat = ({ socket }) => {
 		}
 	};
 
+	// const handleIsMatched = () => {
+	// 	setIsMatched(true);
+	// };
+
 	useEffect(() => {
 		if (ok) {
 			console.log("ok");
 			newSocket.emit("ok", {});
-			setAccept(true);
+			// setAccept(true);
 			setOk(false);
 		}
 
@@ -62,10 +93,18 @@ const Chat = ({ socket }) => {
 			setMatchedUser(null);
 			setIsRefuse(false);
 		}
+
+		if (isLeave) {
+			console.log("leave");
+			newSocket.emit("leave", {});
+			setMatchedUser(null);
+			setIsLeave(false);
+		}
+
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, ok, accept, isFinding, isRefuse]);
+	}, [newSocket, ok, accept, isFinding, isRefuse, isLeave, isMatched]);
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
@@ -87,46 +126,59 @@ const Chat = ({ socket }) => {
 		return () => {};
 	}, [matchedUser]);
 
-	return matchedUser ? (
-		<div className="flex w-screen max-w-full min-h-screen">
-			<ChatBox
-				isFinding={isFinding}
-				isScroll={isScroll}
-				socket={socket}
-				matchedUser={matchedUser}
-				chat={chat}
-				ok={ok}
-				setOk={setOk}
-				setIsRefuse={setIsRefuse}
-				isMatched={isMatched}
-				setIsMatched={setIsMatched}
-				sendMessage={sendMessage}
-				user={user}
-			/>
-		</div>
-	) : (
-		<div className="flex items-center justify-center w-screen h-screen">
-			<Toast />
-			<div className="inline-grid *:[grid-area:1/1] mr-8">
-				<div
-					className={cn("status animate-ping", {
-						"status-info": isFinding,
-						"status-error": !isFinding,
-					})}
-				></div>
-				<div
-					className={cn("status", {
-						"status-info": isFinding,
-						"status-error": !isFinding,
-					})}
-				></div>
-			</div>{" "}
-			<span className="text-2xl animate-pulse">
-				{" "}
-				{failMessage ? `${failMessage}` : "We're finding you a match"}
-			</span>
-			<span className="ml-8 loading loading-spinner text-info"></span>
-		</div>
+	return (
+		<>
+			{matchedUser ? (
+				<PopUp
+					ok={ok}
+					setOk={setOk}
+					isRefuse={isRefuse}
+					setIsRefuse={setIsRefuse}
+					setMatchedUser={setMatchedUser}
+				/>
+			) : (
+				<div className="flex items-center justify-center w-screen h-screen">
+					<Toast />
+					<div className="inline-grid *:[grid-area:1/1] mr-8">
+						<div
+							className={cn("status animate-ping", {
+								"status-info": isFinding,
+								"status-error": !isFinding,
+							})}
+						></div>
+						<div
+							className={cn("status", {
+								"status-info": isFinding,
+								"status-error": !isFinding,
+							})}
+						></div>
+					</div>{" "}
+					<span className="text-2xl animate-pulse">
+						{" "}
+						{failMessage ? `${failMessage}` : "We're finding you a match"}
+					</span>
+					<span className="ml-8 loading loading-spinner text-info"></span>
+				</div>
+			)}
+			{isMatched && (
+				<div className="flex w-screen max-w-full min-h-screen">
+					<ChatBox
+						isFinding={isFinding}
+						isScroll={isScroll}
+						socket={socket}
+						matchedUser={matchedUser}
+						chat={chat}
+						ok={ok}
+						setOk={setOk}
+						setIsRefuse={setIsRefuse}
+						isMatched={isMatched}
+						setIsMatched={setIsMatched}
+						sendMessage={sendMessage}
+						user={user}
+					/>
+				</div>
+			)}
+		</>
 	);
 };
 

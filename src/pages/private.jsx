@@ -171,7 +171,7 @@ const PrivateRoute = ({ socket }) => {
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, isFinding]);
+	}, [newSocket, isFinding, isMatched]);
 
 	return (
 		<Outlet
@@ -196,7 +196,6 @@ const PrivateRoute = ({ socket }) => {
 			}}
 		/>
 	);
-	// >>>>>>> main
 };
 
 export default PrivateRoute;
