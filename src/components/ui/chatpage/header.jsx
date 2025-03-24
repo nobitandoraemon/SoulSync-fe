@@ -7,7 +7,7 @@ const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 		<div className="drawer drawer-end">
 			<input id="my-drawer" type="checkbox" className="drawer-toggle" />
 			<div className="drawer-content">
-				{/* Page content here */}
+				{/* Page content her  */}
 				<label
 					htmlFor="my-drawer"
 					className={`flex cursor-pointer ${
