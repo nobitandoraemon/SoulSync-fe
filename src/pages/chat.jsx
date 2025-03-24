@@ -135,7 +135,7 @@ const Chat = ({ socket }) => {
 
 	return (
 		<>
-			{!accept && matchedUser ? (
+			{!accept && matchedUser && (
 				<PopUp
 					// ok={ok}
 					// setOk={setOk}
@@ -145,7 +145,8 @@ const Chat = ({ socket }) => {
 					// setIsRefuse={setIsRefuse}
 					setMatchedUser={setMatchedUser}
 				/>
-			) : (
+			)}
+			{!accept && !matchedUser && (
 				<div className="flex items-center justify-center w-screen h-screen">
 					<Toast />
 					<div className="inline-grid *:[grid-area:1/1] mr-8">

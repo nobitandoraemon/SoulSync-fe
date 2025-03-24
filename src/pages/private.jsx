@@ -117,9 +117,9 @@ const PrivateRoute = ({ socket }) => {
 	const [isRefuse, setIsRefuse] = useState(false); //check xem user có refuse hay không
 	const [newSocket, setNewSocket] = useState(socket);
 	useEffect(() => {
-		//start socket, send username to socket-be
-		newSocket.auth = { username };
-		newSocket.connect();
+		// //start socket, send username to socket-be
+		// newSocket.auth = { username };
+		// newSocket.connect();
 
 		//nhận thông tin về user B sẽ match -> chuyển đến waiting room
 		newSocket.on("wait", (data) => {

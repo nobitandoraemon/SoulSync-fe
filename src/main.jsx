@@ -17,6 +17,8 @@ import {
 } from "./config/components.js";
 import { socket } from "./config/socket.js";
 
+socket.connect();
+
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<ThemeProvider>
