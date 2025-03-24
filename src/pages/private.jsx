@@ -179,8 +179,8 @@ const PrivateRoute = ({ socket }) => {
 		<Outlet
 			context={{
 				user,
-				chat,
-				setChat,
+				// chat,
+				// setChat,
 				matchedUser,
 				setMatchedUser,
 				// ok,
