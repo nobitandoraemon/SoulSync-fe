@@ -4,8 +4,9 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 	const [chat, setChat] = useState([]);
 	const lastMessage = useRef(null);
 
-	const handleScroll = () => {
-		lastMessage.current.scrollIntoView({ behavior: "smooth" });
+	const handleScroll = (e) => {
+		e.preventDefault();
+		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	};
 
 	// Xử lí nhận tin nhắn
