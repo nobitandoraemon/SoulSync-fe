@@ -386,7 +386,7 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 	const [selectedGender, setSelectedGender] = useState(null);
 
 	const handleNameChange = (e) => {
-		setFormData({ ...formData, fullname: e.target.value });
+		setFormData({ ...formData, fullName: e.target.value });
 	};
 
 	const handleGenderChange = (gender) => {
@@ -400,7 +400,7 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 
 	const Submit1 = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		// console.log(formData);
 		if (e.target.checkValidity() && formData.gender) {
 			setStep(2);
 		} else alert("Choose your gender");
@@ -488,7 +488,7 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 const Address = ({ setStep, formData, setFormData }) => {
 	const Submit2 = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		// console.log(formData);
 		if (e.target.checkValidity()) {
 			setStep(3);
 		}
@@ -561,7 +561,7 @@ const Address = ({ setStep, formData, setFormData }) => {
 const BirthDate = ({ setStep, formData, setFormData }) => {
 	const submitBirthDate = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		// console.log(formData);
 		if (e.target.checkValidity()) {
 			const formdata = new FormData(e.target);
 			const formValues = Object.fromEntries(formdata.entries());
@@ -580,7 +580,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 			updatedHobby = [...userHobby, hobby];
 		}
 		setUserHobby(updatedHobby);
-		setFormData({ ...formData, hobby: updatedHobby });
+		setFormData({ ...formData, hobbies: updatedHobby });
 	};
 
 	const handleBirthChange = (e) => {
@@ -588,7 +588,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 	};
 
 	const avatarLinkChange = (e) => {
-		setFormData({ ...formData, avatar: e.target.value });
+		setFormData({ ...formData, image: e.target.value });
 	};
 
 	return (
@@ -922,10 +922,10 @@ const ProfileForm = () => {
 		gender: "",
 		zodiac: "",
 		location: "An Giang",
-		fullname: "",
+		fullName: "",
 		phoneNumber: "",
-		hobby: "",
-		avatar: "",
+		hobbies: "",
+		image: "",
 		quote: "",
 	});
 
