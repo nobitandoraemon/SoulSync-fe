@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-const ChatInput = ({ socketIO, matchedUser, sendMessage, user }) => {
+import { useState } from "react";
+const ChatInput = ({ sendMessage }) => {
 	const [message, setMessage] = useState("");
 	const handleMessage = (e) => {
 		e.preventDefault();

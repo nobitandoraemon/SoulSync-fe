@@ -104,7 +104,45 @@ const OtherInformationSideBar = ({ matchedUser, clickable, setClickable }) => {
 	);
 };
 
-const SubNav = ({ matchedUser }) => {
+const MainNav = ({ user, handleOut }) => {
+	return (
+		<>
+			<div className="flex flex-row items-center flex-1 float-left gap-4 mr-4">
+				<div className="avatar online">
+					<div className="w-12 rounded-full">
+						<img src={user.image} />
+					</div>
+				</div>
+				<span className="hidden overflow-hidden truncate md:block text-ellipsis badge badge-lg ">
+					{user.username}
+				</span>
+			</div>
+
+			<div
+				role="button"
+				className="btn btn-ghost btn-circle"
+				onClick={handleOut}
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth={1.5}
+					stroke="currentColor"
+					className="size-6"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
+					/>
+				</svg>
+			</div>
+		</>
+	);
+};
+
+const SubNav = ({ matchedUser, user, handleOut }) => {
 	const [clickable, setClickable] = useState(true);
 	return (
 		<ul className="menu md:bg-base-200 menu-horizontal rounded-box place-content-center">
@@ -146,7 +184,9 @@ const SubNav = ({ matchedUser }) => {
 							d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
 						/>
 					</svg>
-					<span className="hidden md:block">Kết thúc</span>
+					<span className="hidden md:block" onClick={handleOut}>
+						Kết thúc
+					</span>
 
 					<span className="badge badge-sm badge-warning">
 						<svg
@@ -176,14 +216,14 @@ const SubNav = ({ matchedUser }) => {
 			</li>
 			<li className="bg-base-200">
 				<OtherInformationSideBar
-					// otherInfo={content.other}
+					matchedUser={matchedUser}
 					clickable={clickable}
 					setClickable={setClickable}
 				/>
 			</li>
 			<li className="bg-base-200 rounded-r-3xl">
 				<MyInformationSideBar
-					// myInfo={content.mine}
+					user={user}
 					clickable={clickable}
 					setClickable={setClickable}
 				/>
@@ -200,37 +240,11 @@ const ChatHeader = ({ user, matchedUser, toggleFinding }) => {
 	return (
 		<div className="fixed flex items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[60px] shadow-lg bg-primary/10 backdrop-blur-lg z-50">
 			<Toast />
-			<div className="flex flex-row items-center flex-1 float-left gap-4 mr-4">
-				<div className="hidden avatar online md:block">
-					<div className="w-12 rounded-full">
-						<img src={user.image} />
-					</div>
-				</div>
-				<span className="hidden overflow-hidden truncate md:block text-ellipsis badge badge-lg ">
-					{user.username}
-				</span>
-			</div>
-
-			<div
-				role="button"
-				className="btn btn-ghost btn-circle"
-				onClick={handleOut}
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					strokeWidth={1.5}
-					stroke="currentColor"
-					className="size-6"
-				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
-					/>
-				</svg>
-			</div>
+			{matchedUser ? (
+				<SubNav matchedUser={matchedUser} user={user} handleOut={handleOut} />
+			) : (
+				<MainNav user={user} handleOut={handleOut} />
+			)}
 		</div>
 	);
 };
