@@ -118,7 +118,12 @@ const Header = () => {
 				</div>
 				<div className="navbar-end">
 					<ToggleTheme className="btn btn-ghost btn-circle" />
-					{user && <UserProfile user={user} handleLogOut={handleLogOut} />}
+					{token &&
+						(user ? (
+							<UserProfile user={user} handleLogOut={handleLogOut} />
+						) : (
+							<div className="skeleton size-10 shrink-0 rounded-full"></div>
+						))}
 				</div>
 			</div>
 		</div>
