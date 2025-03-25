@@ -14,7 +14,6 @@ import {
 	FormPage,
 	MatchPage,
 	OTPPage,
-	TestPage,
 } from "./config/components.js";
 
 import { socket } from "./config/socket.js";
@@ -31,6 +30,7 @@ createRoot(document.getElementById("root")).render(
 						<Route path="/verify-otp" element={<OTPPage />} />
 					</Route>
 					<Route element={<PrivateRoute socket={socket} />}>
+						<Route path="/setting" element={<SettingPage />} />
 						<Route path="/form" element={<FormPage />} />
 						<Route path="/match" element={<MatchPage />} />
 						<Route path="/chat" element={<Chat socket={socket} />} />

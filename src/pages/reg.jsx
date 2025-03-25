@@ -60,21 +60,21 @@ const Reg = () => {
 			className="min-h-screen hero"
 			style={{
 				backgroundImage:
-					"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+					"url(https://images.squarespace-cdn.com/content/v1/5eac45f88da144413f9b5763/b85d7659-1901-4859-b33a-04356e135fb7/myles-munroe-3-principles-of-biblical-dating-and-courting.jpg)",
 			}}
 		>
 			<Toast />
-			<div className="hero-overlay bg-opacity-60"></div>
-			<div className="py-16 text-center hero-content text-base-content">
+			<div className="hero-overlay"></div>
+			<div className="py-16 text-center hero-content text-neutral-content">
 				<div className="flex flex-col gap-8 items-center-center md:flex-row md:w-4/5">
 					<div className="flex flex-col space-y-8 md:w-2/3 text-wrap">
 						<h1 className="mb-5 text-5xl font-bold">Đăng ký ngay</h1>
-						<p className="mb-5 text-wrap">
+						<p className="mb-5 text-wrap font-semibold">
 							Tìm một nửa hoàn hảo ngay hôm nay! Kết nối, khám phá bản thân và
 							trải nghiệm hành trình yêu thương thú vị. 💖
 						</p>
 					</div>
-					<div className="w-full max-w-sm mx-auto shadow-2xl card bg-base-100 shrink-0">
+					<div className="w-full max-w-sm mx-auto shadow-2xl card bg-primary-content/90 shrink-0 text-primary">
 						<form className="card-body" onSubmit={handleSubmit}>
 							<div className="form-control">
 								<label className="label">
@@ -101,14 +101,16 @@ const Reg = () => {
 									onChange={handleChange}
 									required
 								/>
-								<label className="label">
+								<label className="label mt-6 animate-bounce text-primary hover:text-accent">
 									<Link to="/login" className="label-text-alt link link-hover">
 										Đã có tài khoản? Đăng nhập tại đây
 									</Link>
 								</label>
 							</div>
 							<div className="mt-6 form-control">
-								<button className="btn btn-primary">Đăng ký</button>
+								<button className="btn btn-primary hover:btn-accent">
+									Đăng ký
+								</button>
 							</div>
 						</form>
 					</div>

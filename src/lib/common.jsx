@@ -8,11 +8,34 @@ export function storeTokenInLocalStorage(token) {
 export function getTokenFromLocalStorage() {
 	return localStorage.getItem("token");
 }
+
 export async function logOut() {
 	try {
 		const response = await axios({
 			method: "POST",
 			url: API_ROUTES.LOG_OUT,
+
+			withCredentials: true,
+		});
+		localStorage.removeItem("token");
+		localStorage.removeItem("username");
+		toast(response.data.message, { type: "success" });
+		setTimeout(() => {
+			window.location.href = "/";
+		}, 3000);
+	} catch (err) {
+		toast(`	${err.response.data.message}`, { type: "error" });
+	}
+}
+export async function deleteUser() {
+	const token = getTokenFromLocalStorage();
+	try {
+		const response = await axios({
+			method: "DELETE",
+			url: API_ROUTES.GET_USER,
+			headers: {
+				authorization: `Bearer ${token}`,
+			},
 			withCredentials: true,
 		});
 		localStorage.removeItem("token");

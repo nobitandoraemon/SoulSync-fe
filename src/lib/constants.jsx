@@ -8,6 +8,7 @@ export const API_ROUTES = {
 	MATCH: `${API_URL}/match`,
 	SOCKET: API_URL,
 	VERIFY: `${API_URL}/otp/verify-otp`,
+	RE_OTP: `${API_URL}/otp/refresh`,
 };
 
 export const APP_ROUTES = {

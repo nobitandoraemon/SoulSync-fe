@@ -10,6 +10,18 @@ const PopUp = ({
 	setMatchedUser,
 }) => {
 	const navigate = useNavigate();
+	const [counter, setCounter] = useState(60);
+	useEffect(() => {
+		let timer = setInterval(() => {
+			setCounter((time) => {
+				if (time === 0) {
+					clearInterval(timer);
+					handleRefuse();
+					return 0;
+				} else return time - 1;
+			});
+		}, 1000);
+	}, []);
 	const handleAccept = () => {
 		setAccept(true);
 	};
@@ -20,18 +32,30 @@ const PopUp = ({
 		}, 2000);
 	};
 	return (
-		<div className="flex w-screen max-w-full min-h-screen">
-			<div className="flex flex-col items-center justify-center gap-8">
-				<h3 className="font-bold text-lg">
+		<div className="flex flex-col h-screen justify-center items-center">
+			<div className="flex flex-col items-center justify-center gap-4">
+				<h3 className="font-bold text-2xl animate-bounce">
 					Chúc mừng ! Chúng tôi đã tìm được đối cho bạn !
 				</h3>
 				<p className="py-4">Bạn có muốn tiếp tục hay không ?</p>
 			</div>
+			<div className="flex flex-col p-2 text-center bg-neutral rounded-box text-neutral-content my-6">
+				<span className="countdown font-mono text-5xl">
+					<span
+						style={{ "--value": counter }}
+						aria-live="polite"
+						aria-label={counter}
+					>
+						{counter}
+					</span>
+				</span>
+				sec
+			</div>
 			<div className="w-full flex justify-center items-center gap-4">
-				<button className="btn btn-outline-info" onClick={handleAccept}>
+				<button className="btn btn-success" onClick={handleAccept}>
 					Đồng ý
 				</button>
-				<button className="btn btn-outline-warning" onClick={handleRefuse}>
+				<button className="btn btn-error" onClick={handleRefuse}>
 					Không
 				</button>
 			</div>
@@ -74,9 +98,9 @@ const Chat = ({ socket }) => {
 		}
 	};
 
-	// const handleIsMatched = () => {
-	// 	setIsMatched(true);
-	// };
+	const handleLeave = () => {
+		setIsLeave(true);
+	};
 
 	useEffect(() => {
 		// if (ok) {
@@ -181,6 +205,7 @@ const Chat = ({ socket }) => {
 						// ok={ok}
 						// setOk={setOk}
 						// setIsRefuse={setIsRefuse}
+						handleLeave={handleLeave}
 						isMatched={isMatched}
 						setIsMatched={setIsMatched}
 						sendMessage={sendMessage}
