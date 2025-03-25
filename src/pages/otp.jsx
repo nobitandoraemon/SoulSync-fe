@@ -5,7 +5,6 @@ import axios from "axios";
 import { API_ROUTES, APP_ROUTES } from "../lib/constants";
 import Toast from "../hooks/useToast";
 import { cn } from "../lib/utils";
-import { set } from "react-hook-form";
 
 const OTPInput = ({ otp, setOtp }) => {
 	const inputs = useRef([]);
@@ -74,21 +73,20 @@ const OTPPage = () => {
 	const [counter, setCounter] = useState(120);
 	const [isRefresh, setIsRefresh] = useState(false);
 
-	const handleReset = () => {
-		setIsRefresh(false);
-		setCounter(120);
-	};
 	useEffect(() => {
 		let timer = setInterval(() => {
 			setCounter((time) => {
 				if (time === 0) {
 					clearInterval(timer);
-					handleReset();
+					setIsRefresh(false);
 					return 0;
 				} else return time - 1;
 			});
 		}, 1000);
-	}, []);
+		if (isRefresh) {
+			setCounter(120);
+		}
+	}, [isRefresh]);
 	const navigate = useNavigate();
 
 	const handleShow = (e) => {
@@ -176,8 +174,10 @@ const OTPPage = () => {
 										Gửi lại mã OTP
 									</button>
 									{isRefresh && (
-										<span className="text-sm text-info animate-pulse">
-											Lệnh gửi lại có hiệu lực sau {counter}s
+										<span className="text-md text-warning font-semibold">
+											Lệnh gửi lại có hiệu lực sau{" "}
+											<span className="font-bold animate-ping">{counter}</span>{" "}
+											s
 										</span>
 									)}
 								</div>
