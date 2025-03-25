@@ -4,6 +4,8 @@ import { useNavigate, useOutletContext } from "react-router";
 import axios from "axios";
 import { API_ROUTES, APP_ROUTES } from "../lib/constants";
 import Toast from "../hooks/useToast";
+import { cn } from "../lib/utils";
+import { set } from "react-hook-form";
 
 const OTPInput = ({ otp, setOtp }) => {
 	const inputs = useRef([]);
@@ -69,6 +71,24 @@ const OTPPage = () => {
 	const [username, setUsername] = useState(localStorage.getItem("temp") || "");
 	const [showOtpInput, setShowOtpInput] = useState(false);
 	const [otp, setOtp] = useState(Array(6).fill(""));
+	const [counter, setCounter] = useState(120);
+	const [isRefresh, setIsRefresh] = useState(false);
+
+	const handleReset = () => {
+		setIsRefresh(false);
+		setCounter(120);
+	};
+	useEffect(() => {
+		let timer = setInterval(() => {
+			setCounter((time) => {
+				if (time === 0) {
+					clearInterval(timer);
+					handleReset();
+					return 0;
+				} else return time - 1;
+			});
+		}, 1000);
+	}, []);
 	const navigate = useNavigate();
 
 	const handleShow = (e) => {
@@ -91,6 +111,25 @@ const OTPPage = () => {
 				setTimeout(() => {
 					navigate(APP_ROUTES.SIGN_IN);
 				}, 3000);
+			}
+		} catch (err) {
+			console.log(err);
+			toast(`${err.response.data.message}`, { type: "error" });
+		}
+	};
+	const handleRefresh = async (e) => {
+		e.preventDefault();
+		setIsRefresh(true);
+
+		try {
+			const response = await axios({
+				method: "POST",
+				data: { username: username },
+				url: API_ROUTES.RE_OTP,
+				withCredentials: true,
+			});
+			if (response?.data?.message) {
+				toast(`${response.data.message}`, { type: "success" });
 			}
 		} catch (err) {
 			console.log(err);
@@ -127,6 +166,21 @@ const OTPPage = () => {
 								<button type="submit" className="mt-8 btn btn-info btn-wide">
 									Enter
 								</button>
+								<div className="flex flex-col justify-center items-center gap-4">
+									<button
+										onClick={handleRefresh}
+										className={cn("mt-8 btn btn-ghost", {
+											"btn-disabled": isRefresh,
+										})}
+									>
+										Gửi lại mã OTP
+									</button>
+									{isRefresh && (
+										<span className="text-sm text-info animate-pulse">
+											Lệnh gửi lại có hiệu lực sau {counter}s
+										</span>
+									)}
+								</div>
 							</form>
 						) : (
 							<form onSubmit={handleShow}>
@@ -159,6 +213,7 @@ const OTPPage = () => {
 												placeholder="Email"
 												className="input input-md grow"
 												value={username}
+												required
 												onChange={(e) => setUsername(e.target.value)}
 											/>
 										</label>
