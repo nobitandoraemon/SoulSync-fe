@@ -14,9 +14,10 @@ import {
 	FormPage,
 	MatchPage,
 	OTPPage,
+	TestPage,
 } from "./config/components.js";
-import { socket } from "./config/socket.js";
 
+import { socket } from "./config/socket.js";
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<ThemeProvider>
@@ -26,7 +27,7 @@ createRoot(document.getElementById("root")).render(
 						<Route index element={<App />} />
 						<Route path="/login" element={<Login />} />
 						<Route path="/reg" element={<Reg />} />
-						<Route path="*" element={<NotFound />} />
+						<Route path="/test" element={<TestPage />} />
 						<Route path="/verify-otp" element={<OTPPage />} />
 					</Route>
 					<Route element={<PrivateRoute socket={socket} />}>

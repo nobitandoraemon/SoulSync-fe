@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChatIcon } from "../general/icon";
-
+import logo from "../../../assets/logo.png";
 const Info = ({ user }) => {
 	return (
 		<section className="flex flex-col items-center">

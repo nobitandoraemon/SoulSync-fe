@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router";
 import { Toast } from "../../../config/components";
 import { useState } from "react";
 import { APP_ROUTES } from "../../../lib/constants";
+import { Info } from "../../../config/components";
 const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 	return (
 		<div className="drawer drawer-end">
@@ -45,9 +46,9 @@ const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 					onClick={() => setClickable(true)}
 				></label>
 				<div className="grid grid-cols-1 menu bg-base-200 text-base-content h-screen max-w-[90vw] p-4 overflow-auto">
-					{/* Sidebar content here */}
-					<div className="m-2 shadow-xs card bg-primary w-96">
-						<div className="card-body">{user.username}</div>
+					
+					<div>
+						
 					</div>
 					{/* Sidebar content end here */}
 				</div>
