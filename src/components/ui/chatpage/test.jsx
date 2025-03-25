@@ -1,9 +1,14 @@
 // components/ProfileCard.jsx
 import React from "react";
-import logo from "../assets/logo.png"
-import age from "../assets/age-restriction-eighteen.png"
+import logo from "../../../assets/logo.png";
+import leo from "../../../assets/leo.png";
 import { motion } from "motion/react";
-import leo from "../assets/leo.png"
+import age from "../../../assets/age.png";
+
+const today = new Date();
+const todayDate = today.toLocaleDateString();
+const currentYear = today.getFullYear();
+const Year = todayDate.split('/')[2];
 const TestPage = () => {
   return (
     <section className="pt-16 bg-blueGray-50  ">
@@ -32,11 +37,13 @@ const TestPage = () => {
               <div className="text-sm flex justify-center gap-2 leading-normal mt-0 mb-4 text-blueGray-400 font-bold uppercase ">
               <i class="fi fi-sr-marker"></i>
               Los Angeles, California
+              
               </div>
               <div className="mb-2 text-blueGray-600  flex justify-center mb-4 gap-2">
               <i class="fi fi-sr-envelope"></i>
                 truonggioitoan@gmail.com
               </div>
+              <p>{currentYear}</p>
               <div className="mb-2 text-blueGray-600 flex gap-2 justify-center">
               <div className="w-5">
                 <img id="uicons__detail-img" src={leo} alt="" title="" className="img-small" />

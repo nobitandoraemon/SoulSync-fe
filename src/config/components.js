@@ -12,7 +12,7 @@ import NotFound from "../pages/notfound.jsx";
 import FormPage from "../pages/form.jsx";
 import MatchPage from "../pages/match.jsx";
 import OTPPage from "../pages/otp.jsx";
-import TestPage from "../pages/test.jsx";
+import TestPage from "../components/ui/chatpage/test.jsx";
 //Hooks
 import { useScroll } from "../hooks/useScroll.js";
 import Toast from "../hooks/useToast.jsx";
