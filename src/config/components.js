@@ -26,11 +26,11 @@ import ThemeContext from "../context/themeprovider.jsx";
 //Chatpage//
 import ChatBody from "../components/ui/chatpage/chatbody.jsx";
 import ChatBox from "../components/ui/chatpage/chatbox.jsx";
-import ChatContainer from "../components/ui/chatpage/chatcontainer.jsx";
 import ChatInput from "../components/ui/chatpage/chatinput.jsx";
 import ChatHeader from "../components/ui/chatpage/header.jsx";
 import Info from "../components/ui/chatpage/info.jsx";
 import Profile from "../components/ui/chatpage/profile.jsx";
+import SettingPage from "../pages/settings.jsx";
 
 //Homepage//
 import Contact from "../components/ui/homepage/contact";
@@ -66,12 +66,12 @@ export {
 	NotFound,
 	MatchPage,
 	OTPPage,
+	SettingPage,
 	ThemeProvider,
 	ThemeContext,
 	PrivateRoute,
 	ChatBody,
 	ChatBox,
-	ChatContainer,
 	ChatInput,
 	ChatHeader,
 	Info,

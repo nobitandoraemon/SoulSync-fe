@@ -4,71 +4,72 @@ import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import { useNavigate } from "react-router";
 import { getTokenFromLocalStorage, getUser } from "../lib/common";
 import { toast } from "react-toastify";
+import Upload from "../components/ui/upload";
 
 const VietnamProvinces = [
 	"An Giang",
-	"Ba Ria - Vung Tau",
-	"Bac Giang",
-	"Bac Kan",
-	"Bac Lieu",
-	"Bac Ninh",
-	"Ben Tre",
-	"Binh Dinh",
-	"Binh Duong",
-	"Binh Phuoc",
-	"Binh Thuan",
-	"Ca Mau",
-	"Can Tho",
-	"Cao Bang",
-	"Da Nang",
-	"Dak Lak",
-	"Dak Nong",
-	"Dien Bien",
-	"Dong Nai",
-	"Dong Thap",
+	"Bà Rịa - Vũng Tàu",
+	"Bắc Giang",
+	"Bắc Kạn",
+	"Bạc Liêu",
+	"Bắc Ninh",
+	"Bến Tre",
+	"Bình Định",
+	"Bình Dương",
+	"Bình Phước",
+	"Bình Thuận",
+	"Cà Mau",
+	"Cần Thơ",
+	"Cao Bằng",
+	"Đà Nẵng",
+	"Đắk Lắk",
+	"Đắk Nông",
+	"Điện Biên",
+	"Đồng Nai",
+	"Đồng Tháp",
 	"Gia Lai",
-	"Ha Giang",
-	"Ha Nam",
-	"Hanoi",
-	"Ha Tinh",
-	"Hai Duong",
-	"Hai Phong",
-	"Hau Giang",
-	"Hoa Binh",
-	"Hung Yen",
-	"Khanh Hoa",
-	"Kien Giang",
+	"Hà Giang",
+	"Hà Nam",
+	"Hà Nội",
+	"Hà Tĩnh",
+	"Hải Dương",
+	"Hải Phòng",
+	"Hậu Giang",
+	"Hoà Bình",
+	"Hưng Yên",
+	"Khánh Hoà",
+	"Kiên Giang",
 	"Kon Tum",
-	"Lai Chau",
-	"Lam Dong",
-	"Lang Son",
-	"Lao Cai",
+	"Lai Châu",
+	"Lâm Đồng",
+	"Lạng Sơn",
+	"Lào Cai",
 	"Long An",
-	"Nam Dinh",
-	"Nghe An",
-	"Ninh Binh",
-	"Ninh Thuan",
-	"Phu Tho",
-	"Phu Yen",
-	"Quang Binh",
-	"Quang Nam",
-	"Quang Ngai",
-	"Quang Ninh",
-	"Quang Tri",
-	"Soc Trang",
-	"Son La",
-	"Tay Ninh",
-	"Thai Binh",
-	"Thai Nguyen",
-	"Thanh Hoa",
-	"Thua Thien Hue",
-	"Tien Giang",
-	"Ho Chi Minh City",
-	"Tra Vinh",
-	"Tuyen Quang",
-	"Vinh Long",
-	"Vinh Phuc",
-	"Yen Bai",
+	"Nam Định",
+	"Nghệ An",
+	"Ninh Bình",
+	"Ninh Thuận",
+	"Phú Thọ",
+	"Phú Yên",
+	"Quảng Bình",
+	"Quảng Nam",
+	"Quảng Ngãi",
+	"Quảng Ninh",
+	"Quảng Tri",
+	"Sóc Trăng",
+	"Sơn La",
+	"Tây Ninh",
+	"Thái Bình",
+	"Thái Nguyên",
+	"Thanh Hoá",
+	"Thừa Thiên Huế",
+	"Tiền Giang",
+	"Tp. Hồ Chí Minh",
+	"Trà Vinh",
+	"Tuyên Quang",
+	"Vĩnh Long",
+	"Vĩnh Phúc",
+	"Yên Bái",
 ];
 
 const ZodiacSigns = [
@@ -587,8 +588,13 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 		setFormData({ ...formData, birthday: e.target.value });
 	};
 
-	const avatarLinkChange = (e) => {
-		setFormData({ ...formData, image: e.target.value });
+	const avatarLinkChange = (url) => {
+		setFormData({ ...formData, image: url });
+	};
+
+	const handleTemp = (e) => {
+		e.preventDefault();
+		console.log(e.target);
 	};
 
 	return (
@@ -712,17 +718,31 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 							🎥 Xem Phim
 						</button>
 					</div>
-					<div className="flex flex-col gap-2 mt-8">
-						<h2 className="text-sm">Link avatar mà bạn muốn gán (Tuỳ Chọn) </h2>
-						<input
-							type="text"
-							name="avatar-link"
-							placeholder="Avatar Link"
-							className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
-							required
-							value={formData.avatar}
-							onChange={avatarLinkChange}
-						/>
+					<div className="flex items-center justify-between mt-8">
+						<div className="chat chat-start">
+							<div className="chat-image avatar">
+								<div className="w-10 rounded-full">
+									<img
+										alt="default avatar"
+										src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+									/>
+								</div>
+							</div>
+							<div className="chat-bubble">
+								Đặt ảnh đại diện ngay để tạo ấn tượng với mọi người
+							</div>
+						</div>
+						<form action="#">
+							<input
+								type="text"
+								name="avatar-link"
+								placeholder="Avatar Link"
+								className="hidden"
+								required
+								onChange={handleTemp}
+							/>
+							<Upload avatarLinkChange={avatarLinkChange} />
+						</form>
 					</div>
 					<div className="flex justify-between">
 						<button

@@ -108,7 +108,7 @@ const PrivateRoute = ({ socket }) => {
 	// Check tab active bên sidebar
 
 	const [username, setUsername] = useState(localStorage.getItem("username")); // Lấy user hiện tại để gửi auth cho socket
-	const [chat, setChat] = useState([]); // Lấy thống tin chat : messages
+	// const [chat, setChat] = useState([]); // Lấy thống tin chat : messages
 	const [matchedUser, setMatchedUser] = useState(null); // Lấy thông tin người sau khi match
 	const [ok, setOk] = useState(false); // Check xem người dùng có chấp nhận vào Chat hay không
 	const [isMatched, setIsMatched] = useState(false); //2 người dùng cùng chấp nhận chat chưa
@@ -136,7 +136,9 @@ const PrivateRoute = ({ socket }) => {
 
 		// server gửi về match -> cả 2 đã accept -> cho Chat
 		newSocket.on("match", (data) => {
-			setIsMatched(true);
+			if (data.message === "Sucessfull") {
+				setIsMatched(true);
+			}
 		});
 
 		newSocket.on("fail", (data) => {
@@ -148,9 +150,9 @@ const PrivateRoute = ({ socket }) => {
 		});
 
 		// Nhận thông tin chat từ server newSocket
-		newSocket.on("message", (data) => {
-			setChat((prevChat) => [...prevChat, data]);
-		});
+		// newSocket.on("message", (data) => {
+		// 	setChat((prevChat) => [...prevChat, data]);
+		// });
 
 		// Kết nối newSocket
 		newSocket.on("connect", () => {
@@ -171,18 +173,18 @@ const PrivateRoute = ({ socket }) => {
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, isFinding]);
+	}, [newSocket, isFinding, isMatched]);
 
 	return (
 		<Outlet
 			context={{
 				user,
-				chat,
-				setChat,
+				// chat,
+				// setChat,
 				matchedUser,
 				setMatchedUser,
-				ok,
-				setOk,
+				// ok,
+				// setOk,
 				isMatched,
 				setIsMatched,
 				failMessage,
@@ -191,12 +193,11 @@ const PrivateRoute = ({ socket }) => {
 				setIsFinding,
 				newSocket,
 				setNewSocket,
-				isRefuse,
-				setIsRefuse,
+				// isRefuse,
+				// setIsRefuse,
 			}}
 		/>
 	);
-	// >>>>>>> main
 };
 
 export default PrivateRoute;

@@ -26,7 +26,7 @@ const Login = ({ user }) => {
 				withCredentials: true,
 			});
 			if (response?.data?.accessToken) {
-				toast("Login successfully", { type: "success" });
+				toast("Đăng nhập thành công", { type: "success" });
 				storeTokenInLocalStorage(response.data.accessToken);
 				localStorage.setItem("username", input.username);
 			}
@@ -35,7 +35,7 @@ const Login = ({ user }) => {
 			}, 3000);
 		} catch (err) {
 			console.log(err);
-			toast("Login failed", { type: "error" });
+			toast("Đăng nhập thất bại", { type: "error" });
 		}
 	};
 
@@ -74,7 +74,7 @@ const Login = ({ user }) => {
 			}}
 		>
 			<Toast />
-			<div className="flex-col hero-content lg:flex-row-reverse">
+			<div className="flex-col hero-content lg:flex-row-reverse text-center">
 				<div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
 					<form className="card-body" onSubmit={handleSubmit}>
 						<div className="form-control">
@@ -103,7 +103,7 @@ const Login = ({ user }) => {
 								required
 							/>
 							<div className="flex flex-col mt-6 space-y-2">
-								<label className="label animate-pulse hover:text-primary">
+								<label className="label animate-pulse text-primary hover:text-accent">
 									<Link to="/reg" className="label-text-alt link link-hover">
 										Chưa có tài khoản? Đăng ký ngay nào
 									</Link>
@@ -116,7 +116,9 @@ const Login = ({ user }) => {
 							</div>
 						</div>
 						<div className="mt-6 form-control">
-							<button className="btn btn-primary">Đăng nhập</button>
+							<button className="btn btn-primary hover:btn-accent">
+								Đăng nhập
+							</button>
 						</div>
 					</form>
 				</div>

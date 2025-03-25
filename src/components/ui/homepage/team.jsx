@@ -11,8 +11,8 @@ const members = [
 		avatar:
 			"https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN",
 		social: [
-			{ href: "https://www.facebook.com/anhphungquang", icon: <FaFacebookF /> },
-			{ href: "https://github.com/anhphungquang", icon: <FaGithub /> },
+			{ href: "https://www.facebook.com/1020phug", icon: <FaFacebookF /> },
+			{ href: "https://github.com/1020phug", icon: <FaGithub /> },
 		],
 		name: "Phùng Quang Anh",
 		role: "Technical Leader",
