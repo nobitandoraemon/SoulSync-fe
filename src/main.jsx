@@ -14,6 +14,8 @@ import {
 	FormPage,
 	MatchPage,
 	OTPPage,
+	SettingPage,
+	TestPage,
 } from "./config/components.js";
 
 import { socket } from "./config/socket.js";

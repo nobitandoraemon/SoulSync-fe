@@ -3,6 +3,7 @@ import React from "react";
 import logo from "../assets/logo.png"
 import age from "../assets/age-restriction-eighteen.png"
 import { motion } from "motion/react";
+import leo from "../assets/leo.png"
 const TestPage = () => {
   return (
     <section className="pt-16 bg-blueGray-50  ">
@@ -37,11 +38,15 @@ const TestPage = () => {
                 truonggioitoan@gmail.com
               </div>
               <div className="mb-2 text-blueGray-600 flex gap-2 justify-center">
-              <i className="fi fi-sr-info"></i>
+              <div className="w-5">
+                <img id="uicons__detail-img" src={leo} alt="" title="" className="img-small" />
+              </div>
                 Lion
               </div>
               <div className="mb-2 text-blueGray-600 flex gap-2 justify-center">
-              <img id="uicons__detail-img" src={age} width="20" height="20" alt="" title="" className="img-small" />
+              <div className="w-5">
+              <img id="uicons__detail-img" src={age} alt="" title="" className="img-small" />
+              </div>
                 20
               </div>
             </div>
