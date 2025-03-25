@@ -3,8 +3,9 @@ import { cn } from "../../../lib/utils";
 import { ToggleTheme, Logo, useScroll } from "../../../config/components";
 import { ToastContainer } from "react-toastify";
 import { ThemeContext } from "../../../context/themeprovider";
-import { useContext } from "react";
+import { use, useContext, useEffect } from "react";
 import { logOut } from "../../../lib/common";
+import { useUser } from "../../../hooks/useUser";
 
 const UserProfile = ({ user, handleLogOut }) => {
 	return (
@@ -15,7 +16,7 @@ const UserProfile = ({ user, handleLogOut }) => {
 				className="btn btn-ghost btn-circle avatar"
 			>
 				<div className="w-10 rounded-full">
-					<img alt="User avatar" src={user.avatar} />
+					{/* <img alt="User avatar" src={user.image} /> */}
 				</div>
 			</div>
 			<ul
@@ -36,15 +37,18 @@ const UserProfile = ({ user, handleLogOut }) => {
 	);
 };
 
-const Header = () => {
+const Header = ({ user }) => {
 	const isScroll = useScroll();
 	const token = localStorage.getItem("token");
 	const { theme } = useContext(ThemeContext);
-	const userprofile = {
-		avatar:
-			"https://media.daily.dev/image/upload/s--wzOhK88f--/f_auto/v1724228753/avatars/avatar_nyNDZ2Trf7sk4FgOodgWN",
-	};
+
 	const handleLogOut = () => logOut();
+
+	useEffect(() => {
+		if (user) {
+			console.log(user);
+		}
+	}, [user]);
 	return (
 		<div
 			className={cn(
@@ -111,9 +115,7 @@ const Header = () => {
 				</div>
 				<div className="navbar-end">
 					<ToggleTheme className="btn btn-ghost btn-circle" />
-					{token && (
-						<UserProfile user={userprofile} handleLogOut={handleLogOut} />
-					)}
+					{token && <UserProfile user={user} handleLogOut={handleLogOut} />}
 				</div>
 			</div>
 		</div>

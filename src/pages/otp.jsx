@@ -1,10 +1,9 @@
-import { useState, useRef, useLayoutEffect, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, useOutletContext } from "react-router";
 import axios from "axios";
 import { API_ROUTES, APP_ROUTES } from "../lib/constants";
 import Toast from "../hooks/useToast";
-import { useUser } from "../hooks/useUser";
 
 const OTPInput = ({ otp, setOtp }) => {
 	const inputs = useRef([]);
@@ -90,7 +89,7 @@ const OTPPage = () => {
 				toast(`${response.data.message}`, { type: "success" });
 				localStorage.removeItem("temp");
 				setTimeout(() => {
-					navigate(APP_ROUTES.LOGIN);
+					navigate(APP_ROUTES.SIGN_IN);
 				}, 3000);
 			}
 		} catch (err) {

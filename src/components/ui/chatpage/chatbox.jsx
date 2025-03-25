@@ -9,7 +9,7 @@ const ChatBox = ({
 	handleLeave,
 }) => {
 	return (
-		<div className="flex flex-col w-screen h-screen md:h-full flex-auto">
+		<div className="flex flex-col w-screen h-screen md:h-full flex-auto bg-secondary/20">
 			<div className="relative z-50 items-center justify-center w-full">
 				<ChatHeader
 					matchedUser={matchedUser}
@@ -17,7 +17,7 @@ const ChatBox = ({
 					handleLeave={handleLeave}
 				/>
 			</div>
-			<div className="flex flex-col flex-auto h-full flex-shrink-0 p-4 mb-16 md:mb-0 bg-secondary/20">
+			<div className="flex flex-col flex-auto h-full flex-shrink-0 p-4 mb-16 md:mb-0">
 				<ChatBody
 					newSocket={newSocket}
 					user={user}

@@ -10,7 +10,7 @@ const PopUp = ({
 	setMatchedUser,
 }) => {
 	const navigate = useNavigate();
-	const [counter, setCounter] = useState(15);
+	const [counter, setCounter] = useState(60);
 	useEffect(() => {
 		let timer = setInterval(() => {
 			setCounter((time) => {
