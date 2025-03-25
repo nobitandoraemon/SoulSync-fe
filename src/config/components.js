@@ -30,6 +30,7 @@ import ChatInput from "../components/ui/chatpage/chatinput.jsx";
 import ChatHeader from "../components/ui/chatpage/header.jsx";
 import Info from "../components/ui/chatpage/info.jsx";
 import Profile from "../components/ui/chatpage/profile.jsx";
+import SettingPage from "../pages/settings.jsx";
 
 //Homepage//
 import Contact from "../components/ui/homepage/contact";
@@ -65,6 +66,7 @@ export {
 	NotFound,
 	MatchPage,
 	OTPPage,
+	SettingPage,
 	ThemeProvider,
 	ThemeContext,
 	PrivateRoute,

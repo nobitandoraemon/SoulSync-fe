@@ -1,11 +1,12 @@
 import { Outlet } from "react-router";
 import { Header, Footer } from "../../config/components";
 import { useUser } from "../../hooks/useUser";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { checkValidity, getTokenFromLocalStorage } from "../../lib/common";
 import { toast } from "react-toastify";
 const Layout = () => {
 	const { user } = useUser();
+	const [isLoading, setIsLoading] = useState(true);
 	const token = getTokenFromLocalStorage();
 	useLayoutEffect(() => {
 		if (token) {
@@ -27,6 +28,7 @@ const Layout = () => {
 			}
 		}
 	}, [user]);
+
 	return (
 		<div className="min-h-screen overflow-x-hidden max-w-screen">
 			<Header />
