@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { APP_ROUTES } from "../lib/constants";
 
 const SettingPage = () => {
-	const [user] = useOutletContext();
+	const { user } = useOutletContext();
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (user) {
