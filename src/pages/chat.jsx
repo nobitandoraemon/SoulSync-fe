@@ -102,31 +102,15 @@ const Chat = ({ socket }) => {
 	};
 
 	const handleLeave = () => {
+		newSocket.emit("leave", {}); // Gửi thông tin người dùng rời phòng
 		setIsLeave(true);
 	};
-
 	useEffect(() => {
-		// if (ok) {
-		// 	console.log("ok");
-		// 	newSocket.emit("ok", {});
-		// 	// user marcg
-		// 	// setAccept(true);
-		// 	setOk(false);
-		// }
-
 		if (isFinding) {
 			console.log("find");
 			newSocket.emit("find", {});
 			setIsFinding(false);
 		}
-
-		// if (isRefuse) {
-		// 	console.log("refuse");
-
-		// 	newSocket.emit("refuse", {});
-		// 	setMatchedUser(null);
-		// 	setIsRefuse(false);
-		// }
 
 		if (isLeave) {
 			console.log("leave");
@@ -172,12 +156,8 @@ const Chat = ({ socket }) => {
 		<>
 			{!accept && matchedUser && (
 				<PopUp
-					// ok={ok}
-					// setOk={setOk}
 					accept={accept}
 					setAccept={setAccept}
-					// isRefuse={isRefuse}
-					// setIsRefuse={setIsRefuse}
 					setMatchedUser={setMatchedUser}
 				/>
 			)}
@@ -214,10 +194,6 @@ const Chat = ({ socket }) => {
 						isScroll={isScroll}
 						newSocket={newSocket}
 						matchedUser={matchedUser}
-						// chat={chat}
-						// ok={ok}
-						// setOk={setOk}
-						// setIsRefuse={setIsRefuse}
 						handleLeave={handleLeave}
 						isMatched={isMatched}
 						setIsMatched={setIsMatched}

@@ -149,11 +149,6 @@ const PrivateRoute = ({ socket }) => {
 			}
 		});
 
-		// Nhận thông tin chat từ server newSocket
-		// newSocket.on("message", (data) => {
-		// 	setChat((prevChat) => [...prevChat, data]);
-		// });
-
 		// Kết nối newSocket
 		newSocket.on("connect", () => {
 			console.log("Connected to server");

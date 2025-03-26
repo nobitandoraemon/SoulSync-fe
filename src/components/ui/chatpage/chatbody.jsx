@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const ChatBody = ({ newSocket, user, matchedUser }) => {
 	const [chat, setChat] = useState([]);
+	const [notify, setNotify] = useState(null);
 	const lastMessage = useRef(null);
 
 	// Xử lí nhận tin nhắn
@@ -13,8 +14,11 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 
 	useEffect(() => {
 		newSocket.on("message", handleMessage);
+		newSocket.on("end", (data) => {
+			setNotify(data.message);
+		});
 		return () => {
-			newSocket.off("message", handleMessage);
+			newSocket.close();
 		};
 	}, [newSocket]);
 
@@ -54,7 +58,7 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 						</>
 					);
 				})}
-				{!matchedUser && (
+				{notify && (
 					<div className="chat chat-start">
 						<div className="chat-image avatar">
 							<div className="w-10 rounded-full">
