@@ -227,19 +227,12 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 		setUserHobby(updatedHobby);
 		setFormData({ ...formData, hobbies: updatedHobby });
 	};
-
 	const handleBirthChange = (e) => {
 		setFormData({ ...formData, birthday: e.target.value });
 	};
 
 	const avatarLinkChange = (url) => {
-		url
-			? setFormData({ ...formData, image: url })
-			: setFormData({
-					...formData,
-					image:
-						"https://w7.pngwing.com/pngs/205/731/png-transparent-default-avatar-thumbnail.png",
-			  });
+		setFormData({ ...formData, image: url });
 	};
 
 	const handleTemp = (e) => {
@@ -364,7 +357,8 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 								</div>
 							</div>
 							<div className="chat-bubble">
-								{formData.image
+								{formData.image !==
+								"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
 									? "Wow! Bạn đã chắc chắn với bức ảnh lung linh này chưa?"
 									: "Đặt ảnh đại diện ngay để tạo ấn tượng với mọi người"}
 							</div>
@@ -469,7 +463,7 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 		e.preventDefault();
 		const updatedFormData = { ...formData, zodiac: i };
 		setFormData(updatedFormData);
-		// console.log(updatedFormData);
+
 		const token = getTokenFromLocalStorage();
 		const username = localStorage.getItem("username");
 		try {
@@ -483,7 +477,7 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 				data: updatedFormData, // Đặt data ở đây
 				withCredentials: true,
 			});
-			// console.log(response);
+			toast("Cập nhật thông tin thành công", { type: "success" });
 		} catch (err) {
 			toast(err.response.data.message, { type: "error" });
 			console.log(err);

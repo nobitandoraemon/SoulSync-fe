@@ -243,8 +243,8 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 			<div className="flex flex-wrap items-center justify-center gap-1">
 				<button
 					type="button"
-					className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-						userHobby.includes("Games") ? "bg-gray-300" : "hover:bg-gray-200"
+					className={`w-[32%] btn btn-soft ${
+						userHobby.includes("Games") && "btn-active btn-primary"
 					}`}
 					onClick={() => handleHobbyChange("Games")}
 				>
@@ -252,8 +252,8 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 				</button>
 				<button
 					type="button"
-					className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-						userHobby.includes("Reading") ? "bg-gray-300" : "hover:bg-gray-200"
+					className={`w-[32%] btn btn-soft ${
+						userHobby.includes("Reading") && "btn-active btn-primary"
 					}`}
 					onClick={() => handleHobbyChange("Reading")}
 				>
@@ -261,8 +261,8 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 				</button>
 				<button
 					type="button"
-					className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-						userHobby.includes("Painting") ? "bg-gray-300" : "hover:bg-gray-200"
+					className={`w-[32%] btn btn-soft ${
+						userHobby.includes("Painting") && "btn-active btn-primary"
 					}`}
 					onClick={() => handleHobbyChange("Painting")}
 				>
@@ -270,8 +270,8 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 				</button>
 				<button
 					type="button"
-					className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-						userHobby.includes("Music") ? "bg-gray-300" : "hover:bg-gray-200"
+					className={`w-[32%] btn btn-soft ${
+						userHobby.includes("Music") && "btn-active btn-primary"
 					}`}
 					onClick={() => handleHobbyChange("Music")}
 				>
@@ -279,8 +279,8 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 				</button>
 				<button
 					type="button"
-					className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-						userHobby.includes("Photos") ? "bg-gray-300" : "hover:bg-gray-200"
+					className={`w-[32%] btn btn-soft ${
+						userHobby.includes("Photos") && "btn-active btn-primary"
 					}`}
 					onClick={() => handleHobbyChange("Photos")}
 				>
@@ -288,8 +288,8 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 				</button>
 				<button
 					type="button"
-					className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-						userHobby.includes("Cooking") ? "bg-gray-300" : "hover:bg-gray-200"
+					className={`w-[32%] btn btn-soft ${
+						userHobby.includes("Cooking") && "btn-active btn-primary"
 					}`}
 					onClick={() => handleHobbyChange("Cooking")}
 				>
@@ -297,8 +297,8 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 				</button>
 				<button
 					type="button"
-					className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-						userHobby.includes("Travel") ? "bg-gray-300" : "hover:bg-gray-200"
+					className={`w-[32%] btn btn-soft ${
+						userHobby.includes("Travel") && "btn-active btn-primary"
 					}`}
 					onClick={() => handleHobbyChange("Travel")}
 				>
@@ -306,8 +306,8 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 				</button>
 				<button
 					type="button"
-					className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-						userHobby.includes("Garden") ? "bg-gray-300" : "hover:bg-gray-200"
+					className={`w-[32%] btn btn-soft ${
+						userHobby.includes("Garden") && "btn-active btn-primary"
 					}`}
 					onClick={() => handleHobbyChange("Garden")}
 				>
@@ -315,8 +315,8 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 				</button>
 				<button
 					type="button"
-					className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-						userHobby.includes("Movies") ? "bg-gray-300" : "hover:bg-gray-200"
+					className={`w-[32%] btn btn-soft ${
+						userHobby.includes("Movies") && "btn-active btn-primary"
 					}`}
 					onClick={() => handleHobbyChange("Movies")}
 				>
@@ -441,92 +441,91 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 									<div className="flex flex-wrap items-center justify-center gap-1">
 										<button
 											type="button"
-											className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-												user.hobbies.includes("Games")
-													? "bg-gray-300"
-													: "hover:bg-gray-200"
+											className={`w-[32%] btn btn-soft ${
+												user.hobbies.includes("Games") &&
+												"btn-active btn-primary"
 											}`}
+											onClick={() => handleHobbyChange("Games")}
 										>
 											🎮 Chơi Game
 										</button>
 										<button
 											type="button"
-											className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-												user.hobbies.includes("Reading")
-													? "bg-gray-300"
-													: "hover:bg-gray-200"
+											className={`w-[32%] btn btn-soft ${
+												user.hobbies.includes("Reading") &&
+												"btn-active btn-primary"
 											}`}
+											onClick={() => handleHobbyChange("Reading")}
 										>
 											📚 Đọc Sách
 										</button>
 										<button
 											type="button"
-											className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-												user.hobbies.includes("Painting")
-													? "bg-gray-300"
-													: "hover:bg-gray-200"
+											className={`w-[32%] btn btn-soft ${
+												user.hobbies.includes("Painting") &&
+												"btn-active btn-primary"
 											}`}
+											onClick={() => handleHobbyChange("Painting")}
 										>
 											🎨 Vẽ
 										</button>
 										<button
 											type="button"
-											className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-												user.hobbies.includes("Music")
-													? "bg-gray-300"
-													: "hover:bg-gray-200"
+											className={`w-[32%] btn btn-soft ${
+												user.hobbies.includes("Music") &&
+												"btn-active btn-primary"
 											}`}
-											onClick={() => "Music"}
+											onClick={() => handleHobbyChange("Music")}
 										>
 											🎵 Nghe Nhạc
 										</button>
 										<button
 											type="button"
-											className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-												user.hobbies.includes("Photos")
-													? "bg-gray-300"
-													: "hover:bg-gray-200"
+											className={`w-[32%] btn btn-soft ${
+												user.hobbies.includes("Photos") &&
+												"btn-active btn-primary"
 											}`}
+											onClick={() => handleHobbyChange("Photos")}
 										>
 											📷 Chụp Ảnh
 										</button>
 										<button
 											type="button"
-											className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-												user.hobbies.includes("Cooking")
-													? "bg-gray-300"
-													: "hover:bg-gray-200"
+											className={`w-[32%] btn btn-soft ${
+												user.hobbies.includes("Cooking") &&
+												"btn-active btn-primary"
 											}`}
+											onClick={() => handleHobbyChange("Cooking")}
 										>
 											🍳 Nấu Ăn
 										</button>
 										<button
 											type="button"
-											className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-												user.hobbies.includes("Travel")
-													? "bg-gray-300"
-													: "hover:bg-gray-200"
+											className={`w-[32%] btn btn-soft ${
+												user.hobbies.includes("Travel") &&
+												"btn-active btn-primary"
 											}`}
+											onClick={() => handleHobbyChange("Travel")}
 										>
 											✈️ Du Lịch
 										</button>
 										<button
 											type="button"
-											className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-												user.hobbies.includes("Garden")
-													? "bg-gray-300"
-													: "hover:bg-gray-200"
+											className={`w-[32%] btn btn-soft ${
+												user.hobbies.includes("Garden") &&
+												"btn-active btn-primary"
 											}`}
+											onClick={() => handleHobbyChange("Garden")}
 										>
 											🌱 Trồng Cây
 										</button>
 										<button
 											type="button"
-											className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-												user.hobbies.includes("Movies")
-													? "bg-gray-300"
-													: "hover:bg-gray-200"
+											className={`w-[32%] btn btn-soft ${
+												user.hobbies.includes("Movies") &&
+												"btn-active btn-primary"
 											}`}
+											onClick={() => handleHobbyChange("Movies")}
 										>
 											🎥 Xem Phim
 										</button>
@@ -573,7 +572,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 		setFormData({
 			...formData,
 			image:
-				"https://w7.pngwing.com/pngs/205/731/png-transparent-default-avatar-thumbnail.png",
+				"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
 		});
 	};
 	return (
@@ -589,8 +588,8 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 				<div className="flex flex-col items-center justify-center space-y-5 md:justify-between sm:flex-row sm:space-y-0">
 					<div className="avatar indicator">
 						<span className="indicator-item badge badge-lg badge-soft badge-accent">
-							{zodiacInfo[user.zodiac-1].icon}
-							{zodiacInfo[user.zodiac-1].sign}
+							{zodiacInfo[user.zodiac - 1].icon}
+							{zodiacInfo[user.zodiac - 1].sign}
 						</span>
 						<div className="w-40 h-40 rounded-full ring-primary ring-offset-base-100 ring ring-offset-2">
 							{formData.image ? (
