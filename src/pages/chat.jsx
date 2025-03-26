@@ -170,8 +170,7 @@ const Chat = ({ socket }) => {
 							isMatched={isMatched}
 							setIsMatched={setIsMatched}
 							user={user}
-							refuseMsg={refuseMsg}
-							setRefuseMsg={setRefuseMsg}
+							failMessage={failMessage}
 						/>
 					</div>
 				) : (

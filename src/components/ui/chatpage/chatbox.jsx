@@ -6,8 +6,7 @@ const ChatBox = ({
 	user,
 	newSocket,
 	handleLeave,
-	refuseMsg,
-	setRefuseMsg,
+	failMessage,
 }) => {
 	return (
 		<div className="flex flex-col flex-auto w-screen h-screen md:h-full">
@@ -25,8 +24,7 @@ const ChatBox = ({
 					matchedUser={matchedUser}
 					chat={chat}
 					handleLeave={handleLeave}
-					refuseMsg={refuseMsg}
-					setRefuseMsg={setRefuseMsg}
+					failMessage={failMessage}
 				/>
 				<ChatInput
 					newSocket={newSocket}

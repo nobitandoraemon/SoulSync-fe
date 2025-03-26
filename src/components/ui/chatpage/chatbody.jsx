@@ -4,8 +4,7 @@ const ChatBody = ({
 	user,
 	matchedUser,
 	handleLeave,
-	refuseMsg,
-	setRefuseMsg,
+	failMessage,
 }) => {
 	const [chat, setChat] = useState([]);
 	const [notify, setNotify] = useState(null);
@@ -23,7 +22,7 @@ const ChatBody = ({
 	};
 
 	// Nhận thông tin chat từ server socket
-	console.log(refuseMsg);
+	console.log(failMessage);
 	useEffect(() => {
 		newSocket.on("message", handleMessage);
 
@@ -39,15 +38,6 @@ const ChatBody = ({
 		});
 		return () => {
 			newSocket.off("end");
-		};
-	}, [newSocket]);
-
-	useEffect(() => {
-		newSocket.on("refuse", (data) => {
-			setRefuseMsg(data);
-		});
-		return () => {
-			newSocket.off("refuse");
 		};
 	}, [newSocket]);
 
