@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
 	return (
@@ -11,8 +12,8 @@ const Contact = () => {
 		>
 			<div className="hero-overlay bg-opacity-60"></div>
 
-			<div className="flex-col max-w-(--breakpoint-lg) mx-auto hero-content lg:flex-row-reverse">
-				<div className="font-extrabold text-center text-neutral-content lg:text-right">
+			<div className="flex-col max-w-(--breakpoint-lg) mx-auto hero-content ">
+				<div className="font-extrabold text-center text-neutral-content">
 					<h1 className="text-5xl">Liên hệ và Trợ giúp</h1>
 					<p className="py-6">
 						Hãy để lại thông tin và tin nhắn của bạn, đội ngũ của chúng tôi sẽ
@@ -68,6 +69,13 @@ const Contact = () => {
 								scale: 1.1,
 							}}
 							transition={{ visualDuration: 0.15 }}
+							onClick={(e) => {
+								e.preventDefault();
+								toast("Xin lỗi, tính năng còn trong quá trình phát triển", {
+									type: "info",
+									autoClose: 1500,
+								});
+							}}
 						>
 							Gửi
 						</motion.button>

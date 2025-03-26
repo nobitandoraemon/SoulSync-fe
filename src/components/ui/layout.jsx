@@ -31,7 +31,7 @@ const Layout = () => {
 
 	return (
 		<div className="min-h-screen overflow-x-hidden max-w-screen">
-			<Header />
+			<Header user={user} />
 			<main className="min-h-[60vh]">
 				<Outlet context={[user]} />
 			</main>

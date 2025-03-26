@@ -110,11 +110,9 @@ const PrivateRoute = ({ socket }) => {
 	const [username, setUsername] = useState(localStorage.getItem("username")); // Lấy user hiện tại để gửi auth cho socket
 	// const [chat, setChat] = useState([]); // Lấy thống tin chat : messages
 	const [matchedUser, setMatchedUser] = useState(null); // Lấy thông tin người sau khi match
-	const [ok, setOk] = useState(false); // Check xem người dùng có chấp nhận vào Chat hay không
 	const [isMatched, setIsMatched] = useState(false); //2 người dùng cùng chấp nhận chat chưa
 	const [failMessage, setFailMessage] = useState(""); //nếu be không tìm được đối tượng, hoặc đối phương từ chối, hoặc bản thân từ chối, thì server sẽ trả lại fail message để thông báo đến người còn lại
 	const [isFinding, setIsFinding] = useState(false); //check xem user có đang muốn match hay không
-	const [isRefuse, setIsRefuse] = useState(false); //check xem user có refuse hay không
 	const [newSocket, setNewSocket] = useState(socket);
 	useEffect(() => {
 		//start socket, send username to socket-be
@@ -149,11 +147,6 @@ const PrivateRoute = ({ socket }) => {
 			}
 		});
 
-		// Nhận thông tin chat từ server newSocket
-		// newSocket.on("message", (data) => {
-		// 	setChat((prevChat) => [...prevChat, data]);
-		// });
-
 		// Kết nối newSocket
 		newSocket.on("connect", () => {
 			console.log("Connected to server");
@@ -162,13 +155,6 @@ const PrivateRoute = ({ socket }) => {
 		newSocket.on("disconnect", () => {
 			console.log("Disconnected from server");
 		});
-
-		const sendMessage = (content) => {
-			newSocket.emit("chat", {
-				receiver: matchedUser.username,
-				content: content,
-			});
-		};
 
 		return () => {
 			newSocket.close();
@@ -179,12 +165,8 @@ const PrivateRoute = ({ socket }) => {
 		<Outlet
 			context={{
 				user,
-				// chat,
-				// setChat,
 				matchedUser,
 				setMatchedUser,
-				// ok,
-				// setOk,
 				isMatched,
 				setIsMatched,
 				failMessage,
@@ -193,8 +175,6 @@ const PrivateRoute = ({ socket }) => {
 				setIsFinding,
 				newSocket,
 				setNewSocket,
-				// isRefuse,
-				// setIsRefuse,
 			}}
 		/>
 	);

@@ -11,7 +11,10 @@ const FormPage = () => {
 	useEffect(() => {
 		if (user) {
 			if (user.gender) {
-				toast("You already have a profile", { type: "warning" });
+				toast(
+					"Bạn đã có đầy đủ thông tin, vui lòng vào cài đặt tại trang cá nhân để chỉnh sửa",
+					{ type: "warning" }
+				);
 				setTimeout(() => {
 					navigate(APP_ROUTES.MATCH);
 				}, 3000);

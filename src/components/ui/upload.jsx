@@ -49,7 +49,7 @@ const CloudinaryUploadWidget = ({
 		<button
 			ref={uploadButtonRef}
 			id="upload_widget"
-			className="cloudinary-button btn btn-info"
+			className="btn btn-primary"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ const CloudinaryUploadWidget = ({
 				viewBox="0 0 24 24"
 				strokeWidth={1.5}
 				stroke="currentColor"
-				className="size-6"
+				className="size-4"
 			>
 				<path
 					strokeLinecap="round"
@@ -70,7 +70,7 @@ const CloudinaryUploadWidget = ({
 	);
 };
 
-const Upload = ({ avatarLinkChange }) => {
+const Upload = ({ avatarLinkChange, formData, setFormData }) => {
 	// Configuration
 	const cloudName = "dbpqg1gsv";
 	const uploadPreset = "soulsync";

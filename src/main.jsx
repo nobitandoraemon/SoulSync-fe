@@ -30,9 +30,9 @@ createRoot(document.getElementById("root")).render(
 						<Route path="/reg" element={<Reg />} />
 						<Route path="/test" element={<TestPage />} />
 						<Route path="/verify-otp" element={<OTPPage />} />
+						<Route path="/setting" element={<SettingPage />} />
 					</Route>
 					<Route element={<PrivateRoute socket={socket} />}>
-						<Route path="/setting" element={<SettingPage />} />
 						<Route path="/form" element={<FormPage />} />
 						<Route path="/match" element={<MatchPage />} />
 						<Route path="/chat" element={<Chat socket={socket} />} />

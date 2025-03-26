@@ -16,7 +16,7 @@ export function useUser() {
 				return;
 			}
 			if (user) {
-				toast("You are logged in", { type: "info" });
+				toast("Bạn đã đăng nhập rồi", { type: "info" });
 				setTimeout(() => {
 					navigate(APP_ROUTES.MATCH);
 				}, 1500);
@@ -26,7 +26,7 @@ export function useUser() {
 			if (userData) {
 				setUser(userData);
 			} else {
-				toast("Token is expired, please login again", { type: "warning" });
+				toast("Token đã hết hạn, vui lòng đăng nhập lại", { type: "warning" });
 
 				localStorage.removeItem("token");
 				localStorage.removeItem("username");

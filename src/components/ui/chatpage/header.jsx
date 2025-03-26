@@ -3,6 +3,8 @@ import { Info, Toast } from "../../../config/components";
 import { useState } from "react";
 import { APP_ROUTES } from "../../../lib/constants";
 import { toast } from "react-toastify";
+import { ZodiacSigns } from "../../../lib/data";
+
 const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 	return (
 		<div className="drawer drawer-end">
@@ -35,7 +37,7 @@ const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 							d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
 						/>
 					</svg>
-					<span className="hidden md:block">Thông tin của bạn</span>
+					<span className="hidden md:block">Bạn</span>
 				</label>
 			</div>
 			<div className="z-50 drawer-side">
@@ -77,7 +79,7 @@ const OtherInformationSideBar = ({ matchedUser, clickable, setClickable }) => {
 							d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
 						/>
 					</svg>
-					<span className="hidden md:block">Thông tin nửa kia</span>
+					<span className="hidden md:block">Người ấy</span>
 				</label>
 			</div>
 			<div className="z-50 drawer-side">
@@ -93,59 +95,49 @@ const OtherInformationSideBar = ({ matchedUser, clickable, setClickable }) => {
 	);
 };
 
-const MainNav = ({ user, handleOut }) => {
-	return (
-		<>
-			<div className="flex flex-row items-center flex-1 float-left gap-4 mr-4">
-				<div className="avatar online">
-					<div className="w-12 rounded-full">
-						<img src={user.image} />
-					</div>
-				</div>
-				<span className="hidden overflow-hidden truncate md:block text-ellipsis badge badge-lg ">
-					{user.username}
-				</span>
-			</div>
-
-			<div
-				role="button"
-				className="btn btn-ghost btn-circle"
-				onClick={handleOut}
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					strokeWidth={1.5}
-					stroke="currentColor"
-					className="size-6"
-				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
-					/>
-				</svg>
-			</div>
-		</>
-	);
-};
-
-const SubNav = ({ matchedUser, user, handleOut }) => {
+const ChatNav = ({ matchedUser, user, handleOut }) => {
 	const [clickable, setClickable] = useState(true);
 	const handleQuit = () => {
-		toast.success("Đã kết thúc cuộc trò chuyện", {
-			type: "success",
-		});
-		handleOut();
+		const quest = alert("Bạn có chắc chắn rời khỏi phòng chat ?");
+
+		if (quest === undefined) {
+			toast("Đã kết thúc cuộc trò chuyện", {
+				type: "success",
+			});
+
+			handleOut();
+		} else {
+			toast("Cảm ơn vì đã lắng nghe lấy con tim", {
+				role: "alert",
+				type: "info",
+			});
+		}
 	};
 	return (
-		<ul className="menu md:bg-base-200 menu-horizontal rounded-box place-content-center w-screen">
-			<li className="bg-base-200" onClick={handleQuit}>
-				<a
-					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
-					target="_blank"
-				>
+		<div className="rounded-lg shadow-sm navbar bg-base-100">
+			<div className="navbar-start">
+				<div className="flex flex-row-reverse gap-4">
+					<div className="flex-col hidden gap-2 md:flex">
+						<div className="font-bold">
+							Người dùng ẩn danh #{matchedUser.zodiac}
+						</div>
+						<div className="text-base-content">
+							{ZodiacSigns[matchedUser.zodiac].name}
+						</div>
+						<div className="badge badge-ghost">
+							{ZodiacSigns[matchedUser.zodiac].symbol}
+						</div>
+					</div>
+
+					<div className="rounded-full ring ring-primary avatar avatar-online">
+						<div className="rounded-full size-24">
+							<img src={matchedUser.image} />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="navbar-end">
+				<button className="btn btn-ghost btn-circle">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						className="w-5 h-5"
@@ -153,18 +145,17 @@ const SubNav = ({ matchedUser, user, handleOut }) => {
 						viewBox="0 0 24 24"
 						stroke="currentColor"
 					>
+						{" "}
 						<path
 							strokeLinecap="round"
 							strokeLinejoin="round"
 							strokeWidth="2"
-							d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-						/>
+							d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+						/>{" "}
 					</svg>
-					<span className="hidden md:block" onClick={handleOut}>
-						Kết thúc
-					</span>
-
-					<span className="badge badge-sm badge-warning">
+				</button>
+				<button className="btn btn-ghost btn-circle" onClick={handleQuit}>
+					<div className="indicator">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24"
@@ -177,52 +168,85 @@ const SubNav = ({ matchedUser, user, handleOut }) => {
 								clipRule="evenodd"
 							/>
 						</svg>
-					</span>
-				</a>
-			</li>
-			<li className="bg-base-200">
-				<a>
-					<span className="hidden md:block">Trạng thái</span>
-					{matchedUser ? (
-						<span className="badge badge-xs badge-success"></span>
-					) : (
-						<span className="badge badge-xs badge-warning"></span>
-					)}
-				</a>
-			</li>
-			<li className="bg-base-200">
-				<OtherInformationSideBar
-					matchedUser={matchedUser}
-					clickable={clickable}
-					setClickable={setClickable}
-				/>
-			</li>
-			<li className="bg-base-200 rounded-r-3xl">
-				<MyInformationSideBar
-					user={user}
-					clickable={clickable}
-					setClickable={setClickable}
-				/>
-			</li>
-		</ul>
+						<span className="badge badge-xs badge-warning indicator-item"></span>
+					</div>
+				</button>
+			</div>
+		</div>
+		// <ul className="w-screen menu md:bg-base-200 menu-horizontal rounded-box place-content-center">
+		// 	<li className="bg-base-200" onClick={handleQuit}>
+		// 		<svg
+		// 			xmlns="http://www.w3.org/2000/svg"
+		// 			className="w-5 h-5"
+		// 			fill="none"
+		// 			viewBox="0 0 24 24"
+		// 			stroke="currentColor"
+		// 		>
+		// 			<path
+		// 				strokeLinecap="round"
+		// 				strokeLinejoin="round"
+		// 				strokeWidth="2"
+		// 				d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+		// 			/>
+		// 		</svg>
+		// 		<span className="hidden md:block" onClick={handleOut}>
+		// 			Kết thúc
+		// 			<span className="badge badge-sm badge-warning">
+		// 				<svg
+		// 					xmlns="http://www.w3.org/2000/svg"
+		// 					viewBox="0 0 24 24"
+		// 					fill="currentColor"
+		// 					className="size-4"
+		// 				>
+		// 					<path
+		// 						fillRule="evenodd"
+		// 						d="M12 2.25a.75.75 0 0 1 .75.75v9a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM6.166 5.106a.75.75 0 0 1 0 1.06 8.25 8.25 0 1 0 11.668 0 .75.75 0 1 1 1.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 0 1 1.06 0Z"
+		// 						clipRule="evenodd"
+		// 					/>
+		// 				</svg>
+		// 			</span>
+		// 		</span>
+		// 	</li>
+		// 	<li className="bg-base-200">
+		// 		<a>
+		// 			<span className="hidden md:block">Trạng thái</span>
+		// 			{matchedUser ? (
+		// 				<span className="badge badge-xs badge-success"></span>
+		// 			) : (
+		// 				<span className="badge badge-xs badge-warning"></span>
+		// 			)}
+		// 		</a>
+		// 	</li>
+		// 	<li className="bg-base-200">
+		// 		<OtherInformationSideBar
+		// 			matchedUser={matchedUser}
+		// 			clickable={clickable}
+		// 			setClickable={setClickable}
+		// 		/>
+		// 	</li>
+		// 	<li className="bg-base-200 rounded-r-3xl">
+		// 		<MyInformationSideBar
+		// 			user={user}
+		// 			clickable={clickable}
+		// 			setClickable={setClickable}
+		// 		/>
+		// 	</li>
+		// </ul>
 	);
 };
 
 const ChatHeader = ({ user, matchedUser, handleLeave }) => {
-	const navigate = useNavigate();
 	const handleOut = () => {
 		handleLeave();
 		setTimeout(() => {
-			navigate(APP_ROUTES.HOME);
+			window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
 		}, 2000);
 	};
 	return (
-		<div className="fixed flex items-center md:flex-row top-0 left-0 right-0 p-4 min-h-[60px] shadow-lg bg-primary/10 backdrop-blur-lg z-50">
+		<div className="fixed top-0 left-0 right-0 z-50 flex items-center md:flex-row">
 			<Toast />
-			{matchedUser ? (
-				<SubNav matchedUser={matchedUser} user={user} handleOut={handleOut} />
-			) : (
-				<MainNav user={user} handleOut={handleOut} />
+			{matchedUser && (
+				<ChatNav matchedUser={matchedUser} user={user} handleOut={handleOut} />
 			)}
 		</div>
 	);
