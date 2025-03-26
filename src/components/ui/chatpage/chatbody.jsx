@@ -1,9 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-const ChatBody = ({ newSocket, user, matchedUser }) => {
+const ChatBody = ({ newSocket, user, matchedUser, handleLeave }) => {
 	const [chat, setChat] = useState([]);
 	const [notify, setNotify] = useState(null);
 	const lastMessage = useRef(null);
-
+	const handleOut = () => {
+		handleLeave();
+		setTimeout(() => {
+			window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+			window.location.reload();
+		}, 2000);
+	};
 	// Xử lí nhận tin nhắn
 	const handleMessage = (data) => {
 		setChat((prevChat) => [...prevChat, data]);
@@ -33,7 +39,7 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
 	return (
-		<div className="flex flex-col h-full p-6 mt-24 mb-8 overflow-x-auto">
+		<div className="flex flex-col h-full min-h-screen p-6 mb-8 overflow-x-auto mt-36">
 			<div className="flex flex-col h-full">
 				{chat.map((message) => {
 					const isMainUser = message.sender === user.username ? true : false;
@@ -90,7 +96,10 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 							<div className="opacity-50 chat-footer">Sad</div>
 						</div>
 
-						<button className="btn btn-soft btn-md btn-accent">
+						<button
+							className="btn btn-soft btn-md btn-accent"
+							onClick={handleOut}
+						>
 							Nhấn vào đây để quay lại
 						</button>
 					</>

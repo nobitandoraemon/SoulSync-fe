@@ -1,9 +1,31 @@
-import { Link, useNavigate } from "react-router";
-import { Toast } from "../../../config/components";
-import { useState } from "react";
+import { Toast, ToggleTheme } from "../../../config/components";
+import { useEffect, useState } from "react";
 import { APP_ROUTES } from "../../../lib/constants";
 import { toast } from "react-toastify";
 import { ZodiacSigns } from "../../../lib/data";
+
+const warningMsg = [
+	{
+		id: 1,
+		msg: "Thoát ra có thể mất toàn bộ tin nhắn",
+	},
+	{
+		id: 2,
+		msg: "Hãy giữ lời ăn tiếng nói",
+	},
+	{
+		id: 3,
+		msg: "Đừng vội vàng",
+	},
+	{
+		id: 4,
+		msg: "Ta yêu nhau như cơn sóng vỗ",
+	},
+	{
+		id: 5,
+		msg: "Một sản phẩm của team Thượng Nhẫn JS!",
+	},
+];
 
 const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 	return (
@@ -109,6 +131,13 @@ const OtherInformationSideBar = ({ matchedUser, clickable, setClickable }) => {
 
 const ChatNav = ({ matchedUser, user, handleOut }) => {
 	const [clickable, setClickable] = useState(true);
+	const [id, setId] = useState(1);
+
+	useEffect(() => {
+		setTimeout(() => {
+			id === 5 ? setId(1) : setId((prev) => prev + 1);
+		}, 10000);
+	}, [id]);
 	const handleQuit = () => {
 		const quest = alert("Bạn có chắc chắn rời khỏi phòng chat ?");
 
@@ -126,13 +155,11 @@ const ChatNav = ({ matchedUser, user, handleOut }) => {
 		}
 	};
 	return (
-		<div className="rounded-lg shadow-sm navbar bg-base-100">
+		<div className="p-6 rounded-lg shadow-sm navbar bg-base-200">
 			<div className="navbar-start">
 				<div className="flex flex-row-reverse gap-4">
 					<div className="flex-col hidden gap-2 md:flex">
-						<div className="font-bold">
-							Người dùng ẩn danh #{matchedUser.zodiac}
-						</div>
+						<div className="font-bold">Người dùng #{matchedUser.zodiac}</div>
 						<div className="text-base-content">
 							{ZodiacSigns[matchedUser.zodiac].name}
 						</div>
@@ -141,30 +168,22 @@ const ChatNav = ({ matchedUser, user, handleOut }) => {
 						</div>
 					</div>
 
-					<div className="rounded-full ring ring-primary avatar avatar-online">
+					<div className="rounded-full avatar avatar-online">
 						<div className="rounded-full size-24">
 							<img src={matchedUser.image} />
 						</div>
 					</div>
 				</div>
 			</div>
+			<div className="hidden overflow-hidden text-sm max-h-12 navbar-center md:flex">
+				<div className="mr-2 status status-info animate-bounce"></div>{" "}
+				<span className="duration-1000 text-nowrap animate-pulse animate-delay-1000">
+					{warningMsg[id - 1].msg}
+				</span>
+			</div>
 			<div className="navbar-end">
 				<button className="btn btn-ghost btn-circle">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						className="w-5 h-5"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						{" "}
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth="2"
-							d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-						/>{" "}
-					</svg>
+					<ToggleTheme />
 				</button>
 				<button className="btn btn-ghost btn-circle" onClick={handleQuit}>
 					<div className="indicator">
@@ -252,6 +271,7 @@ const ChatHeader = ({ user, matchedUser, handleLeave }) => {
 		handleLeave();
 		setTimeout(() => {
 			window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+			window.location.reload();
 		}, 2000);
 	};
 	return (
