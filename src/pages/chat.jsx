@@ -38,7 +38,6 @@ const PopUp = ({
 	useEffect(() => {
 		newSocket.on("refuse", (data) => {
 			setRefuseMsg(data);
-			console.log(refuseMsg);
 		});
 		return () => {
 			newSocket.off("refuse");
