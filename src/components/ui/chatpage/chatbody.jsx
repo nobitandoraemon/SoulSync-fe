@@ -22,7 +22,7 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
 	return (
-		<div className="flex flex-col overflow-x-auto h-full p-6 mt-12 mb-8">
+		<div className="flex flex-col h-full p-6 mt-12 mb-8 overflow-x-auto">
 			<div className="flex flex-col h-full">
 				{chat.map((message) => {
 					const isMainUser = message.sender === user.username ? true : false;
@@ -54,6 +54,26 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 						</>
 					);
 				})}
+				{!matchedUser && (
+					<div className="chat chat-start">
+						<div className="chat-image avatar">
+							<div className="w-10 rounded-full">
+								<img
+									alt="Tailwind CSS chat bubble component"
+									src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+								/>
+							</div>
+						</div>
+						<div className="chat-header">
+							Admin
+							<time className="text-xs opacity-50">Now</time>
+						</div>
+						<div className="chat-bubble chat-bubble-info">
+							Đối phương đã rời khỏi phòng chat!
+						</div>
+						<div className="opacity-50 chat-footer">Warning</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);

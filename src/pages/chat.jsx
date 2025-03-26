@@ -3,6 +3,7 @@ import { useScroll, Toast, ChatBox } from "../config/components";
 import { cn } from "../lib/utils";
 import { useOutletContext, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { APP_ROUTES } from "../lib/constants";
 const PopUp = ({
 	accept,
 	setAccept,
@@ -29,7 +30,7 @@ const PopUp = ({
 	const handleRefuse = () => {
 		setIsRefuse(true);
 		setTimeout(() => {
-			navigate("/match");
+			navigate(APP_ROUTES.MATCH);
 		}, 2000);
 	};
 	return (

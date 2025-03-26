@@ -146,51 +146,46 @@ const MainNav = ({ user, handleOut }) => {
 const SubNav = ({ matchedUser, user, handleOut }) => {
 	const [clickable, setClickable] = useState(true);
 	const handleQuit = () => {
-		toast.success("Đã kết thúc cuộc trò chuyện", {
+		toast("Đã kết thúc cuộc trò chuyện", {
 			type: "success",
 		});
 		handleOut();
 	};
 	return (
-		<ul className="menu md:bg-base-200 menu-horizontal rounded-box place-content-center w-screen">
+		<ul className="w-screen menu md:bg-base-200 menu-horizontal rounded-box place-content-center">
 			<li className="bg-base-200" onClick={handleQuit}>
-				<a
-					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
-					target="_blank"
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					className="w-5 h-5"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
 				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeWidth="2"
+						d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+					/>
+				</svg>
+				<span className="hidden md:block" onClick={handleOut}>
+					Kết thúc
+				</span>
+
+				<span className="badge badge-sm badge-warning">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						className="w-5 h-5"
-						fill="none"
 						viewBox="0 0 24 24"
-						stroke="currentColor"
+						fill="currentColor"
+						className="size-4"
 					>
 						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth="2"
-							d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							fillRule="evenodd"
+							d="M12 2.25a.75.75 0 0 1 .75.75v9a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM6.166 5.106a.75.75 0 0 1 0 1.06 8.25 8.25 0 1 0 11.668 0 .75.75 0 1 1 1.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 0 1 1.06 0Z"
+							clipRule="evenodd"
 						/>
 					</svg>
-					<span className="hidden md:block" onClick={handleOut}>
-						Kết thúc
-					</span>
-
-					<span className="badge badge-sm badge-warning">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							className="size-4"
-						>
-							<path
-								fillRule="evenodd"
-								d="M12 2.25a.75.75 0 0 1 .75.75v9a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM6.166 5.106a.75.75 0 0 1 0 1.06 8.25 8.25 0 1 0 11.668 0 .75.75 0 1 1 1.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 0 1 1.06 0Z"
-								clipRule="evenodd"
-							/>
-						</svg>
-					</span>
-				</a>
+				</span>
 			</li>
 			<li className="bg-base-200">
 				<a>
@@ -225,7 +220,7 @@ const ChatHeader = ({ user, matchedUser, handleLeave }) => {
 	const handleOut = () => {
 		handleLeave();
 		setTimeout(() => {
-			navigate(APP_ROUTES.HOME);
+			navigate(APP_ROUTES.MATCH);
 		}, 2000);
 	};
 	return (
