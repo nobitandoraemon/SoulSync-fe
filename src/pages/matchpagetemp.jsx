@@ -28,19 +28,16 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 <div className="h-56 mx-4 w-5/6 rounded-3xl shadow-md sm:w-80 sm:mx-0 ">
                   <div className="h-1/2 w-full flex justify-between items-baseline px-3 py-5">
                     <h1
-                      className="text-2xl font-bold text-center w-full py-5 bg-gradient-to-r from-cyan-500 via-red-500 to-yellow-400
+                      className="text-xl font-bold text-center w-full py-5 bg-gradient-to-r from-primary via-cyan-500 to-secondary
                text-transparent bg-clip-text
                animate-blinkGlow"
                     >
-                      User Profile
+                      Hồ sơ người dùng
                     </h1>
                   </div>
-
-                  <div className=" bg-base-300 h-1/2 w-full  rounded-3xl  flex flex-col  justify-around  items-center">
-                    <div className="w-full h-full flex flex-col justify-center items-center mt-7">
-                      <h1 className="text-gray-700 font-bold">Master</h1>
-                      <h1 className="text-gray-500 text-sm">Phu Tho</h1>
-                    </div>
+                  <div className="h-1/2 w-full flex flex-col justify-between items-center px-3 py-5">
+                    <h1 className="text-gray-700 font-bold mt-7">Master</h1>
+                    <h1 className="text-gray-500 text-sm mt-1">Phu Tho</h1>
                   </div>
                 </div>
               </div>
@@ -53,16 +50,16 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 <a
                   onClick={handleFinding}
                   href="#"
-                  className="relative flex flex-row items-center h-11 focus:outline-none animate-infinite animate-wiggle hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                  className="relative flex flex-row items-center h-11 focus:outline-none animate-infinite animate-wiggle hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6"
                 >
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
-                      strokeWidth={1.5}
+                      strokeWidth={2.5}
                       stroke="currentColor"
-                      className="size-6 text-primary"
+                      className="size-8 text-primary"
                     >
                       <path
                         strokeLinecap="round"
@@ -71,7 +68,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                       />
                     </svg>
                   </span>
-                  <span className="ml-2 text-sm tracking-wide truncate text-primary">
+                  <span className="ml-2 font-bold text-xl tracking-wide truncate text-primary">
                     {"Yêu thôi <3"}
                   </span>
                 </a>
@@ -87,7 +84,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 <a
                   onClick={() => setTabActive(0)}
                   href="#"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6"
                 >
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
@@ -114,7 +111,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 <a
                   onClick={() => setTabActive(1)}
                   href="#"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6"
                 >
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
@@ -141,7 +138,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 <a
                   onClick={() => setTabActive(2)}
                   href="#"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6"
                 >
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
@@ -176,7 +173,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 <Link
                   to="/setting"
                   href="#"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6"
                 >
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
@@ -209,7 +206,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 <a
                   onClick={() => logOut()}
                   href="#"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6"
                 >
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
@@ -255,7 +252,7 @@ const UserZodiacInfomation = ({ zodiac, tabActive }) => {
         <img
           src={bImage}
           alt="Background"
-          className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+          className="w-full h-full object-cover"
         />
       </div>
       <div className="w-4/5 hero-content bg-base-200 rounded-xl bg-opacity-60">
