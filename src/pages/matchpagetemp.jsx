@@ -6,13 +6,15 @@ import { useOutletContext } from "react-router";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import Toast from "../hooks/useToast";
+import { useNavigate, Navigate } from "react-router";
+import { APP_ROUTES } from "../lib/constants";
 const SideBarNew = ({ setTabActive, user, handleFinding }) => {
   return (
     <div className="flex flex-row">
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
         <div className="flex flex-col top-0 left-0 w-64 bg-white h-full border-r">
           <div>
-            <div className="w-full">
+            {/*<div className="w-full">
               <div className="relative w-full bg-gray-50 flex justify-center items-center">
                 <div className="absolute flex justify-center items-center">
                   <img
@@ -37,18 +39,37 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                     <div className="w-full h-1/2 flex justify-between items-center px-3 pt-2"></div>
                     <div className="w-full h-1/2 flex flex-col justify-center items-center">
                       <h1 className="text-gray-700 font-bold">
-                        {/*user.fullName*/} Master
+                        {user.fullName} Master
                       </h1>
                       <h1 className="text-gray-500 text-sm">
-                        {/*user.place*/} Phu Tho
+                        {user.place} Phu Tho
                       </h1>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div>*/}
             {/*Bar*/}
           </div>
+          <button
+            className="mx-auto my-5 p-6 shadow-sm btn-circle btn btn-primary animate-bouce size-28"
+            onClick={handleFinding}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth="2.5"
+              stroke="currentColor"
+              className="size-48"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+              />
+            </svg>
+          </button>
           <div className="relative overflow-x-hidden flex">
             <ul className="flex flex-col py-4 space-y-1">
               <li className="px-5">
@@ -66,18 +87,18 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 >
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                      ></path>
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
+                      />
                     </svg>
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
@@ -93,18 +114,18 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 >
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                      ></path>
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+                      />
                     </svg>
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
@@ -120,18 +141,18 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                 >
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                      ></path>
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                      />
                     </svg>
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
@@ -162,15 +183,15 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
                       ></path>
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                       ></path>
                     </svg>
@@ -195,9 +216,9 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                       ></path>
                     </svg>
@@ -209,25 +230,6 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
               </li>
             </ul>
           </div>
-          <button
-            className="mx-auto my-5 p-6 shadow-sm btn-circle btn btn-primary animate-bouce size-28"
-            onClick={handleFinding}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              strokeWidth="2.5"
-              stroke="currentColor"
-              className="size-48"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
@@ -245,7 +247,7 @@ const UserZodiacInfomation = ({ zodiac, tabActive }) => {
       // 	backgroundSize: "cover",
       // }}
     >
-      <div className="hero-overlay bg-primary w-full h-full"></div>
+      <div className="hero-overlay bg-primary w-full h-full bg-[url('./src/assets/wallpapersden.com_k-beautiful-landscape-digital-art_3840x2160.jpg')]"></div>
       <div className="w-4/5 hero-content bg-base-200 rounded-xl bg-opacity-60">
         <div className="flex flex-col items-center">
           <div className="">
@@ -291,6 +293,7 @@ const MatchPageTest = () => {
   const { user, isFinding, setIsFinding } = useOutletContext();
   const [tabActive, setTabActive] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
   const handleFinding = () => {
     setIsFinding((prev) => !prev);
     setTimeout(() => {
@@ -336,7 +339,11 @@ const MatchPageTest = () => {
   ) : (
     <div className="flex flex-row">
       <Toast />
-      <SideBarNew setTabActive={setTabActive} handleFinding={handleFinding} />
+      <SideBarNew
+        setTabActive={setTabActive}
+        handleFinding={handleFinding}
+        user={user}
+      />
       <UserZodiacInfomation tabActive={tabActive} zodiac={zodiac} />
     </div>
   );
