@@ -305,7 +305,7 @@ const Info = ({ user }) => {
 	const zodiacIndex = user.zodiac - 1;
 	const userZodiac = ZodiacSigns[zodiacIndex];
   return (
-	<section className="pt-16 bg-rose-800 vh-100 h-full w-4/10 ">
+	<section className="pt-16 bg-blueGray-50 vh-100 h-full w-4/10 ">
 	  <div className=" px-4 mx-auto min-w-[300px] pt-16">
 		  <div className="px-6  ">
 			<div className="flex flex-wrap justify-center">

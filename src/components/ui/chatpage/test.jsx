@@ -305,7 +305,7 @@ const Info = ({ user }) => {
 	const userAge = currentYear - 2005;
 	
   return (
-	<section className="pt-16 vh-100 h-full w-4/10 min-w-[330px] bg-rose-800 ">
+	<section className="pt-16 vh-100 h-full w-4/10 min-w-[330px] bg-blueGray-50 ">
 	  <div className=" px-4 mx-auto  pt-16">
 		  <div className="px-6  ">
 			<div className="flex flex-wrap justify-center">
@@ -324,21 +324,21 @@ const Info = ({ user }) => {
 			  </div>
 			</div>
 			<div className="text-center mt-12">
-			  <h3 className="text-xl font-semibold leading-normal mb-4 text-white">
+			  <h3 className="text-xl font-semibold leading-normal mb-4 text-black">
 				Ha Truong
 			  </h3>
-			  <div className="text-sm flex justify-center gap-2 leading-normal mt-0 mb-12 text-white font-bold uppercase ">
+			  <div className="text-sm flex justify-center gap-2 leading-normal mt-0 mb-12 text-black font-bold uppercase ">
 			  <i class="fi fi-sr-marker"></i>
 			  Hai Duong
 			  </div>
 			  
-			  <div className="mb-4 text-white flex gap-2 justify-center">
+			  <div className="mb-4 text-black flex gap-2 justify-center">
 			  <div className="w-5">
 				<img id="uicons__detail-img" src={leo} alt="" title="" className="img-small" />
 			  </div>
 				Lion
 			  </div>
-			  <div className="mb-4 text-white flex gap-2 justify-center">
+			  <div className="mb-4 text-black flex gap-2 justify-center">
 			  <div className="w-5 mb-8">
 			  <img id="uicons__detail-img" src={age} alt="" title="" className="img-small" />
 			  </div>
@@ -346,11 +346,11 @@ const Info = ({ user }) => {
 			  </div>
 			</div>
  
-			<div className="mt-10 py-10 border-t border-white text-center">
+			<div className="mt-10 py-10 border-t border-black text-center">
         <div className="flex flex-wrap justify-center">
 
 				<div className="w-full lg:w-9/12 px-4">
-				  <p className="mb-4 text-lg leading-relaxed text-white">
+				  <p className="mb-4 text-lg leading-relaxed text-black">
 					Xương rồng đơm lá đơm hoa
 				  </p>
 				</div>
