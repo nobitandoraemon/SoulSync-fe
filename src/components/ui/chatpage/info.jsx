@@ -305,7 +305,7 @@ const Info = ({ user }) => {
 	const zodiacIndex = user.zodiac - 1;
 	const userZodiac = ZodiacSigns[zodiacIndex];
   return (
-	<section className="pt-16 bg-blueGray-50 vh-100 h-full w-4/10 ">
+	<section className="pt-16 bg-rose-800 vh-100 h-full w-4/10 ">
 	  <div className=" px-4 mx-auto min-w-[300px] pt-16">
 		  <div className="px-6  ">
 			<div className="flex flex-wrap justify-center">
@@ -348,7 +348,7 @@ const Info = ({ user }) => {
 				{userAge}
 			  </div>
 			</div>
-			<div className="mt-10 py-10 border-t border-blueGray-200 text-center">
+			<div className="mt-10 py-10 border border-t border-black text-center">
 			  <div className="flex flex-wrap justify-center">
 				<div className="w-full lg:w-9/12 px-4">
 				  <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
