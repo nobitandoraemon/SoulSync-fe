@@ -19,4 +19,5 @@ export const APP_ROUTES = {
 	FORM: "/form",
 	HOME: "/",
 	OTP: "/verify-otp",
+	SETTING: "/setting",
 };

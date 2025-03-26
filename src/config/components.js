@@ -12,6 +12,7 @@ import NotFound from "../pages/notfound.jsx";
 import FormPage from "../pages/form.jsx";
 import MatchPage from "../pages/match.jsx";
 import OTPPage from "../pages/otp.jsx";
+import SettingPage from "../pages/settings.jsx";
 
 //Hooks
 import { useScroll } from "../hooks/useScroll.js";
@@ -30,7 +31,6 @@ import ChatInput from "../components/ui/chatpage/chatinput.jsx";
 import ChatHeader from "../components/ui/chatpage/header.jsx";
 import Info from "../components/ui/chatpage/info.jsx";
 import Profile from "../components/ui/chatpage/profile.jsx";
-import SettingPage from "../pages/settings.jsx";
 
 //Homepage//
 import Contact from "../components/ui/homepage/contact";
