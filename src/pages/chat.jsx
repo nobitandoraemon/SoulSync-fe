@@ -6,8 +6,6 @@ import { toast } from "react-toastify";
 const PopUp = ({
 	setAccept,
 	setMatchedUser,
-	isRefuse,
-	setIsRefuse,
 	newSocket,
 	refuseMsg,
 	setRefuseMsg,
@@ -28,11 +26,8 @@ const PopUp = ({
 		setAccept(true);
 	};
 	const handleRefuse = () => {
-		setIsRefuse(true);
-
-		setTimeout(() => {
-			window.location.reload();
-		}, 2000);
+		newSocket.emit("refuse", {});
+		setMatchedUser(null);
 	};
 
 	useEffect(() => {
@@ -96,7 +91,6 @@ const Chat = ({ socket }) => {
 	//Màn hình loading
 	const [isLoading, setIsLoading] = useState(true);
 	const [accept, setAccept] = useState(false);
-	const [isRefuse, setIsRefuse] = useState(false);
 	const [refuseMsg, setRefuseMsg] = useState(null);
 	const [isLeave, setIsLeave] = useState(false);
 	const navigate = useNavigate();
@@ -125,18 +119,14 @@ const Chat = ({ socket }) => {
 			setMatchedUser(null);
 			setIsLeave(false);
 		}
-
-		if (isRefuse) {
-			console.log("refuse");
-			newSocket.emit("refuse", {});
-			setMatchedUser(null);
-			setIsRefuse(false);
-		}
+		newSocket.on("refuse", (data) => {
+			setRefuseMsg(data);
+		});
 
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, isFinding, isLeave, isRefuse]);
+	}, [newSocket, isFinding, isLeave]);
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
@@ -189,8 +179,6 @@ const Chat = ({ socket }) => {
 						accept={accept}
 						setAccept={setAccept}
 						setMatchedUser={setMatchedUser}
-						isRefuse={isRefuse}
-						setIsRefuse={setIsRefuse}
 						newSocket={newSocket}
 						refuseMsg={refuseMsg}
 						setRefuseMsg={setRefuseMsg}
