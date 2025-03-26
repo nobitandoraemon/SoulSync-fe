@@ -149,7 +149,7 @@ const Chat = ({ socket }) => {
 		<>
 			{matchedUser &&
 				(accept ? (
-					<div className="flex w-screen max-w-full min-h-screen">
+					<div className="flex w-screen max-w-full min-h-screen bg-base-100">
 						<ChatBox
 							isFinding={isFinding}
 							isScroll={isScroll}

@@ -10,7 +10,7 @@ const ChatBox = ({ chat, matchedUser, user, newSocket, handleLeave }) => {
 					handleLeave={handleLeave}
 				/>
 			</div>
-			<div className="flex flex-col flex-auto flex-shrink-0 h-full min-h-screen p-4 mb-16 md:mb-0">
+			<div className="flex flex-col flex-auto flex-shrink-0 h-full min-h-screen md:mb-0">
 				<ChatBody
 					newSocket={newSocket}
 					user={user}

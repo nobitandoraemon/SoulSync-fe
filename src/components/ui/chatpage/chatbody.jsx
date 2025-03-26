@@ -39,13 +39,32 @@ const ChatBody = ({ newSocket, user, matchedUser, handleLeave }) => {
 		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
 	return (
-		<div className="flex flex-col h-full min-h-screen p-6 mb-8 overflow-x-auto mt-36">
+		<div className="flex flex-col h-full min-h-screen p-6 overflow-x-auto my-36 bg-base-100">
 			<div className="flex flex-col h-full">
+				<div className="chat chat-start" key="defaultMsg">
+					<button className="chat-image avatar">
+						<div className="w-10 rounded-full">
+							<img
+								alt="Admin"
+								src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+							/>
+						</div>
+					</button>
+					<div className="chat-header">
+						Admin
+						<time className="text-xs opacity-50">Now</time>
+					</div>
+					<div className="chat-bubble chat-bubble-warning">
+						Vui lòng xin chờ trong giây lát cho đến khi nửa kia kết nối thành
+						công 😁 ...
+					</div>
+					<div className="opacity-50 chat-footer">Warning</div>
+				</div>
 				{chat.map((message) => {
 					const isMainUser = message.sender === user.username ? true : false;
 					return (
 						<>
-							<div
+							<li
 								key={message.id}
 								className={`chat ${isMainUser ? "chat-end" : "chat-start"}`}
 							>
@@ -70,18 +89,18 @@ const ChatBody = ({ newSocket, user, matchedUser, handleLeave }) => {
 									{message.content}
 								</div>
 								<div className="opacity-50 chat-footer">Delivered</div>
-							</div>
+							</li>
 							<div ref={lastMessage}></div>
 						</>
 					);
 				})}
 				{notify && (
 					<>
-						<div className="chat chat-start">
+						<div className="chat chat-start" key="warningMsg">
 							<div className="chat-image avatar">
 								<div className="w-10 rounded-full">
 									<img
-										alt="Tailwind CSS chat bubble component"
+										alt="Admin"
 										src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
 									/>
 								</div>

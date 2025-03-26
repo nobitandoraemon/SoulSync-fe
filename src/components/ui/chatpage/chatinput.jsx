@@ -14,7 +14,7 @@ const ChatInput = ({ newSocket, matchedUser }) => {
 	return (
 		<>
 			<form
-				className="fixed bottom-4 left-8 right-8 w-[90%] mx-auto flex flex-row items-center h-16 rounded-2xl"
+				className="fixed flex flex-row items-center h-16 mx-auto bottom-4 left-8 right-8 rounded-2xl"
 				onSubmit={handleMessage}
 			>
 				<div className="w-full join">
