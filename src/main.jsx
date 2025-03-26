@@ -3,18 +3,18 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import {
-  Layout,
-  Chat,
-  Login,
-  Reg,
-  App,
-  ThemeProvider,
-  PrivateRoute,
-  NotFound,
-  FormPage,
-  MatchPage,
-  OTPPage,
-  SettingPage,
+	Layout,
+	Chat,
+	Login,
+	Reg,
+	App,
+	ThemeProvider,
+	PrivateRoute,
+	NotFound,
+	FormPage,
+	MatchPage,
+	OTPPage,
+	SettingPage,
 } from "./config/components.js";
 import { socket } from "./config/socket.js";
 
@@ -29,9 +29,9 @@ createRoot(document.getElementById("root")).render(
 						<Route path="/reg" element={<Reg />} />
 						<Route path="*" element={<NotFound />} />
 						<Route path="/verify-otp" element={<OTPPage />} />
-						<Route path="/setting" element={<SettingPage />} />
 					</Route>
 					<Route element={<PrivateRoute socket={socket} />}>
+						<Route path="/setting" element={<SettingPage />} />
 						<Route path="/form" element={<FormPage />} />
 						<Route path="/match" element={<MatchPage />} />
 						<Route path="/chat" element={<Chat socket={socket} />} />

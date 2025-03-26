@@ -732,7 +732,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 };
 
 const SettingPage = () => {
-	const [user] = useOutletContext();
+	const { user } = useOutletContext();
 	const navigate = useNavigate();
 	const [id, setId] = useState(1);
 	const [formData, setFormData] = useState({});
