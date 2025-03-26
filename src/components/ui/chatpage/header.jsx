@@ -45,13 +45,7 @@ const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 					className="drawer-overlay"
 					onClick={() => setClickable(true)}
 				></label>
-				<div className="grid grid-cols-1 menu bg-base-200 text-base-content h-screen max-w-[90vw] p-4 overflow-auto">
-					
-					<div>
-						<Info user={user} />
-					</div>
-					{/* Sidebar content end here */}
-				</div>
+				<Info user={user} claasName="h-[100%]" />
 			</div>
 		</div>
 	);
@@ -93,13 +87,7 @@ const OtherInformationSideBar = ({ matchedUser, clickable, setClickable }) => {
 					className="drawer-overlay"
 					onClick={() => setClickable(true)}
 				></label>
-				<div className="grid grid-cols-1 menu bg-base-200 text-base-content h-screen max-w-[90vw] p-4 overflow-auto">
-					{/* Sidebar content here */}
-					<div className="m-2 shadow-xs card bg-primary w-96">
-						<Info user={matchedUser} />
-					</div>
-					{/* Sidebar content end here */}
-				</div>
+				<Info user={matchedUser} claasName="h-[100%]" />
 			</div>
 		</div>
 	);

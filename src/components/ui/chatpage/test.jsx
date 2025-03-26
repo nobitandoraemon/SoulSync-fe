@@ -12,7 +12,7 @@ const Year = todayDate.split('/')[2];
 const TestPage = () => {
   return (
     <section className="pt-16 bg-blueGray-50  ">
-      <div className=" w-1/3 px-4 mx-auto min-w-[300px]   ">
+      <div className=" w-full px-4 mx-auto min-w-[300px]   ">
         <div className="relative flex flex-col min-w-0  break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
           <div className="px-6  ">
             <div className="flex flex-wrap justify-center">
@@ -50,7 +50,7 @@ const TestPage = () => {
               </div>
                 Lion
               </div>
-              <div className="mb-2 text-blueGray-600 flex gap-2 justify-center">
+              <div className=" text-blueGray-600 flex gap-2 justify-center mb-16">
               <div className="w-5">
               <img id="uicons__detail-img" src={age} alt="" title="" className="img-small" />
               </div>
