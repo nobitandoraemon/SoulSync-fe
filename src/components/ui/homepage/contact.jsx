@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
 	return (
@@ -68,6 +69,13 @@ const Contact = () => {
 								scale: 1.1,
 							}}
 							transition={{ visualDuration: 0.15 }}
+							onClick={(e) => {
+								e.preventDefault();
+								toast("Xin lỗi, tính năng còn trong quá trình phát triển", {
+									type: "info",
+									autoClose: 1500,
+								});
+							}}
 						>
 							Gửi
 						</motion.button>

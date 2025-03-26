@@ -159,8 +159,8 @@ const DangerZone = ({ user }) => {
 				Danger Zone
 			</h2>
 
-			<form className="grid max-w-2xl mx-auto mt-8">
-				<div className="items-center mx-auto mt-8 sm:mt-14 md:mx-0">
+			<form className="grid max-w-2xl mx-auto">
+				<div className="items-center mx-auto sm:mt-14 md:mx-0">
 					<div className="inline-grid *:[grid-area:1/1]">
 						<div
 							className={cn("status animate-ping", {
@@ -330,7 +330,7 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 
 	return (
 		<form
-			className="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg"
+			className="w-full px-6 pb-8 sm:max-w-xl sm:rounded-lg"
 			onSubmit={handleSubmit}
 			id="others"
 		>
@@ -339,7 +339,7 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 			</h2>
 
 			<div className="grid max-w-2xl mx-auto">
-				<div className="items-center mt-8 sm:mt-14">
+				<div className="items-center sm:mt-14">
 					<div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
 						<div className="w-full mb-6">
 							<fieldset className="fieldset">
@@ -761,6 +761,18 @@ const SettingPage = () => {
 			toast("Cập nhật thành bại", { type: "error" });
 		}
 	};
+
+	useEffect(() => {
+		if (!token) {
+			toast("Vui lòng đăng nhập lại", {
+				type: "warning",
+				autoClose: 1500,
+			});
+			setTimeout(() => {
+				navigate(APP_ROUTES.SIGN_IN);
+			}, 1500);
+		}
+	}, [token]);
 	useEffect(() => {
 		if (user) {
 			console.log("Get user data successfully");

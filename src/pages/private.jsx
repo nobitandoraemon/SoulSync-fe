@@ -163,13 +163,6 @@ const PrivateRoute = ({ socket }) => {
 			console.log("Disconnected from server");
 		});
 
-		const sendMessage = (content) => {
-			newSocket.emit("chat", {
-				receiver: matchedUser.username,
-				content: content,
-			});
-		};
-
 		return () => {
 			newSocket.close();
 		};

@@ -48,10 +48,10 @@ const Reg = () => {
 
 	useEffect(() => {
 		if (token) {
-			toast("You are already logged in", { type: "info" });
+			toast("Bạn đã đăng nhập rồi", { type: "info" });
 			setTimeout(() => {
-				navigate(APP_ROUTES.CHAT);
-			}, 3000);
+				navigate(APP_ROUTES.MATCH);
+			}, 1500);
 		}
 	}, []);
 
@@ -69,7 +69,7 @@ const Reg = () => {
 				<div className="flex flex-col gap-8 items-center-center md:flex-row md:w-4/5">
 					<div className="flex flex-col space-y-8 md:w-2/3 text-wrap">
 						<h1 className="mb-5 text-5xl font-bold">Đăng ký ngay</h1>
-						<p className="mb-5 text-wrap font-semibold">
+						<p className="mb-5 font-semibold text-wrap">
 							Tìm một nửa hoàn hảo ngay hôm nay! Kết nối, khám phá bản thân và
 							trải nghiệm hành trình yêu thương thú vị. 💖
 						</p>
@@ -101,7 +101,7 @@ const Reg = () => {
 									onChange={handleChange}
 									required
 								/>
-								<label className="label mt-6 animate-bounce text-primary hover:text-accent">
+								<label className="mt-6 label animate-bounce text-primary hover:text-accent">
 									<Link to="/login" className="label-text-alt link link-hover">
 										Đã có tài khoản? Đăng nhập tại đây
 									</Link>

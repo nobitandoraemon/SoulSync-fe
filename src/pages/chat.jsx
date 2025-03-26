@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useScroll, Toast, ChatBox } from "../config/components";
 import { cn } from "../lib/utils";
 import { useOutletContext, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 const PopUp = ({
 	accept,
 	setAccept,
@@ -32,15 +33,15 @@ const PopUp = ({
 		}, 2000);
 	};
 	return (
-		<div className="flex flex-col h-screen justify-center items-center">
+		<div className="flex flex-col items-center justify-center h-screen">
 			<div className="flex flex-col items-center justify-center gap-4">
-				<h3 className="font-bold text-2xl animate-bounce">
+				<h3 className="text-2xl font-bold animate-bounce">
 					Chúc mừng ! Chúng tôi đã tìm được đối cho bạn !
 				</h3>
 				<p className="py-4">Bạn có muốn tiếp tục hay không ?</p>
 			</div>
-			<div className="flex flex-col p-2 text-center bg-neutral rounded-box text-neutral-content my-6">
-				<span className="countdown font-mono text-5xl">
+			<div className="flex flex-col p-2 my-6 text-center bg-neutral rounded-box text-neutral-content">
+				<span className="font-mono text-5xl countdown">
 					<span
 						style={{ "--value": counter }}
 						aria-live="polite"
@@ -51,7 +52,7 @@ const PopUp = ({
 				</span>
 				sec
 			</div>
-			<div className="w-full flex justify-center items-center gap-4">
+			<div className="flex items-center justify-center w-full gap-4">
 				<button className="btn btn-success" onClick={handleAccept}>
 					Đồng ý
 				</button>
@@ -90,6 +91,7 @@ const Chat = ({ socket }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [accept, setAccept] = useState(false);
 	const [isLeave, setIsLeave] = useState(false);
+	const navigate = useNavigate();
 	const handleLoading = () => {
 		if (isMatched) {
 			setIsLoading(false);
@@ -139,6 +141,14 @@ const Chat = ({ socket }) => {
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
+		if (!isFinding) {
+			toast("Vui lòng yêu cầu match tại trang trước đó", {
+				type: "error",
+			});
+			setTimeout(() => {
+				navigate("/match");
+			}, 1500);
+		}
 		const loadingInterval = setInterval(() => {
 			handleLoading();
 		}, 1500);
@@ -189,7 +199,9 @@ const Chat = ({ socket }) => {
 					</div>{" "}
 					<span className="text-2xl animate-pulse">
 						{" "}
-						{failMessage ? `${failMessage}` : "We're finding you a match"}
+						{failMessage
+							? `${failMessage}`
+							: "Chúng tôi đang tìm kiếm nửa kia cho bạn"}
 					</span>
 					<span className="ml-8 loading loading-spinner text-info"></span>
 				</div>

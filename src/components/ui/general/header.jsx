@@ -5,7 +5,6 @@ import { ToastContainer } from "react-toastify";
 import { ThemeContext } from "../../../context/themeprovider";
 import { useContext, useEffect } from "react";
 import { logOut } from "../../../lib/common";
-import { useUser } from "../../../hooks/useUser";
 
 const UserProfile = ({ user, handleLogOut }) => {
 	return (
@@ -37,18 +36,18 @@ const UserProfile = ({ user, handleLogOut }) => {
 	);
 };
 
-const Header = () => {
+const Header = ({ user }) => {
 	const isScroll = useScroll();
 	const token = localStorage.getItem("token");
 	const { theme } = useContext(ThemeContext);
 
-	const { user } = useUser();
+	// const { user } = useUser();
 	const handleLogOut = () => logOut();
 
 	useEffect(() => {
 		if (token) {
 			if (user) {
-				console.log(user);
+				console.log("Check user successfully");
 			}
 		}
 	}, [user]);

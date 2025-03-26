@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import Toast from "../hooks/useToast";
 import { toast } from "react-toastify";
-import { useUser } from "../hooks/useUser";
 import { APP_ROUTES, API_ROUTES } from "../lib/constants";
 import axios from "axios";
-import { storeTokenInLocalStorage } from "../lib/common";
+import {
+	getTokenFromLocalStorage,
+	storeTokenInLocalStorage,
+} from "../lib/common";
 import { refreshToken } from "../lib/common"; // Import hàm refreshToken
 
 const Login = ({ user }) => {
+	const token = getTokenFromLocalStorage();
 	const navigate = useNavigate();
 
 	const [input, setInput] = useState({
@@ -48,17 +51,28 @@ const Login = ({ user }) => {
 	};
 
 	useEffect(() => {
+		if (token) {
+			toast("Bạn đã đăng nhập rồi", { type: "info" });
+
+			setTimeout(() => {
+				navigate(APP_ROUTES.MATCH);
+			}, 1500);
+		}
+	}, [token]);
+
+	useEffect(() => {
 		const checkUser = async () => {
 			if (user) {
 				if (!user.gender) {
 					navigate(APP_ROUTES.FORM);
-				} else {
-					const newToken = await refreshToken(); // Gọi hàm refreshToken
-					if (newToken) {
-						// Nếu có token mới, có thể điều hướng đến trang chat hoặc thực hiện hành động khác
-						navigate(APP_ROUTES.CHAT);
-					}
 				}
+				// else {
+				// 	const newToken = await refreshToken(); // Gọi hàm refreshToken
+				// 	if (newToken) {
+				// 		// Nếu có token mới, có thể điều hướng đến trang chat hoặc thực hiện hành động khác
+				// 		navigate(APP_ROUTES.MATCH);
+				// 	}
+				// }
 			}
 		};
 
@@ -74,7 +88,7 @@ const Login = ({ user }) => {
 			}}
 		>
 			<Toast />
-			<div className="flex-col hero-content lg:flex-row-reverse text-center">
+			<div className="flex-col text-center hero-content lg:flex-row-reverse">
 				<div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
 					<form className="card-body" onSubmit={handleSubmit}>
 						<div className="form-control">
@@ -103,22 +117,38 @@ const Login = ({ user }) => {
 								required
 							/>
 							<div className="flex flex-col mt-6 space-y-2">
+								<label className="text-right label">
+									<a
+										href="#"
+										className="label-text-alt link link-hover"
+										onClick={(e) => {
+											e.preventDefault();
+											toast(
+												"Xin lỗi, tính năng còn trong quá trình phát triển",
+												{
+													autoClose: 3000,
+													type: "info",
+												}
+											);
+										}}
+									>
+										Quên mật khẩu?
+									</a>
+								</label>
+								<div className="mt-6">
+									<button
+										type="submit"
+										className="btn btn-primary btn-wide hover:btn-accent"
+									>
+										Đăng nhập
+									</button>
+								</div>
 								<label className="label animate-pulse text-primary hover:text-accent">
 									<Link to="/reg" className="label-text-alt link link-hover">
 										Chưa có tài khoản? Đăng ký ngay nào
 									</Link>
 								</label>
-								<label className="label">
-									<a href="#" className="label-text-alt link link-hover">
-										Quên mật khẩu?
-									</a>
-								</label>
 							</div>
-						</div>
-						<div className="mt-6 form-control">
-							<button className="btn btn-primary hover:btn-accent">
-								Đăng nhập
-							</button>
 						</div>
 					</form>
 				</div>
