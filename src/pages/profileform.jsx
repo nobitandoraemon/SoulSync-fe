@@ -270,7 +270,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						<button
 							type="button"
 							className={`w-[32%] btn btn-soft ${
-								userHobby.includes("Games") && "btn-primary"
+								userHobby.includes("Games") && "btn-active btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Games")}
 						>
@@ -279,7 +279,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						<button
 							type="button"
 							className={`w-[32%] btn btn-soft ${
-								userHobby.includes("Reading") && "btn-primary"
+								userHobby.includes("Reading") && "btn-active btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Reading")}
 						>
@@ -288,7 +288,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						<button
 							type="button"
 							className={`w-[32%] btn btn-soft ${
-								userHobby.includes("Painting") && "btn-primary"
+								userHobby.includes("Painting") && "btn-active btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Painting")}
 						>
@@ -297,7 +297,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						<button
 							type="button"
 							className={`w-[32%] btn btn-soft ${
-								userHobby.includes("Music") && "btn-primary"
+								userHobby.includes("Music") && "btn-active btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Music")}
 						>
@@ -306,7 +306,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						<button
 							type="button"
 							className={`w-[32%] btn btn-soft ${
-								userHobby.includes("Photos") && "btn-primary"
+								userHobby.includes("Photos") && "btn-active btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Photos")}
 						>
@@ -315,7 +315,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						<button
 							type="button"
 							className={`w-[32%] btn btn-soft ${
-								userHobby.includes("Cooking") && "btn-primary"
+								userHobby.includes("Cooking") && "btn-active btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Cooking")}
 						>
@@ -324,7 +324,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						<button
 							type="button"
 							className={`w-[32%] btn btn-soft ${
-								userHobby.includes("Travel") && "btn-primary"
+								userHobby.includes("Travel") && "btn-active btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Travel")}
 						>
@@ -333,7 +333,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						<button
 							type="button"
 							className={`w-[32%] btn btn-soft ${
-								userHobby.includes("Garden") && "btn-primary"
+								userHobby.includes("Garden") && "btn-active btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Garden")}
 						>
@@ -342,7 +342,7 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						<button
 							type="button"
 							className={`w-[32%] btn btn-soft ${
-								userHobby.includes("Movies") && "btn-primary"
+								userHobby.includes("Movies") && "btn-active btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Movies")}
 						>
@@ -558,13 +558,13 @@ const ThankYou = ({ setStep, formData, setFormData }) => {
 	};
 
 	return (
-		<div className="gap-5 flex-flex-col">
-			<h1 className="mt-8 text-lg font-bold text-center text-success">
+		<div className="flex flex-col">
+			<h1 className="my-16 text-lg font-bold text-center text-primary">
 				Cảm ơn bạn vì đã cập nhật thông tin cá nhân
 			</h1>
 			<button
 				type="submit"
-				className="w-full px-4 py-2 mt-8 bg-green-600 border rounded-full shadow-md text-base-content hover:bg-green-300"
+				className="w-full btn btn-success"
 				onClick={handleSubmitForm} // Call handleSubmit on button click
 			>
 				Tiếp theo
