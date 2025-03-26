@@ -396,6 +396,7 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 										type="text"
 										className="input bg-secondary/10 text-neutral"
 										placeholder={user.location}
+										disabled
 									/>
 								)}
 								{locationChange && (
