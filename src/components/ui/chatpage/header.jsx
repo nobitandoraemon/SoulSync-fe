@@ -3,7 +3,6 @@ import { Info, Toast } from "../../../config/components";
 import { useState } from "react";
 import { APP_ROUTES } from "../../../lib/constants";
 import { toast } from "react-toastify";
-import { Info } from "../../../config/components";
 const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 	return (
 		<div className="drawer drawer-end">
