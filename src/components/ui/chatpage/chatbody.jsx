@@ -21,7 +21,7 @@ const ChatBody = ({
 	const checkOut =
 		failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!";
 
-	const checkRefuse = failMessage === "Fail to match!";
+	const checkRefuse = failMessage === "Fail to match!";;
 	const handleMessage = (data) => {
 		setChat((prevChat) => [...prevChat, data]);
 	};

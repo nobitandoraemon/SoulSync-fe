@@ -116,7 +116,6 @@ const Chat = ({ socket }) => {
 	};
 
 	const handleLeave = () => {
-		newSocket.emit("leave", {}); // Gửi thông tin người dùng rời phòng
 		setIsLeave(true);
 	};
 
@@ -136,11 +135,16 @@ const Chat = ({ socket }) => {
 		newSocket.on("refuse", (data) => {
 			setRefuseMsg(data);
 		});
+		if (failMessage === "Fail to match!") {
+			newSocket.emit("refuse", {});
+			handleLeave();
+			setMatchedUser(null);
+		}
 
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, isFinding, isLeave]);
+	}, [newSocket, isFinding, isLeave, failMessage]);
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
