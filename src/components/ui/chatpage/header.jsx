@@ -60,7 +60,7 @@ const ChatNav = ({ matchedUser, user, handleOut }) => {
 
 	useEffect(() => {
 		setTimeout(() => {
-			id === warningMsg.length ? setId(1) : setId((prev) => prev + 1);
+			id === 5 ? setId(1) : setId((prev) => prev + 1);
 		}, 10000);
 	}, [id]);
 	const handleQuit = () => {

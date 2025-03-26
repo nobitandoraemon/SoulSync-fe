@@ -39,8 +39,8 @@ const ChatBody = ({ newSocket, user, matchedUser, handleLeave }) => {
 		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
 	return (
-		<div className="flex flex-col h-full min-h-screen p-6 overflow-x-auto my-36 bg-base-100">
-			<div className="flex flex-col h-full">
+		<div className="flex flex-col h-full min-h-screen px-6 overflow-x-auto pt-36 md:pt-40 bg-base-100">
+			<div className="flex flex-col h-full pb-36">
 				<div className="chat chat-start" key="defaultMsg">
 					<button className="chat-image avatar">
 						<div className="w-10 rounded-full">

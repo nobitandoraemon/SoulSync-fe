@@ -30,9 +30,7 @@ const ChangeImage = ({ formData, setFormData }) => {
 						uwConfig,
 						(error, result) => {
 							if (!error && result && result.event === "success") {
-								console.log("Upload successful:", result.info);
 								setFormData({ ...formData, image: result.info.secure_url });
-								console.log(formData);
 								setPublicId(result.info.public_id);
 							}
 						}
@@ -604,7 +602,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 					</div>
 
 					<div className="flex flex-col space-y-5 sm:ml-8">
-						<>
+						<form action="#">
 							<input
 								type="text"
 								name="avatar-link"
@@ -614,7 +612,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 								onChange={handleTemp}
 							/>
 							<ChangeImage formData={formData} setFormData={setFormData} />
-						</>
+						</form>
 						<button
 							type="button"
 							className="btn btn-primary btn-outline"
