@@ -74,11 +74,11 @@ const Reg = () => {
 							trải nghiệm hành trình yêu thương thú vị. 💖
 						</p>
 					</div>
-					<div className="w-full max-w-sm mx-auto shadow-2xl card bg-primary-content/90 shrink-0 text-primary">
-						<form className="card-body" onSubmit={handleSubmit}>
+					<div className="w-full max-w-sm pt-4 mx-auto shadow-2xl card bg-primary-content/90 shrink-0 text-primary">
+						<form className="gap-6 card-body" onSubmit={handleSubmit}>
 							<div className="form-control">
-								<label className="label">
-									<span className="label-text">Email</span>
+								<label className="floating-label">
+									<span>Email</span>
 								</label>
 								<input
 									type="email"
@@ -90,8 +90,8 @@ const Reg = () => {
 								/>
 							</div>
 							<div className="form-control">
-								<label className="label">
-									<span className="label-text">Mật khẩu</span>
+								<label className="floating-label">
+									<span>Mật khẩu</span>
 								</label>
 								<input
 									type="password"
@@ -107,8 +107,8 @@ const Reg = () => {
 									</Link>
 								</label>
 							</div>
-							<div className="mt-6 form-control">
-								<button className="btn btn-primary hover:btn-accent">
+							<div className="form-control">
+								<button className="btn btn-primary btn-wide hover:btn-accent">
 									Đăng ký
 								</button>
 							</div>

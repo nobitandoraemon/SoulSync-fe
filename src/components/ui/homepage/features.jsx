@@ -19,9 +19,14 @@ const Features = () => {
 							<span className="text-accent"> Thông minh</span>
 						</h1>
 						<p className="mb-12">
-						Hệ thống ghép đôi thông minh của chúng tôi không chỉ đơn thuần là một thuật toán ngẫu nhiên mà là sự kết hợp tinh tế giữa các yếu tố quan trọng như cung hoàng đạo, vị trí địa lý và thần số học, giúp tạo ra những kết nối ý nghĩa và bền vững dựa trên sự tương thích sâu sắc giữa hai người. Bạn sẽ được trải nghiệm các tính năng hiện đại và tân tiến!
+							Hệ thống ghép đôi thông minh của chúng tôi không chỉ đơn thuần là
+							một thuật toán ngẫu nhiên mà là sự kết hợp tinh tế giữa các yếu tố
+							quan trọng như cung hoàng đạo, vị trí địa lý và thần số học, giúp
+							tạo ra những kết nối ý nghĩa và bền vững dựa trên sự tương thích
+							sâu sắc giữa hai người. Bạn sẽ được trải nghiệm các tính năng hiện
+							đại và tân tiến!
 						</p>
-						<div className="text-center shadow-sm stats glass bg-base-100 stats-vertical md:stats-horizontal">
+						<div className="text-center shadow-sm stats backdrop-blur-xl bg-base-100 stats-vertical md:stats-horizontal">
 							<div className="stat place-items-center">
 								<div className="mb-4 stat-title btn btn-primary btn-outline">
 									<SiWechat size={24} />
@@ -36,7 +41,9 @@ const Features = () => {
 								<div className="mb-4 stat-title btn btn-secondary btn-outline">
 									<SiSuperuser size={24} />
 								</div>
-								<div className="mb-4 stat-value text-secondary">Cung hoàng đạo</div>
+								<div className="mb-4 stat-value text-secondary">
+									Cung hoàng đạo
+								</div>
 								<div className="mb-4 stat-desc text-secondary">
 									Hiểu rõ hơn về nội tại của bản thân
 								</div>

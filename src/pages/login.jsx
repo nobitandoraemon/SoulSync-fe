@@ -81,7 +81,7 @@ const Login = ({ user }) => {
 
 	return (
 		<div
-			className="min-h-screen hero bg-base"
+			className="min-h-screen hero"
 			style={{
 				backgroundImage:
 					"url(https://images.squarespace-cdn.com/content/v1/5eac45f88da144413f9b5763/b85d7659-1901-4859-b33a-04356e135fb7/myles-munroe-3-principles-of-biblical-dating-and-courting.jpg)",
@@ -89,11 +89,11 @@ const Login = ({ user }) => {
 		>
 			<Toast />
 			<div className="flex-col text-center hero-content lg:flex-row-reverse">
-				<div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
-					<form className="card-body" onSubmit={handleSubmit}>
+				<div className="w-full max-w-sm py-6 shadow-2xl card bg-primary-content/90 shrink-0">
+					<form className="gap-6 card-body" onSubmit={handleSubmit}>
 						<div className="form-control">
-							<label className="label">
-								<span className="label-text">Email</span>
+							<label className="floating-label">
+								<span>Email</span>
 							</label>
 							<input
 								type="email"
@@ -105,8 +105,8 @@ const Login = ({ user }) => {
 							/>
 						</div>
 						<div className="form-control">
-							<label className="label">
-								<span className="label-text">Mật khẩu</span>
+							<label className="floating-label">
+								<span>Mật khẩu</span>
 							</label>
 							<input
 								type="password"
@@ -116,8 +116,8 @@ const Login = ({ user }) => {
 								onChange={handleInput}
 								required
 							/>
-							<div className="flex flex-col mt-6 space-y-2">
-								<label className="text-right label">
+							<div className="flex flex-col mt-4 space-y-2">
+								<label className="items-center justify-center mt-4 label">
 									<a
 										href="#"
 										className="label-text-alt link link-hover"
@@ -135,15 +135,13 @@ const Login = ({ user }) => {
 										Quên mật khẩu?
 									</a>
 								</label>
-								<div className="mt-6">
-									<button
-										type="submit"
-										className="btn btn-primary btn-wide hover:btn-accent"
-									>
-										Đăng nhập
-									</button>
-								</div>
-								<label className="label animate-pulse text-primary hover:text-accent">
+								<button
+									type="submit"
+									className="mt-4 btn btn-primary btn-wide hover:btn-accent"
+								>
+									Đăng nhập
+								</button>
+								<label className="mt-4 label animate-pulse text-primary hover:text-accent">
 									<Link to="/reg" className="label-text-alt link link-hover">
 										Chưa có tài khoản? Đăng ký ngay nào
 									</Link>

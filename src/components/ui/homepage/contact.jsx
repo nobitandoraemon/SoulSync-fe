@@ -12,8 +12,8 @@ const Contact = () => {
 		>
 			<div className="hero-overlay bg-opacity-60"></div>
 
-			<div className="flex-col max-w-(--breakpoint-lg) mx-auto hero-content lg:flex-row-reverse">
-				<div className="font-extrabold text-center text-neutral-content lg:text-right">
+			<div className="flex-col max-w-(--breakpoint-lg) mx-auto hero-content ">
+				<div className="font-extrabold text-center text-neutral-content">
 					<h1 className="text-5xl">Liên hệ và Trợ giúp</h1>
 					<p className="py-6">
 						Hãy để lại thông tin và tin nhắn của bạn, đội ngũ của chúng tôi sẽ
