@@ -3,18 +3,18 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import {
-	Layout,
-	Chat,
-	Login,
-	Reg,
-	App,
-	ThemeProvider,
-	PrivateRoute,
-	NotFound,
-	FormPage,
-	MatchPage,
-	OTPPage,
-	SettingPage,
+  Layout,
+  Chat,
+  Login,
+  Reg,
+  App,
+  ThemeProvider,
+  PrivateRoute,
+  NotFound,
+  FormPage,
+  MatchPage,
+  OTPPage,
+  SettingPage,
 } from "./config/components.js";
 import { socket } from "./config/socket.js";
 
