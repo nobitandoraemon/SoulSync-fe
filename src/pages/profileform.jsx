@@ -53,76 +53,75 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 
 	return (
 		<div>
-			<h1 className="mt-4 font-sans text-3xl font-bold ">
+			<h1 className="mt-4 font-sans text-3xl font-bold text-primary">
 				Nói một chút về bạn...
 			</h1>
-			<form className="flex flex-col gap-8 mt-10" onSubmit={Submit1}>
-				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">Tên bạn là gì ?</h2>
-					<div className="">
-						<input
-							type="text"
-							placeholder="Tên của bạn"
-							className="flex items-center w-full gap-2 px-4 py-2 bg-white border rounded-full shadow-md "
-							required
-							value={formData.fullname}
-							onChange={handleNameChange}
-						/>
-					</div>
-				</div>
-				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">Bạn thuộc giới tính nào ?</h2>
+			<form
+				className="flex flex-col gap-8 mt-10 text-primary"
+				onSubmit={Submit1}
+			>
+				<fieldset className="fieldset">
+					<legend className="fieldset-legend">Tên bạn là gì ?</legend>
+					<input
+						type="text"
+						className="w-full input"
+						required
+						value={formData.fullname}
+						onChange={handleNameChange}
+						placeholder="Tên của bạn"
+					/>
+					<p className="fieldset-label">Bắt buộc</p>
+				</fieldset>
+				<fieldset className="fieldset">
+					<legend className="fieldset-legend">Bạn thuộc giới tính nào ?</legend>
 					<div className="flex gap-1 ">
 						<button
 							type="button"
-							className={`w-1/3 text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								selectedGender === "Male" ? "bg-gray-300" : "hover:bg-gray-200"
+							className={`w-1/3 btn btn-neutral ${
+								selectedGender === "Male" ? "btn-outline" : "hover:btn-outline"
 							}`}
 							onClick={() => handleGenderChange("Male")}
 							value="Male"
 						>
-							👨 Nam
+							<span className="text-md">👨 Nam</span>
 						</button>
 
 						<button
 							type="button"
-							className={`w-1/3 text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
+							className={`w-1/3 btn btn-primary ${
 								selectedGender === "Female"
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+									? "btn-outline"
+									: "hover:btn-outline"
 							}`}
 							onClick={() => handleGenderChange("Female")}
 							value="Female"
 						>
-							👩 Nữ
+							<span className="text-md">👩 Nữ</span>
 						</button>
 
 						<button
 							type="button"
-							className={`w-1/3 text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								selectedGender === "Other" ? "bg-gray-300" : "hover:bg-gray-200"
+							className={`w-1/3 btn btn-secondary ${
+								selectedGender === "Other" ? "btn-outline" : "hover:bg-outline"
 							}`}
 							onClick={() => handleGenderChange("Other")}
 							value="Other"
 						>
-							✨ Khác
+							<span className="text-md">✨ Khác</span>
 						</button>
 					</div>
-				</div>
-				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">Bạn đang sống ở đâu ?</h2>
+				</fieldset>
+				<fieldset className="fieldset">
+					<legend className="fieldset-legend">Bạn đang sống ở đâu ?</legend>
 					<select
-						className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
+						className="w-full select select-neutral"
 						value={formData.location}
 						onChange={handleLocationChange}
 					>
 						{Locations}
 					</select>
-				</div>
-				<button
-					type="submit"
-					className="w-full px-4 py-2 mt-8 text-white bg-green-500 border rounded-full shadow-md hover:bg-red-300"
-				>
+				</fieldset>
+				<button type="submit" className="w-full btn btn-success">
 					Tiếp theo
 				</button>
 			</form>
@@ -149,54 +148,53 @@ const Address = ({ setStep, formData, setFormData }) => {
 
 	return (
 		<div>
-			<h1 className="mt-4 font-sans text-3xl font-bold ">
+			<h1 className="mt-4 font-sans text-3xl font-bold text-primary">
 				Cho chúng tôi biết nhiều hơn về bạn...
 			</h1>
 			<form className="flex flex-col gap-8 mt-10" onSubmit={Submit2}>
-				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">Mình nên gọi bạn là gì ? (Tuỳ chọn)</h2>
-					<input
-						type="text"
-						placeholder="Nickname"
-						className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
-					/>
-				</div>
-				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">Câu nói yêu thích của bạn là gì?</h2>
+				<fieldset className="fieldset">
+					<legend className="fieldset-legend">
+						Mình nên gọi bạn là gì ? (Tuỳ chọn)
+					</legend>
+					<input type="text" placeholder="Nickname" className="w-full input" />
+				</fieldset>
+				<fieldset className="fieldset">
+					<legend className="fieldset-legend">
+						Câu nói yêu thích của bạn là gì?
+					</legend>
 					<input
 						type="text"
 						placeholder="Quote"
-						className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
+						className="w-full input"
 						required
 						value={formData.quote}
 						onChange={handleQuoteChange}
 					/>
-				</div>
-				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">Số điện thoại của bạn là gì ?</h2>
+				</fieldset>
+				<fieldset className="fieldset">
+					<legend className="fieldset-legend">
+						Số điện thoại của bạn là gì ?
+					</legend>
 					<input
 						type="number"
 						placeholder="Số điện thoại"
 						minLength={9}
 						maxLength={11}
-						className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
+						className="w-full input"
 						required
 						value={formData.phoneNumber}
 						onChange={handleTelChange}
 					/>
-				</div>
+				</fieldset>
 				<div className="flex justify-between">
 					<button
 						type="button"
-						className="w-1/2 px-4 py-2 mt-8 text-white bg-red-600 border rounded-full shadow-md hover:bg-red-300"
+						className="w-1/2 btn btn-error "
 						onClick={() => setStep(1)}
 					>
 						Trở lại
 					</button>
-					<button
-						type="submit"
-						className="w-1/2 px-4 py-2 mt-8 text-white bg-green-600 border rounded-full shadow-md hover:bg-green-300"
-					>
+					<button type="submit" className="w-1/2 btn btn-success">
 						Tiếp theo
 					</button>
 				</div>
@@ -235,7 +233,13 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 	};
 
 	const avatarLinkChange = (url) => {
-		setFormData({ ...formData, image: url });
+		url
+			? setFormData({ ...formData, image: url })
+			: setFormData({
+					...formData,
+					image:
+						"https://w7.pngwing.com/pngs/205/731/png-transparent-default-avatar-thumbnail.png",
+			  });
 	};
 
 	const handleTemp = (e) => {
@@ -244,31 +248,29 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 
 	return (
 		<div>
-			<h1 className="mt-4 font-sans text-3xl font-bold ">
-				Tell us more about you...
+			<h1 className="mt-4 font-sans text-3xl font-bold text-primary">
+				Còn một vài điều nữa thôi...
 			</h1>
 			<form className="flex flex-col gap-8 mt-10" onSubmit={submitBirthDate}>
-				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">Ngày sinh của bạn là gì? </h2>
+				<fieldset className="fieldset">
+					<legend className="fieldset-legend">Ngày sinh của bạn là gì? </legend>
 					<input
 						type="date"
 						name="date"
 						placeholder="Birth Date"
-						className="w-full px-4 py-2 bg-white border rounded-full shadow-md "
+						className="w-full input"
 						required
 						value={formData.birthday}
 						onChange={handleBirthChange}
 					/>
-				</div>
-				<div className="flex flex-col gap-2">
-					<h2 className="text-sm">Sở thích của bạn là gì?</h2>
+				</fieldset>
+				<fieldset className="fieldset">
+					<legend className="fieldset-legend">Sở thích của bạn là gì?</legend>
 					<div className="flex flex-wrap items-center justify-center gap-1">
 						<button
 							type="button"
-							className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								userHobby.includes("Games")
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+							className={`w-[32%] btn btn-soft ${
+								userHobby.includes("Games") && "btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Games")}
 						>
@@ -276,10 +278,8 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						</button>
 						<button
 							type="button"
-							className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								userHobby.includes("Reading")
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+							className={`w-[32%] btn btn-soft ${
+								userHobby.includes("Reading") && "btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Reading")}
 						>
@@ -287,10 +287,8 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						</button>
 						<button
 							type="button"
-							className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								userHobby.includes("Painting")
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+							className={`w-[32%] btn btn-soft ${
+								userHobby.includes("Painting") && "btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Painting")}
 						>
@@ -298,10 +296,8 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						</button>
 						<button
 							type="button"
-							className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								userHobby.includes("Music")
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+							className={`w-[32%] btn btn-soft ${
+								userHobby.includes("Music") && "btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Music")}
 						>
@@ -309,10 +305,8 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						</button>
 						<button
 							type="button"
-							className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								userHobby.includes("Photos")
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+							className={`w-[32%] btn btn-soft ${
+								userHobby.includes("Photos") && "btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Photos")}
 						>
@@ -320,10 +314,8 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						</button>
 						<button
 							type="button"
-							className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								userHobby.includes("Cooking")
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+							className={`w-[32%] btn btn-soft ${
+								userHobby.includes("Cooking") && "btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Cooking")}
 						>
@@ -331,10 +323,8 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						</button>
 						<button
 							type="button"
-							className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								userHobby.includes("Travel")
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+							className={`w-[32%] btn btn-soft ${
+								userHobby.includes("Travel") && "btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Travel")}
 						>
@@ -342,10 +332,8 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						</button>
 						<button
 							type="button"
-							className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								userHobby.includes("Garden")
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+							className={`w-[32%] btn btn-soft ${
+								userHobby.includes("Garden") && "btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Garden")}
 						>
@@ -353,10 +341,8 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 						</button>
 						<button
 							type="button"
-							className={`w-[32%] text-black font-semibold border border-gray-300 rounded-full p-3 cursor-pointer ${
-								userHobby.includes("Movies")
-									? "bg-gray-300"
-									: "hover:bg-gray-200"
+							className={`w-[32%] btn btn-soft ${
+								userHobby.includes("Movies") && "btn-primary"
 							}`}
 							onClick={() => handleHobbyChange("Movies")}
 						>
@@ -395,22 +381,19 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 							<Upload avatarLinkChange={avatarLinkChange} />
 						</form>
 					</div>
-					<div className="flex justify-between">
+					<div className="flex justify-between mt-6">
 						<button
 							type="button"
-							className="w-full px-4 py-2 mt-8 text-white bg-red-600 border rounded-full shadow-md hover:bg-red-300"
+							className="w-1/2 btn btn-error "
 							onClick={() => setStep(2)}
 						>
 							Back
 						</button>
-						<button
-							type="submit"
-							className="w-full px-4 py-2 mt-8 text-white bg-green-600 border rounded-full shadow-md hover:bg-green-300"
-						>
+						<button type="submit" className="w-1/2 btn btn-success">
 							Next
 						</button>
 					</div>
-				</div>
+				</fieldset>
 			</form>
 		</div>
 	);
@@ -511,39 +494,43 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 	return (
 		<div>
 			<div className="flex flex-col items-center mt-5 text-center">
-				<h1 className="mx-auto text-xl font-bold text-blue-600">
+				<h1 className="mx-auto text-xl font-bold text-primary">
 					Tính cách của bạn dựa trên ngày sinh và cung hoàng đạo
 				</h1>
 
 				<div className="text-4xl">{ZodiacSigns[i - 1].symbol}</div>
 
-				<h2 className="mt-2 text-2xl font-semibold">
+				<h2 className="mt-2 text-3xl font-semibold">
 					{ZodiacSigns[i - 1].name}
 				</h2>
 
-				<p className="text-gray-500">{ZodiacSigns[i - 1].dates}</p>
+				<p className="text-secondary">{ZodiacSigns[i - 1].dates}</p>
 
 				<p className="mt-2 text-lg font-medium">
-					<span className="text-[#f877dd] mr-2">Nguyên tố:</span>{" "}
+					<span className="mr-2 text-xl text-primary">Nguyên tố:</span>{" "}
 					{ZodiacSigns[i - 1].element}
 				</p>
 				<div className="mt-4">
-					<h3 className="text-[#f877dd] font-semibold">Đặc điểm tính cách:</h3>
+					<h3 className="text-xl font-semibold text-primary">
+						Đặc điểm tính cách:
+					</h3>
 
-					<p className="text-gray-700">
+					<p className="mt-2 text-base-content">
 						{ZodiacSigns[i - 1].personality.join(", ")}
 					</p>
 				</div>
 				<div className="mt-4">
-					<h3 className="text-[#f877dd] font-semibold">Miêu tả:</h3>
+					<h3 className="text-xl font-semibold text-primary">Miêu tả:</h3>
 
-					<p className="text-gray-700">{ZodiacSigns[i - 1].description}</p>
+					<p className="mt-2 tracking-wider text-center whitespace-break-spaces text-base-content">
+						{ZodiacSigns[i - 1].description}
+					</p>
 				</div>
 			</div>
-			<div className="flex justify-between">
+			<div className="flex items-center justify-center w-full mt-8">
 				<button
 					type="button"
-					className="w-1/2 w-full px-4 py-2 mt-8 text-white bg-red-600 border rounded-full shadow-md hover:bg-red-300"
+					className="w-1/2 btn btn-error"
 					onClick={() => {
 						setStep(3);
 					}}
@@ -552,7 +539,7 @@ const ShowPersonality = ({ setStep, formData, setFormData }) => {
 				</button>
 				<button
 					type="submit"
-					className="w-1/2 w-full px-4 py-2 mt-8 text-white bg-green-600 border rounded-full shadow-md hover:bg-green-300"
+					className="w-1/2 btn btn-success"
 					onClick={handleSubmit}
 				>
 					Xác nhận
@@ -572,12 +559,12 @@ const ThankYou = ({ setStep, formData, setFormData }) => {
 
 	return (
 		<div className="gap-5 flex-flex-col">
-			<h1 className="mt-8 text-lg font-bold text-center text-green-500">
+			<h1 className="mt-8 text-lg font-bold text-center text-success">
 				Cảm ơn bạn vì đã cập nhật thông tin cá nhân
 			</h1>
 			<button
 				type="submit"
-				className="w-full px-4 py-2 mt-8 text-white bg-green-600 border rounded-full shadow-md hover:bg-green-300"
+				className="w-full px-4 py-2 mt-8 bg-green-600 border rounded-full shadow-md text-base-content hover:bg-green-300"
 				onClick={handleSubmitForm} // Call handleSubmit on button click
 			>
 				Tiếp theo
@@ -667,7 +654,7 @@ const ProfileForm = () => {
 
 	return (
 		<div className="lg:w-1/3 mx-auto my-4 p-4 lg:min-w-[500px]">
-			<div className="bg-[#fdf3f7] p-6 rounded-3xl shadow-md">
+			<div className="p-6 shadow-md bg-base-200 rounded-3xl">
 				<div className="flex justify-center gap-5">{RenderProgressBar()}</div>
 				{renderStep()}
 			</div>
