@@ -22,14 +22,18 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                   />
                 </div>
 
-                <div className="h-56 mx-4 w-5/6 bg-blue-400 rounded-3xl shadow-md sm:w-80 sm:mx-0 ">
+                <div className="h-56 mx-4 w-5/6 rounded-3xl shadow-md sm:w-80 sm:mx-0 ">
                   <div className="h-1/2 w-full flex justify-between items-baseline px-3 py-5">
-                    <h1 className="text-white text-center w-full py-5">
+                    <h1
+                      className="text-2xl font-bold text-center w-full py-5 bg-gradient-to-r from-cyan-500 via-red-500 to-yellow-400
+               text-transparent bg-clip-text
+               animate-blinkGlow"
+                    >
                       User Profile
                     </h1>
                   </div>
 
-                  <div className=" bg-white h-1/2 w-full  rounded-3xl  flex flex-col  justify-around  items-center">
+                  <div className=" bg-base-300 h-1/2 w-full  rounded-3xl  flex flex-col  justify-around  items-center">
                     <div className="w-full h-1/2 flex justify-between items-center px-3 pt-2"></div>
                     <div className="w-full h-1/2 flex flex-col justify-center items-center">
                       <h1 className="text-gray-700 font-bold">
@@ -206,7 +210,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
             </ul>
           </div>
           <button
-            className="mx-auto my-5 p-6 shadow-sm btn-circle btn btn-primary animate-bounce size-28"
+            className="mx-auto my-5 p-6 shadow-sm btn-circle btn btn-primary animate-bouce size-28"
             onClick={handleFinding}
           >
             <svg
