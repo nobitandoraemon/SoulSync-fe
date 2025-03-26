@@ -14,7 +14,7 @@ const NotFound = () => {
 				<div className="relative z-10 flex flex-col items-center w-full font-mono">
 					{" "}
 					<h1 className="mt-4 text-5xl font-extrabold leading-tight text-center text-primary">
-						Đừng cô đơn ở đây một mình !{" "}
+						Đừng cô đơn ở đây một mình {" "}
 					</h1>{" "}
 					<p className="font-extrabold text-primary-content text-8xl mt-44 animate-bounce">
 						404{" "}
