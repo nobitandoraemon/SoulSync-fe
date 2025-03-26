@@ -3,15 +3,11 @@ import { useScroll, Toast, ChatBox } from "../config/components";
 import { cn } from "../lib/utils";
 import { useOutletContext, useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { APP_ROUTES } from "../lib/constants";
 const PopUp = ({
-	accept,
 	setAccept,
-	isRefuse,
-	setIsRefuse,
+
 	setMatchedUser,
 }) => {
-	const navigate = useNavigate();
 	const [counter, setCounter] = useState(60);
 	useEffect(() => {
 		let timer = setInterval(() => {
@@ -28,9 +24,9 @@ const PopUp = ({
 		setAccept(true);
 	};
 	const handleRefuse = () => {
-		setIsRefuse(true);
+		setMatchedUser(null);
 		setTimeout(() => {
-			navigate(APP_ROUTES.MATCH);
+			window.location.reload();
 		}, 2000);
 	};
 	return (
@@ -81,9 +77,6 @@ const Chat = ({ socket }) => {
 		newSocket,
 		setNewSocket,
 		setIsFinding,
-		// isRefuse,
-		// setIsRefuse,
-		sendMessage,
 	} = useOutletContext();
 
 	//Check người dùng có đang cuộn trang
@@ -154,13 +147,27 @@ const Chat = ({ socket }) => {
 
 	return (
 		<>
-			{!accept && matchedUser && (
-				<PopUp
-					accept={accept}
-					setAccept={setAccept}
-					setMatchedUser={setMatchedUser}
-				/>
-			)}
+			{matchedUser &&
+				(accept ? (
+					<div className="flex w-screen max-w-full min-h-screen">
+						<ChatBox
+							isFinding={isFinding}
+							isScroll={isScroll}
+							newSocket={newSocket}
+							matchedUser={matchedUser}
+							handleLeave={handleLeave}
+							isMatched={isMatched}
+							setIsMatched={setIsMatched}
+							user={user}
+						/>
+					</div>
+				) : (
+					<PopUp
+						accept={accept}
+						setAccept={setAccept}
+						setMatchedUser={setMatchedUser}
+					/>
+				))}
 			{!matchedUser && (
 				<div className="flex items-center justify-center w-screen h-screen">
 					<Toast />
@@ -185,21 +192,6 @@ const Chat = ({ socket }) => {
 							: "Chúng tôi đang tìm kiếm nửa kia cho bạn"}
 					</span>
 					<span className="ml-8 loading loading-spinner text-info"></span>
-				</div>
-			)}
-			{accept && (
-				<div className="flex w-screen max-w-full min-h-screen">
-					<ChatBox
-						isFinding={isFinding}
-						isScroll={isScroll}
-						newSocket={newSocket}
-						matchedUser={matchedUser}
-						handleLeave={handleLeave}
-						isMatched={isMatched}
-						setIsMatched={setIsMatched}
-						sendMessage={sendMessage}
-						user={user}
-					/>
 				</div>
 			)}
 		</>

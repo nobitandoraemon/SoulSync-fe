@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-
 const ChatBody = ({ newSocket, user, matchedUser }) => {
 	const [chat, setChat] = useState([]);
 	const [notify, setNotify] = useState(null);
@@ -14,11 +13,19 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 
 	useEffect(() => {
 		newSocket.on("message", handleMessage);
+
+		return () => {
+			newSocket.off("message");
+		};
+	}, [newSocket]);
+
+	useEffect(() => {
 		newSocket.on("end", (data) => {
+			console.log(data.message);
 			setNotify(data.message);
 		});
 		return () => {
-			newSocket.close();
+			newSocket.off("end");
 		};
 	}, [newSocket]);
 
@@ -26,7 +33,7 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
 	return (
-		<div className="flex flex-col h-full p-6 mt-12 mb-8 overflow-x-auto">
+		<div className="flex flex-col h-full p-6 mt-24 mb-8 overflow-x-auto">
 			<div className="flex flex-col h-full">
 				{chat.map((message) => {
 					const isMainUser = message.sender === user.username ? true : false;
@@ -49,7 +56,11 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 										? "Bạn"
 										: `Người dùng ẩn danh #${matchedUser.zodiac}`}
 								</div>
-								<div className="chat-bubble h-fit text-wrap">
+								<div
+									className={`chat-bubble ${
+										isMainUser ? "chat-bubble-success" : "chat-bubble-info"
+									}`}
+								>
 									{message.content}
 								</div>
 								<div className="opacity-50 chat-footer">Delivered</div>
@@ -59,22 +70,30 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 					);
 				})}
 				{notify && (
-					<div className="chat chat-start">
-						<div className="chat-image avatar">
-							<div className="w-10 rounded-full">
-								<img
-									alt="Tailwind CSS chat bubble component"
-									src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-								/>
+					<>
+						<div className="chat chat-start">
+							<div className="chat-image avatar">
+								<div className="w-10 rounded-full">
+									<img
+										alt="Tailwind CSS chat bubble component"
+										src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+									/>
+								</div>
 							</div>
+							<div className="chat-header">
+								Admin
+								<time className="text-xs opacity-50">Now</time>
+							</div>
+							<div className="chat-bubble chat-bubble-warning">
+								Nửa kia đã rời đi trong tĩnh lặng ...
+							</div>
+							<div className="opacity-50 chat-footer">Sad</div>
 						</div>
-						<div className="chat-header">
-							Admin
-							<time className="text-xs opacity-50">Now</time>
-						</div>
-						<div className="chat-bubble chat-bubble-info">{notify}</div>
-						<div className="opacity-50 chat-footer">Warning</div>
-					</div>
+
+						<button className="btn btn-soft btn-md btn-accent">
+							Nhấn vào đây để quay lại
+						</button>
+					</>
 				)}
 			</div>
 		</div>
