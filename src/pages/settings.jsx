@@ -328,7 +328,7 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 
 	return (
 		<form
-			className="w-full px-6 pb-8 sm:max-w-xl sm:rounded-lg"
+			className="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg"
 			onSubmit={handleSubmit}
 			id="others"
 		>
@@ -798,9 +798,9 @@ const SettingPage = () => {
 		<>
 			<div className="flex flex-col w-full gap-5 px-3 bg-white md:px-16 lg:px-28 md:flex-row ">
 				<Toast />
-				<aside className="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
-					<div className="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">
-						<h2 className="pl-3 mb-4 text-2xl font-semibold text-primary">
+				<aside className="py-4 md:w-1/3 lg:w-1/4 md:block">
+					<div className="sticky flex justify-center gap-2 p-4 text-sm border-r border-indigo-100 just md:flex-col top-12">
+						<h2 className="hidden pl-3 mb-4 text-2xl font-semibold text-primary md:block">
 							Settings
 						</h2>
 
