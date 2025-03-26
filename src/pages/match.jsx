@@ -308,6 +308,7 @@ const SideBarNew = ({ setTabActive, tabActive, user, handleFinding }) => {
 
 								<li onClick={() => navigate(APP_ROUTES.SETTING)}>
 									<a
+										href="#"
 										className={`
 										border-l-4
 									hover:bg-gray-50 hover:text-gray-800 hover:border-primary relative flex flex-row items-center pr-6 text-gray-600 border-transparent h-11 focus:outline-none`}
@@ -341,7 +342,10 @@ const SideBarNew = ({ setTabActive, tabActive, user, handleFinding }) => {
 								</li>
 
 								<li onClick={() => logOut()}>
-									<a className="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent hover:bg-gray-50 hover:text-gray-800 hover:border-primary h-11 focus:outline-none">
+									<a
+										href="#"
+										className="relative flex flex-row items-center pr-6 text-gray-600 border-l-4 border-transparent hover:bg-gray-50 hover:text-gray-800 hover:border-primary h-11 focus:outline-none"
+									>
 										<span className="inline-flex items-center justify-center ml-4">
 											<svg
 												className="size-6"
@@ -455,7 +459,7 @@ const MatchPage = () => {
 	useEffect(() => {
 		setInterval(() => {
 			handleLoading();
-		}, 5000);
+		}, 3000);
 		return () => clearInterval(handleLoading);
 	}, []);
 	return isLoading ? (

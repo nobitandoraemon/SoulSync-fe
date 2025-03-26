@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-	themes: valentine --default, halloween --prefersdark;
+	themes: autumn --default, forest --prefersdark;
 }
 @config '../tailwind.config.js';
 

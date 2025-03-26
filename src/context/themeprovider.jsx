@@ -3,14 +3,12 @@ import { useState, createContext, useEffect } from "react";
 export const ThemeContext = createContext();
 
 export default function ThemeProvider({ children }) {
-	const localTheme = localStorage.getItem("theme") || "valentine"; // Get the theme from local storage
+	const localTheme = localStorage.getItem("theme") || "autumn"; // Get the theme from local storage
 	const [theme, setTheme] = useState(localTheme); // Initial theme state
 
 	// Function to toggle the theme
 	const toggleTheme = () => {
-		setTheme((prevTheme) =>
-			prevTheme === "valentine" ? "halloween" : "valentine"
-		);
+		setTheme((prevTheme) => (prevTheme === "autumn" ? "forest" : "autumn"));
 	};
 
 	// Set the theme to local storage
