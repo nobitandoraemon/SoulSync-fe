@@ -218,7 +218,7 @@ const Chat = ({ socket }) => {
 						<span className="text-2xl animate-pulse">
 							{" "}
 							{failMessage
-								? `${failMessage}`
+								? "Chờ đợi là hạnh phúc! Chúng tôi vẫn đang cố gắng ..."
 								: "Chúng tôi đang tìm kiếm nửa kia cho bạn"}
 						</span>
 						<span className="ml-8 loading loading-spinner text-info"></span>

@@ -17,6 +17,11 @@ const ChatBody = ({
 		}, 2000);
 	};
 	// Xử lí nhận tin nhắn
+
+	const checkOut =
+		failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!";
+
+	const checkRefuse = failMessage === "Fail to match!";
 	const handleMessage = (data) => {
 		setChat((prevChat) => [...prevChat, data]);
 	};
@@ -60,13 +65,13 @@ const ChatBody = ({
 						<time className="text-xs opacity-50">Now</time>
 					</div>
 					<div className="chat-bubble chat-bubble-warning">
-						{failMessage
+						{checkRefuse
 							? "Ghép cặp thất bại :( Nửa kia đã không chấp nhận ghép cặp"
 							: "Vui lòng xin chờ trong giây lát cho đến khi nửa kia kết nối thành công 😁 ..."}
 					</div>
 					<div className="opacity-50 chat-footer">Warning</div>
 				</div>
-				{failMessage && (
+				{(checkOut || checkRefuse) && (
 					<button
 						className="btn btn-soft btn-md btn-accent"
 						onClick={handleOut}
