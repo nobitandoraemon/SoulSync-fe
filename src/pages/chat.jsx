@@ -5,8 +5,12 @@ import { useOutletContext, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 const PopUp = ({
 	setAccept,
-
 	setMatchedUser,
+	isRefuse,
+	setIsRefuse,
+	newSocket,
+	refuseMsg,
+	setRefuseMsg,
 }) => {
 	const [counter, setCounter] = useState(60);
 	useEffect(() => {
@@ -24,51 +28,60 @@ const PopUp = ({
 		setAccept(true);
 	};
 	const handleRefuse = () => {
-		setMatchedUser(null);
+		setIsRefuse(true);
+
 		setTimeout(() => {
 			window.location.reload();
 		}, 2000);
 	};
-	return (
-		<div className="flex flex-col items-center justify-center h-screen">
-			<div className="flex flex-col items-center justify-center gap-4">
-				<h3 className="text-2xl font-bold animate-bounce">
-					Chúc mừng ! Chúng tôi đã tìm được đối cho bạn !
-				</h3>
-				<p className="py-4">Bạn có muốn tiếp tục hay không ?</p>
-			</div>
-			<div className="flex flex-col p-2 my-6 text-center bg-neutral rounded-box text-neutral-content">
-				<span className="font-mono text-5xl countdown">
-					<span
-						style={{ "--value": counter }}
-						aria-live="polite"
-						aria-label={counter}
-					>
-						{counter}
+	{
+		useEffect(() => {
+			newSocket.on("refuse", (data) => {
+				setRefuseMsg(data);
+			});
+			return () => {
+				newSocket.close();
+			};
+		}, [newSocket]);
+		return (
+			<div className="flex flex-col items-center justify-center h-screen">
+				<div className="flex flex-col items-center justify-center gap-4">
+					<h3 className="text-2xl font-bold animate-bounce">
+						Chúc mừng ! Chúng tôi đã tìm được đối cho bạn !
+					</h3>
+					<p className="py-4">Bạn có muốn tiếp tục hay không ?</p>
+				</div>
+				<div className="flex flex-col p-2 my-6 text-center bg-neutral rounded-box text-neutral-content">
+					<span className="font-mono text-5xl countdown">
+						<span
+							style={{ "--value": counter }}
+							aria-live="polite"
+							aria-label={counter}
+						>
+							{counter}
+						</span>
 					</span>
-				</span>
-				sec
+					sec
+				</div>
+				<div className="flex items-center justify-center w-full gap-4">
+					<button className="btn btn-success" onClick={handleAccept}>
+						Đồng ý
+					</button>
+					<button className="btn btn-error" onClick={handleRefuse}>
+						Không
+					</button>
+				</div>
 			</div>
-			<div className="flex items-center justify-center w-full gap-4">
-				<button className="btn btn-success" onClick={handleAccept}>
-					Đồng ý
-				</button>
-				<button className="btn btn-error" onClick={handleRefuse}>
-					Không
-				</button>
-			</div>
-		</div>
-	);
+		);
+	}
 };
 const Chat = ({ socket }) => {
 	const {
 		user,
-		// chat,
-		// setChat,
+
 		matchedUser,
 		setMatchedUser,
-		// ok,
-		// setOk,
+
 		isMatched,
 		setIsMatched,
 		failMessage,
@@ -84,6 +97,8 @@ const Chat = ({ socket }) => {
 	//Màn hình loading
 	const [isLoading, setIsLoading] = useState(true);
 	const [accept, setAccept] = useState(false);
+	const [isRefuse, setIsRefuse] = useState(false);
+	const [refuseMsg, setRefuseMsg] = useState(null);
 	const [isLeave, setIsLeave] = useState(false);
 	const navigate = useNavigate();
 	const handleLoading = () => {
@@ -112,10 +127,17 @@ const Chat = ({ socket }) => {
 			setIsLeave(false);
 		}
 
+		if (isRefuse) {
+			console.log("refuse");
+			newSocket.emit("refuse", {});
+			setMatchedUser(null);
+			setIsRefuse(false);
+		}
+
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, isFinding, isLeave]);
+	}, [newSocket, isFinding, isLeave, isRefuse]);
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
@@ -159,6 +181,8 @@ const Chat = ({ socket }) => {
 							isMatched={isMatched}
 							setIsMatched={setIsMatched}
 							user={user}
+							refuseMsg={refuseMsg}
+							setRefuseMsg={setRefuseMsg}
 						/>
 					</div>
 				) : (
@@ -166,6 +190,11 @@ const Chat = ({ socket }) => {
 						accept={accept}
 						setAccept={setAccept}
 						setMatchedUser={setMatchedUser}
+						isRefuse={isRefuse}
+						setIsRefuse={setIsRefuse}
+						newSocket={newSocket}
+						refuseMsg={refuseMsg}
+						setRefuseMsg={setRefuseMsg}
 					/>
 				))}
 			{!matchedUser && (
