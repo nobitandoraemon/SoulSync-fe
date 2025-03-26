@@ -34,46 +34,36 @@ const PopUp = ({
 			window.location.reload();
 		}, 2000);
 	};
-	{
-		useEffect(() => {
-			newSocket.on("refuse", (data) => {
-				setRefuseMsg(data);
-			});
-			return () => {
-				newSocket.close();
-			};
-		}, [newSocket]);
-		return (
-			<div className="flex flex-col items-center justify-center h-screen">
-				<div className="flex flex-col items-center justify-center gap-4">
-					<h3 className="text-2xl font-bold animate-bounce">
-						Chúc mừng ! Chúng tôi đã tìm được đối cho bạn !
-					</h3>
-					<p className="py-4">Bạn có muốn tiếp tục hay không ?</p>
-				</div>
-				<div className="flex flex-col p-2 my-6 text-center bg-neutral rounded-box text-neutral-content">
-					<span className="font-mono text-5xl countdown">
-						<span
-							style={{ "--value": counter }}
-							aria-live="polite"
-							aria-label={counter}
-						>
-							{counter}
-						</span>
-					</span>
-					sec
-				</div>
-				<div className="flex items-center justify-center w-full gap-4">
-					<button className="btn btn-success" onClick={handleAccept}>
-						Đồng ý
-					</button>
-					<button className="btn btn-error" onClick={handleRefuse}>
-						Không
-					</button>
-				</div>
+	return (
+		<div className="flex flex-col items-center justify-center h-screen">
+			<div className="flex flex-col items-center justify-center gap-4">
+				<h3 className="text-2xl font-bold animate-bounce">
+					Chúc mừng ! Chúng tôi đã tìm được đối cho bạn !
+				</h3>
+				<p className="py-4">Bạn có muốn tiếp tục hay không ?</p>
 			</div>
-		);
-	}
+			<div className="flex flex-col p-2 my-6 text-center bg-neutral rounded-box text-neutral-content">
+				<span className="font-mono text-5xl countdown">
+					<span
+						style={{ "--value": counter }}
+						aria-live="polite"
+						aria-label={counter}
+					>
+						{counter}
+					</span>
+				</span>
+				sec
+			</div>
+			<div className="flex items-center justify-center w-full gap-4">
+				<button className="btn btn-success" onClick={handleAccept}>
+					Đồng ý
+				</button>
+				<button className="btn btn-error" onClick={handleRefuse}>
+					Không
+				</button>
+			</div>
+		</div>
+	);
 };
 const Chat = ({ socket }) => {
 	const {
@@ -137,7 +127,7 @@ const Chat = ({ socket }) => {
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, isFinding, isLeave, isRefuse]);
+	}, [newSocket, isFinding, isLeave]);
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
