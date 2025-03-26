@@ -31,7 +31,7 @@ const warningMsg = [
 	},
 ];
 
-const OtherInformationSideBar = ({ matchedUser }) => {
+const OtherInformationSideBar = ({ matchedUser, failMessage }) => {
 	return (
 		<div className="navbar-start">
 			<button className="flex flex-row-reverse gap-4 p-4 cursor-pointer">
@@ -45,7 +45,11 @@ const OtherInformationSideBar = ({ matchedUser }) => {
 					</div>
 				</div>
 
-				<div className="avatar avatar-online">
+				<div
+					className={`avatar ${
+						failMessage ? "avatar-offline" : "avatar-online"
+					}`}
+				>
 					<div className="rounded-full size-16 md:size-24 ring-primary ring-offset-base-100 ring ring-offset-2">
 						<img src={matchedUser.image} />
 					</div>
@@ -55,7 +59,7 @@ const OtherInformationSideBar = ({ matchedUser }) => {
 	);
 };
 
-const ChatNav = ({ matchedUser, user, handleOut }) => {
+const ChatNav = ({ matchedUser, user, handleOut, failMessage }) => {
 	const [id, setId] = useState(1);
 
 	useEffect(() => {
@@ -81,7 +85,10 @@ const ChatNav = ({ matchedUser, user, handleOut }) => {
 	};
 	return (
 		<div className="p-2 rounded-lg shadow-sm navbar bg-base-200">
-			<OtherInformationSideBar matchedUser={matchedUser} />
+			<OtherInformationSideBar
+				matchedUser={matchedUser}
+				failMessage={failMessage}
+			/>
 			<div className="hidden overflow-hidden text-sm max-h-12 navbar-center md:flex">
 				<div className="mr-2 status status-info animate-bounce"></div>{" "}
 				<span className="duration-1000 text-nowrap animate-pulse animate-delay-1000">
@@ -114,7 +121,7 @@ const ChatNav = ({ matchedUser, user, handleOut }) => {
 	);
 };
 
-const ChatHeader = ({ user, matchedUser, handleLeave }) => {
+const ChatHeader = ({ user, matchedUser, handleLeave, failMessage }) => {
 	const handleOut = () => {
 		handleLeave();
 		setTimeout(() => {
@@ -126,7 +133,12 @@ const ChatHeader = ({ user, matchedUser, handleLeave }) => {
 		<div className="fixed top-0 left-0 right-0 z-50 flex items-center md:flex-row">
 			<Toast />
 			{matchedUser && (
-				<ChatNav matchedUser={matchedUser} user={user} handleOut={handleOut} />
+				<ChatNav
+					matchedUser={matchedUser}
+					user={user}
+					handleOut={handleOut}
+					failMessage={failMessage}
+				/>
 			)}
 		</div>
 	);

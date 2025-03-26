@@ -22,7 +22,6 @@ const ChatBody = ({
 	};
 
 	// Nhận thông tin chat từ server socket
-	console.log(failMessage);
 	useEffect(() => {
 		newSocket.on("message", handleMessage);
 
@@ -61,11 +60,20 @@ const ChatBody = ({
 						<time className="text-xs opacity-50">Now</time>
 					</div>
 					<div className="chat-bubble chat-bubble-warning">
-						Vui lòng xin chờ trong giây lát cho đến khi nửa kia kết nối thành
-						công 😁 ...
+						{failMessage
+							? "Ghép cặp thất bại :( Nửa kia đã không chấp nhận ghép cặp"
+							: "Vui lòng xin chờ trong giây lát cho đến khi nửa kia kết nối thành công 😁 ..."}
 					</div>
 					<div className="opacity-50 chat-footer">Warning</div>
 				</div>
+				{failMessage && (
+					<button
+						className="btn btn-soft btn-md btn-accent"
+						onClick={handleOut}
+					>
+						Nhấn vào đây để quay lại
+					</button>
+				)}
 				{chat.map((message) => {
 					const isMainUser = message.sender === user.username ? true : false;
 					return (

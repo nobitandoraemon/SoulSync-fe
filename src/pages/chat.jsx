@@ -3,6 +3,7 @@ import { useScroll, Toast, ChatBox } from "../config/components";
 import { cn } from "../lib/utils";
 import { useOutletContext, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { APP_ROUTES } from "../lib/constants";
 const PopUp = ({
 	setAccept,
 	setMatchedUser,
@@ -102,10 +103,23 @@ const Chat = ({ socket }) => {
 		}
 	};
 
+	const handleBack = (e) => {
+		const quest = window.confirm("Bạn có chắc chắn sẽ huỷ ghép cặp ?");
+		if (quest) {
+			toast("Đang quay lại trang thông tin ...", { type: "info" });
+			setTimeout(() => {
+				navigate(APP_ROUTES.MATCH);
+			}, 2000);
+		} else {
+			toast("Tiếp tục chờ đợi một tình yêu ...", { type: "success" });
+		}
+	};
+
 	const handleLeave = () => {
 		newSocket.emit("leave", {}); // Gửi thông tin người dùng rời phòng
 		setIsLeave(true);
 	};
+
 	useEffect(() => {
 		if (isFinding) {
 			console.log("find");
@@ -151,7 +165,7 @@ const Chat = ({ socket }) => {
 		if (!matchedUser) {
 			console.log("There's still no user to match");
 		} else {
-			console.log("UserMatched", matchedUser);
+			console.log("UserMatched");
 		}
 		return () => {};
 	}, [matchedUser]);
@@ -184,30 +198,51 @@ const Chat = ({ socket }) => {
 					/>
 				))}
 			{!matchedUser && (
-				<div className="flex items-center justify-center w-screen h-screen">
-					<Toast />
-					<div className="inline-grid *:[grid-area:1/1] mr-8">
-						<div
-							className={cn("status animate-ping", {
-								"status-info": isFinding,
-								"status-error": !isFinding,
-							})}
-						></div>
-						<div
-							className={cn("status", {
-								"status-info": isFinding,
-								"status-error": !isFinding,
-							})}
-						></div>
-					</div>{" "}
-					<span className="text-2xl animate-pulse">
-						{" "}
-						{failMessage
-							? `${failMessage}`
-							: "Chúng tôi đang tìm kiếm nửa kia cho bạn"}
-					</span>
-					<span className="ml-8 loading loading-spinner text-info"></span>
-				</div>
+				<>
+					<div className="flex items-center justify-center w-screen h-screen">
+						<Toast />
+						<div className="inline-grid *:[grid-area:1/1] mr-8">
+							<div
+								className={cn("status animate-ping", {
+									"status-info": isFinding,
+									"status-error": !isFinding,
+								})}
+							></div>
+							<div
+								className={cn("status", {
+									"status-info": isFinding,
+									"status-error": !isFinding,
+								})}
+							></div>
+						</div>{" "}
+						<span className="text-2xl animate-pulse">
+							{" "}
+							{failMessage
+								? `${failMessage}`
+								: "Chúng tôi đang tìm kiếm nửa kia cho bạn"}
+						</span>
+						<span className="ml-8 loading loading-spinner text-info"></span>
+					</div>
+					<div className="fixed flex items-center justify-center w-full bottom-1/3">
+						<button className="btn btn-wide btn-error" onClick={handleBack}>
+							Quay lại{" "}
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								strokeWidth={1.5}
+								stroke="currentColor"
+								className="size-6"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
+								/>
+							</svg>
+						</button>
+					</div>
+				</>
 			)}
 		</>
 	);

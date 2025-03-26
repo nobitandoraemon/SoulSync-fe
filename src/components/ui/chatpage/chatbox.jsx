@@ -15,6 +15,7 @@ const ChatBox = ({
 					matchedUser={matchedUser}
 					user={user}
 					handleLeave={handleLeave}
+					failMessage={failMessage}
 				/>
 			</div>
 			<div className="flex flex-col flex-auto flex-shrink-0 h-full min-h-screen pb-12 md:mb-0">
