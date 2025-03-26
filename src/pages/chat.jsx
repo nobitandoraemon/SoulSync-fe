@@ -136,9 +136,13 @@ const Chat = ({ socket }) => {
 			setRefuseMsg(data);
 		});
 		if (failMessage === "Fail to match!") {
-			newSocket.emit("refuse", {});
-			handleLeave();
-			setMatchedUser(null);
+			toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", { type: "error" });
+			setTimeout(() => {
+				newSocket.emit("refuse", {});
+				handleLeave();
+				setMatchedUser(null);
+				window.location.reload();
+			}, 3000);
 		}
 
 		return () => {
