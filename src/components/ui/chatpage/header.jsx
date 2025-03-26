@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import { Toast } from "../../../config/components";
 import { useState } from "react";
-import { APP_ROUTES } from "../../../lib/constants";
+import { API_ROUTES, APP_ROUTES } from "../../../lib/constants";
 import { toast } from "react-toastify";
 const MyInformationSideBar = ({ user, clickable, setClickable }) => {
 	return (
@@ -220,6 +220,7 @@ const ChatHeader = ({ user, matchedUser, handleLeave }) => {
 	const handleOut = () => {
 		handleLeave();
 		setTimeout(() => {
+			window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
 			navigate(APP_ROUTES.MATCH);
 		}, 2000);
 	};

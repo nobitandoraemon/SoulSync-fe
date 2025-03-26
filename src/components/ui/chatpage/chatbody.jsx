@@ -72,9 +72,7 @@ const ChatBody = ({ newSocket, user, matchedUser }) => {
 							Admin
 							<time className="text-xs opacity-50">Now</time>
 						</div>
-						<div className="chat-bubble chat-bubble-info">
-							Đối phương đã rời khỏi phòng chat!
-						</div>
+						<div className="chat-bubble chat-bubble-info">{notify}</div>
 						<div className="opacity-50 chat-footer">Warning</div>
 					</div>
 				)}
