@@ -343,9 +343,9 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 					<div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
 						<div className="w-full mb-6">
 							<fieldset className="fieldset">
-								<legend className="w-full fieldset-legend">
+								<legend className="w-full fieldset-legend text-primary">
 									Số điện thoại của bạn
-									<div className="btn btn-sm btn-warning btn-outline" disabled>
+									<div className="btn btn-sm btn-accent btn-outline">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
@@ -364,7 +364,7 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 								</legend>
 								<input
 									type="number"
-									className="input"
+									className="input bg-secondary/10 text-neutral"
 									minLength={10}
 									maxLength={11}
 									placeholder={user.phoneNumber}
@@ -376,7 +376,7 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 						</div>
 						<div className="w-full mb-6">
 							<fieldset className="fieldset">
-								<legend className="w-full fieldset-legend">
+								<legend className="w-full fieldset-legend text-primary">
 									Địa chỉ
 									<button
 										className={cn("btn btn-sm btn-outline", {
@@ -394,7 +394,7 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 								{!locationChange && (
 									<input
 										type="text"
-										className="input"
+										className="input bg-secondary/10 text-neutral"
 										placeholder={user.location}
 									/>
 								)}
@@ -415,7 +415,7 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 					<div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
 						<div className="flex flex-col gap-2">
 							<fieldset className="w-full fieldset">
-								<legend className="w-full fieldset-legend">
+								<legend className="w-full fieldset-legend text-primary">
 									Sở thích của bạn
 									<button
 										className={cn("btn btn-outline", {
@@ -539,22 +539,22 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 
 					<div className="w-full mb-6">
 						<fieldset className="w-full fieldset">
-							<legend className="fieldset-legend">
+							<legend className="fieldset-legend text-primary">
 								Câu trích dẫn yêu thích của bạn
 							</legend>
 							<textarea
-								className="w-full h-24 textarea"
+								className="w-full h-24 textarea bg-secondary/10 text-neutral"
 								placeholder={user.quote}
 								onChange={(e) =>
 									setFormData({ ...formData, quote: e.target.value })
 								}
 							></textarea>
-							<div className="fieldset-label">Optional</div>
+							<div className="fieldset-label text-secondary">Optional</div>
 						</fieldset>
 					</div>
 
 					<div className="flex justify-end">
-						<button type="submit" className="btn btn-primary btn-soft">
+						<button type="submit" className="btn btn-primary">
 							Lưu
 						</button>
 					</div>
@@ -589,7 +589,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 			<form className="grid max-w-2xl mx-auto mt-8" onSubmit={handleSubmit}>
 				<div className="flex flex-col items-center justify-center space-y-5 md:justify-between sm:flex-row sm:space-y-0">
 					<div className="avatar indicator">
-						<span className="indicator-item badge badge-lg badge-soft badge-neutral">
+						<span className="indicator-item badge badge-lg badge-soft badge-accent">
 							{zodiacInfo[user.zodiac].icon}
 							{zodiacInfo[user.zodiac].sign}
 						</span>
@@ -603,7 +603,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 					</div>
 
 					<div className="flex flex-col space-y-5 sm:ml-8">
-						<form action="#">
+						<>
 							<input
 								type="text"
 								name="avatar-link"
@@ -613,7 +613,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 								onChange={handleTemp}
 							/>
 							<ChangeImage formData={formData} setFormData={setFormData} />
-						</form>
+						</>
 						<button
 							type="button"
 							className="btn btn-primary btn-outline"
@@ -628,10 +628,12 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 					<div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
 						<div className="w-full">
 							<fieldset className="fieldset">
-								<legend className="fieldset-legend">Tên của bạn</legend>
+								<legend className="fieldset-legend text-primary">
+									Tên của bạn
+								</legend>
 								<input
 									type="text"
-									className="input"
+									className="input bg-secondary/10 text-neutral"
 									placeholder={user.fullName}
 									onChange={(e) =>
 										setFormData({ ...formData, fullName: e.target.value })
@@ -642,13 +644,15 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 
 						<div className="w-full">
 							<fieldset className="fieldset">
-								<legend className="fieldset-legend">Ngày sinh của bạn</legend>
+								<legend className="fieldset-legend text-primary">
+									Ngày sinh của bạn
+								</legend>
 
 								<input
 									type={type}
 									onFocus={() => setType("date")}
 									onBlur={() => setType("text")}
-									className="input validator"
+									className="input bg-secondary/10 text-neutral validator"
 									max="2010-12-31"
 									onChange={(e) =>
 										setFormData({ ...formData, birthday: e.target.value })
@@ -668,7 +672,9 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 						<div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
 							<div className="w-full">
 								<fieldset className="fieldset">
-									<legend className="fieldset-legend">Username</legend>
+									<legend className="fieldset-legend text-primary">
+										Username
+									</legend>
 									<label className="input">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -687,11 +693,11 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 
 										<input
 											type="text"
-											className="grow"
+											className="font-bold"
 											placeholder={user.username}
 											disabled
 										/>
-										<span className="badge badge-neutral badge-xs">
+										<span className="badge badge-warning badge-xs">
 											Unavailable
 										</span>
 									</label>
@@ -699,10 +705,12 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 							</div>
 							<div className="w-full">
 								<fieldset className="fieldset">
-									<legend className="fieldset-legend">Giới tính</legend>
+									<legend className="fieldset-legend text-primary">
+										Giới tính
+									</legend>
 									<select
 										defaultValue={user.gender}
-										className="select"
+										className="font-bold select"
 										disabled
 									>
 										<option>{user.gender}</option>
@@ -714,7 +722,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 					</div>
 
 					<div className="flex justify-end mt-16">
-						<button type="submit" className="btn btn-primary btn-soft">
+						<button type="submit" className="btn btn-primary">
 							Lưu
 						</button>
 					</div>
@@ -725,7 +733,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 };
 
 const SettingPage = () => {
-	const { user } = useOutletContext();
+	const [user] = useOutletContext();
 	const navigate = useNavigate();
 	const [id, setId] = useState(1);
 	const [formData, setFormData] = useState({});
@@ -755,9 +763,9 @@ const SettingPage = () => {
 	};
 	useEffect(() => {
 		if (user) {
-			console.log("Get user data successfully", user);
+			console.log("Get user data successfully");
 			if (!user.gender) {
-				toast("Bạn thiếu thông tin để có thể phân tích dữ liệu ...", {
+				toast("Hãy nhập thông tin lần đầu tại form ...", {
 					type: "warning",
 				});
 				setTimeout(() => {
@@ -770,6 +778,7 @@ const SettingPage = () => {
 	}, [user]);
 	return !user ? (
 		<div className="flex flex-col max-w-3xl min-h-screen gap-4 p-16 mx-auto">
+			<Toast />
 			<div className="w-full h-32 skeleton"></div>
 			<div className="h-4 skeleton w-28"></div>
 			<div className="w-full h-4 skeleton"></div>
@@ -777,7 +786,7 @@ const SettingPage = () => {
 		</div>
 	) : (
 		<>
-			<div className="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+			<div className="flex flex-col w-full gap-5 px-3 bg-white md:px-16 lg:px-28 md:flex-row ">
 				<Toast />
 				<aside className="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
 					<div className="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">

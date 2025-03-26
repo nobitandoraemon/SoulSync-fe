@@ -21,10 +21,10 @@ const UserProfile = ({ user, handleLogOut }) => {
 			</div>
 			<ul
 				tabIndex={0}
-				className="menu menu-sm bg-accent text-accent-content text-pretty dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow-sm"
+				className="p-2 mt-3 shadow-sm menu menu-sm bg-accent text-accent-content text-pretty dropdown-content rounded-box z-1 w-52"
 			>
 				<li>
-					<Link to="/form" className="justify-between">
+					<Link to="/setting" className="justify-between">
 						Chỉnh sửa hồ sơ
 						<span className="badge">New</span>
 					</Link>
@@ -122,7 +122,7 @@ const Header = () => {
 						(user ? (
 							<UserProfile user={user} handleLogOut={handleLogOut} />
 						) : (
-							<div className="skeleton size-10 shrink-0 rounded-full"></div>
+							<div className="rounded-full skeleton size-10 shrink-0"></div>
 						))}
 				</div>
 			</div>
