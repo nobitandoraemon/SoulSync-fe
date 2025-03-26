@@ -64,9 +64,9 @@ const ChatNav = ({ matchedUser, user, handleOut }) => {
 		}, 10000);
 	}, [id]);
 	const handleQuit = () => {
-		const quest = alert("Bạn có chắc chắn rời khỏi phòng chat ?");
+		const quest = window.confirm("Bạn có chắc chắn rời khỏi phòng chat ?");
 
-		if (quest === undefined) {
+		if (quest) {
 			toast("Đã kết thúc cuộc trò chuyện", {
 				type: "success",
 			});
