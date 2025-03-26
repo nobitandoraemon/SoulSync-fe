@@ -8,13 +8,14 @@ import { toast } from "react-toastify";
 import Toast from "../hooks/useToast";
 import { useNavigate, Navigate } from "react-router";
 import { APP_ROUTES } from "../lib/constants";
+import bImage from "../assets/wallpapersden.com_k-beautiful-landscape-digital-art_3840x2160.jpg";
 const SideBarNew = ({ setTabActive, user, handleFinding }) => {
   return (
     <div className="flex flex-row">
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
         <div className="flex flex-col top-0 left-0 w-64 bg-white h-full border-r">
           <div>
-            {/*<div className="w-full">
+            <div className="w-full">
               <div className="relative w-full bg-gray-50 flex justify-center items-center">
                 <div className="absolute flex justify-center items-center">
                   <img
@@ -36,46 +37,49 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                   </div>
 
                   <div className=" bg-base-300 h-1/2 w-full  rounded-3xl  flex flex-col  justify-around  items-center">
-                    <div className="w-full h-1/2 flex justify-between items-center px-3 pt-2"></div>
-                    <div className="w-full h-1/2 flex flex-col justify-center items-center">
-                      <h1 className="text-gray-700 font-bold">
-                        {user.fullName} Master
-                      </h1>
-                      <h1 className="text-gray-500 text-sm">
-                        {user.place} Phu Tho
-                      </h1>
+                    <div className="w-full h-full flex flex-col justify-center items-center mt-7">
+                      <h1 className="text-gray-700 font-bold">Master</h1>
+                      <h1 className="text-gray-500 text-sm">Phu Tho</h1>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>*/}
+            </div>
             {/*Bar*/}
           </div>
-          <button
-            className="mx-auto my-5 p-6 shadow-sm btn-circle btn btn-primary animate-bouce size-28"
-            onClick={handleFinding}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              strokeWidth="2.5"
-              stroke="currentColor"
-              className="size-48"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-              />
-            </svg>
-          </button>
-          <div className="relative overflow-x-hidden flex">
+          <div className="overflow-x-hidden flex w-full">
             <ul className="flex flex-col py-4 space-y-1">
+              <li>
+                <a
+                  onClick={handleFinding}
+                  href="#"
+                  className="relative flex flex-row items-center h-11 focus:outline-none animate-infinite animate-wiggle hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                >
+                  <span className="inline-flex justify-center items-center ml-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6 text-primary"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z"
+                      />
+                    </svg>
+                  </span>
+                  <span className="ml-2 text-sm tracking-wide truncate text-primary">
+                    {"Yêu thôi <3"}
+                  </span>
+                </a>
+              </li>
               <li className="px-5">
                 <div className="flex flex-row items-center h-8">
                   <div className="text-sm font-light tracking-wide text-gray-500">
-                    User Zodiac Info
+                    Thông tin cung hoàng đạo
                   </div>
                 </div>
               </li>
@@ -164,7 +168,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
               <li className="px-5">
                 <div className="flex flex-row items-center h-8">
                   <div className="text-sm font-light tracking-wide text-gray-500">
-                    Settings
+                    Cài đặt
                   </div>
                 </div>
               </li>
@@ -197,7 +201,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                     </svg>
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
-                    Settings
+                    Cài đặt
                   </span>
                 </Link>
               </li>
@@ -224,7 +228,7 @@ const SideBarNew = ({ setTabActive, user, handleFinding }) => {
                     </svg>
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
-                    Logout
+                    Đăng xuất
                   </span>
                 </a>
               </li>
@@ -247,7 +251,13 @@ const UserZodiacInfomation = ({ zodiac, tabActive }) => {
       // 	backgroundSize: "cover",
       // }}
     >
-      <div className="hero-overlay bg-primary w-full h-full bg-[url('./src/assets/wallpapersden.com_k-beautiful-landscape-digital-art_3840x2160.jpg')]"></div>
+      <div className="hero-overlay bg-primary w-full h-full">
+        <img
+          src={bImage}
+          alt="Background"
+          className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+        />
+      </div>
       <div className="w-4/5 hero-content bg-base-200 rounded-xl bg-opacity-60">
         <div className="flex flex-col items-center">
           <div className="">
