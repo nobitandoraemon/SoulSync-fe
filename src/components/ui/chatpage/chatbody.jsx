@@ -46,7 +46,7 @@ const ChatBody = ({
 		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
 	return (
-		<div className="flex flex-col h-full min-h-screen px-6 overflow-x-auto pt-36 md:pt-40 bg-base-100">
+		<div className="flex flex-col h-full min-h-screen px-6 overflow-x-auto pt-36 md:pt-52 bg-base-100">
 			<div className="flex flex-col h-full pb-36">
 				<div className="chat chat-start" key="defaultMsg">
 					<button className="chat-image avatar">

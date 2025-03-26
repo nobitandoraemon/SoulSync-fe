@@ -37,12 +37,12 @@ const OtherInformationSideBar = ({ matchedUser }) => {
 			<button className="flex flex-row-reverse gap-4 p-4 cursor-pointer">
 				<div className="flex-col hidden gap-2 md:flex md:items-start">
 					<div className="font-bold">Người dùng #{matchedUser.zodiac}</div>
-					{/* <div className="text-base-content">
-						{ZodiacSigns[matchedUser.zodiac].name}
-					</div> */}
-					{/* <div className="w-1/3 btn btn-primary btn-outline animate-pulse">
-						{ZodiacSigns[matchedUser.zodiac].symbol}
-					</div> */}
+					<div className="text-base-content">
+						{ZodiacSigns[matchedUser.zodiac - 1].name}
+					</div>
+					<div className=" btn btn-primary btn-outline animate-pulse">
+						{ZodiacSigns[matchedUser.zodiac - 1].symbol}
+					</div>
 				</div>
 
 				<div className="avatar avatar-online">

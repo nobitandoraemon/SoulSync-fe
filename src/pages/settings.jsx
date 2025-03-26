@@ -589,8 +589,8 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 				<div className="flex flex-col items-center justify-center space-y-5 md:justify-between sm:flex-row sm:space-y-0">
 					<div className="avatar indicator">
 						<span className="indicator-item badge badge-lg badge-soft badge-accent">
-							{zodiacInfo[user.zodiac].icon}
-							{zodiacInfo[user.zodiac].sign}
+							{zodiacInfo[user.zodiac-1].icon}
+							{zodiacInfo[user.zodiac-1].sign}
 						</span>
 						<div className="w-40 h-40 rounded-full ring-primary ring-offset-base-100 ring ring-offset-2">
 							{formData.image ? (

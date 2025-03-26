@@ -1,16 +1,5 @@
-import { zodiacInfo } from "../../lib/data";
-import { Link, useNavigate } from "react-router";
-import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
-import ChatHeader from "./chatpage/header";
 
-const PopsUpButton = ({ children, event }) => {
-	return (
-		<button onClick={event} className="m-6 btn btn-primary">
-			{children}
-		</button>
-	);
-};
 const Tab = ({ tab }) => (
 	<>
 		<input
@@ -58,7 +47,7 @@ const ZodiacInfo = ({ zodiac, user, event }) => {
 		>
 			{/* <ChatHeader user={user} isLoggin={true} /> */}
 			<div
-				className="min-h-screen bg-base-100 py-16 hero"
+				className="min-h-screen py-16 bg-base-100 hero"
 				// style={{
 				// 	backgroundImage:
 				// 		"url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",

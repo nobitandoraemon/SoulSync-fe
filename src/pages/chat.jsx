@@ -34,6 +34,16 @@ const PopUp = ({
 			window.location.reload();
 		}, 2000);
 	};
+
+	useEffect(() => {
+		newSocket.on("refuse", (data) => {
+			setRefuseMsg(data);
+			console.log(refuseMsg);
+		});
+		return () => {
+			newSocket.off("refuse");
+		};
+	}, [newSocket]);
 	return (
 		<div className="flex flex-col items-center justify-center h-screen">
 			<div className="flex flex-col items-center justify-center gap-4">
@@ -127,7 +137,7 @@ const Chat = ({ socket }) => {
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, isFinding, isLeave]);
+	}, [newSocket, isFinding, isLeave, isRefuse]);
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
