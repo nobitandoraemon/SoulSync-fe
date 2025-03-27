@@ -21,7 +21,7 @@ const ChatBody = ({
 	const checkOut =
 		failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!";
 
-	const checkRefuse = failMessage === "Fail to match!";;
+	const checkRefuse = failMessage === "Fail to match!";
 	const handleMessage = (data) => {
 		setChat((prevChat) => [...prevChat, data]);
 	};
@@ -66,7 +66,7 @@ const ChatBody = ({
 					</div>
 					<div className="chat-bubble chat-bubble-warning">
 						{checkRefuse
-							? "Ghép cặp thất bại :( Nửa kia đã không chấp nhận ghép cặp"
+							? "Ghép cặp thất bại :( Nửa kia đã không chấp nhận trao duyên"
 							: "Vui lòng xin chờ trong giây lát cho đến khi nửa kia kết nối thành công 😁 ..."}
 					</div>
 					<div className="opacity-50 chat-footer">Warning</div>

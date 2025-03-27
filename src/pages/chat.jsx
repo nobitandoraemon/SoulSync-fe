@@ -12,7 +12,7 @@ const PopUp = ({
 	refuseMsg,
 	setRefuseMsg,
 }) => {
-	const [counter, setCounter] = useState(60);
+	const [counter, setCounter] = useState(30);
 	useEffect(() => {
 		let timer = setInterval(() => {
 			setCounter((time) => {
@@ -161,7 +161,8 @@ const Chat = ({ socket }) => {
 				type: "error",
 			});
 			setTimeout(() => {
-				navigate("/match");
+				// navigate("/match");
+				window.location.reload();
 			}, 1500);
 		}
 		const loadingInterval = setInterval(() => {
