@@ -161,8 +161,8 @@ const Chat = ({ socket }) => {
 				type: "error",
 			});
 			setTimeout(() => {
-				// navigate("/match");
-				window.location.reload();
+				navigate("/match");
+				// window.location.reload();
 			}, 1500);
 		}
 		const loadingInterval = setInterval(() => {
