@@ -120,7 +120,7 @@ const Login = ({ user }) => {
 								<label className="items-center justify-center mt-4 label">
 									<a
 										href="#"
-										className="label-text-alt link link-hover"
+										className="label-text-alt text-error link link-hover"
 										onClick={(e) => {
 											e.preventDefault();
 											toast(
