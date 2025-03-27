@@ -154,6 +154,15 @@ const Chat = ({ socket }) => {
 		};
 	}, [newSocket, isFinding, isLeave, failMessage]);
 
+	useEffect(() => {
+		window.addEventListener("beforeunload", () => {
+			handleLeave();
+		});
+		return () => {
+			window.removeEventListener("beforeunload");
+		};
+	}, []);
+
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
 		if (!isFinding) {
@@ -162,7 +171,6 @@ const Chat = ({ socket }) => {
 			});
 			setTimeout(() => {
 				navigate("/match");
-				// window.location.reload();
 			}, 1500);
 		}
 		const loadingInterval = setInterval(() => {
