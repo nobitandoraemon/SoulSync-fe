@@ -23,6 +23,7 @@ const PopUp = ({
 				} else return time - 1;
 			});
 		}, 1000);
+		return () => clearInterval(timer);
 	}, []);
 	const handleAccept = () => {
 		setAccept(true);

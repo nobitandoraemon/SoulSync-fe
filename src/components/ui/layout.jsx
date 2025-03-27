@@ -1,17 +1,25 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { Header, Footer } from "../../config/components";
 import { useUser } from "../../hooks/useUser";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { checkValidity, getTokenFromLocalStorage } from "../../lib/common";
 import { toast } from "react-toastify";
+import { APP_ROUTES } from "../../lib/constants";
 const Layout = () => {
 	const { user } = useUser();
 	const [isLoading, setIsLoading] = useState(true);
 	const token = getTokenFromLocalStorage();
+	const navigate = useNavigate();
 	useLayoutEffect(() => {
 		if (token) {
 			if (user) {
 				console.log("Get user data successfully");
+				if (!user.image) {
+					toast("Điều hướng đến trang nhập thông tin ...", { type: "warning" });
+					setTimeout(() => {
+						navigate(APP_ROUTES.FORM);
+					}, 2000);
+				}
 			} else {
 				console.log("Get user data failed");
 				const handleReload = async () => {

@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
+import { cn } from "../../lib/utils";
 
 const CloudinaryUploadWidget = ({
 	uwConfig,
 	setPublicId,
 	avatarLinkChange,
+	className,
 }) => {
 	const uploadWidgetRef = useRef(null);
 	const uploadButtonRef = useRef(null);
@@ -49,7 +51,9 @@ const CloudinaryUploadWidget = ({
 		<button
 			ref={uploadButtonRef}
 			id="upload_widget"
-			className="btn btn-primary"
+			className={cn("btn btn-primary", {
+				className,
+			})}
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +74,7 @@ const CloudinaryUploadWidget = ({
 	);
 };
 
-const Upload = ({ avatarLinkChange, formData, setFormData }) => {
+const Upload = ({ avatarLinkChange, formData, setFormData, className }) => {
 	// Configuration
 	const cloudName = "dbpqg1gsv";
 	const uploadPreset = "soulsync";
@@ -109,6 +113,7 @@ const Upload = ({ avatarLinkChange, formData, setFormData }) => {
 				uwConfig={uwConfig}
 				setPublicId={setPublicId}
 				avatarLinkChange={avatarLinkChange}
+				className={className}
 			/>
 		</div>
 	);

@@ -6,10 +6,12 @@ import { getTokenFromLocalStorage, getUser } from "../lib/common";
 import { toast } from "react-toastify";
 import Upload from "../components/ui/upload";
 import { VietnamProvinces, ZodiacSigns } from "../lib/data";
+import PhoneInput from "react-phone-number-input";
+import { set } from "react-hook-form";
 
 const CompletedBar = () => {
 	return (
-		<div className="w-[23%] h-3 bg-blue-700 rounded-full border border-blue-700"></div>
+		<div className="w-[23%] h-3 bg-success rounded-full border border-success"></div>
 	);
 };
 
@@ -56,10 +58,7 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 			<h1 className="mt-4 font-sans text-3xl font-bold text-primary">
 				Nói một chút về bạn...
 			</h1>
-			<form
-				className="flex flex-col gap-8 mt-10 text-primary"
-				onSubmit={Submit1}
-			>
+			<form className="flex flex-col gap-8 mt-10" onSubmit={Submit1}>
 				<fieldset className="fieldset">
 					<legend className="fieldset-legend">Tên bạn là gì ?</legend>
 					<input
@@ -77,8 +76,8 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 					<div className="flex gap-1 ">
 						<button
 							type="button"
-							className={`w-1/3 btn btn-neutral ${
-								selectedGender === "Male" ? "btn-outline" : "hover:btn-outline"
+							className={`w-1/2 btn btn-neutral btn-outline ${
+								selectedGender === "Male" ? "btn-active" : "hover:btn-outline"
 							}`}
 							onClick={() => handleGenderChange("Male")}
 							value="Male"
@@ -88,26 +87,13 @@ const TellUs = ({ setStep, formData, setFormData }) => {
 
 						<button
 							type="button"
-							className={`w-1/3 btn btn-primary ${
-								selectedGender === "Female"
-									? "btn-outline"
-									: "hover:btn-outline"
+							className={`w-1/2 btn btn-primary btn-outline ${
+								selectedGender === "Female" ? "btn-active" : "hover:btn-outline"
 							}`}
 							onClick={() => handleGenderChange("Female")}
 							value="Female"
 						>
 							<span className="text-md">👩 Nữ</span>
-						</button>
-
-						<button
-							type="button"
-							className={`w-1/3 btn btn-secondary ${
-								selectedGender === "Other" ? "btn-outline" : "hover:bg-outline"
-							}`}
-							onClick={() => handleGenderChange("Other")}
-							value="Other"
-						>
-							<span className="text-md">✨ Khác</span>
 						</button>
 					</div>
 				</fieldset>
@@ -151,25 +137,11 @@ const Address = ({ setStep, formData, setFormData }) => {
 			<h1 className="mt-4 font-sans text-3xl font-bold text-primary">
 				Cho chúng tôi biết nhiều hơn về bạn...
 			</h1>
-			<form className="flex flex-col gap-8 mt-10" onSubmit={Submit2}>
+			<form className="flex flex-col gap-6 mt-10" onSubmit={Submit2}>
 				<fieldset className="fieldset">
-					<legend className="fieldset-legend">
-						Mình nên gọi bạn là gì ? (Tuỳ chọn)
-					</legend>
+					<legend className="fieldset-legend">Mình nên gọi bạn là gì ?</legend>
 					<input type="text" placeholder="Nickname" className="w-full input" />
-				</fieldset>
-				<fieldset className="fieldset">
-					<legend className="fieldset-legend">
-						Câu nói yêu thích của bạn là gì?
-					</legend>
-					<input
-						type="text"
-						placeholder="Quote"
-						className="w-full input"
-						required
-						value={formData.quote}
-						onChange={handleQuoteChange}
-					/>
+					<p className="fieldset-label">Tuỳ chọn</p>
 				</fieldset>
 				<fieldset className="fieldset">
 					<legend className="fieldset-legend">
@@ -179,13 +151,28 @@ const Address = ({ setStep, formData, setFormData }) => {
 						type="number"
 						placeholder="Số điện thoại"
 						minLength={9}
-						maxLength={11}
+						maxLength={11} // Cập nhật maxLength thành 11
 						className="w-full input"
 						required
 						value={formData.phoneNumber}
 						onChange={handleTelChange}
 					/>
 				</fieldset>
+
+				<fieldset className="fieldset">
+					<legend className="fieldset-legend">
+						Câu nói yêu thích của bạn là gì?
+					</legend>
+					<textarea
+						type="text"
+						placeholder="Quote"
+						className="w-full textarea"
+						value={formData.quote}
+						onChange={handleQuoteChange}
+					/>
+					<p className="fieldset-label">Tuỳ chọn</p>
+				</fieldset>
+
 				<div className="flex justify-between">
 					<button
 						type="button"
@@ -375,6 +362,20 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 							<Upload avatarLinkChange={avatarLinkChange} />
 						</form>
 					</div>
+
+					{formData.image !==
+						"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" && (
+						<button
+							className="mt-4 btn btn-warning"
+							onClick={() =>
+								avatarLinkChange(
+									"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+								)
+							}
+						>
+							Đặt lại
+						</button>
+					)}
 					<div className="flex justify-between mt-6">
 						<button
 							type="button"
@@ -577,7 +578,8 @@ const ProfileForm = () => {
 		fullName: "",
 		phoneNumber: "",
 		hobbies: "",
-		image: "",
+		image:
+			"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
 		quote: "",
 	});
 

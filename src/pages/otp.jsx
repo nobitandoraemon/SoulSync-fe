@@ -7,65 +7,6 @@ import Toast from "../hooks/useToast";
 import { cn } from "../lib/utils";
 import OtpInput from "react-otp-input";
 
-const OTPInput = ({ otp, setOtp }) => {
-	const inputs = useRef([]);
-
-	const handleChange = (e, index) => {
-		const { value } = e.target;
-
-		// Only allow single digit input
-		if (value.match(/^\d$/)) {
-			const newOtp = [...otp];
-			newOtp[index] = value;
-			setOtp(newOtp);
-
-			// Move focus to the next input
-			if (index < length - 1) {
-				inputs.current[index + 1].focus();
-			}
-		}
-
-		// Move focus to previous input on backspace
-		if (value === "" && index > 0) {
-			inputs.current[index - 1].focus();
-		}
-	};
-
-	const handleKeyDown = (e, index) => {
-		if (e.onKeyDown === "Backspace" && otp[index] === "") {
-			// Move focus to previous input on backspace if current input is empty
-			if (index > 0) {
-				inputs.current[index - 1].focus();
-			}
-		}
-	};
-
-	return (
-		<div style={{ display: "flex", justifyContent: "center" }}>
-			{otp.map((_, index) => (
-				<input
-					key={index}
-					type="text"
-					maxLength="1"
-					value={otp[index]}
-					onChange={(e) => handleChange(e, index)}
-					onKeyDown={(e) => handleKeyDown(e, index)}
-					ref={(el) => (inputs.current[index] = el)}
-					style={{
-						width: "40px",
-						height: "40px",
-						margin: "0 5px",
-						textAlign: "center",
-						fontSize: "18px",
-						border: "1px solid #ccc",
-						borderRadius: "4px",
-					}}
-				/>
-			))}
-		</div>
-	);
-};
-
 const OTPPage = () => {
 	const [user] = useOutletContext();
 	const [username, setUsername] = useState(localStorage.getItem("temp") || "");
@@ -84,15 +25,12 @@ const OTPPage = () => {
 				} else return time - 1;
 			});
 		}, 1000);
-		if (isRefresh) {
+		if (!isRefresh) {
 			setCounter(120);
 		}
-		return clearInterval(timer);
-	}, [isRefresh]);
+		return () => clearInterval(timer);
+	}, []);
 
-	if (otp) {
-		console.log(otp);
-	}
 	const navigate = useNavigate();
 
 	const handleShow = (e) => {
@@ -105,7 +43,7 @@ const OTPPage = () => {
 		try {
 			const response = await axios({
 				method: "POST",
-				data: { username: username, otp: otp.join("") },
+				data: { username: username, otp: otp },
 				url: API_ROUTES.VERIFY,
 				withCredentials: true,
 			});
