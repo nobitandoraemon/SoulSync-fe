@@ -1,99 +1,158 @@
-import { motion } from "framer-motion";
-import { ChatIcon } from "../general/icon";
+import { ZodiacSigns } from "../../../lib/data";
 
-const Info = ({ user }) => {
-  return (
-    <section className="flex flex-col items-center ">
-      <div className="shadow-sm stats">
-        <div className="stat bg-pink-300">
-          <div className="stat-figure text-secondary">
-            <div className="avatar online">
-              <div className="w-16 rounded-full">
-                <img src={user.image} />
-              </div>
-            </div>
-          </div>
-          <div className="text-xl stat-value">{user.fullName}</div>
-          <div className="stat-desc text-secondary">{user.location}</div>
-          <div className="flex gap-4">
-            <div className="mt-4 text-center badge badge-primary badge-outline">
-              <span>{user.zodiac}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="divider divider-secondary"></div>
+const Info = ({ matchedUser }) => {
+	return (
+		<dialog id="otherUser" className="modal">
+			<div className="modal-box bg-primary-content">
+				<div className="p-6 sm:p-8 ">
+					<div className="flex flex-col items-center">
+						<div className="size-36 avatar avatar-online ">
+							<img
+								className="rounded-full ring-offset-2 ring ring-primary"
+								src={matchedUser.image}
+								alt="Profile Avatar"
+							/>
+						</div>
+						<h2 className="text-3xl font-bold text-primary my-2">
+							Người dùng ẩn danh #{matchedUser.zodiac}
+						</h2>
+						<p className="text-secondary mb-4 flex items-center">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								strokeWidth={1.5}
+								stroke="currentColor"
+								className="size-6"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+								/>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+								/>
+							</svg>
+							{matchedUser.location}
+						</p>
+					</div>
+					<div className="mt-6">
+						<h3 className="text-lg font-semibold text-primary mb-2 flex items-center">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								strokeWidth={1.5}
+								stroke="currentColor"
+								className="size-6 mr-2"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+								/>
+							</svg>
+							Sở thích
+						</h3>
+						<div className="flex flex-wrap gap-2">
+							{matchedUser.hobbies.map((hobby, index) => {
+								const list = [
+									"btn-primary",
+									"btn-secondary",
+									"btn-accent",
+									"btn-neutral",
+									"btn-success",
+									"btn-error",
+									"btn-warning",
+									"btn-info",
+								];
+								const num = Math.floor(Math.random() * (list.length - 1));
+								return (
+									<span key={index} className={`btn btn-outline ${list[num]}`}>
+										{hobby}
+									</span>
+								);
+							})}
+						</div>
+					</div>
+					<div className="mt-6">
+						<h3 className="text-lg font-semibold text-primary mb-2 flex items-center">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								strokeWidth={1.5}
+								stroke="currentColor"
+								className="size-6 mr-2"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33"
+								/>
+							</svg>
+							Tính cách
+						</h3>
+						<div className="flex flex-wrap gap-2">
+							{ZodiacSigns[matchedUser.zodiac - 1].personality.map(
+								(character, index) => {
+									const list = [
+										"btn-primary",
+										"btn-secondary",
+										"btn-accent",
+										"btn-neutral",
+										"btn-success",
+										"btn-error",
+										"btn-warning",
+										"btn-info",
+									];
+									const num = Math.floor(Math.random() * (list.length - 1));
+									return (
+										<span
+											key={index}
+											className={`btn btn-outline ${list[num]}`}
+										>
+											{character}
+										</span>
+									);
+								}
+							)}
+						</div>
+					</div>
+					<div className="mt-6">
+						<h3 className="text-lg font-semibold text-primary mb-2 flex items-center">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								strokeWidth={1.5}
+								stroke="currentColor"
+								className="size-6 mr-2"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z"
+								/>
+							</svg>
+							Quote
+						</h3>
 
-      <div className="h-40 shadow-xl card bg-base-100 w-full">
-        <div className="card-body">
-          <h2 className="card-title">Favorite Quote</h2>
-          <p className="overflow-hidden max-h-20 text-ellipsis">{user.quote}</p>
-          <div className="justify-end card-actions">
-            <button className="btn btn-success">
-              <motion.svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="size-6"
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                transition={{
-                  duration: 0.1,
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                  repeat: Infinity,
-                }}
-              >
-                <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-              </motion.svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="w-full mt-2 rounded-sm carousel">
-        <div id={`item1-${user.id}`} className="w-full carousel-item">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
-            className="w-full"
-          />
-        </div>
-        <div id={`item2-${user.id}`} className="w-full carousel-item">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
-            className="w-full"
-          />
-        </div>
-        <div id={`item3-${user.id}`} className="w-full carousel-item">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
-            className="w-full"
-          />
-        </div>
-        <div id={`item4-${user.id}`} className="w-full carousel-item">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
-            className="w-full"
-          />
-        </div>
-      </div>
-      <div className="flex justify-center w-full gap-2 py-2">
-        <a href={`#item1-${user.id}`} className="btn btn-xs">
-          1
-        </a>
-        <a href={`#item2-${user.id}`} className="btn btn-xs">
-          2
-        </a>
-        <a href={`#item3-${user.id}`} className="btn btn-xs">
-          3
-        </a>
-        <a href={`#item4-${user.id}`} className="btn btn-xs">
-          4
-        </a>
-      </div>
-    </section>
-  );
+						<div role="alert" className="alert">
+							{ZodiacSigns[matchedUser.zodiac - 1].symbol}
+							<span className="text-md">{matchedUser.quote}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<form method="dialog" className="modal-backdrop">
+				<button>{""}</button>
+			</form>
+		</dialog>
+	);
 };
 
 export default Info;

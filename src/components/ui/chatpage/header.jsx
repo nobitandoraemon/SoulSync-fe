@@ -33,19 +33,23 @@ const warningMsg = [
 
 const OtherInformationSideBar = ({ matchedUser, failMessage }) => {
 	return (
-		<div className="navbar-start">
-			<button className="flex flex-row-reverse gap-4 p-4 cursor-pointer">
+		<div className="navbar-start cursor-pointer">
+			<button className="flex flex-row-reverse gap-4 p-4 ">
 				<div className="flex-col hidden gap-2 md:flex md:items-start">
 					<div className="font-bold">Người dùng #{matchedUser.zodiac}</div>
 					<div className="text-base-content">
 						{ZodiacSigns[matchedUser.zodiac - 1].name}
 					</div>
-					<div className=" btn btn-primary btn-outline animate-pulse">
+					<div
+						onClick={() => document.getElementById("otherUser").showModal()}
+						className=" btn btn-info btn-circle animate-pulse"
+					>
 						{ZodiacSigns[matchedUser.zodiac - 1].symbol}
 					</div>
 				</div>
 
 				<div
+					onClick={() => document.getElementById("otherUser").showModal()}
 					className={`avatar ${
 						failMessage ? "avatar-offline" : "avatar-online"
 					}`}

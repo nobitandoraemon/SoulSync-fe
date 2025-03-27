@@ -30,7 +30,6 @@ import ChatBox from "../components/ui/chatpage/chatbox.jsx";
 import ChatInput from "../components/ui/chatpage/chatinput.jsx";
 import ChatHeader from "../components/ui/chatpage/header.jsx";
 import Info from "../components/ui/chatpage/info.jsx";
-import Profile from "../components/ui/chatpage/profile.jsx";
 
 //Homepage//
 import Contact from "../components/ui/homepage/contact";
@@ -75,7 +74,6 @@ export {
 	ChatInput,
 	ChatHeader,
 	Info,
-	Profile,
 	Contact,
 	Features,
 	FAQ,

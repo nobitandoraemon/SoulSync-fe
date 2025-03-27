@@ -8,6 +8,7 @@ const PopUp = ({
 	setAccept,
 	setMatchedUser,
 	newSocket,
+	handleLeave,
 	refuseMsg,
 	setRefuseMsg,
 }) => {
@@ -117,7 +118,9 @@ const Chat = ({ socket }) => {
 
 	const handleLeave = () => {
 		newSocket.emit("leave", {});
-		setIsLeave(true);
+		// setIsLeave(true);
+		setFailMessage(""); //Test//
+		setRefuseMsg(""); //Test //
 	};
 
 	useEffect(() => {
@@ -204,6 +207,7 @@ const Chat = ({ socket }) => {
 						newSocket={newSocket}
 						refuseMsg={refuseMsg}
 						setRefuseMsg={setRefuseMsg}
+						handleLeave={handleLeave}
 					/>
 				))}
 			{!matchedUser && (

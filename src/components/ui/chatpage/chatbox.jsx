@@ -1,4 +1,9 @@
-import { ChatBody, ChatInput, ChatHeader } from "../../../config/components";
+import {
+	ChatBody,
+	ChatInput,
+	ChatHeader,
+	Info,
+} from "../../../config/components";
 
 const ChatBox = ({
 	chat,
@@ -19,6 +24,7 @@ const ChatBox = ({
 				/>
 			</div>
 			<div className="flex flex-col flex-auto flex-shrink-0 h-full min-h-screen pb-12 md:mb-0">
+				<Info matchedUser={matchedUser} />
 				<ChatBody
 					newSocket={newSocket}
 					user={user}
