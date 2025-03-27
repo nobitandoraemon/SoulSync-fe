@@ -1,12 +1,13 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { cn } from "../../../lib/utils";
 import { ToggleTheme, Logo, useScroll } from "../../../config/components";
 import { ToastContainer } from "react-toastify";
 import { ThemeContext } from "../../../context/themeprovider";
 import { useContext, useEffect } from "react";
 import { logOut } from "../../../lib/common";
+import { APP_ROUTES } from "../../../lib/constants";
 
-const UserProfile = ({ user, handleLogOut }) => {
+const UserProfile = ({ user, handleLogOut, showSetting }) => {
 	return (
 		<div className="dropdown dropdown-end">
 			<div
@@ -22,12 +23,14 @@ const UserProfile = ({ user, handleLogOut }) => {
 				tabIndex={0}
 				className="p-2 mt-3 shadow-sm menu menu-sm bg-accent text-accent-content text-pretty dropdown-content rounded-box z-1 w-52"
 			>
-				<li>
-					<Link to="/setting" className="justify-between">
-						Chỉnh sửa hồ sơ
-						<span className="badge">New</span>
-					</Link>
-				</li>
+				{!showSetting && (
+					<li>
+						<Link to="/setting" className="justify-between">
+							Chỉnh sửa hồ sơ
+							<span className="badge">New</span>
+						</Link>
+					</li>
+				)}
 				<li onClick={handleLogOut}>
 					<Link to="/">Đăng xuất</Link>
 				</li>
@@ -40,6 +43,11 @@ const Header = ({ user }) => {
 	const isScroll = useScroll();
 	const token = localStorage.getItem("token");
 	const { theme } = useContext(ThemeContext);
+	const location = useLocation();
+
+	const showMatch = location.pathname === APP_ROUTES.MATCH;
+
+	const showSetting = location.pathname === APP_ROUTES.SETTING;
 
 	// const { user } = useUser();
 	const handleLogOut = () => logOut();
@@ -93,9 +101,13 @@ const Header = ({ user }) => {
 								<Link to="/">Trang chủ</Link>
 							</li>
 							{token ? (
-								<li>
-									<Link to="/match">Match</Link>
-								</li>
+								!showMatch && (
+									<li>
+										<Link to="/match" aria-disabled>
+											Match
+										</Link>
+									</li>
+								)
 							) : (
 								<>
 									<li>
@@ -119,7 +131,11 @@ const Header = ({ user }) => {
 					<ToggleTheme className="btn btn-ghost btn-circle" />
 					{token &&
 						(user ? (
-							<UserProfile user={user} handleLogOut={handleLogOut} />
+							<UserProfile
+								user={user}
+								handleLogOut={handleLogOut}
+								showSetting={showSetting}
+							/>
 						) : (
 							<div className="rounded-full skeleton size-10 shrink-0"></div>
 						))}

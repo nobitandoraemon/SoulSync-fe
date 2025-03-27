@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 import { APP_ROUTES } from "../lib/constants";
 import { toast } from "react-toastify";
 import { logOut } from "../lib/common";
-import { ToggleTheme } from "../config/components.js";
+import { Footer, Header, ToggleTheme } from "../config/components.js";
 import { ThemeContext } from "../context/themeprovider.jsx";
 
 const SideBarNew = ({ setTabActive, tabActive, user, handleFinding }) => {
@@ -19,7 +19,10 @@ const SideBarNew = ({ setTabActive, tabActive, user, handleFinding }) => {
 			{" "}
 			<ul className="fixed left-0 z-50 mt-6 -translate-y-1/2 top-1/2 md:hidden menu menu-vertical bg-base-200 rounded-box">
 				<li onClick={handleFinding}>
-					<a className="tooltip animate-pulse" data-tip="Chat">
+					<a
+						className="tooltip animate-bounce animate-delay-[1000ms] animate-duration-[2000ms] tooltip-primary text-primary"
+						data-tip="Chat"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -472,19 +475,27 @@ const MatchPage = () => {
 		</div>
 	) : (
 		user && (
-			<div className="flex flex-row">
-				<Toast />
-				<SideBarNew
-					tabActive={tabActive}
-					setTabActive={setTabActive}
-					handleFinding={handleFinding}
-					user={user}
-				/>
-				<UserZodiacInfomation
-					tabActive={tabActive}
-					zodiac={zodiacInfo[user.zodiac - 1]}
-				/>
-			</div>
+			<>
+				<div className="block md:hidden">
+					<Header user={user} />
+				</div>
+				<div className="flex flex-row">
+					<Toast />
+					<SideBarNew
+						tabActive={tabActive}
+						setTabActive={setTabActive}
+						handleFinding={handleFinding}
+						user={user}
+					/>
+					<UserZodiacInfomation
+						tabActive={tabActive}
+						zodiac={zodiacInfo[user.zodiac - 1]}
+					/>
+				</div>
+				<div className="block md:hidden">
+					<Footer />
+				</div>
+			</>
 		)
 	);
 };
