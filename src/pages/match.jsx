@@ -465,7 +465,7 @@ const MatchPage = () => {
 		setIsLoading(false);
 	};
 	const handleFinding = () => {
-		setIsFinding((prev) => !prev);
+		setIsFinding(true); /// Checkout
 		setTimeout(() => {
 			navigate(APP_ROUTES.CHAT);
 		}, 1000);

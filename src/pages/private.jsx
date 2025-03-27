@@ -55,6 +55,7 @@ const PrivateRoute = ({ socket }) => {
 				}
 				console.log(matchedUser);
 			}
+			setIsFinding(false); /// Checkout
 		});
 
 		// server gửi về match -> cả 2 đã accept -> cho Chat
