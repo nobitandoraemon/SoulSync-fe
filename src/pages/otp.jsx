@@ -5,6 +5,7 @@ import axios from "axios";
 import { API_ROUTES, APP_ROUTES } from "../lib/constants";
 import Toast from "../hooks/useToast";
 import { cn } from "../lib/utils";
+import OtpInput from "react-otp-input";
 
 const OTPInput = ({ otp, setOtp }) => {
 	const inputs = useRef([]);
@@ -31,7 +32,7 @@ const OTPInput = ({ otp, setOtp }) => {
 	};
 
 	const handleKeyDown = (e, index) => {
-		if (e.key === "Backspace" && otp[index] === "") {
+		if (e.onKeyDown === "Backspace" && otp[index] === "") {
 			// Move focus to previous input on backspace if current input is empty
 			if (index > 0) {
 				inputs.current[index - 1].focus();
@@ -69,7 +70,7 @@ const OTPPage = () => {
 	const [user] = useOutletContext();
 	const [username, setUsername] = useState(localStorage.getItem("temp") || "");
 	const [showOtpInput, setShowOtpInput] = useState(false);
-	const [otp, setOtp] = useState(Array(6).fill(""));
+	const [otp, setOtp] = useState();
 	const [counter, setCounter] = useState(120);
 	const [isRefresh, setIsRefresh] = useState(false);
 
@@ -86,7 +87,12 @@ const OTPPage = () => {
 		if (isRefresh) {
 			setCounter(120);
 		}
+		return clearInterval(timer);
 	}, [isRefresh]);
+
+	if (otp) {
+		console.log(otp);
+	}
 	const navigate = useNavigate();
 
 	const handleShow = (e) => {
@@ -145,36 +151,52 @@ const OTPPage = () => {
 	}, [user]);
 	return (
 		<div
-			className="hero bg-base min-h-screen"
+			className="min-h-screen hero bg-base"
 			style={{
 				backgroundImage:
 					"url(https://images.squarespace-cdn.com/content/v1/5eac45f88da144413f9b5763/b85d7659-1901-4859-b33a-04356e135fb7/myles-munroe-3-principles-of-biblical-dating-and-courting.jpg)",
 			}}
 		>
 			<Toast />
-			<div className="hero-content flex-col lg:flex-row-reverse">
-				<div className="card bg-base-100 w-full shrink-0 shadow-2xl">
-					<div className="card-body">
+			<div className="flex-col lg:flex-row-reverse">
+				<div className="shadow-2xl min-w-sm card bg-base-200 shrink-0">
+					<div className="flex flex-col gap-4 px-2 py-6 md:p-8">
 						{showOtpInput ? (
 							<form onSubmit={handleVerify} className="text-center">
-								<h3 className="py-8 text-xl-center font-semibold">
+								<h3 className="py-8 font-semibold text-xl-center">
 									Nhập mã OTP đã được gửi tới email của bạn
 								</h3>
-								<OTPInput length={6} otp={otp} setOtp={setOtp} />
-								<button type="submit" className="mt-8 btn btn-info btn-wide">
+								<div className="flex items-center justify-center mx-auto">
+									<OtpInput
+										value={otp}
+										onChange={setOtp}
+										numInputs={6}
+										// inputStyle={"input"}
+										// inputType={"number"}
+										renderSeparator={<span className="mx-0.5 md:mx-2"> </span>}
+										renderInput={(props) => (
+											<input
+												{...props}
+												// type="number"
+												className="flex items-center justify-center h-24 p-2 overflow-auto text-3xl font-bold min-w-12 md:min-w-24 md:h-36 bg-neutral-content rounded-box text-neutral"
+											/>
+										)}
+									/>
+								</div>
+								<button type="submit" className="mt-8 btn btn-warning btn-wide">
 									Enter
 								</button>
-								<div className="flex flex-col justify-center items-center gap-4">
+								<div className="flex flex-col items-center justify-center gap-4">
 									<button
 										onClick={handleRefresh}
-										className={cn("mt-8 btn btn-ghost", {
+										className={cn("mt-8 btn btn-info", {
 											"btn-disabled": isRefresh,
 										})}
 									>
 										Gửi lại mã OTP
 									</button>
 									{isRefresh && (
-										<span className="text-md text-warning font-semibold">
+										<span className="font-semibold text-md text-warning">
 											Lệnh gửi lại có hiệu lực sau{" "}
 											<span className="font-bold animate-ping">{counter}</span>{" "}
 											s
@@ -190,8 +212,8 @@ const OTPPage = () => {
 										Để nhận mã OTP, vui lòng nhập email của bạn
 									</p>
 								</div>
-								<div className="w-full flex justify-center items-center mx-auto">
-									<fieldset className="fieldset join text-center">
+								<div className="flex items-center justify-center w-full mx-auto">
+									<fieldset className="text-center fieldset join">
 										<label className="input join-item">
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
