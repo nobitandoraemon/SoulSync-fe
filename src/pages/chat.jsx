@@ -155,11 +155,9 @@ const Chat = ({ socket }) => {
 	}, [newSocket, isFinding, isLeave, failMessage]);
 
 	useEffect(() => {
-		window.addEventListener("beforeunload", () => {
-			handleLeave();
-		});
+		window.addEventListener("beforeunload", handleLeave);
 		return () => {
-			window.removeEventListener("beforeunload");
+			window.removeEventListener("beforeunload", handleLeave);
 		};
 	}, []);
 
