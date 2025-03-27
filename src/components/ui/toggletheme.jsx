@@ -42,13 +42,63 @@ const Dark = () => {
 	);
 };
 
-const ToggleTheme = ({ className }) => {
-	const { theme, toggleTheme } = useContext(ThemeContext);
+export const ToggleTheme = ({ className }) => {
+	const { theme, handleTheme } = useContext(ThemeContext);
+
 	return (
-		<button onClick={toggleTheme} className={className}>
-			{theme === "valentine" ? <Dark /> : <Love />}
+		<button onClick={handleTheme} className={className}>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				strokeWidth={1.5}
+				stroke="currentColor"
+				className="size-6"
+			>
+				<path
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+				/>
+			</svg>
 		</button>
 	);
 };
-
-export default ToggleTheme;
+// export const DropdownTheme = ({ className }) => {
+// 	const { theme, toggleTheme } = useContext(ThemeContext);
+// 	return (
+// 		<div className="dropdown mb-72">
+// 			<div tabIndex={0} role="button" className="m-1 btn">
+// 				Theme
+// 				<svg
+// 					width="12px"
+// 					height="12px"
+// 					className="inline-block w-2 h-2 fill-current opacity-60"
+// 					xmlns="http://www.w3.org/2000/svg"
+// 					viewBox="0 0 2048 2048"
+// 				>
+// 					<path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+// 				</svg>
+// 			</div>
+// 			<ul
+// 				tabIndex={0}
+// 				className="p-2 shadow-2xl dropdown-content bg-base-300 rounded-box z-1 w-52"
+// 			>
+// 				{themeList.map((theme) => {
+// 					return (
+// 						<li key={theme.label}>
+// 							<input
+// 								type="radio"
+// 								name="theme-dropdown"
+// 								className="justify-start w-full theme-controller btn btn-sm btn-block btn-ghost"
+// 								aria-label={theme.label}
+// 								value={theme.value}
+// 								onChange={(e) => toggleTheme(e.target.value)}
+// 							/>
+// 						</li>
+// 					);
+// 				})}
+// 			</ul>
+// 		</div>
+// 	);
+// };

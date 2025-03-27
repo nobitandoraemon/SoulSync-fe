@@ -1929,3 +1929,1375 @@ export const ZodiacSigns = [
 			"Hồn nhiên và giàu lòng nhân ái là nét tính cách được tìm thấy ở nữ Song Ngư. Dù là con gái nhưng nữ Song Ngư lại nổi tiếng là cung hoàng đạo “ga lăng” nhất trong tính cách 12 cung hoàng đạo. Đây là nữ nhân chung tình khi yêu nên rất dễ trở nên mù quáng, không phân biệt đúng sai, theo đuổi tình yêu “không hồi kết” của mình.",
 	},
 ];
+
+export const ThemeList = ({ toggleTheme }) => {
+	return (
+		<div className="grid grid-cols-2 gap-4 sm:grid-cols-3 rounded-box md:grid-cols-3">
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="light"
+				onClick={() => toggleTheme("light")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="light"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">light</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="dark"
+				onClick={() => toggleTheme("dark")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="dark"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">dark</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="cupcake"
+				onClick={() => toggleTheme("cupcake")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="cupcake"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">cupcake</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="bumblebee"
+				onClick={() => toggleTheme("bumblebee")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="bumblebee"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">bumblebee</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="emerald"
+				onClick={() => toggleTheme("emerald")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="emerald"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">emerald</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="corporate"
+				onClick={() => toggleTheme("corporate")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="corporate"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">corporate</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="synthwave"
+				onClick={() => toggleTheme("synthwave")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="synthwave"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">synthwave</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="retro"
+				onClick={() => toggleTheme("retro")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="retro"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">retro</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="cyberpunk"
+				onClick={() => toggleTheme("cyberpunk")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="cyberpunk"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">cyberpunk</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="valentine"
+				onClick={() => toggleTheme("valentine")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="valentine"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">valentine</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="halloween"
+				onClick={() => toggleTheme("halloween")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="halloween"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">halloween</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="garden"
+				onClick={() => toggleTheme("garden")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="garden"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">garden</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="forest"
+				onClick={() => toggleTheme("forest")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="forest"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">forest</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="aqua"
+				onClick={() => toggleTheme("aqua")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="aqua"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">aqua</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="lofi"
+				onClick={() => toggleTheme("lofi")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="lofi"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">lofi</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="pastel"
+				onClick={() => toggleTheme("pastel")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="pastel"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">pastel</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="fantasy"
+				onClick={() => toggleTheme("fantasy")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="fantasy"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">fantasy</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="wireframe"
+				onClick={() => toggleTheme("wireframe")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="wireframe"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">wireframe</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="black"
+				onClick={() => toggleTheme("black")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="black"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">black</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="luxury"
+				onClick={() => toggleTheme("luxury")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="luxury"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">luxury</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="dracula"
+				onClick={() => toggleTheme("dracula")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="dracula"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">dracula</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="cmyk"
+				onClick={() => toggleTheme("cmyk")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="cmyk"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">cmyk</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="autumn"
+				onClick={() => toggleTheme("autumn")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="autumn"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">autumn</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="business"
+				onClick={() => toggleTheme("business")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="business"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">business</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="acid"
+				onClick={() => toggleTheme("acid")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="acid"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">acid</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="lemonade"
+				onClick={() => toggleTheme("lemonade")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="lemonade"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">lemonade</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="night"
+				onClick={() => toggleTheme("night")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="night"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">night</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="coffee"
+				onClick={() => toggleTheme("coffee")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="coffee"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">coffee</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="winter"
+				onClick={() => toggleTheme("winter")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="winter"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">winter</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="dim"
+				onClick={() => toggleTheme("dim")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="dim"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">dim</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="nord"
+				onClick={() => toggleTheme("nord")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="nord"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">nord</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="sunset"
+				onClick={() => toggleTheme("sunset")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="sunset"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">sunset</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="caramellatte"
+				onClick={() => toggleTheme("caramellatte")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="caramellatte"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">caramellatte</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="abyss"
+				onClick={() => toggleTheme("abyss")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="abyss"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">abyss</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				className="overflow-hidden border rounded-lg border-base-content/20 hover:border-base-content/40 outline-2 outline-offset-2 outline-transparent"
+				data-act-class="outline-base-content!"
+				data-set-theme="silk"
+				onClick={() => toggleTheme("silk")}
+			>
+				<div
+					className="w-full font-sans cursor-pointer bg-base-100 text-base-content"
+					data-theme="silk"
+				>
+					<div className="grid grid-cols-5 grid-rows-3">
+						<div className="col-start-1 row-span-2 row-start-1 bg-base-200" />{" "}
+						<div className="col-start-1 row-start-3 bg-base-300" />{" "}
+						<div className="flex flex-col col-span-4 col-start-2 row-span-3 row-start-1 gap-1 p-2 bg-base-100">
+							<div className="font-bold">silk</div>{" "}
+							<div className="flex flex-wrap gap-1">
+								<div className="flex items-center justify-center w-5 rounded bg-primary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-primary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-secondary aspect-square lg:w-6">
+									<div className="text-sm font-bold text-secondary-content">
+										A
+									</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-accent aspect-square lg:w-6">
+									<div className="text-sm font-bold text-accent-content">A</div>
+								</div>{" "}
+								<div className="flex items-center justify-center w-5 rounded bg-neutral aspect-square lg:w-6">
+									<div className="text-sm font-bold text-neutral-content">
+										A
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};

@@ -10,7 +10,7 @@ import { getTokenFromLocalStorage, logOut } from "../lib/common";
 import { image } from "@cloudinary/url-gen/qualifiers/source";
 import dayjs from "dayjs";
 import Toast from "../hooks/useToast";
-import { VietnamProvinces, zodiacInfo } from "../lib/data";
+import { ThemeList, VietnamProvinces, zodiacInfo } from "../lib/data";
 import { ThemeContext } from "../context/themeprovider";
 import { Footer, Header } from "../config/components";
 
@@ -122,6 +122,27 @@ const ChangeImage = ({ formData, setFormData }) => {
 				formData={formData}
 				setFormData={setFormData}
 			/>
+		</div>
+	);
+};
+
+const ChangeTheme = ({ toggleTheme }) => {
+	return (
+		<div
+			className="w-full px-6 pb-8 mt-8 sm:max-w-2xl sm:rounded-lg"
+			id="themes"
+		>
+			<h2 className="pl-6 text-2xl font-bold sm:text-xl text-primary">
+				Themes Controller
+			</h2>
+
+			<div className="grid mx-auto">
+				<div className="items-center sm:mt-14">
+					<div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
+						<ThemeList toggleTheme={toggleTheme} />
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
@@ -739,7 +760,7 @@ const SettingPage = () => {
 	const [formData, setFormData] = useState({});
 	const token = getTokenFromLocalStorage();
 
-	const { toggleTheme } = useContext(ThemeContext);
+	const { handleTheme, toggleTheme } = useContext(ThemeContext);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -865,7 +886,7 @@ const SettingPage = () => {
 									</svg>
 								</a>
 							</li>
-							<li onClick={toggleTheme}>
+							<li onClick={handleTheme}>
 								<a className="tooltip" data-tip="Theme">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -1010,9 +1031,13 @@ const SettingPage = () => {
 									Vùng nguy hiểm
 								</li>
 								<li
-									onClick={toggleTheme}
+									onClick={() => setId(4)}
 									className={cn(
-										"flex items-center px-3 py-2.5 cursor-pointer font-semibold text-secondary hover:border hover:border-secondary hover:rounded-full"
+										"flex items-center px-3 py-2.5 cursor-pointer font-semibold text-secondary hover:border hover:border-secondary hover:rounded-full",
+										{
+											"font-bold bg-white text-secondary border rounded-full":
+												id === 4,
+										}
 									)}
 								>
 									<svg
@@ -1078,7 +1103,7 @@ const SettingPage = () => {
 							</div>
 						</aside>
 						<main className="w-full min-h-screen py-1 pl-8 md:pl-0 md:w-2/3 lg:w-3/4">
-							<div className="p-2 pt-8 md:p-4">
+							<div className="w-full p-2 pt-8 md:p-4">
 								{id === 1 && (
 									<Public
 										user={user}
@@ -1102,6 +1127,8 @@ const SettingPage = () => {
 										setFormData={setFormData}
 									/>
 								)}
+
+								{id === 4 && <ChangeTheme toggleTheme={toggleTheme} />}
 							</div>
 						</main>
 					</div>

@@ -54,7 +54,7 @@ import {
 import Logo from "../components/ui/general/logo.jsx";
 
 //Other
-import ToggleTheme from "../components/ui/toggletheme.jsx";
+import { ToggleTheme } from "../components/ui/toggletheme.jsx";
 import DatePick from "../components/ui/datepicker.jsx";
 
 export {
