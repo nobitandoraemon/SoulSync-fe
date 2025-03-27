@@ -116,6 +116,7 @@ const Chat = ({ socket }) => {
 	};
 
 	const handleLeave = () => {
+		newSocket.emit("leave", {});
 		setIsLeave(true);
 	};
 
