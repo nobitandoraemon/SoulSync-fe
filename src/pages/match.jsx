@@ -457,7 +457,7 @@ const Tab = ({ tab }) => (
 	</>
 );
 const MatchPage = () => {
-	const { user, isFinding, setIsFinding } = useOutletContext();
+	const { user, isFinding, setIsFinding, newSocket } = useOutletContext();
 	const [tabActive, setTabActive] = useState(0);
 	const [isLoading, setIsLoading] = useState(true);
 	const navigate = useNavigate();
@@ -465,7 +465,9 @@ const MatchPage = () => {
 		setIsLoading(false);
 	};
 	const handleFinding = () => {
-		setIsFinding(true); /// Checkout
+		// setIsFinding(true); /// Checkout
+		newSocket.emit("find", {});
+		setIsFinding(true);
 		setTimeout(() => {
 			navigate(APP_ROUTES.CHAT);
 		}, 1000);

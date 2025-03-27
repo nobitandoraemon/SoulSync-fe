@@ -125,11 +125,11 @@ const Chat = ({ socket }) => {
 	};
 
 	useEffect(() => {
-		if (isFinding) {
-			console.log("find");
-			newSocket.emit("find", {});
-			setIsFinding(false);
-		}
+		// if (isFinding) {
+		// 	console.log("find");
+		// 	newSocket.emit("find", {});
+		// 	setIsFinding(false);
+		// }
 
 		if (isLeave) {
 			console.log("leave");
