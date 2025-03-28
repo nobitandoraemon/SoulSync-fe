@@ -504,7 +504,7 @@ const MatchPage = () => {
 		user && (
 			<>
 				<div className="block md:hidden">
-					<Header user={user} />
+					<Header user={/*user*/} />
 				</div>
 				<div className="flex flex-row">
 					<Toast />
