@@ -14,7 +14,11 @@ const Contact = () => {
 
 			<div className="flex-col max-w-(--breakpoint-lg) mx-auto hero-content ">
 				<div className="font-extrabold text-center text-neutral-content">
-					<h1 className="text-5xl">Liên hệ và Trợ giúp</h1>
+					<h1 className="mb-12 text-5xl font-bold">
+						<span className="text-success">Liên hệ </span>
+						và
+						<span className="text-info"> Trợ giúp</span>
+					</h1>{" "}
 					<p className="py-6">
 						Hãy để lại thông tin và tin nhắn của bạn, đội ngũ của chúng tôi sẽ
 						xem xét và phản hồi trong thời gian sớm nhất. Chúng tôi luôn sẵn

@@ -24,9 +24,10 @@ const FAQ = () => {
 				Frequently Asked Questions
 			</div> */}
 
-			<h2 className="mb-8 text-2xl font-semibold tracking-wide">
-				Các câu hỏi thường gặp
-			</h2>
+			<h1 className="my-12 text-5xl font-bold">
+				Các câu hỏi
+				<span className="text-warning"> thường gặp</span>
+			</h1>
 
 			<div className="w-4/5 overflow-hidden shadow-lg join join-vertical bg-base-100 rounded-box">
 				{questions.map((question, idx) => {
