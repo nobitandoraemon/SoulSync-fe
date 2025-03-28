@@ -46,7 +46,7 @@ const Rating = () => {
 	return (
 		<div className="p-8 mx-auto mt-12 min-h-[80vh]">
 			<div className="grid place-content-center">
-				<div className="badge badge-success">Feedback</div>
+				{/* <div className="badge badge-success">Feedback</div> */}
 			</div>
 			<div className="min-h-[60vh] mt-8">
 				<RatingItem

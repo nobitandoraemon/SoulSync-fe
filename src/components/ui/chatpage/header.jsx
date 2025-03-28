@@ -30,12 +30,20 @@ const warningMsg = [
 	},
 ];
 
-const OtherInformationSideBar = ({ matchedUser, failMessage }) => {
+const OtherInformationSideBar = ({
+	matchedUser,
+	failMessage,
+	love,
+	setLove,
+	handleLike,
+}) => {
 	return (
 		<div className="cursor-pointer navbar-start">
 			<button className="flex flex-row-reverse gap-4 p-4 ">
 				<div className="flex-col hidden gap-2 md:flex md:items-start">
-					<div className="font-bold">Người dùng #{matchedUser.zodiac}</div>
+					<div className="font-bold">
+						{love ? matchedUser.fullName : `Người dùng #${matchedUser.zodiac}`}
+					</div>
 					<div className="text-base-content">
 						{ZodiacSigns[matchedUser.zodiac - 1].name}
 					</div>
@@ -62,7 +70,15 @@ const OtherInformationSideBar = ({ matchedUser, failMessage }) => {
 	);
 };
 
-const ChatNav = ({ matchedUser, user, handleLeave, failMessage }) => {
+const ChatNav = ({
+	matchedUser,
+	user,
+	handleLeave,
+	failMessage,
+	love,
+	setLove,
+	handleLike,
+}) => {
 	const [id, setId] = useState(1);
 
 	useEffect(() => {
@@ -75,6 +91,9 @@ const ChatNav = ({ matchedUser, user, handleLeave, failMessage }) => {
 			<OtherInformationSideBar
 				matchedUser={matchedUser}
 				failMessage={failMessage}
+				love={love}
+				setLove={setLove}
+				handleLike={handleLike}
 			/>
 			<div className="hidden overflow-hidden text-sm max-h-12 navbar-center md:flex">
 				<div className="mr-2 status status-info animate-bounce"></div>{" "}
@@ -83,6 +102,21 @@ const ChatNav = ({ matchedUser, user, handleLeave, failMessage }) => {
 				</span>
 			</div>
 			<div className="navbar-end">
+				{!love && (
+					<div
+						className="btn btn-primary btn-circle animate-bounce"
+						onClick={handleLike}
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							className="size-6"
+						>
+							<path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+						</svg>
+					</div>
+				)}
 				<div className="btn btn-ghost btn-circle">
 					<ToggleTheme />
 				</div>
@@ -108,7 +142,15 @@ const ChatNav = ({ matchedUser, user, handleLeave, failMessage }) => {
 	);
 };
 
-const ChatHeader = ({ user, matchedUser, handleLeave, failMessage }) => {
+const ChatHeader = ({
+	user,
+	matchedUser,
+	handleLeave,
+	failMessage,
+	love,
+	setLove,
+	handleLike,
+}) => {
 	return (
 		<div className="fixed top-0 left-0 right-0 z-50 flex items-center md:flex-row">
 			<Toast />
@@ -118,6 +160,9 @@ const ChatHeader = ({ user, matchedUser, handleLeave, failMessage }) => {
 					user={user}
 					handleLeave={handleLeave}
 					failMessage={failMessage}
+					love={love}
+					setLove={setLove}
+					handleLike={handleLike}
 				/>
 			)}
 		</div>

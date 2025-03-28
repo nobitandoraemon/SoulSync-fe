@@ -1,16 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 const ChatBody = ({
 	newSocket,
 	user,
 	matchedUser,
-	setIsMatched,
+	setMatchedUser,
 	handleLeave,
-	handleQuit,
 	failMessage,
 	setFailMessage,
-	setMatchedUser,
+	setIsMatched,
+	setAccept,
+	love,
+	setLove,
 }) => {
 	const [chat, setChat] = useState([]);
+	const [liked, setLiked] = useState(false);
+	const [hasNotified, setHasNotified] = useState(false);
 	const [notify, setNotify] = useState(null);
 	const lastMessage = useRef(null);
 	const handleOut = () => {
@@ -23,10 +28,7 @@ const ChatBody = ({
 	// Xử lí nhận tin nhắn
 
 	const handleMessage = (data) => {
-		if (data) {
-			setFailMessage("");
-			setChat((prevChat) => [...prevChat, data]);
-		}
+		setChat((prevChat) => [...prevChat, data]);
 	};
 
 	// Nhận thông tin chat từ server socket
@@ -36,11 +38,24 @@ const ChatBody = ({
 			newSocket.off("message");
 		};
 	}, [newSocket]);
+
+	useEffect(() => {
+		newSocket.on("liked", (data) => {
+			if (data && !hasNotified) {
+				setHasNotified(true);
+				toast("Đối phương vừa thả nghìn Like cho bạn 😘", {
+					position: "top-center",
+				});
+			}
+		});
+		return () => {
+			newSocket.off("liked");
+		};
+	}, [newSocket, hasNotified]);
+
 	useEffect(() => {
 		newSocket.on("disconnect", (data) => {
-			if (data) {
-				newSocket.emit("leave", {});
-			}
+			console.log(data);
 		});
 		return () => {
 			newSocket.off("disconnect");
@@ -48,17 +63,13 @@ const ChatBody = ({
 	}, [newSocket]);
 	useEffect(() => {
 		newSocket.on("end", (data) => {
-			console.log(data.message);
 			setNotify(data.message);
-			newSocket.emit("leave", {});
-			setChat([]);
-			// setMatchedUser(null);
-			newSocket.off("message");
 		});
 		return () => {
 			newSocket.off("end");
 		};
 	}, [newSocket]);
+
 	useEffect(() => {
 		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
@@ -126,6 +137,7 @@ const ChatBody = ({
 						</>
 					);
 				})}
+
 				{notify && (
 					<>
 						<div className="chat chat-start" key="warningMsg">
