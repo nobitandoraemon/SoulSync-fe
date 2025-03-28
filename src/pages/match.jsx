@@ -11,12 +11,12 @@ import { logOut } from "../lib/common";
 import { Footer, Header, ToggleTheme } from "../config/components.js";
 import { ThemeContext } from "../context/themeprovider.jsx";
 
-const testUser = {
+/*const testUser = {
   username: "MasterLong",
   password: "123456789",
   birthday: "02-01-2005",
   gender: "Male",
-  zodiac: 2,
+  zodiac: 24,
   hobbies: "Play",
   location: "Play",
   fullName: "MasterLong",
@@ -25,7 +25,7 @@ const testUser = {
   quote: "Nothing",
   image: "",
   isVerified: true,
-};
+};*/
 
 const SideBarNew = ({ setTabActive, tabActive, user, handleFinding }) => {
   const { handleTheme } = useContext(ThemeContext);
@@ -455,7 +455,11 @@ const Tab = ({ tab }) => (
               </>
             ) : item.type === "image" ? (
               <li className="w-[70%] mx-auto mb-5">
-                <img src={item.value} alt="Zodiac" className="w-full h-auto" />
+                <img
+                  src={item.value}
+                  alt="Zodiac"
+                  className="w-full h-auto rounded-3xl"
+                />
               </li>
             ) : item.type === "h2" ? (
               <li>
@@ -513,10 +517,10 @@ const MatchPage = () => {
       <span className="ml-8 loading loading-spinner text-info"></span>
     </div>
   ) : (
-    testUser && (
+    user && (
       <>
         <div className="block md:hidden">
-          <Header user={testUser} />
+          <Header user={user} />
         </div>
         <div className="flex flex-row">
           <Toast />
@@ -524,11 +528,11 @@ const MatchPage = () => {
             tabActive={tabActive}
             setTabActive={setTabActive}
             handleFinding={handleFinding}
-            user={testUser}
+            user={user}
           />
           <UserZodiacInfomation
             tabActive={tabActive}
-            zodiac={zodiacInfo[testUser.zodiac - 1]}
+            zodiac={zodiacInfo[user.zodiac - 1]}
           />
         </div>
         <div className="block md:hidden">

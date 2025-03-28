@@ -27,7 +27,6 @@ createRoot(document.getElementById("root")).render(
             <Route index element={<App />} />
             <Route path="/login" element={<Login />} />
             <Route path="/reg" element={<Reg />} />
-            <Route path="/match" element={<MatchPage />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/verify-otp" element={<OTPPage />} />
           </Route>

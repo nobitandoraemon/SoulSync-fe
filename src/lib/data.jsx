@@ -31,18 +31,61 @@ import manAries from "../assets/man_aries.jpg";
 import manAries2 from "../assets/S0xcFk9vcYP91DwiTa3V--1--fhc0l.webp";
 import femaleAries from "../assets/gettyimages-531693677-612x612.jpg";
 import femaleAries2 from "../assets/femaleAries2.jpg";
+
 import manTaurus from "../assets/maleTaurus.jfif";
 import manTaurus2 from "../assets/maleTaurus2.jfif";
 import femaleTaurus from "../assets/femaleTaurus.jpg";
 import femaleTaurus2 from "../assets/femaleTaurus2.jpg";
+
 import manGemini from "../assets/maleGemini.jpg";
 import manGemini2 from "../assets/maleGemini2.jfif";
 import femaleGemini from "../assets/femaleGemini.jpg";
 import femaleGemini2 from "../assets/femaleGemini2.jpg";
-import manCancer from "../assets/maleTaurus.jfif";
-import manCancer2 from "../assets/maleTaurus2.jfif";
-import femaleCancer from "../assets/femaleTaurus.jpg";
-import femaleCancer2 from "../assets/femaleTaurus2.jpg";
+
+import manCancer from "../assets/maleCancer.jfif";
+import manCancer2 from "../assets/maleCancer2.webp";
+import femaleCancer from "../assets/femaleCancer.jpg";
+import femaleCancer2 from "../assets/femaleCancer2.jpg";
+
+import manLeo from "../assets/maleLeo.jfif";
+import manLeo2 from "../assets/maleLeo2.jfif";
+import femaleLeo from "../assets/femaleLeo.jpg";
+import femaleLeo2 from "../assets/femaleLeo2.jpg";
+
+import manVirgo from "../assets/maleVirgo.jfif";
+import manVirgo2 from "../assets/maleVirgo2.jfif";
+import femaleVirgo from "../assets/femaleVirgo.jpg";
+import femaleVirgo2 from "../assets/femaleVirgo2.jpg";
+
+import manLibra from "../assets/maleLibra.jfif";
+import manLibra2 from "../assets/maleLibra2.webp";
+import femaleLibra from "../assets/femaleLibra.jpg";
+import femaleLibra2 from "../assets/femaleLibra2.jpg";
+
+import manScorpio from "../assets/maleScorpio.jpg";
+import manScorpio2 from "../assets/maleScorpio2.jpg";
+import femaleScorpio from "../assets/femaleScorpio.jpg";
+import femaleScorpio2 from "../assets/femaleScorpio2.jpg";
+
+import manSagittarius from "../assets/maleSagittarius.jpg";
+import manSagittarius2 from "../assets/maleSagittarius2.jpg";
+import femaleSagittarius from "../assets/femaleSagittarius.jpg";
+import femaleSagittarius2 from "../assets/femaleSagittarius2.jpg";
+
+import manCapricorn from "../assets/maleCapricorn.jpg";
+import manCapricorn2 from "../assets/maleCapricorn2.jpg";
+import femaleCapricorn from "../assets/femaleCapricorn.jpg";
+import femaleCapricorn2 from "../assets/femaleCapricorn2.jpg";
+
+import manAquarius from "../assets/maleAquarius.jpg";
+import manAquarius2 from "../assets/maleAquarius2.jpg";
+import femaleAquarius from "../assets/femaleAquarius.jpg";
+import femaleAquarius2 from "../assets/femaleAquarius2.jpg";
+
+import manPisces from "../assets/malePisces.jpg";
+import manPisces2 from "../assets/malePisces2.jpg";
+import femalePisces from "../assets/femalePisces.jpg";
+import femalePisces2 from "../assets/femalePisces2.jpg";
 
 export const zodiacInfo = [
   {
@@ -236,6 +279,10 @@ export const zodiacInfo = [
             value:
               "Nam Kim Ngưu thuộc nhóm đất, biểu tượng là con bò đực mạnh mẽ. Họ có tính cách bền bỉ, kiên định và luôn theo đuổi mục tiêu đến cùng. Trong cuộc sống, họ thường tìm kiếm sự ổn định và không thích thay đổi đột ngột. Sự cẩn trọng giúp họ tránh được rủi ro, nhưng đôi khi cũng làm họ bỏ lỡ những cơ hội bất ngờ. Họ yêu thích cuộc sống bình yên, không ưa ồn ào hay những điều quá mới mẻ.",
           },
+          {
+            type: "image",
+            value: taurusCard,
+          },
         ],
       },
       {
@@ -248,6 +295,10 @@ export const zodiacInfo = [
               "Nam Kim Ngưu luôn tiếp cận mọi việc một cách từ tốn, không vội vàng hay hấp tấp. Họ đề cao tính thực tế, luôn suy nghĩ kỹ trước khi hành động. Chính sự kiên nhẫn này giúp họ đạt được thành công trong công việc và cuộc sống. Dù đôi lúc họ có thể bị xem là bảo thủ, nhưng họ tin rằng cách tiếp cận chậm mà chắc là con đường an toàn nhất.",
           },
           {
+            type: "image",
+            value: manTaurus,
+          },
+          {
             type: "h2",
             value: "Trung thành và đáng tin cậy",
           },
@@ -255,6 +306,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Đối với bạn bè và người thân, Kim Ngưu nam là người có thể tin tưởng tuyệt đối. Họ luôn giữ lời hứa và không bao giờ phản bội người khác. Trong tình bạn, họ là chỗ dựa vững chắc, luôn sẵn sàng giúp đỡ khi cần thiết. Tuy nhiên, nếu ai đó phản bội lòng tin của họ, rất khó để họ tha thứ và quên đi chuyện cũ.",
+          },
+          {
+            type: "image",
+            value: manTaurus2,
           },
         ],
       },
@@ -268,6 +323,10 @@ export const zodiacInfo = [
               "Khi yêu, Kim Ngưu nam không phải là người lãng mạn hay thích thể hiện bằng lời nói. Thay vào đó, họ thể hiện tình cảm bằng hành động chân thành. Một khi đã xác định tình cảm với ai đó, họ sẽ gắn bó lâu dài và rất khó thay đổi. Đối với họ, tình yêu là sự cam kết và bảo vệ, chứ không chỉ là cảm xúc thoáng qua.",
           },
           {
+            type: "image",
+            value: loveImg,
+          },
+          {
             type: "h2",
             value: "Thích sự ổn định trong tình yêu",
           },
@@ -275,6 +334,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Họ không thích những mối quan hệ hời hợt hay thay đổi liên tục. Khi yêu ai, họ luôn hướng tới một tương lai lâu dài và ổn định. Họ không dễ dàng bị hấp dẫn bởi những mối quan hệ thoáng qua, mà luôn tìm kiếm một người có thể cùng họ xây dựng gia đình.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
         ],
       },
@@ -295,6 +358,10 @@ export const zodiacInfo = [
             value:
               "Nữ Kim Ngưu là những cô gái mạnh mẽ, kiên định và có tư duy thực tế. Họ không thích những điều viển vông, luôn đặt ra kế hoạch rõ ràng cho cuộc sống. Trong công việc và các mối quan hệ, họ luôn giữ vững lập trường và không dễ bị ảnh hưởng bởi người khác. Họ yêu thích những giá trị truyền thống và luôn hướng tới sự ổn định.",
           },
+          {
+            type: "image",
+            value: taurusCard,
+          },
         ],
       },
       {
@@ -307,6 +374,10 @@ export const zodiacInfo = [
               "Phụ nữ Kim Ngưu không phải là người dễ bị lung lay hay phụ thuộc vào người khác. Họ tự tin vào khả năng của mình và luôn cố gắng tự làm mọi thứ. Dù cuộc sống có khó khăn đến đâu, họ cũng không dễ dàng bỏ cuộc hay dựa dẫm vào người khác.",
           },
           {
+            type: "image",
+            value: femaleTaurus,
+          },
+          {
             type: "h2",
             value: "Yêu thích sự ổn định",
           },
@@ -314,6 +385,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Họ không thích những thay đổi quá đột ngột hay cuộc sống quá nhiều biến động. Đối với họ, một cuộc sống bình yên và có kế hoạch rõ ràng là điều quan trọng nhất. Vì thế, họ luôn cố gắng xây dựng nền tảng vững chắc cho tương lai.",
+          },
+          {
+            type: "image",
+            value: femaleTaurus2,
           },
         ],
       },
@@ -327,6 +402,10 @@ export const zodiacInfo = [
               "Nữ Kim Ngưu không dễ dàng yêu một ai đó, nhưng khi đã yêu, họ rất chung thủy. Họ không thích những trò chơi tình cảm mà luôn mong muốn một mối quan hệ nghiêm túc. Họ sẵn sàng dành thời gian và công sức để vun đắp tình yêu.",
           },
           {
+            type: "image",
+            value: loveImg,
+          },
+          {
             type: "h2",
             value: "Đòi hỏi sự an toàn trong tình yêu",
           },
@@ -334,6 +413,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Họ cần một người có thể mang lại cho họ cảm giác an toàn và ổn định. Những người quá bay bổng hoặc thiếu trách nhiệm thường không thể khiến họ yên tâm. Vì thế, họ thường bị thu hút bởi những người chững chạc, có kế hoạch rõ ràng cho tương lai.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
         ],
       },
@@ -354,6 +437,10 @@ export const zodiacInfo = [
             value:
               "Nam Song Tử thuộc nguyên tố Khí, biểu tượng là cặp song sinh, thể hiện tính cách hai mặt của họ. Họ là những người năng động, thông minh, linh hoạt và luôn khao khát khám phá thế giới xung quanh. Với trí tuệ sắc bén và khả năng giao tiếp xuất sắc, họ có thể thích nghi nhanh chóng với mọi môi trường. Tuy nhiên, đôi khi sự thay đổi quá nhanh khiến họ trở nên khó đoán và thiếu ổn định trong cuộc sống.",
           },
+          {
+            type: "image",
+            value: geminiCard,
+          },
         ],
       },
       {
@@ -365,11 +452,19 @@ export const zodiacInfo = [
             value:
               "Không giống như những cung hoàng đạo cứng nhắc, Song Tử nam có khả năng thích nghi tuyệt vời. Họ có thể thay đổi cách suy nghĩ và hành động để phù hợp với hoàn cảnh. Dù gặp khó khăn, họ vẫn có thể tìm ra giải pháp một cách nhanh chóng. Tuy nhiên, sự linh hoạt đôi khi cũng khiến họ thiếu kiên trì và dễ bị cuốn theo những thứ mới mẻ.",
           },
+          {
+            type: "image",
+            value: manGemini,
+          },
           { type: "h2", value: "Thông minh và sáng tạo" },
           {
             type: "text",
             value:
               "Nam Song Tử có trí tuệ nhạy bén, họ tiếp thu nhanh và luôn đưa ra những ý tưởng sáng tạo độc đáo. Họ yêu thích việc học hỏi và không ngừng tìm kiếm kiến thức mới. Dù trong công việc hay cuộc sống, họ luôn có cách nhìn nhận vấn đề từ nhiều góc độ khác nhau. Chính điều này giúp họ trở thành những nhà lãnh đạo hoặc người truyền cảm hứng giỏi.",
+          },
+          {
+            type: "image",
+            value: manGemini2,
           },
           { type: "h2", value: "" },
           {
@@ -387,11 +482,19 @@ export const zodiacInfo = [
             value:
               "Nam Song Tử có sức hút đặc biệt nhờ khả năng giao tiếp khéo léo. Họ dễ dàng tạo ra những cuộc trò chuyện thú vị và khiến người khác bị thu hút. Khi yêu, họ thích mang đến sự bất ngờ và lãng mạn, làm cho mối quan hệ trở nên thú vị và đầy màu sắc.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Thay đổi nhanh trong tình cảm" },
           {
             type: "text",
             value:
               "Dù dễ yêu nhưng nam Song Tử cũng dễ thay đổi. Họ thích sự tự do và không muốn bị ràng buộc quá sớm trong một mối quan hệ. Điều này khiến họ đôi khi bị xem là thiếu nghiêm túc trong tình yêu. Tuy nhiên, nếu gặp được người thực sự phù hợp, họ sẽ trở nên chung thủy và sẵn sàng vun đắp cho tương lai.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -417,6 +520,10 @@ export const zodiacInfo = [
             value:
               "Nữ Song Tử là những cô gái hoạt bát, thông minh và đầy sức sống. Họ có tính cách linh hoạt, luôn tò mò về thế giới xung quanh và thích thử nghiệm những điều mới lạ. Với sự nhạy bén và khả năng giao tiếp tốt, họ thường được nhiều người yêu quý. Tuy nhiên, đôi khi họ cũng có xu hướng thiếu kiên nhẫn và dễ chán khi phải gò bó vào một khuôn khổ nhất định.",
           },
+          {
+            type: "image",
+            value: geminiCard,
+          },
         ],
       },
       {
@@ -428,11 +535,19 @@ export const zodiacInfo = [
             value:
               "Nữ Song Tử luôn mang đến nguồn năng lượng tích cực cho mọi người xung quanh. Họ thích kết nối với mọi người, luôn cởi mở và dễ bắt chuyện. Ở đâu có họ, ở đó có sự vui vẻ và không khí sôi động. Điều này giúp họ luôn được yêu mến trong các mối quan hệ xã hội.",
           },
+          {
+            type: "image",
+            value: femaleGemini,
+          },
           { type: "h2", value: "Sáng tạo và thích sự mới lạ" },
           {
             type: "text",
             value:
               "Cô gái Song Tử không thích sự đơn điệu, họ luôn tìm kiếm những điều mới mẻ để làm cho cuộc sống thú vị hơn. Họ có óc sáng tạo tuyệt vời và luôn đưa ra những ý tưởng độc đáo. Tuy nhiên, chính vì thích thử thách mới, họ có thể nhanh chán nếu một việc trở nên nhàm chán và thiếu sự đổi mới.",
+          },
+          {
+            type: "image",
+            value: femaleGemini2,
           },
           { type: "h2", value: "" },
           {
@@ -450,11 +565,19 @@ export const zodiacInfo = [
             value:
               "Nữ Song Tử không thích những mối quan hệ quá kiểm soát hay gò bó. Họ muốn có không gian riêng để theo đuổi những sở thích và đam mê của mình. Nếu một người đàn ông cố gắng áp đặt hoặc kiểm soát họ, rất có thể họ sẽ nhanh chóng rời xa.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Dễ thay đổi trong tình yêu" },
           {
             type: "text",
             value:
               "Họ có thể rất say mê một ai đó trong thời gian ngắn, nhưng cũng dễ dàng mất hứng thú nếu mối quan hệ trở nên nhạt nhẽo. Họ cần một người có thể giữ cho tình yêu luôn tươi mới và không bao giờ nhàm chán. Một mối quan hệ lý tưởng với họ phải đầy sự bất ngờ, sáng tạo và vui vẻ.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -480,6 +603,10 @@ export const zodiacInfo = [
             value:
               "Nam Cự Giải là những người có trái tim ấm áp, giàu tình cảm và rất quan tâm đến gia đình. Họ có vẻ ngoài trầm lặng nhưng bên trong lại là một tâm hồn sâu sắc và nhạy cảm. Với bản tính sống nội tâm, họ thường che giấu cảm xúc thật của mình và chỉ bộc lộ với những người họ tin tưởng. Họ luôn mong muốn một cuộc sống bình yên, ổn định và đề cao giá trị của gia đình. Tuy nhiên, sự nhạy cảm đôi khi khiến họ dễ bị tổn thương và khó quên đi những chuyện buồn trong quá khứ.",
           },
+          {
+            type: "image",
+            value: cancerCard,
+          },
         ],
       },
       {
@@ -491,11 +618,19 @@ export const zodiacInfo = [
             value:
               "Nam Cự Giải luôn đối xử với mọi người bằng sự chân thành và quan tâm sâu sắc. Họ coi trọng các mối quan hệ trong cuộc sống, đặc biệt là gia đình và những người thân yêu. Với trái tim ấm áp, họ sẵn sàng giúp đỡ và bảo vệ những người họ yêu thương mà không cần bất kỳ điều kiện gì.",
           },
+          {
+            type: "image",
+            value: manCancer,
+          },
           { type: "h2", value: "Nhạy cảm và dễ bị tổn thương" },
           {
             type: "text",
             value:
               "Họ có trực giác mạnh mẽ và rất nhạy cảm với cảm xúc của người khác. Điều này giúp họ dễ dàng đồng cảm và thấu hiểu người xung quanh. Tuy nhiên, mặt trái của sự nhạy cảm là họ dễ bị tổn thương bởi những lời nói hay hành động vô tình của người khác. Nếu bị phản bội, họ sẽ khó quên và rất lâu mới có thể mở lòng trở lại.",
+          },
+          {
+            type: "image",
+            value: manCancer2,
           },
           { type: "h2", value: "" },
           {
@@ -513,11 +648,19 @@ export const zodiacInfo = [
             value:
               "Khi yêu, Cự Giải nam rất nghiêm túc và luôn hướng tới một mối quan hệ bền vững. Họ không thích những mối tình thoáng qua mà mong muốn tìm được một người có thể gắn bó lâu dài. Một khi đã yêu, họ sẽ dành tất cả sự quan tâm và chăm sóc cho đối phương.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Cần một người mang lại cảm giác an toàn" },
           {
             type: "text",
             value:
               "Vì là người dễ bị tổn thương, Cự Giải nam cần một người yêu biết trân trọng và thấu hiểu họ. Họ không thích sự mập mờ hay những mối quan hệ không rõ ràng. Một tình yêu chân thành, ổn định sẽ giúp họ cảm thấy an toàn và sẵn sàng mở lòng.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -543,6 +686,10 @@ export const zodiacInfo = [
             value:
               "Nữ Cự Giải là mẫu người dịu dàng, tinh tế và rất tình cảm. Họ luôn đặt gia đình và những người thân yêu lên hàng đầu, coi đó là nguồn động lực lớn nhất trong cuộc sống. Với vẻ ngoài nhẹ nhàng, họ thu hút người khác bởi sự ấm áp và ân cần. Tuy nhiên, họ khá nhạy cảm và đôi khi dễ bị cảm xúc chi phối, khiến họ trở nên mong manh trong tình yêu.",
           },
+          {
+            type: "image",
+            value: cancerCard,
+          },
         ],
       },
       {
@@ -554,11 +701,19 @@ export const zodiacInfo = [
             value:
               "Nữ Cự Giải là những người phụ nữ hiền lành và luôn biết cách quan tâm đến người khác. Họ có trái tim nhân hậu và luôn sẵn sàng giúp đỡ mọi người xung quanh. Điều này khiến họ trở thành người bạn đồng hành tuyệt vời trong mọi mối quan hệ.",
           },
+          {
+            type: "image",
+            value: femaleCancer,
+          },
           { type: "h2", value: "Nhạy cảm và dễ xúc động" },
           {
             type: "text",
             value:
               "Họ rất nhạy cảm với những lời nói hay hành động của người khác. Đôi khi, chỉ một chuyện nhỏ cũng có thể khiến họ buồn và suy nghĩ rất nhiều. Họ có xu hướng che giấu cảm xúc thật của mình và chỉ chia sẻ với những người họ thực sự tin tưởng.",
+          },
+          {
+            type: "image",
+            value: femaleCancer2,
           },
           { type: "h2", value: "" },
           {
@@ -576,11 +731,19 @@ export const zodiacInfo = [
             value:
               "Khi yêu, nữ Cự Giải luôn dành trọn tình cảm cho người mình yêu. Họ thích chăm sóc và quan tâm đối phương từng chút một. Họ luôn mong muốn có một mối quan hệ bền vững và lâu dài, chứ không phải những cuộc tình thoáng qua.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Cần một bờ vai vững chắc" },
           {
             type: "text",
             value:
               "Do bản tính nhạy cảm, nữ Cự Giải cần một người đàn ông đủ mạnh mẽ và đáng tin cậy để làm chỗ dựa. Họ không thích những người quá vô tâm hoặc không quan tâm đến cảm xúc của họ. Một tình yêu chân thành, đầy sự sẻ chia chính là điều mà họ mong muốn nhất.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -606,6 +769,10 @@ export const zodiacInfo = [
             value:
               "Nam Sư Tử sinh ra đã mang trong mình khí chất của một vị vua. Họ mạnh mẽ, quyết đoán và luôn thích đứng ở vị trí trung tâm của sự chú ý. Với lòng tự tin và tham vọng, họ không ngại theo đuổi những điều vĩ đại trong cuộc sống. Tuy nhiên, chính vì sự kiêu hãnh này mà đôi khi họ trở nên bảo thủ, không chịu lắng nghe ý kiến của người khác. Dù vậy, nam Sư Tử vẫn luôn là người có tấm lòng rộng lượng, sẵn sàng giúp đỡ những ai cần đến mình.",
           },
+          {
+            type: "image",
+            value: leoCard,
+          },
         ],
       },
       {
@@ -617,11 +784,19 @@ export const zodiacInfo = [
             value:
               "Anh chàng Sư Tử luôn có chính kiến riêng và không dễ dàng bị lung lay bởi những lời nói xung quanh. Khi đã đặt ra mục tiêu, họ sẽ kiên trì theo đuổi đến cùng, bất kể khó khăn thử thách. Họ cũng là những người lãnh đạo bẩm sinh, biết cách dẫn dắt người khác đi theo mình. Tuy nhiên, đôi khi sự quyết đoán này lại biến thành bảo thủ, khiến họ khó chấp nhận sai lầm của bản thân.",
           },
+          {
+            type: "image",
+            value: manLeo,
+          },
           { type: "h2", value: "Hào phóng và ấm áp" },
           {
             type: "text",
             value:
               "Dù mạnh mẽ, nhưng nam Sư Tử cũng rất giàu tình cảm và luôn quan tâm đến những người xung quanh. Họ sẵn sàng giúp đỡ bạn bè mà không cần nhận lại điều gì. Trong những cuộc vui, họ luôn là người hào phóng nhất, không tiếc tiền để đem lại niềm vui cho mọi người. Chính sự rộng lượng này giúp họ có rất nhiều bạn bè trung thành.",
+          },
+          {
+            type: "image",
+            value: manLeo2,
           },
           { type: "h2", value: "Tự tin nhưng có phần kiêu ngạo" },
           {
@@ -640,11 +815,19 @@ export const zodiacInfo = [
             value:
               "Khi thích một ai đó, nam Sư Tử sẽ không ngần ngại bày tỏ tình cảm của mình. Họ thích theo đuổi hơn là được theo đuổi, luôn muốn mình là người kiểm soát mối quan hệ. Những cử chỉ ga lăng, sự quan tâm chu đáo của họ dễ dàng khiến đối phương cảm động.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Chung thủy nhưng cũng thích được ngưỡng mộ" },
           {
             type: "text",
             value:
               'Khi yêu, Sư Tử rất chân thành và chung thủy, không dễ dàng thay lòng đổi dạ. Tuy nhiên, họ vẫn thích được người khác ngưỡng mộ và tán dương, nên đôi khi sẽ có chút "thả thính" vô hại. Người yêu của họ cần có sự bao dung và tinh tế để hiểu được tính cách này.',
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "Yêu cầu cao với đối phương" },
           {
@@ -671,6 +854,10 @@ export const zodiacInfo = [
             value:
               "Nữ Sư Tử là hiện thân của sự mạnh mẽ, cá tính và kiêu hãnh. Họ sở hữu một phong thái tự tin, đầy lôi cuốn, luôn biết cách khiến mình nổi bật giữa đám đông. Dù có vẻ ngoài mạnh mẽ, họ vẫn là những người phụ nữ có trái tim ấm áp và luôn sẵn sàng bảo vệ những người mình yêu thương. Tuy nhiên, sự độc lập của họ đôi khi khiến người khác e dè, nhất là trong chuyện tình cảm.",
           },
+          {
+            type: "image",
+            value: leoCard,
+          },
         ],
       },
       {
@@ -680,7 +867,11 @@ export const zodiacInfo = [
           {
             type: "text",
             value:
-              ": Nữ Sư Tử không bao giờ chấp nhận sự yếu đuối hay bị người khác kiểm soát. Họ luôn muốn làm chủ cuộc sống của mình, tự quyết định mọi thứ mà không cần nhờ vả ai. Dù gặp khó khăn, họ cũng sẽ tự tìm cách vượt qua mà không muốn người khác thương hại.",
+              "Nữ Sư Tử không bao giờ chấp nhận sự yếu đuối hay bị người khác kiểm soát. Họ luôn muốn làm chủ cuộc sống của mình, tự quyết định mọi thứ mà không cần nhờ vả ai. Dù gặp khó khăn, họ cũng sẽ tự tìm cách vượt qua mà không muốn người khác thương hại.",
+          },
+          {
+            type: "image",
+            value: femaleLeo,
           },
           { type: "h2", value: "Hào phóng và chân thành" },
           {
@@ -688,11 +879,16 @@ export const zodiacInfo = [
             value:
               "Giống như nam Sư Tử, phụ nữ cung này cũng rất hào phóng, sẵn sàng giúp đỡ bạn bè khi cần. Họ không thích sự giả tạo hay ghen tị, luôn sống chân thành và hết lòng vì những người thân yêu. Sự chân thành này giúp họ có nhiều mối quan hệ đáng tin cậy.",
           },
+
           { type: "h2", value: "Có cá tính mạnh mẽ và đôi chút bướng bỉnh" },
           {
             type: "text",
             value:
               "Nữ Sư Tử có chính kiến riêng và không dễ dàng bị thuyết phục. Một khi đã quyết định điều gì, họ sẽ làm đến cùng mà không cần ai góp ý. Tuy nhiên, đôi khi sự cứng đầu này lại khiến họ khó nhận ra sai lầm của mình.",
+          },
+          {
+            type: "image",
+            value: femaleLeo2,
           },
         ],
       },
@@ -708,6 +904,10 @@ export const zodiacInfo = [
             value:
               "Khi yêu, họ sẽ yêu hết mình, dành toàn bộ tâm huyết cho người ấy. Họ không chấp nhận sự phản bội và luôn muốn có một mối quan hệ rõ ràng, nghiêm túc. Nếu phát hiện đối phương không thành thật, họ sẵn sàng rời đi mà không hối tiếc.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Thích được tôn trọng trong tình yêu" },
           {
             type: "text",
@@ -719,6 +919,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Phụ nữ Sư Tử không dễ dàng bị hấp dẫn bởi vẻ bề ngoài, họ đánh giá cao những người đàn ông có chí hướng và sự nghiệp vững chắc. Một người đàn ông tự tin, thông minh và biết cách trân trọng họ sẽ là lựa chọn hoàn hảo nhất.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
         ],
       },
@@ -739,6 +943,10 @@ export const zodiacInfo = [
             value:
               "Nam Xử Nữ là người cầu toàn, tỉ mỉ và luôn chú trọng đến từng chi tiết nhỏ trong cuộc sống. Họ thường có tư duy phân tích sắc bén, thích tổ chức mọi thứ theo trật tự và không chấp nhận sự bừa bãi hay cẩu thả. Với tính cách thực tế, họ không dễ bị cảm xúc chi phối mà luôn suy xét mọi việc một cách lý trí. Xử Nữ nam có xu hướng đặt ra tiêu chuẩn cao cho bản thân và cả những người xung quanh, khiến họ đôi khi trở nên khó tính. Tuy nhiên, họ lại là những người rất đáng tin cậy, luôn sẵn sàng giúp đỡ người khác khi cần.",
           },
+          {
+            type: "image",
+            value: virgoCard,
+          },
         ],
       },
       {
@@ -749,6 +957,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Nam Xử Nữ là người vô cùng chi tiết và cẩn thận trong mọi việc. Họ luôn đặt ra những tiêu chuẩn khắt khe và cố gắng đạt đến sự hoàn hảo. Điều này giúp họ trở thành những người làm việc hiệu quả nhưng cũng khiến họ dễ bị căng thẳng khi mọi thứ không theo ý muốn.",
+          },
+          {
+            type: "image",
+            value: manVirgo,
           },
           { type: "h2", value: "Thực tế và logic" },
           {
@@ -762,6 +974,10 @@ export const zodiacInfo = [
             value:
               "Xử Nữ nam không phải là người quá sôi nổi hay thích thể hiện bản thân. Họ có xu hướng sống nội tâm, thích quan sát và phân tích mọi thứ xung quanh. Tuy nhiên, khi đã thân thiết với ai đó, họ sẽ trở nên cởi mở và thể hiện sự quan tâm sâu sắc.",
           },
+          {
+            type: "image",
+            value: manVirgo2,
+          },
         ],
       },
       {
@@ -772,6 +988,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Khi yêu, nam Xử Nữ là người vô cùng chung thủy và tận tâm. Họ không dễ dàng bước vào một mối quan hệ, nhưng khi đã yêu, họ sẽ dành toàn bộ tình cảm và sự quan tâm cho đối phương.",
+          },
+          {
+            type: "image",
+            value: loveImg,
           },
           { type: "h2", value: "Khó tính và cầu toàn trong tình yêu" },
           {
@@ -784,6 +1004,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Mặc dù không quá lãng mạn nhưng nam Xử Nữ lại là người rất biết cách chăm sóc và bảo vệ người mình yêu. Họ thể hiện tình cảm bằng hành động thực tế hơn là lời nói hoa mỹ.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
         ],
       },
@@ -804,6 +1028,10 @@ export const zodiacInfo = [
             value:
               "Nữ Xử Nữ là người thông minh, sắc sảo và có khả năng phân tích tuyệt vời. Họ sống có nguyên tắc, luôn đặt ra mục tiêu rõ ràng và làm việc một cách cẩn thận để đạt được điều đó. Đối với họ, sự ngăn nắp và trật tự là điều vô cùng quan trọng, khiến họ đôi khi bị ám ảnh bởi sự hoàn hảo. Họ thường mang đến cảm giác lạnh lùng, khó gần nhưng thực chất lại là những người rất chân thành và tận tâm với những người họ tin tưởng.",
           },
+          {
+            type: "image",
+            value: virgoCard,
+          },
         ],
       },
       {
@@ -814,6 +1042,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Nữ Xử Nữ sở hữu trí tuệ nhạy bén, khả năng phân tích tốt và luôn đưa ra quyết định dựa trên lý trí. Họ không dễ bị cảm xúc chi phối mà luôn có cách nhìn nhận vấn đề rất thực tế.",
+          },
+          {
+            type: "image",
+            value: femaleVirgo,
           },
           { type: "h2", value: "Chăm chỉ và có trách nhiệm" },
           {
@@ -827,6 +1059,10 @@ export const zodiacInfo = [
             value:
               "Xử Nữ nữ không phải là người thích phô trương hay thể hiện bản thân quá nhiều. Họ thích giữ khoảng cách nhất định với những người xung quanh và chỉ cởi mở với những ai thực sự hiểu họ.",
           },
+          {
+            type: "image",
+            value: femaleVirgo2,
+          },
         ],
       },
       {
@@ -837,6 +1073,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Nữ Xử Nữ không yêu dễ dàng nhưng một khi đã yêu, họ rất chung thủy và nghiêm túc. Họ luôn tìm kiếm một mối quan hệ lâu dài và ổn định thay vì những cuộc tình thoáng qua.",
+          },
+          {
+            type: "image",
+            value: loveImg,
           },
           { type: "h2", value: "Khắt khe trong lựa chọn bạn đời" },
           {
@@ -849,6 +1089,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Xử Nữ nữ không quá lãng mạn nhưng lại thể hiện tình cảm bằng những hành động nhỏ nhặt và sự quan tâm chu đáo. Họ không giỏi nói lời ngọt ngào nhưng luôn sẵn sàng làm mọi thứ để người yêu cảm thấy an toàn và hạnh phúc.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
         ],
       },
@@ -869,6 +1113,10 @@ export const zodiacInfo = [
             value:
               "Nam Thiên Bình thuộc nguyên tố Khí, đại diện cho sự công bằng, hài hòa và yêu thích cái đẹp. Họ thường là những người lịch thiệp, nhã nhặn và có khả năng giao tiếp xuất sắc. Thiên Bình nam luôn tìm kiếm sự cân bằng trong cuộc sống, từ công việc đến các mối quan hệ cá nhân. Họ có xu hướng né tránh mâu thuẫn và luôn cố gắng làm hài lòng mọi người xung quanh. Điều này đôi khi khiến họ do dự và khó đưa ra quyết định dứt khoát trong những tình huống quan trọng.",
           },
+          {
+            type: "image",
+            value: libraCard,
+          },
         ],
       },
       {
@@ -879,6 +1127,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Nam Thiên Bình là những quý ông thực thụ, luôn cư xử nhã nhặn và biết cách tạo thiện cảm với người khác. Họ chú trọng đến cách ăn nói, hành xử và luôn đặt mình vào vị trí của người đối diện để tránh làm tổn thương ai. Sự tinh tế này giúp họ có nhiều mối quan hệ xã hội tốt đẹp và được mọi người yêu quý.",
+          },
+          {
+            type: "image",
+            value: manLibra,
           },
           { type: "h2", value: "Thích cái đẹp và nghệ thuật" },
           {
@@ -892,6 +1144,10 @@ export const zodiacInfo = [
             value:
               ": Một điểm yếu của nam Thiên Bình là sự thiếu quyết đoán, đặc biệt khi phải đưa ra những lựa chọn quan trọng. Vì luôn muốn cân bằng và làm hài lòng mọi người, họ thường cân nhắc quá nhiều, dẫn đến việc chậm trễ trong quyết định. Điều này có thể khiến họ bỏ lỡ nhiều cơ hội quan trọng trong cuộc sống.",
           },
+          {
+            type: "image",
+            value: manLibra2,
+          },
         ],
       },
       {
@@ -902,6 +1158,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Khi yêu, nam Thiên Bình luôn biết cách tạo ra những khoảnh khắc lãng mạn. Họ yêu thích những buổi hẹn hò đầy thơ mộng, những món quà bất ngờ và những lời nói ngọt ngào. Với họ, tình yêu không chỉ là sự gắn kết mà còn là nghệ thuật của cảm xúc và sự tinh tế.",
+          },
+          {
+            type: "image",
+            value: loveImg,
           },
           { type: "h2", value: "Chung thủy nhưng cần sự tự do" },
           {
@@ -914,6 +1174,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Do bản tính hay do dự, nam Thiên Bình thường bị thu hút bởi những người mạnh mẽ, quyết đoán. Một người có thể đưa ra quyết định nhanh chóng và chắc chắn sẽ giúp họ cân bằng lại sự thiếu quyết đoán của mình.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
         ],
       },
@@ -934,6 +1198,10 @@ export const zodiacInfo = [
             value:
               "Nữ Thiên Bình là những người dịu dàng, duyên dáng và có khiếu thẩm mỹ tuyệt vời. Họ yêu thích sự hài hòa, ghét sự xung đột và luôn cố gắng giữ gìn hòa khí trong các mối quan hệ. Với bản tính thân thiện, họ dễ dàng kết bạn và thu hút sự chú ý của người khác. Nàng Thiên Bình cũng rất tinh tế trong cách ứng xử, khiến ai tiếp xúc cũng cảm thấy thoải mái và dễ chịu. Tuy nhiên, đôi khi họ cũng bị phân tâm bởi quá nhiều lựa chọn và khó đưa ra quyết định dứt khoát.",
           },
+          {
+            type: "image",
+            value: libraCard,
+          },
         ],
       },
       {
@@ -944,6 +1212,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Nữ Thiên Bình sở hữu sự duyên dáng tự nhiên, khiến họ trở thành tâm điểm của mọi sự chú ý. Họ có phong thái nhẹ nhàng, nụ cười quyến rũ và cách nói chuyện thu hút. Không cần phải cố gắng quá nhiều, họ vẫn dễ dàng tạo ấn tượng với người đối diện.",
+          },
+          {
+            type: "image",
+            value: femaleLibra,
           },
           { type: "h2", value: "Yêu thích cái đẹp và sự thanh lịch" },
           {
@@ -960,6 +1232,10 @@ export const zodiacInfo = [
             value:
               "Mặc dù thích nhận được sự quan tâm, nữ Thiên Bình không thích bị bó buộc trong một mối quan hệ quá khắt khe. Họ cần có sự tự do và không gian riêng để theo đuổi đam mê và sở thích cá nhân.",
           },
+          {
+            type: "image",
+            value: femaleLibra2,
+          },
         ],
       },
       {
@@ -970,6 +1246,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Nữ Thiên Bình luôn mong muốn có một tình yêu đẹp như trong phim. Họ thích được chiều chuộng, yêu thương và trân trọng. Những hành động nhỏ như một tin nhắn ngọt ngào hay một cử chỉ quan tâm tinh tế cũng có thể khiến họ rung động.",
+          },
+          {
+            type: "image",
+            value: loveImg,
           },
           {
             type: "h2",
@@ -985,6 +1265,10 @@ export const zodiacInfo = [
             type: "text",
             value:
               "Vì bản tính dễ dao động, nữ Thiên Bình cần một người có thể làm điểm tựa vững chắc cho họ. Một người đàn ông mạnh mẽ, chín chắn, biết lắng nghe và thấu hiểu sẽ là lựa chọn lý tưởng của họ.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
         ],
       },
@@ -1005,6 +1289,10 @@ export const zodiacInfo = [
             value:
               "Nam Thiên Yết là những người mạnh mẽ, bí ẩn và đầy cuốn hút. Họ sở hữu một nội tâm sâu sắc, khó đoán và luôn toát lên một vẻ lạnh lùng khó tiếp cận. Bên trong lớp vỏ bọc cứng rắn ấy là một trái tim tràn đầy nhiệt huyết, đam mê và lòng trung thành tuyệt đối với những gì họ tin tưởng. Họ không thích thể hiện quá nhiều về bản thân, nhưng khi đã đặt mục tiêu, họ sẽ theo đuổi đến cùng bằng tất cả sự quyết tâm. Đối với họ, quyền lực, danh vọng và sự kiểm soát là những yếu tố quan trọng trong cuộc sống.",
           },
+          {
+            type: "image",
+            value: scorpioCard,
+          },
         ],
       },
       {
@@ -1016,11 +1304,19 @@ export const zodiacInfo = [
             value:
               "Nam Thiên Yết luôn thể hiện sự cứng rắn và quyết đoán trong mọi tình huống. Họ không dễ dàng bị ảnh hưởng bởi người khác và luôn có chính kiến riêng. Khi đã xác định mục tiêu, họ sẽ nỗ lực hết mình để đạt được, không ngại khó khăn hay thử thách.",
           },
+          {
+            type: "image",
+            value: manScorpio,
+          },
           { type: "h2", value: "Bí ẩn và khó đoán" },
           {
             type: "text",
             value:
               "Họ ít khi thể hiện cảm xúc ra bên ngoài, khiến người khác khó có thể hiểu được họ thực sự đang nghĩ gì. Điều này tạo nên một sức hút đặc biệt, nhưng cũng làm cho họ trở nên khó gần. Họ không thích những cuộc trò chuyện hời hợt mà luôn muốn khám phá chiều sâu trong tâm hồn của người khác.",
+          },
+          {
+            type: "image",
+            value: manScorpio2,
           },
           { type: "h2", value: "" },
           {
@@ -1038,11 +1334,19 @@ export const zodiacInfo = [
             value:
               "Một khi đã yêu, Thiên Yết nam sẽ dành trọn vẹn tình cảm và sự chung thủy cho đối phương. Họ không phải kiểu người dễ thay đổi hay yêu chơi bời. Tuy nhiên, tình yêu của họ cũng rất mãnh liệt và đôi khi mang tính chiếm hữu cao.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Ghen tuông và thích kiểm soát" },
           {
             type: "text",
             value:
               "Bởi vì yêu quá sâu đậm, họ thường có xu hướng ghen tuông và muốn kiểm soát nửa kia. Họ không thích sự mập mờ hay bất cứ điều gì có thể làm tổn hại đến mối quan hệ của mình. Điều này đôi khi khiến họ trở nên quá nghiêm khắc trong tình yêu, nhưng tất cả chỉ xuất phát từ sự lo lắng và tình cảm chân thành của họ.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -1068,6 +1372,10 @@ export const zodiacInfo = [
             value:
               "Nữ Thiên Yết là những người phụ nữ bí ẩn, quyến rũ và đầy nội lực. Họ có một sức hút đặc biệt khiến người khác không thể rời mắt, nhưng đồng thời cũng mang đến cảm giác khó tiếp cận. Họ sống nội tâm, không dễ dàng chia sẻ cảm xúc của mình với bất kỳ ai, nhưng một khi đã tin tưởng ai đó, họ sẽ hết lòng với người đó. Trong cuộc sống, họ mạnh mẽ, độc lập và không bao giờ dễ dàng chịu thua trước khó khăn.",
           },
+          {
+            type: "image",
+            value: scorpioCard,
+          },
         ],
       },
       {
@@ -1079,11 +1387,19 @@ export const zodiacInfo = [
             value:
               "Nữ Thiên Yết sở hữu một vẻ đẹp bí ẩn và cuốn hút một cách tự nhiên. Họ không cần quá phô trương nhưng vẫn có thể khiến người khác bị mê hoặc bởi ánh mắt và khí chất của mình. Họ không thích thể hiện quá nhiều, nhưng chính sự lạnh lùng và bí ẩn ấy lại làm họ trở nên đặc biệt.",
           },
+          {
+            type: "image",
+            value: femaleScorpio,
+          },
           { type: "h2", value: "Mạnh mẽ và quyết liệt" },
           {
             type: "text",
             value:
               "Họ là những người phụ nữ đầy nghị lực, không dễ bị khuất phục trước bất cứ điều gì. Họ có thể đối mặt với khó khăn một cách mạnh mẽ và không bao giờ chịu thua cuộc. Nếu họ đã quyết định làm điều gì đó, họ sẽ theo đuổi đến cùng mà không cần bất kỳ ai giúp đỡ.",
+          },
+          {
+            type: "image",
+            value: femaleScorpio2,
           },
           { type: "h2", value: "" },
           {
@@ -1101,11 +1417,19 @@ export const zodiacInfo = [
             value:
               "Nữ Thiên Yết khi yêu rất nghiêm túc và không bao giờ dễ dàng thay đổi tình cảm. Họ yêu một cách sâu sắc, mạnh mẽ và luôn muốn có một mối quan hệ gắn bó lâu dài. Tuy nhiên, họ cũng cần một người thực sự xứng đáng mới có thể mở lòng.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Khó tin tưởng nhưng yêu hết mình" },
           {
             type: "text",
             value:
               "Họ có một lớp phòng vệ rất dày và không dễ dàng tin tưởng bất kỳ ai. Nhưng nếu ai đó có thể phá bỏ lớp rào cản ấy, họ sẽ yêu bằng cả trái tim và sẵn sàng hy sinh tất cả vì đối phương. Họ không thích sự giả dối hay phản bội, và nếu bị tổn thương, họ sẽ không bao giờ tha thứ.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -1131,6 +1455,10 @@ export const zodiacInfo = [
             value:
               "Nam Nhân Mã là những chàng trai yêu tự do, phóng khoáng và tràn đầy năng lượng. Họ luôn tìm kiếm những trải nghiệm mới, thích phiêu lưu và không bao giờ muốn bị ràng buộc trong bất kỳ khuôn khổ nào. Tinh thần lạc quan và sự vui vẻ của họ khiến họ trở thành người bạn đồng hành lý tưởng trong mọi cuộc chơi. Bản chất tò mò và thích khám phá khiến họ luôn muốn mở rộng tầm nhìn và thử thách bản thân trong những lĩnh vực mới. Họ có một trái tim rộng mở, sẵn sàng kết bạn với mọi người và không ngần ngại thể hiện suy nghĩ của mình.",
           },
+          {
+            type: "image",
+            value: sagittariusCard,
+          },
         ],
       },
       {
@@ -1142,11 +1470,19 @@ export const zodiacInfo = [
             value:
               "Nam Nhân Mã luôn nhìn cuộc sống với một thái độ tích cực, dù gặp phải khó khăn hay thử thách. Họ tin rằng mọi chuyện đều có cách giải quyết và không bao giờ để bản thân bị chìm đắm trong tiêu cực quá lâu. Sự vui vẻ của họ có thể lan tỏa và làm cho những người xung quanh cảm thấy thoải mái.",
           },
+          {
+            type: "image",
+            value: manSagittarius,
+          },
           { type: "h2", value: "Yêu thích tự do và khám phá" },
           {
             type: "text",
             value:
               "Không gì có thể trói buộc được Nhân Mã nam, vì họ sinh ra để phiêu lưu. Họ thích đi đây đi đó, gặp gỡ những con người mới và khám phá những nền văn hóa khác nhau. Với họ, cuộc sống là một hành trình không ngừng nghỉ, và họ luôn háo hức chờ đón những điều mới mẻ phía trước.",
+          },
+          {
+            type: "image",
+            value: manSagittarius2,
           },
           { type: "h2", value: "" },
           {
@@ -1164,11 +1500,19 @@ export const zodiacInfo = [
             value:
               "Nhân Mã nam được nhiều người yêu thích bởi sự duyên dáng và tính cách vui vẻ của họ. Tuy nhiên, họ không phải là người dễ bị ràng buộc trong tình yêu. Họ thích tìm hiểu nhiều người trước khi thực sự nghiêm túc với một ai đó. Nhưng khi đã yêu thật lòng, họ sẽ dành cho đối phương sự chân thành và trân trọng tuyệt đối.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Cần một tình yêu không gò bó" },
           {
             type: "text",
             value:
               "Với Nhân Mã nam, tình yêu phải mang lại niềm vui và sự thoải mái, chứ không phải áp lực hay ràng buộc. Họ không thích cảm giác bị kiểm soát, và một mối quan hệ quá gò bó có thể khiến họ muốn chạy trốn. Vì vậy, họ cần một người yêu có cùng suy nghĩ tự do và biết tôn trọng không gian cá nhân của họ.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -1194,6 +1538,10 @@ export const zodiacInfo = [
             value:
               "Nữ Nhân Mã là những cô gái tràn đầy nhiệt huyết, yêu thích sự tự do và luôn tìm kiếm những điều thú vị trong cuộc sống. Họ là những người phụ nữ độc lập, mạnh mẽ và không dễ bị ảnh hưởng bởi ý kiến của người khác. Họ luôn theo đuổi đam mê, sống hết mình với những gì mình yêu thích và không bao giờ ngừng khám phá thế giới xung quanh. Sự cởi mở và lạc quan của họ khiến họ trở thành người bạn đồng hành tuyệt vời trong mọi cuộc hành trình.",
           },
+          {
+            type: "image",
+            value: sagittariusCard,
+          },
         ],
       },
       {
@@ -1205,11 +1553,19 @@ export const zodiacInfo = [
             value:
               "Nữ Nhân Mã không thích sự ràng buộc và luôn muốn tự quyết định cuộc sống của mình. Họ có suy nghĩ riêng và không dễ dàng bị ảnh hưởng bởi người khác. Với họ, cuộc sống là những trải nghiệm không ngừng, và họ không muốn bị bó buộc bởi bất kỳ điều gì.",
           },
+          {
+            type: "image",
+            value: femaleSagittarius,
+          },
           { type: "h2", value: "Nhiệt huyết và năng động" },
           {
             type: "text",
             value:
               "Họ luôn tràn đầy năng lượng và không thể ngồi yên một chỗ quá lâu. Họ thích tham gia các hoạt động mới, thử sức với những điều chưa từng làm và không bao giờ ngừng tìm kiếm những điều thú vị trong cuộc sống. Sự năng động của họ khiến những người xung quanh luôn cảm thấy hứng khởi.",
+          },
+          {
+            type: "image",
+            value: femaleSagittarius2,
           },
           { type: "h2", value: "" },
           {
@@ -1227,11 +1583,19 @@ export const zodiacInfo = [
             value:
               "Nữ Nhân Mã là những người yêu lãng mạn nhưng không thích một tình yêu quá nghiêm túc hoặc quá gò bó. Họ muốn một mối quan hệ vừa đủ sâu sắc nhưng vẫn giữ được sự tự do cá nhân. Họ cần một người yêu có thể đồng hành cùng họ trên những chuyến hành trình, chứ không phải kìm hãm họ lại.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Chung thủy với người xứng đáng" },
           {
             type: "text",
             value:
               "Dù có vẻ phóng khoáng trong tình yêu, nhưng khi đã yêu thật lòng, nữ Nhân Mã sẽ rất chung thủy. Họ không thích sự giả dối và sẽ chỉ gắn bó với người mà họ cảm thấy thực sự xứng đáng. Họ cần một người bạn đời có thể chia sẻ với họ những niềm vui trong cuộc sống, chứ không phải một người chỉ muốn sở hữu họ.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -1257,6 +1621,10 @@ export const zodiacInfo = [
             value:
               "Nam Ma Kết là những người có tinh thần trách nhiệm cao, sống thực tế và luôn theo đuổi mục tiêu với sự kiên trì bền bỉ. Họ thuộc tuýp người trưởng thành sớm, suy nghĩ chín chắn và ít khi để cảm xúc chi phối quyết định của mình. Trong công việc lẫn cuộc sống, họ đề cao tính kỷ luật và luôn có kế hoạch rõ ràng để đạt được thành công. Tuy nhiên, đôi khi sự nghiêm túc quá mức khiến họ trở nên khô khan, ít thể hiện cảm xúc, gây hiểu lầm rằng họ là người lạnh lùng. Dù vậy, bên trong họ là một người đàn ông đáng tin cậy, luôn sẵn sàng bảo vệ và chăm sóc những người mình yêu thương.",
           },
+          {
+            type: "image",
+            value: capricornCard,
+          },
         ],
       },
       {
@@ -1268,11 +1636,19 @@ export const zodiacInfo = [
             value:
               "Ma Kết nam là những người có tầm nhìn xa, luôn đặt ra mục tiêu lớn và không ngừng nỗ lực để đạt được nó. Họ không thích sự viển vông hay mơ mộng mà luôn suy nghĩ thực tế, hành động có tính toán rõ ràng. Điều này giúp họ đạt được nhiều thành tựu trong công việc và cuộc sống. Tuy nhiên, đôi khi sự tham vọng quá mức khiến họ trở nên cứng nhắc, ít linh hoạt trong suy nghĩ.",
           },
+          {
+            type: "image",
+            value: manCapricorn,
+          },
           { type: "h2", value: "Kỷ luật và nguyên tắc" },
           {
             type: "text",
             value:
               "Họ là người có kỷ luật cao, luôn tuân thủ các quy tắc và không bao giờ chấp nhận sự lười biếng hay thiếu trách nhiệm. Khi đã quyết định làm gì, họ sẽ kiên trì theo đuổi đến cùng mà không bị cám dỗ hay chùn bước trước khó khăn. Chính sự nghiêm túc này giúp họ được đồng nghiệp và bạn bè tin tưởng, nhưng cũng khiến họ đôi khi bị xem là quá cứng nhắc.",
+          },
+          {
+            type: "image",
+            value: manCapricorn2,
           },
           { type: "h2", value: "" },
           {
@@ -1290,11 +1666,19 @@ export const zodiacInfo = [
             value:
               "Ma Kết nam không phải là kiểu người thể hiện tình cảm một cách lãng mạn hay khoa trương. Họ thường lạnh lùng, ít nói nhưng lại yêu rất sâu sắc và chân thành. Khi đã yêu ai, họ sẽ dành hết lòng chung thủy và sẵn sàng bảo vệ người mình yêu. Tuy nhiên, sự khô khan của họ đôi khi khiến đối phương cảm thấy thiếu sự quan tâm và cần nhiều thời gian để hiểu được tình cảm thực sự của họ.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Người đàn ông của gia đình" },
           {
             type: "text",
             value:
               "Khi bước vào một mối quan hệ nghiêm túc, Ma Kết nam luôn hướng đến sự ổn định và lâu dài. Họ là những người đàn ông có trách nhiệm, luôn cố gắng xây dựng một gia đình hạnh phúc và vững chắc. Họ không thích những mối quan hệ hời hợt mà luôn tìm kiếm một người bạn đời có thể cùng họ vượt qua mọi khó khăn trong cuộc sống.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -1320,6 +1704,10 @@ export const zodiacInfo = [
             value:
               "Nữ Ma Kết là những cô gái mạnh mẽ, độc lập và đầy tham vọng. Họ không thích dựa dẫm vào ai mà luôn muốn tự xây dựng sự nghiệp và cuộc sống của riêng mình. Họ thông minh, sắc sảo và có khả năng lãnh đạo bẩm sinh, luôn biết cách kiểm soát mọi thứ trong tay mình. Tuy nhiên, họ cũng khá nghiêm túc và ít khi thể hiện cảm xúc ra bên ngoài. Đối với họ, sự thành công và ổn định trong cuộc sống quan trọng hơn những thú vui nhất thời.",
           },
+          {
+            type: "image",
+            value: capricornCard,
+          },
         ],
       },
       {
@@ -1331,11 +1719,19 @@ export const zodiacInfo = [
             value:
               "Nữ Ma Kết là những người rất thực tế, không dễ bị cảm xúc chi phối và luôn có suy nghĩ chín chắn trong mọi tình huống. Họ không thích phụ thuộc vào người khác mà luôn cố gắng tự mình đạt được những gì mình muốn. Họ có khả năng giải quyết vấn đề rất tốt, luôn suy nghĩ logic và đưa ra quyết định dựa trên lý trí nhiều hơn cảm xúc.",
           },
+          {
+            type: "image",
+            value: femaleCapricorn,
+          },
           { type: "h2", value: "Kiên trì và nghiêm túc" },
           {
             type: "text",
             value:
               "Một khi đã đặt ra mục tiêu, Ma Kết nữ sẽ kiên trì theo đuổi đến cùng. Họ không dễ bị nản lòng trước khó khăn mà luôn tìm cách vượt qua thử thách để đạt được thành công. Trong công việc, họ là những người rất chuyên nghiệp, luôn hoàn thành mọi nhiệm vụ một cách xuất sắc và nghiêm túc. Tuy nhiên, đôi khi sự nghiêm túc quá mức khiến họ trở nên cứng nhắc và khó gần.",
+          },
+          {
+            type: "image",
+            value: femaleCapricorn2,
           },
           { type: "h2", value: "" },
           {
@@ -1353,11 +1749,19 @@ export const zodiacInfo = [
             value:
               "Nữ Ma Kết không phải là người dễ dàng rơi vào lưới tình, họ luôn có sự cân nhắc kỹ lưỡng trước khi quyết định bước vào một mối quan hệ. Họ cần một người đàn ông đủ đáng tin cậy, đủ kiên nhẫn để có thể phá vỡ lớp vỏ bọc mạnh mẽ của họ. Một khi đã yêu, họ sẽ rất chung thủy và sẵn sàng làm mọi thứ vì người mình yêu.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Tìm kiếm sự ổn định trong tình yêu" },
           {
             type: "text",
             value:
               "Họ không thích những mối quan hệ hời hợt hay quá nhiều sóng gió. Điều họ mong muốn là một tình yêu vững chắc, có thể cùng nhau xây dựng một tương lai bền vững. Họ là mẫu phụ nữ của gia đình, có thể chu toàn mọi thứ nhưng cũng không bao giờ đánh mất bản thân vì tình yêu.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -1383,6 +1787,10 @@ export const zodiacInfo = [
             value:
               "Nam Bảo Bình là những người có tư duy sáng tạo, độc lập và yêu thích sự tự do. Họ luôn tìm kiếm sự mới mẻ, thích khám phá những điều khác biệt và không muốn bị ràng buộc vào bất kỳ khuôn khổ nào. Với bản tính cởi mở, họ có thể dễ dàng kết bạn với nhiều người, luôn mang đến năng lượng tích cực cho những người xung quanh. Tuy nhiên, sự khác biệt của họ cũng khiến họ đôi khi trở nên khó hiểu, khó đoán. Dù vậy, họ vẫn là những người đàn ông thú vị, đầy sức hút và không bao giờ nhàm chán trong mắt người khác.",
           },
+          {
+            type: "image",
+            value: aquariusCard,
+          },
         ],
       },
       {
@@ -1394,11 +1802,19 @@ export const zodiacInfo = [
             value:
               "Nam Bảo Bình không bao giờ đi theo lối mòn mà luôn có cách suy nghĩ và giải quyết vấn đề theo cách riêng của mình. Họ có trí tưởng tượng phong phú, luôn tìm ra những ý tưởng mới lạ, độc đáo mà người khác ít khi nghĩ đến. Đây là lý do họ thường thành công trong những lĩnh vực đòi hỏi sự sáng tạo và đổi mới. Tuy nhiên, đôi khi sự khác biệt quá mức khiến họ bị coi là lập dị hoặc khó hiểu.",
           },
+          {
+            type: "image",
+            value: manAquarius,
+          },
           { type: "h2", value: "Tự do và không thích bị ràng buộc" },
           {
             type: "text",
             value:
               "Họ là những người yêu thích sự tự do, không muốn bị kiểm soát hay bó buộc vào bất kỳ quy tắc nào. Họ thích làm mọi thứ theo cách của riêng mình và sẽ cảm thấy khó chịu nếu ai đó cố ép buộc họ làm điều gì đó trái với mong muốn. Chính vì thế, họ thường không thích những môi trường quá gò bó, cứng nhắc.",
+          },
+          {
+            type: "image",
+            value: manAquarius2,
           },
           { type: "h2", value: "" },
           {
@@ -1416,11 +1832,19 @@ export const zodiacInfo = [
             value:
               "Trong chuyện tình cảm, Bảo Bình nam là những người khó nắm bắt và ít khi thể hiện cảm xúc một cách rõ ràng. Họ có thể thích một người nhưng không dễ dàng bày tỏ, hoặc đôi khi lại thể hiện tình cảm theo cách rất riêng, không giống ai. Điều này khiến đối phương có thể cảm thấy họ xa cách hoặc thiếu sự quan tâm.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Một người yêu thú vị và không nhàm chán" },
           {
             type: "text",
             value:
               "Dù có phần khó đoán, nhưng khi yêu, họ lại là những người rất thú vị. Họ luôn mang đến sự bất ngờ cho đối phương, khiến tình yêu của họ không bao giờ trở nên nhàm chán. Họ không thích sự lặp lại, luôn tìm cách làm mới mối quan hệ để cả hai luôn cảm thấy vui vẻ, hạnh phúc.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -1446,6 +1870,10 @@ export const zodiacInfo = [
             value:
               "Nữ Bảo Bình là những cô gái thông minh, cá tính và có phong cách rất riêng. Họ không thích bị ràng buộc bởi bất kỳ điều gì và luôn muốn sống theo cách của mình. Với tư duy cởi mở, họ dễ dàng hòa nhập với mọi người, luôn tạo ra một bầu không khí vui vẻ, thoải mái xung quanh mình. Tuy nhiên, họ cũng khá độc lập, không thích phụ thuộc vào ai, điều này đôi khi khiến họ trông có vẻ lạnh lùng hoặc khó tiếp cận.",
           },
+          {
+            type: "image",
+            value: aquariusCard,
+          },
         ],
       },
       {
@@ -1457,11 +1885,19 @@ export const zodiacInfo = [
             value:
               "Nữ Bảo Bình là những người có tư duy rất sắc sảo, luôn có những ý tưởng độc đáo mà không ai có thể nghĩ tới. Họ yêu thích sự mới mẻ, không ngại thử thách bản thân trong nhiều lĩnh vực khác nhau. Nhờ vào trí thông minh của mình, họ có thể thích nghi nhanh với mọi tình huống và giải quyết vấn đề một cách linh hoạt.",
           },
+          {
+            type: "image",
+            value: femaleAquarius,
+          },
           { type: "h2", value: "Độc lập và cá tính mạnh mẽ" },
           {
             type: "text",
             value:
               "Họ không phải là những cô gái yếu đuối hay dễ bị ảnh hưởng bởi người khác. Ngược lại, họ rất độc lập, luôn tự đưa ra quyết định cho cuộc sống của mình. Họ không thích bị kiểm soát hay ép buộc vào bất kỳ khuôn khổ nào, điều này khiến họ đôi khi trông có vẻ bướng bỉnh hoặc khó gần.",
+          },
+          {
+            type: "image",
+            value: femaleAquarius2,
           },
           { type: "h2", value: "" },
           {
@@ -1479,11 +1915,19 @@ export const zodiacInfo = [
             value:
               "Bảo Bình nữ không phải là người dễ dàng yêu ai đó ngay từ cái nhìn đầu tiên. Họ cần thời gian để tìm hiểu, để cảm nhận xem đối phương có thực sự phù hợp với mình hay không. Chính vì thế, họ thường không vội vàng trong chuyện tình cảm, mà sẽ chọn lọc rất kỹ trước khi bước vào một mối quan hệ nghiêm túc.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Một người yêu thú vị và khó đoán" },
           {
             type: "text",
             value:
               "Khi yêu, Bảo Bình nữ không bao giờ để tình yêu trở nên nhàm chán. Họ luôn tạo ra những bất ngờ, mang đến cảm giác mới mẻ cho đối phương. Họ có cách thể hiện tình yêu rất riêng, không quá ủy mị nhưng vẫn khiến người kia cảm thấy đặc biệt. Tuy nhiên, họ cũng cần một không gian riêng, không thích bị kiểm soát quá mức trong mối quan hệ.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -1509,6 +1953,10 @@ export const zodiacInfo = [
             value:
               "Nam Song Ngư là những chàng trai mộng mơ, sống tình cảm và rất nhạy cảm. Họ mang trong mình một tâm hồn nghệ sĩ, yêu thích sự lãng mạn và thường bị cuốn hút bởi những điều đẹp đẽ trong cuộc sống. Không chỉ có trí tưởng tượng phong phú, họ còn rất thấu hiểu cảm xúc của người khác, luôn sẵn sàng lắng nghe và chia sẻ. Tuy nhiên, đôi khi họ có xu hướng sống quá nhiều trong thế giới nội tâm của mình, dễ bị cảm xúc chi phối. Vì thế, họ cần học cách cân bằng giữa thực tế và mộng tưởng để có một cuộc sống trọn vẹn hơn.",
           },
+          {
+            type: "image",
+            value: piscesCard,
+          },
         ],
       },
       {
@@ -1520,11 +1968,19 @@ export const zodiacInfo = [
             value:
               "Nam Song Ngư là những người cực kỳ nhạy bén với cảm xúc, cả của bản thân lẫn những người xung quanh. Họ dễ vui nhưng cũng dễ buồn, có thể cảm nhận sâu sắc mọi sự thay đổi dù là nhỏ nhất. Chính vì vậy, đôi khi họ trở nên dễ bị tổn thương, đặc biệt khi phải đối diện với sự thất vọng hoặc phản bội. Họ cần học cách mạnh mẽ hơn để tránh bị cuốn theo những cảm xúc tiêu cực.",
           },
+          {
+            type: "image",
+            value: manPisces,
+          },
           { type: "h2", value: "Sống nội tâm và thích sự yên bình" },
           {
             type: "text",
             value:
               "Họ không thích những nơi quá ồn ào hay môi trường căng thẳng, mà luôn tìm kiếm sự bình yên trong cuộc sống. Thay vì lao vào những cuộc tranh cãi, họ sẽ chọn cách im lặng hoặc rút lui. Chính điều này đôi khi khiến họ bị hiểu lầm là người thiếu quyết đoán, nhưng thực ra họ chỉ muốn tránh những điều làm tổn thương mình.",
+          },
+          {
+            type: "image",
+            value: manPisces2,
           },
           { type: "h2", value: "" },
           {
@@ -1542,11 +1998,19 @@ export const zodiacInfo = [
             value:
               "Khi yêu, Song Ngư nam là những chàng trai cực kỳ lãng mạn, luôn biết cách khiến đối phương cảm thấy hạnh phúc. Họ thích những cử chỉ quan tâm nhẹ nhàng, những món quà bất ngờ và những khoảnh khắc ngọt ngào bên cạnh người mình yêu. Đối với họ, tình yêu không chỉ là cảm xúc mà còn là sự thấu hiểu và sẻ chia.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Dễ tổn thương trong chuyện tình cảm" },
           {
             type: "text",
             value:
               "Vì sống tình cảm nên họ rất sợ bị tổn thương trong tình yêu. Nếu bị phản bội hoặc không được đáp lại tình cảm như mong muốn, họ có thể chìm trong đau khổ rất lâu. Đôi khi, họ còn có xu hướng bi quan hoặc tự trách bản thân khi một mối quan hệ kết thúc. Chính vì thế, họ cần một người bạn đời biết trân trọng và thấu hiểu mình.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           { type: "h2", value: "" },
           {
@@ -1572,6 +2036,10 @@ export const zodiacInfo = [
             value:
               "Nữ Song Ngư là những cô gái dịu dàng, nữ tính và có tâm hồn mơ mộng. Họ sống thiên về cảm xúc, dễ xúc động và luôn mong muốn có một tình yêu đẹp như cổ tích. Với trái tim ấm áp, họ luôn sẵn sàng giúp đỡ người khác mà không cần đòi hỏi sự đền đáp. Tuy nhiên, chính sự nhạy cảm này cũng khiến họ dễ bị tổn thương nếu không được yêu thương đúng cách.",
           },
+          {
+            type: "image",
+            value: piscesCard,
+          },
         ],
       },
       {
@@ -1583,11 +2051,19 @@ export const zodiacInfo = [
             value:
               "Những cô gái Song Ngư luôn mang đến cảm giác nhẹ nhàng, dễ chịu cho những người xung quanh. Họ biết cách quan tâm đến người khác, luôn chú ý đến những điều nhỏ nhặt để làm cho cuộc sống trở nên dễ dàng hơn. Nhờ sự tinh tế này, họ dễ dàng tạo dựng được những mối quan hệ tốt đẹp.",
           },
+          {
+            type: "image",
+            value: femalePisces,
+          },
           { type: "h2", value: "Dễ tin người và hay mơ mộng" },
           {
             type: "text",
             value:
               'Vì có tâm hồn lãng mạn, họ thường hay đặt niềm tin vào những điều tốt đẹp trong cuộc sống. Họ dễ bị thu hút bởi những lời nói ngọt ngào và dễ dàng rung động trước những cử chỉ yêu thương. Tuy nhiên, điều này cũng có thể khiến họ trở thành "con mồi" cho những người không chân thành, dễ bị tổn thương nếu đặt niềm tin sai chỗ.',
+          },
+          {
+            type: "image",
+            value: femalePisces2,
           },
           { type: "h2", value: "" },
           {
@@ -1605,11 +2081,19 @@ export const zodiacInfo = [
             value:
               "Nữ Song Ngư luôn khao khát một tình yêu trọn vẹn, đầy sự quan tâm và lãng mạn. Họ thích những cử chỉ nhẹ nhàng, những lời nói yêu thương và những khoảnh khắc đáng nhớ bên người mình yêu. Đối với họ, tình yêu không chỉ là sự gắn kết mà còn là sự thấu hiểu và nâng đỡ nhau trong cuộc sống.",
           },
+          {
+            type: "image",
+            value: loveImg,
+          },
           { type: "h2", value: "Dễ bị tổn thương khi yêu" },
           {
             type: "text",
             value:
               "Vì đặt quá nhiều cảm xúc vào tình yêu, họ dễ cảm thấy đau lòng nếu mọi thứ không diễn ra như mong đợi. Nếu bị phản bội hoặc không được trân trọng, họ có thể mất rất lâu để vượt qua. Tuy nhiên, nếu tìm được người yêu thương thật lòng, họ sẽ là những người bạn đời tuyệt vời, luôn mang đến sự ấm áp và hạnh phúc cho đối phương.",
+          },
+          {
+            type: "image",
+            value: loveImg2,
           },
           {
             type: "h2",
