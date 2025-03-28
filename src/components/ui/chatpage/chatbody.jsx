@@ -3,8 +3,12 @@ const ChatBody = ({
 	newSocket,
 	user,
 	matchedUser,
+	setIsMatched,
 	handleLeave,
+	handleQuit,
 	failMessage,
+	setFailMessage,
+	setMatchedUser,
 }) => {
 	const [chat, setChat] = useState([]);
 	const [notify, setNotify] = useState(null);
@@ -18,33 +22,43 @@ const ChatBody = ({
 	};
 	// Xử lí nhận tin nhắn
 
-	const checkOut =
-		failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!";
-
-	const checkRefuse = failMessage === "Fail to match!";
 	const handleMessage = (data) => {
-		setChat((prevChat) => [...prevChat, data]);
+		if (data) {
+			setFailMessage("");
+			setChat((prevChat) => [...prevChat, data]);
+		}
 	};
 
 	// Nhận thông tin chat từ server socket
 	useEffect(() => {
 		newSocket.on("message", handleMessage);
-
 		return () => {
 			newSocket.off("message");
 		};
 	}, [newSocket]);
-
+	useEffect(() => {
+		newSocket.on("disconnect", (data) => {
+			if (data) {
+				newSocket.emit("leave", {});
+			}
+		});
+		return () => {
+			newSocket.off("disconnect");
+		};
+	}, [newSocket]);
 	useEffect(() => {
 		newSocket.on("end", (data) => {
 			console.log(data.message);
 			setNotify(data.message);
+			newSocket.emit("leave", {});
+			setChat([]);
+			// setMatchedUser(null);
+			newSocket.off("message");
 		});
 		return () => {
 			newSocket.off("end");
 		};
 	}, [newSocket]);
-
 	useEffect(() => {
 		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
@@ -65,13 +79,12 @@ const ChatBody = ({
 						<time className="text-xs opacity-50">Now</time>
 					</div>
 					<div className="chat-bubble chat-bubble-warning">
-						{checkRefuse
-							? "Ghép cặp thất bại :( Nửa kia đã không chấp nhận trao duyên"
-							: "Vui lòng xin chờ trong giây lát cho đến khi nửa kia kết nối thành công 😁 ..."}
+						Vui lòng xin chờ trong giây lát cho đến khi nửa kia kết nối thành
+						công 😁 ...
 					</div>
 					<div className="opacity-50 chat-footer">Warning</div>
 				</div>
-				{(checkOut || checkRefuse) && (
+				{notify && (
 					<button
 						className="btn btn-soft btn-md btn-accent"
 						onClick={handleOut}
@@ -129,7 +142,7 @@ const ChatBody = ({
 								<time className="text-xs opacity-50">Now</time>
 							</div>
 							<div className="chat-bubble chat-bubble-warning">
-								Nửa kia đã rời đi trong tĩnh lặng ...
+								Ai đó đã rời đi trong tĩnh lặng ...
 							</div>
 							<div className="opacity-50 chat-footer">Sad</div>
 						</div>
