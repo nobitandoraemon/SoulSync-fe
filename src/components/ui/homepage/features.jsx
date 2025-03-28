@@ -13,7 +13,7 @@ const Features = () => {
 			<div className="py-16">
 				<div className="text-center hero-content text-neutral-content">
 					<div className="flex flex-col items-center max-w-lg">
-						<div className="mb-4 badge badge-secondary top-6">Features</div>
+						{/* <div className="mb-4 badge badge-secondary top-6">Features</div> */}
 						<h1 className="mb-12 text-5xl font-bold">
 							Ghép đôi
 							<span className="text-accent"> Thông minh</span>

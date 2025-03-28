@@ -486,20 +486,7 @@ const MatchPage = () => {
 		}
 	}, [user]);
 
-	useEffect(() => {
-		const handlePopState = () => {
-			// Điều hướng đến trang /match và reload
-			window.location.href = "/match";
-		};
 
-		// Lắng nghe sự kiện popstate
-		window.addEventListener("popstate", handlePopState);
-
-		// Cleanup listener khi component unmount
-		return () => {
-			window.removeEventListener("popstate", handlePopState);
-		};
-	}, []);
 
 	useEffect(() => {
 		setInterval(() => {

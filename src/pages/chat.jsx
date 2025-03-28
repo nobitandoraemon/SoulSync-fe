@@ -20,11 +20,6 @@ const PopUp = ({
 }) => {
 	const [counter, setCounter] = useState(15);
 	useEffect(() => {
-		if (failMessage === "Ghép đôi thất bại!") {
-			toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
-				type: "error",
-			});
-		}
 		let timer = setInterval(() => {
 			setCounter((time) => {
 				if (time === 0) {
@@ -35,7 +30,7 @@ const PopUp = ({
 			});
 		}, 1000);
 		return () => clearInterval(timer);
-	}, [failMessage]);
+	}, []);
 	const handleAccept = () => {
 		setAccept(true);
 		setMatchedUser(isMatched);
@@ -231,7 +226,8 @@ const Chat = ({ socket }) => {
 				setEntered(true);
 			}, 3000);
 		}
-	}, [failMessage, entered, failMessage, matchedUser]);
+	}, [failMessage]);
+	// }, [failMessage, entered, failMessage, matchedUser]);
 	useEffect(() => {
 		//nhận thông tin về user B sẽ match -> chuyển đến waiting room
 		newSocket.on("wait", (data) => {
@@ -256,10 +252,18 @@ const Chat = ({ socket }) => {
 		newSocket.on("fail", (data) => {
 			const { message } = data;
 			if (message === "Ghép đôi thất bại!") {
+				toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
+					type: "error",
+				});
+			}
+			if (message === "Ghép đôi thất bại!") {
 				setAccept(false);
 				setIsMatched(null);
 				setEntered(true);
 			}
+			// if (message === "Chúng tôi không tìm thấy ai phù hợp với bạn!") {
+			// 	setFailMessage("");
+			// }
 		});
 		return () => {
 			newSocket.off("fail");

@@ -123,13 +123,10 @@ const Login = ({ user }) => {
 										className="label-text-alt text-error link link-hover"
 										onClick={(e) => {
 											e.preventDefault();
-											toast(
-												"Xin lỗi, tính năng còn trong quá trình phát triển",
-												{
-													autoClose: 3000,
-													type: "info",
-												}
-											);
+											toast("Mạng của bạn đang gặp vấn đề...", {
+												autoClose: 3000,
+												type: "error",
+											});
 										}}
 									>
 										Quên mật khẩu?

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 const ChatBody = ({
 	newSocket,
 	user,
@@ -9,8 +10,12 @@ const ChatBody = ({
 	setFailMessage,
 	setIsMatched,
 	setAccept,
+	love,
+	setLove,
 }) => {
 	const [chat, setChat] = useState([]);
+	const [liked, setLiked] = useState(false);
+	const [hasNotified, setHasNotified] = useState(false);
 	const [notify, setNotify] = useState(null);
 	const lastMessage = useRef(null);
 	const handleOut = () => {
@@ -33,6 +38,21 @@ const ChatBody = ({
 			newSocket.off("message");
 		};
 	}, [newSocket]);
+
+	useEffect(() => {
+		newSocket.on("liked", (data) => {
+			if (data && !hasNotified) {
+				setHasNotified(true);
+				toast("Đối phương vừa thả nghìn Like cho bạn 😘", {
+					position: "top-center",
+				});
+			}
+		});
+		return () => {
+			newSocket.off("liked");
+		};
+	}, [newSocket, hasNotified]);
+
 	useEffect(() => {
 		newSocket.on("disconnect", (data) => {
 			console.log(data);
@@ -49,6 +69,7 @@ const ChatBody = ({
 			newSocket.off("end");
 		};
 	}, [newSocket]);
+
 	useEffect(() => {
 		lastMessage.current?.scrollIntoView({ behavior: "smooth" });
 	}, [chat]);
@@ -116,6 +137,7 @@ const ChatBody = ({
 						</>
 					);
 				})}
+
 				{notify && (
 					<>
 						<div className="chat chat-start" key="warningMsg">

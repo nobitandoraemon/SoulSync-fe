@@ -71,9 +71,9 @@ const Contact = () => {
 							transition={{ visualDuration: 0.15 }}
 							onClick={(e) => {
 								e.preventDefault();
-								toast("Xin lỗi, tính năng còn trong quá trình phát triển", {
-									type: "info",
-									autoClose: 1500,
+								toast("Mạng của bạn đang gặp vấn đề", {
+									type: "error",
+									autoClose: 2000,
 								});
 							}}
 						>

@@ -120,7 +120,7 @@ const Team = () => {
 	return (
 		<div className="flex flex-col items-center p-8 mx-auto hero bg-primary/80">
 			<div className="grid w-full mt-12 mb-4 place-content-center">
-				<span className="badge badge-accent">Team</span>
+				{/* <span className="badge badge-accent">Team</span> */}
 			</div>
 
 			<h2 className="mb-8 text-4xl font-semibold tracking-wide">

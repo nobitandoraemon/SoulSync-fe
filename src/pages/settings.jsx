@@ -133,7 +133,7 @@ const ChangeTheme = ({ toggleTheme }) => {
 			id="themes"
 		>
 			<h2 className="pl-6 text-2xl font-bold sm:text-xl text-primary">
-				Themes Controller
+				Tuỳ Chỉnh Chủ Đề
 			</h2>
 
 			<div className="grid mx-auto">
@@ -177,7 +177,7 @@ const DangerZone = ({ user }) => {
 			onSubmit={handleDelete}
 		>
 			<h2 className="pl-6 text-2xl font-bold sm:text-xl text-primary">
-				Danger Zone
+				Khu Vực Nhạy Cảm
 			</h2>
 
 			<form className="grid max-w-2xl mx-auto">
@@ -356,7 +356,7 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 			id="others"
 		>
 			<h2 className="pl-6 text-2xl font-bold sm:text-xl text-primary">
-				Others
+				Thông Tin Riêng Tư
 			</h2>
 
 			<div className="grid max-w-2xl mx-auto">
@@ -604,7 +604,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 			id="public"
 		>
 			<h2 className="pl-6 text-2xl font-bold sm:text-xl text-primary">
-				Public Profile
+				Thông Tin Cơ Bản
 			</h2>
 
 			<form className="grid max-w-2xl mx-auto mt-8" onSubmit={handleSubmit}>
@@ -640,7 +640,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 							className="btn btn-primary btn-outline"
 							onClick={DeleteImage}
 						>
-							Delete picture
+							Xoá ảnh
 						</button>
 					</div>
 				</div>
@@ -688,7 +688,24 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 							</fieldset>
 						</div>
 					</div>
-
+					<div className="flex flex-col items-center w-1/2 mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
+						<div className="w-full">
+							<fieldset className="fieldset">
+								<legend className="fieldset-legend text-primary">
+									Biệt danh bạn muốn hiển thị
+								</legend>
+								<input
+									type="text"
+									className="input"
+									placeholder={user.nickName}
+									onChange={(e) =>
+										setFormData({ ...formData, nickName: e.target.value })
+									}
+								/>
+								<div className="fieldset-label text-secondary">Optional</div>
+							</fieldset>
+						</div>
+					</div>
 					<div className="items-center mt-8 sm:mt-14">
 						<div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
 							<div className="w-full">

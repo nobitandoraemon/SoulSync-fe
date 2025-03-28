@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
 	ChatBody,
 	ChatInput,
 	ChatHeader,
 	Info,
 } from "../../../config/components";
-import { set } from "react-hook-form";
+import { ThemeContext } from "../../../context/themeprovider";
+import { toast } from "react-toastify";
 
 const ChatBox = ({
 	accept,
@@ -20,6 +21,36 @@ const ChatBox = ({
 	setFailMessage,
 	setMatchedUser,
 }) => {
+	const [love, setLove] = useState(null);
+	const [hasNotified, setHasNotified] = useState(false);
+	const { toggleTheme } = useContext(ThemeContext);
+	const handleLike = () => {
+		newSocket.emit("like", {});
+	};
+
+	useEffect(() => {
+		newSocket.on("love", (data) => {
+			if (data && !hasNotified) {
+				setLove(true);
+				toggleTheme("valentine");
+				setHasNotified(true);
+				toast("Cả hai bạn đều bấm Like", {
+					position: "top-center",
+					autoClose: 3000,
+				});
+				toast(
+					"Giờ đây cả hai đều đã tiết lộ gần như toàn bộ thông tin tại thẻ cá nhân 😍",
+					{
+						position: "top-center",
+						autoClose: 3000,
+					}
+				);
+			}
+		});
+		return () => {
+			newSocket.off("love");
+		};
+	}, [newSocket, hasNotified]);
 	// Kiểm tra người dùng reload trang = disconnect
 	useEffect(() => {
 		window.addEventListener("beforeunload", handleQuit);
@@ -38,10 +69,18 @@ const ChatBox = ({
 					handleLeave={handleLeave}
 					handleQuit={handleQuit}
 					failMessage={failMessage}
+					love={love}
+					setLove={setLove}
+					handleLike={handleLike}
 				/>
 			</div>
 			<div className="flex flex-col flex-auto flex-shrink-0 h-full min-h-screen pb-12 md:mb-0">
-				<Info matchedUser={matchedUser} />
+				<Info
+					matchedUser={matchedUser}
+					love={love}
+					setLove={setLove}
+					handleLike={handleLike}
+				/>
 				<ChatBody
 					newSocket={newSocket}
 					setMatchedUser={setMatchedUser}
@@ -53,6 +92,9 @@ const ChatBox = ({
 					handleLeave={handleLeave}
 					failMessage={failMessage}
 					setFailMessage={setFailMessage}
+					love={love}
+					setLove={setLove}
+					handleLike={handleLike}
 				/>
 				<ChatInput
 					newSocket={newSocket}
