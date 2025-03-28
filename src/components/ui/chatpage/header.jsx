@@ -80,7 +80,13 @@ const ChatNav = ({
 	handleLike,
 }) => {
 	const [id, setId] = useState(1);
-
+	const handleOut = () => {
+		handleLeave();
+		setTimeout(() => {
+			window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+			window.location.reload();
+		}, 2000);
+	};
 	useEffect(() => {
 		setTimeout(() => {
 			id === 5 ? setId(1) : setId((prev) => prev + 1);
@@ -120,7 +126,7 @@ const ChatNav = ({
 				<div className="btn btn-ghost btn-circle">
 					<ToggleTheme />
 				</div>
-				<button className="btn btn-ghost btn-circle" onClick={handleLeave}>
+				<button className="btn btn-ghost btn-circle" onClick={handleOut}>
 					<div className="indicator">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"

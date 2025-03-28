@@ -164,7 +164,8 @@ const DangerZone = ({ user }) => {
 			});
 			toast(response.data.message, { type: "success" });
 			setTimeout(() => {
-				location.reload();
+				window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+				window.location.reload();
 			}, 1500);
 		} catch (error) {
 			toast(error.data.message, { type: "error" });

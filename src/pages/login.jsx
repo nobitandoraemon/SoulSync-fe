@@ -127,6 +127,12 @@ const Login = ({ user }) => {
 												autoClose: 3000,
 												type: "error",
 											});
+											setTimeout(() => {
+												window.open(
+													"https://youtu.be/a3HCybJ5Ooc?si=kDiQzdd8PYfa5lxQ",
+													"_blank"
+												);
+											}, 2000);
 										}}
 									>
 										Quên mật khẩu?

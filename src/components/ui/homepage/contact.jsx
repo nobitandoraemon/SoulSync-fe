@@ -79,6 +79,12 @@ const Contact = () => {
 									type: "error",
 									autoClose: 2000,
 								});
+								setTimeout(() => {
+									window.open(
+										"https://youtube.com/shorts/mPCf_H-6A88?si=58_-c9_LZbrHdLVF",
+										"_blank"
+									);
+								}, 2000);
 							}}
 						>
 							Gửi
