@@ -31,6 +31,18 @@ import manAries from "../assets/man_aries.jpg";
 import manAries2 from "../assets/S0xcFk9vcYP91DwiTa3V--1--fhc0l.webp";
 import femaleAries from "../assets/gettyimages-531693677-612x612.jpg";
 import femaleAries2 from "../assets/femaleAries2.jpg";
+import manTaurus from "../assets/maleTaurus.jfif";
+import manTaurus2 from "../assets/maleTaurus2.jfif";
+import femaleTaurus from "../assets/femaleTaurus.jpg";
+import femaleTaurus2 from "../assets/femaleTaurus2.jpg";
+import manGemini from "../assets/maleGemini.jpg";
+import manGemini2 from "../assets/maleGemini2.jfif";
+import femaleGemini from "../assets/femaleGemini.jpg";
+import femaleGemini2 from "../assets/femaleGemini2.jpg";
+import manCancer from "../assets/maleTaurus.jfif";
+import manCancer2 from "../assets/maleTaurus2.jfif";
+import femaleCancer from "../assets/femaleTaurus.jpg";
+import femaleCancer2 from "../assets/femaleTaurus2.jpg";
 
 export const zodiacInfo = [
   {
