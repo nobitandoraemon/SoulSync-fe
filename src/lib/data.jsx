@@ -27,6 +27,7 @@ import sagittariusCard from "../assets/sagittariusCard.jpg";
 import capricornCard from "../assets/capricornuscard.jpg";
 import aquariusCard from "../assets/aquariusCard.jpg";
 import piscesCard from "../assets/piscesCard.jpg";
+
 import manAries from "../assets/man_aries.jpg";
 import manAries2 from "../assets/S0xcFk9vcYP91DwiTa3V--1--fhc0l.webp";
 import femaleAries from "../assets/gettyimages-531693677-612x612.jpg";
