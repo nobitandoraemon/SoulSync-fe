@@ -1,10 +1,9 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useScroll, Toast, ChatBox } from "../config/components";
 import { cn } from "../lib/utils";
 import { useOutletContext, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { APP_ROUTES } from "../lib/constants";
-import { useUser } from "../hooks/useUser";
 const PopUp = ({
 	setAccept,
 	setMatchedUser,
@@ -14,6 +13,8 @@ const PopUp = ({
 	setRefuseMsg,
 	failMessage,
 	setFailMessage,
+	setEntered,
+	handleRefuse,
 }) => {
 	const [counter, setCounter] = useState(30);
 	useEffect(() => {
@@ -35,11 +36,6 @@ const PopUp = ({
 	}, [failMessage]);
 	const handleAccept = () => {
 		setAccept(true);
-	};
-	const handleRefuse = () => {
-		newSocket.emit("refuse", {});
-		setMatchedUser(null);
-		setFailMessage("");
 	};
 
 	return (
@@ -136,8 +132,11 @@ const Chat = ({ socket }) => {
 		const quest = window.confirm("Bạn có chắc chắn sẽ huỷ ghép cặp ?");
 		if (quest) {
 			toast("Đang quay lại trang thông tin ...", { type: "info" });
+			newSocket.emit("leave", {});
 			setTimeout(() => {
-				navigate(APP_ROUTES.MATCH);
+				setEntered(false);
+				setMatchedUser(null);
+				handleQuit();
 			}, 2000);
 		} else {
 			toast("Tiếp tục chờ đợi một tình yêu ...", { type: "success" });
@@ -146,10 +145,9 @@ const Chat = ({ socket }) => {
 	// Người dùng rời chat
 
 	const handleQuit = () => {
-		newSocket.emit("leave", {});
-		setEntered(false);
 		window.location.href = "/match";
 	};
+
 	const handleLeave = () => {
 		const quest = window.confirm("Bạn có chắc chắn rời đi ?");
 
@@ -165,13 +163,15 @@ const Chat = ({ socket }) => {
 			});
 		}
 	};
-	// // Kiểm tra người dùng reload trang = disconnect
-	// useEffect(() => {
-	// 	window.addEventListener("beforeunload", handleLeave);
-	// 	return () => {
-	// 		window.removeEventListener("beforeunload", handleLeave);
-	// 	};
-	// }, []);
+
+	const handleRefuse = () => {
+		newSocket.emit("refuse", {});
+		setTimeout(() => {
+			setEntered(false);
+			setMatchedUser(null);
+			window.location.href = "/match";
+		}, 3000);
+	};
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
@@ -231,11 +231,11 @@ const Chat = ({ socket }) => {
 			console.log("Connected to server");
 		});
 		// Ngắt kết nối newSocket
-		// newSocket.on("disconnect", (data) => {
-		// 	if (data) {
-		// 		handleQuit();
-		// 	}
-		// });
+		newSocket.on("disconnect", (data) => {
+			if (data) {
+				handleQuit();
+			}
+		});
 		// Kiểm tra refuse
 		newSocket.on("refuse", (data) => {
 			setRefuseMsg(data);
@@ -250,36 +250,47 @@ const Chat = ({ socket }) => {
 			toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
 				type: "error",
 			});
-			// setIsLeavingMsg("");
+			newSocket.emit("leave", {});
+			setFailMessage("");
 			setTimeout(() => {
-				newSocket.emit("refuse", {});
 				setEntered(false);
-				window.location.href = "/match";
+				setMatchedUser(null);
 			}, 3000);
 		}
 
+		if (failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!") {
+			toast("Vui lòng thử lại ...", { type: "info" });
+			// setTimeout(() => {
+			// 	window.location.href = "/match";
+			// }, 3000);
+		}
 		return () => {
 			newSocket.close();
 		};
 	}, [newSocket, entered, failMessage, isLeavingMsg]);
 
+	// useEffect(() => {
+	// 	const handlePopState = () => {
+	// 		// Điều hướng đến trang /match và reload
+	// 		window.location.href = "/match";
+	// 	};
+
+	// 	// Lắng nghe sự kiện popstate
+	// 	window.addEventListener("popstate", handlePopState);
+
+	// 	// Cleanup listener khi component unmount
+	// 	return () => {
+	// 		window.removeEventListener("popstate", handlePopState);
+	// 	};
+	// }, []);
+
 	useEffect(() => {
-		const handlePopState = () => {
-			// Điều hướng đến trang /match và reload
-			window.location.href = "/match";
+		const handleReload = () => {
+			handleQuit();
+			setMatchedUser(null);
+			setFailMessage("");
 		};
-
-		// Lắng nghe sự kiện popstate
-		window.addEventListener("popstate", handlePopState);
-
-		// Cleanup listener khi component unmount
-		return () => {
-			window.removeEventListener("popstate", handlePopState);
-		};
-	}, []);
-
-	useEffect(() => {
-		window.addEventListener("beforeunload", handleQuit);
+		window.addEventListener("beforeunload", handleReload);
 		return () => {
 			window.removeEventListener("beforeunload", handleQuit);
 		};
@@ -305,16 +316,41 @@ const Chat = ({ socket }) => {
 						/>
 					</div>
 				) : (
-					<PopUp
-						accept={accept}
-						setAccept={setAccept}
-						setMatchedUser={setMatchedUser}
-						newSocket={newSocket}
-						refuseMsg={refuseMsg}
-						setRefuseMsg={setRefuseMsg}
-						handleQuit={handleQuit}
-						failMessage={failMessage}
-					/>
+					<>
+						<PopUp
+							accept={accept}
+							setAccept={setAccept}
+							setMatchedUser={setMatchedUser}
+							newSocket={newSocket}
+							refuseMsg={refuseMsg}
+							setRefuseMsg={setRefuseMsg}
+							handleQuit={handleQuit}
+							failMessage={failMessage}
+							setEntered={setEntered}
+							handleRefuse={handleRefuse}
+						/>
+						{failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!" && (
+							<div className="fixed flex items-center justify-center w-full bottom-1/3">
+								<button className="btn btn-wide btn-error" onClick={handleBack}>
+									Thử lại{" "}
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										strokeWidth={1.5}
+										stroke="currentColor"
+										className="size-6"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
+										/>
+									</svg>
+								</button>
+							</div>
+						)}
+					</>
 				))}
 			{!matchedUser && (
 				<>
@@ -347,28 +383,6 @@ const Chat = ({ socket }) => {
 												Vui lòng chờ đợi thêm
 											</span>
 										</p>
-										<div className="fixed flex items-center justify-center w-full bottom-1/3">
-											<button
-												className="btn btn-wide btn-error"
-												onClick={handleBack}
-											>
-												Quay lại{" "}
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													strokeWidth={1.5}
-													stroke="currentColor"
-													className="size-6"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
-													/>
-												</svg>
-											</button>
-										</div>
 									</>
 								) : (
 									failMessage
@@ -378,28 +392,28 @@ const Chat = ({ socket }) => {
 							)}
 						</span>
 						<span className="ml-8 loading loading-spinner text-info"></span>
+						{!failMessage && (
+							<div className="fixed flex items-center justify-center w-full bottom-1/3">
+								<button className="btn btn-wide btn-error" onClick={handleBack}>
+									Quay lại{" "}
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										strokeWidth={1.5}
+										stroke="currentColor"
+										className="size-6"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
+										/>
+									</svg>
+								</button>
+							</div>
+						)}
 					</div>
-					{!failMessage && (
-						<div className="fixed flex items-center justify-center w-full bottom-1/3">
-							<button className="btn btn-wide btn-error" onClick={handleBack}>
-								Quay lại{" "}
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									strokeWidth={1.5}
-									stroke="currentColor"
-									className="size-6"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
-									/>
-								</svg>
-							</button>
-						</div>
-					)}
 				</>
 			)}
 		</>

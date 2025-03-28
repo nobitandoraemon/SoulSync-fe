@@ -14,6 +14,7 @@ const ChatBox = ({
 	handleQuit,
 	handleLeave,
 	failMessage,
+	setFailMessage,
 }) => {
 	// Kiểm tra người dùng reload trang = disconnect
 	useEffect(() => {
@@ -41,6 +42,7 @@ const ChatBox = ({
 					matchedUser={matchedUser}
 					handleLeave={handleLeave}
 					failMessage={failMessage}
+					setFailMessage={setFailMessage}
 				/>
 				<ChatInput
 					newSocket={newSocket}
