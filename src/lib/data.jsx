@@ -24,7 +24,7 @@ import virgoCard from "../assets/virgoCard.jpg";
 import libraCard from "../assets/libraCard.jpg";
 import scorpioCard from "../assets/scorpioCard.jpg";
 import sagittariusCard from "../assets/sagittariusCard.jpg";
-import capricornCard from "../assets/capricornuscard.jpg";
+import capricornCard from "../assets/capricornusCard.jpg";
 import aquariusCard from "../assets/aquariusCard.jpg";
 import piscesCard from "../assets/piscesCard.jpg";
 
