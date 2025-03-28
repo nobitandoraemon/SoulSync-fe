@@ -11,14 +11,14 @@ import { logOut } from "../lib/common";
 import { Footer, Header, ToggleTheme } from "../config/components.js";
 import { ThemeContext } from "../context/themeprovider.jsx";
 
-const SideBarNew = ({ setTabActive, tabActive, user, handleFinding }) => {
+const SideBarNew = ({ setTabActive, tabActive, user, handleEnterChat }) => {
 	const { handleTheme } = useContext(ThemeContext);
 	const navigate = useNavigate();
 	return (
 		<>
 			{" "}
 			<ul className="fixed left-0 z-50 mt-6 -translate-y-1/2 top-1/2 md:hidden menu menu-vertical bg-base-200 rounded-box">
-				<li onClick={handleFinding}>
+				<li onClick={handleEnterChat}>
 					<a
 						className="tooltip animate-bounce animate-delay-[1000ms] animate-duration-[2000ms] tooltip-primary text-primary"
 						data-tip="Chat"
@@ -178,7 +178,7 @@ const SideBarNew = ({ setTabActive, tabActive, user, handleFinding }) => {
 									<ToggleTheme className="btn btn-soft" />
 									<button
 										className="text-lg btn btn-primary btn-active animate-pulse"
-										onClick={handleFinding}
+										onClick={handleEnterChat}
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -457,17 +457,15 @@ const Tab = ({ tab }) => (
 	</>
 );
 const MatchPage = () => {
-	const { user, isFinding, setIsFinding, newSocket } = useOutletContext();
+	const { user, token, entered, setEntered } = useOutletContext();
 	const [tabActive, setTabActive] = useState(0);
 	const [isLoading, setIsLoading] = useState(true);
 	const navigate = useNavigate();
 	const handleLoading = () => {
 		setIsLoading(false);
 	};
-	const handleFinding = () => {
-		// setIsFinding(true); /// Checkout
-		newSocket.emit("find", {});
-		setIsFinding(true);
+	const handleEnterChat = () => {
+		setEntered(true);
 		setTimeout(() => {
 			navigate(APP_ROUTES.CHAT);
 		}, 1000);
@@ -513,7 +511,7 @@ const MatchPage = () => {
 					<SideBarNew
 						tabActive={tabActive}
 						setTabActive={setTabActive}
-						handleFinding={handleFinding}
+						handleEnterChat={handleEnterChat}
 						user={user}
 					/>
 					<UserZodiacInfomation

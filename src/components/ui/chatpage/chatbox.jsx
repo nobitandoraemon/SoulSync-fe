@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
 	ChatBody,
 	ChatInput,
@@ -10,9 +11,17 @@ const ChatBox = ({
 	matchedUser,
 	user,
 	newSocket,
+	handleQuit,
 	handleLeave,
 	failMessage,
 }) => {
+	// Kiểm tra người dùng reload trang = disconnect
+	useEffect(() => {
+		window.addEventListener("beforeunload", handleQuit);
+		return () => {
+			window.removeEventListener("beforeunload", handleQuit);
+		};
+	}, []);
 	return (
 		<div className="flex flex-col flex-auto w-screen h-screen md:h-full">
 			<div className="z-50 items-center justify-center w-full md:relative">
@@ -20,6 +29,7 @@ const ChatBox = ({
 					matchedUser={matchedUser}
 					user={user}
 					handleLeave={handleLeave}
+					handleQuit={handleQuit}
 					failMessage={failMessage}
 				/>
 			</div>
@@ -29,7 +39,6 @@ const ChatBox = ({
 					newSocket={newSocket}
 					user={user}
 					matchedUser={matchedUser}
-					chat={chat}
 					handleLeave={handleLeave}
 					failMessage={failMessage}
 				/>

@@ -1,6 +1,5 @@
 import { Toast, ToggleTheme } from "../../../config/components";
 import { useEffect, useState } from "react";
-import { APP_ROUTES } from "../../../lib/constants";
 import { toast } from "react-toastify";
 import { ZodiacSigns } from "../../../lib/data";
 
@@ -33,7 +32,7 @@ const warningMsg = [
 
 const OtherInformationSideBar = ({ matchedUser, failMessage }) => {
 	return (
-		<div className="navbar-start cursor-pointer">
+		<div className="cursor-pointer navbar-start">
 			<button className="flex flex-row-reverse gap-4 p-4 ">
 				<div className="flex-col hidden gap-2 md:flex md:items-start">
 					<div className="font-bold">Người dùng #{matchedUser.zodiac}</div>
@@ -63,7 +62,7 @@ const OtherInformationSideBar = ({ matchedUser, failMessage }) => {
 	);
 };
 
-const ChatNav = ({ matchedUser, user, handleOut, failMessage }) => {
+const ChatNav = ({ matchedUser, user, handleLeave, failMessage }) => {
 	const [id, setId] = useState(1);
 
 	useEffect(() => {
@@ -71,22 +70,6 @@ const ChatNav = ({ matchedUser, user, handleOut, failMessage }) => {
 			id === 5 ? setId(1) : setId((prev) => prev + 1);
 		}, 10000);
 	}, [id]);
-	const handleQuit = () => {
-		const quest = window.confirm("Bạn có chắc chắn rời khỏi phòng chat ?");
-
-		if (quest) {
-			toast("Đã kết thúc cuộc trò chuyện", {
-				type: "success",
-			});
-
-			handleOut();
-		} else {
-			toast("Cảm ơn vì đã lắng nghe lấy con tim", {
-				role: "alert",
-				type: "info",
-			});
-		}
-	};
 	return (
 		<div className="p-2 rounded-lg shadow-sm navbar bg-base-200">
 			<OtherInformationSideBar
@@ -103,7 +86,7 @@ const ChatNav = ({ matchedUser, user, handleOut, failMessage }) => {
 				<div className="btn btn-ghost btn-circle">
 					<ToggleTheme />
 				</div>
-				<button className="btn btn-ghost btn-circle" onClick={handleQuit}>
+				<button className="btn btn-ghost btn-circle" onClick={handleLeave}>
 					<div className="indicator">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -126,13 +109,6 @@ const ChatNav = ({ matchedUser, user, handleOut, failMessage }) => {
 };
 
 const ChatHeader = ({ user, matchedUser, handleLeave, failMessage }) => {
-	const handleOut = () => {
-		handleLeave();
-		setTimeout(() => {
-			window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
-			window.location.reload();
-		}, 2000);
-	};
 	return (
 		<div className="fixed top-0 left-0 right-0 z-50 flex items-center md:flex-row">
 			<Toast />
@@ -140,7 +116,7 @@ const ChatHeader = ({ user, matchedUser, handleLeave, failMessage }) => {
 				<ChatNav
 					matchedUser={matchedUser}
 					user={user}
-					handleOut={handleOut}
+					handleLeave={handleLeave}
 					failMessage={failMessage}
 				/>
 			)}
