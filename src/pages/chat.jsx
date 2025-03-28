@@ -41,9 +41,8 @@ const PopUp = ({
 	const handleRefuse = () => {
 		newSocket.emit("refuse", {});
 		setTimeout(() => {
-			setIsMatched(null);
 			setEntered(true);
-		}, 3000);
+		}, 1000);
 	};
 
 	return (
@@ -167,7 +166,9 @@ const Chat = ({ socket }) => {
 			setMatchedUser(null);
 			setAccept(false);
 			setFailMessage("");
-			handleQuit();
+			setTimeout(() => {
+				handleQuit();
+			}, 3000);
 		} else {
 			toast("Cảm ơn vì đã lắng nghe lấy con tim", {
 				role: "alert",
@@ -179,11 +180,12 @@ const Chat = ({ socket }) => {
 	const handleRefuse = () => {
 		newSocket.emit("refuse", {});
 		setTimeout(() => {
+			// setIsMatched(null);
+			setAccept(false);
 			setEntered(true);
-			setIsMatched(null);
 			// setMatchedUser(null);
 			window.location.href = "/match";
-		}, 3000);
+		}, 1000);
 	};
 
 	//Loading 1,5s trước khi vào app
@@ -219,15 +221,27 @@ const Chat = ({ socket }) => {
 			toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
 				type: "error",
 			});
-			setIsMatched(null);
 			setTimeout(() => {
+				setAccept(false);
+				// setIsMatched(null);
 				setFailMessage("");
-				setIsMatched(null);
+				setEntered(true);
+			}, 3000);
+		}
+		if (failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!") {
+			toast(
+				"Chúng tôi đã cố gắng nhưng chưa thể tìm thấy ai phù hợp với bạn 😥",
+				{
+					type: "error",
+				}
+			);
+			setTimeout(() => {
+				setAccept(false);
+				setFailMessage("");
 				setEntered(true);
 			}, 3000);
 		}
 	}, [failMessage]);
-	// }, [failMessage, entered, failMessage, matchedUser]);
 	useEffect(() => {
 		//nhận thông tin về user B sẽ match -> chuyển đến waiting room
 		newSocket.on("wait", (data) => {
@@ -240,7 +254,7 @@ const Chat = ({ socket }) => {
 				} else {
 					setIsMatched(A);
 				}
-				console.log(isMatched);
+				console.log("You have a match!");
 			}
 		});
 		return () => {
@@ -251,16 +265,15 @@ const Chat = ({ socket }) => {
 		//nhận thông tin về fail khi match
 		newSocket.on("fail", (data) => {
 			const { message } = data;
-			if (message === "Ghép đôi thất bại!") {
-				toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
-					type: "error",
-				});
-			}
-			if (message === "Ghép đôi thất bại!") {
-				setAccept(false);
-				setIsMatched(null);
-				setEntered(true);
-			}
+			// if (message === "Ghép đôi thất bại!") {
+			// 	toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
+			// 		type: "error",
+			// 	});
+			setFailMessage(message);
+			// setAccept(false);
+			// setIsMatched(null);
+			// setEntered(true);
+			// }
 			// if (message === "Chúng tôi không tìm thấy ai phù hợp với bạn!") {
 			// 	setFailMessage("");
 			// }
@@ -272,6 +285,7 @@ const Chat = ({ socket }) => {
 
 	useEffect(() => {
 		if (entered) {
+			setIsMatched(null);
 			newSocket.emit("find", {});
 			console.log("find");
 		}
@@ -280,71 +294,67 @@ const Chat = ({ socket }) => {
 	return (
 		<>
 			{isMatched &&
-				(accept
-					? matchedUser && (
-							<div className="flex w-screen max-w-full min-h-screen bg-base-100">
-								<ChatBox
-									isScroll={isScroll}
-									accept={accept}
-									setAccept={setAccept}
-									newSocket={newSocket}
-									matchedUser={matchedUser}
-									setMatchedUser={setMatchedUser}
-									handleQuit={handleQuit}
-									handleLeave={handleLeave}
-									isMatched={isMatched}
-									isLeavingMsg={isLeavingMsg}
-									setIsLeavingMsg={setIsLeavingMsg}
-									setIsMatched={setIsMatched}
-									user={user}
-									failMessage={failMessage}
-									setFailMessage={setFailMessage}
-								/>
+				(accept ? (
+					matchedUser && (
+						<div className="flex w-screen max-w-full min-h-screen bg-base-100">
+							<ChatBox
+								isScroll={isScroll}
+								accept={accept}
+								setAccept={setAccept}
+								newSocket={newSocket}
+								matchedUser={matchedUser}
+								setMatchedUser={setMatchedUser}
+								handleQuit={handleQuit}
+								handleLeave={handleLeave}
+								isMatched={isMatched}
+								isLeavingMsg={isLeavingMsg}
+								setIsLeavingMsg={setIsLeavingMsg}
+								setIsMatched={setIsMatched}
+								user={user}
+								failMessage={failMessage}
+								setFailMessage={setFailMessage}
+							/>
+						</div>
+					)
+				) : (
+					<>
+						<PopUp
+							accept={accept}
+							setAccept={setAccept}
+							setMatchedUser={setMatchedUser}
+							isMatched={isMatched}
+							setIsMatched={setIsMatched}
+							newSocket={newSocket}
+							refuseMsg={refuseMsg}
+							setRefuseMsg={setRefuseMsg}
+							handleQuit={handleQuit}
+							failMessage={failMessage}
+							setEntered={setEntered}
+							handleRefuse={handleRefuse}
+						/>
+						{failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!" && (
+							<div className="fixed flex items-center justify-center w-full bottom-1/3">
+								<button className="btn btn-wide btn-error" onClick={handleBack}>
+									Thử lại{" "}
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										strokeWidth={1.5}
+										stroke="currentColor"
+										className="size-6"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
+										/>
+									</svg>
+								</button>
 							</div>
-					  )
-					: !matchedUser && (
-							<>
-								<PopUp
-									accept={accept}
-									setAccept={setAccept}
-									setMatchedUser={setMatchedUser}
-									isMatched={isMatched}
-									setIsMatched={setIsMatched}
-									newSocket={newSocket}
-									refuseMsg={refuseMsg}
-									setRefuseMsg={setRefuseMsg}
-									handleQuit={handleQuit}
-									failMessage={failMessage}
-									setEntered={setEntered}
-									handleRefuse={handleRefuse}
-								/>
-								{failMessage ===
-									"Chúng tôi không tìm thấy ai phù hợp với bạn!" && (
-									<div className="fixed flex items-center justify-center w-full bottom-1/3">
-										<button
-											className="btn btn-wide btn-error"
-											onClick={handleBack}
-										>
-											Thử lại{" "}
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												strokeWidth={1.5}
-												stroke="currentColor"
-												className="size-6"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
-												/>
-											</svg>
-										</button>
-									</div>
-								)}
-							</>
-					  ))}
+						)}
+					</>
+				))}
 			{!isMatched && (
 				<>
 					<div className="flex items-center justify-center w-screen h-screen">
