@@ -26,6 +26,7 @@ const ChatBox = ({
 	const { toggleTheme } = useContext(ThemeContext);
 	const handleLike = () => {
 		newSocket.emit("like", {});
+		toast("Bạn vừa thả nghìn like cho đối phương 😘");
 	};
 
 	useEffect(() => {

@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import Upload from "../components/ui/upload";
 import { VietnamProvinces, ZodiacSigns } from "../lib/data";
 import PhoneInput from "react-phone-number-input";
-import { set } from "react-hook-form";
 
 const CompletedBar = () => {
 	return (
