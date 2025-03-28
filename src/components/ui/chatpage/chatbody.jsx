@@ -3,10 +3,12 @@ const ChatBody = ({
 	newSocket,
 	user,
 	matchedUser,
+	setIsMatched,
 	handleLeave,
 	handleQuit,
 	failMessage,
 	setFailMessage,
+	setMatchedUser,
 }) => {
 	const [chat, setChat] = useState([]);
 	const [notify, setNotify] = useState(null);
@@ -48,7 +50,9 @@ const ChatBody = ({
 		newSocket.on("end", (data) => {
 			console.log(data.message);
 			setNotify(data.message);
+			newSocket.emit("leave", {});
 			setChat([]);
+			// setMatchedUser(null);
 			newSocket.off("message");
 		});
 		return () => {
@@ -122,8 +126,7 @@ const ChatBody = ({
 						</>
 					);
 				})}
-				{(notify ||
-					failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!") && (
+				{notify && (
 					<>
 						<div className="chat chat-start" key="warningMsg">
 							<div className="chat-image avatar">

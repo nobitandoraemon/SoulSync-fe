@@ -9,12 +9,14 @@ import {
 const ChatBox = ({
 	chat,
 	matchedUser,
+	setIsMatched,
 	user,
 	newSocket,
 	handleQuit,
 	handleLeave,
 	failMessage,
 	setFailMessage,
+	setMatchedUser,
 }) => {
 	// Kiểm tra người dùng reload trang = disconnect
 	useEffect(() => {
@@ -38,7 +40,9 @@ const ChatBox = ({
 				<Info matchedUser={matchedUser} />
 				<ChatBody
 					newSocket={newSocket}
+					setMatchedUser={setMatchedUser}
 					user={user}
+					setIsMatched={setIsMatched}
 					matchedUser={matchedUser}
 					handleLeave={handleLeave}
 					failMessage={failMessage}

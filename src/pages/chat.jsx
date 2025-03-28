@@ -143,6 +143,7 @@ const Chat = ({ socket }) => {
 			setTimeout(() => {
 				setEntered(false);
 				setIsMatched(null);
+				setMatchedUser(null);
 				handleQuit();
 			}, 2000);
 		} else {
@@ -163,8 +164,8 @@ const Chat = ({ socket }) => {
 				type: "success",
 			});
 			newSocket.emit("leave", {});
-			setMatchedUser(null);
 			setIsMatched(null);
+			setMatchedUser(null);
 			setAccept(null);
 			setFailMessage("");
 			handleQuit();
@@ -180,7 +181,8 @@ const Chat = ({ socket }) => {
 		newSocket.emit("refuse", {});
 		setTimeout(() => {
 			setEntered(false);
-			setMatchedUser(null);
+			setIsMatched(null);
+			// setMatchedUser(null);
 			window.location.href = "/match";
 		}, 3000);
 	};
@@ -245,18 +247,13 @@ const Chat = ({ socket }) => {
 			toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
 				type: "error",
 			});
+			setAccept(false);
+			setMatchedUser(null);
 			setTimeout(() => {
 				setFailMessage("");
 				// setEntered(false);
 				setIsMatched(null);
 			}, 3000);
-		}
-
-		if (failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!") {
-			toast("Vui lòng thử lại ...", { type: "info" });
-			// setTimeout(() => {
-			// 	window.location.href = "/match";
-			// }, 3000);
 		}
 		return () => {
 			newSocket.close();
@@ -279,6 +276,7 @@ const Chat = ({ socket }) => {
 	// }, []);
 
 	useEffect(() => {
+		newSocket.emit("leave", {});
 		window.addEventListener("beforeunload", handleQuit);
 		return () => {
 			window.removeEventListener("beforeunload", handleQuit);
@@ -293,7 +291,8 @@ const Chat = ({ socket }) => {
 								<ChatBox
 									isScroll={isScroll}
 									newSocket={newSocket}
-									matchedUser={matchedUser}
+							matchedUser={matchedUser}
+							setMatchedUser={setMatchedUser}
 									handleQuit={handleQuit}
 									handleLeave={handleLeave}
 									isMatched={isMatched}
