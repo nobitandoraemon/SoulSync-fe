@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { APP_ROUTES } from "../lib/constants";
 const PopUp = ({
 	setAccept,
+	isMatched,
+	setIsMatched,
 	setMatchedUser,
 	newSocket,
 	handleQuit,
@@ -14,9 +16,8 @@ const PopUp = ({
 	failMessage,
 	setFailMessage,
 	setEntered,
-	handleRefuse,
 }) => {
-	const [counter, setCounter] = useState(30);
+	const [counter, setCounter] = useState(15);
 	useEffect(() => {
 		if (failMessage === "Ghép đôi thất bại!") {
 			toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
@@ -36,6 +37,12 @@ const PopUp = ({
 	}, [failMessage]);
 	const handleAccept = () => {
 		setAccept(true);
+		setMatchedUser(isMatched);
+	};
+
+	const handleRefuse = () => {
+		newSocket.emit("refuse", {});
+		setIsMatched(null);
 	};
 
 	return (
@@ -123,7 +130,7 @@ const Chat = ({ socket }) => {
 	const [refuseMsg, setRefuseMsg] = useState(null); // Lấy tin nhắn khi từ chối
 	const [matchedUser, setMatchedUser] = useState(null); // Lấy thông tin người sau khi match
 	const [isLeavingMsg, setIsLeavingMsg] = useState(null);
-	const [isMatched, setIsMatched] = useState(false); //2 người dùng cùng chấp nhận chat chưa
+	const [isMatched, setIsMatched] = useState(null); //2 người dùng cùng chấp nhận chat chưa
 	const [failMessage, setFailMessage] = useState(""); //nếu be không tìm được đối tượng, hoặc đối phương từ chối, hoặc bản thân từ chối, thì server sẽ trả lại fail message để thông báo đến người còn lại
 	const [newSocket, setNewSocket] = useState(socket);
 
@@ -135,7 +142,7 @@ const Chat = ({ socket }) => {
 			newSocket.emit("leave", {});
 			setTimeout(() => {
 				setEntered(false);
-				setMatchedUser(null);
+				setIsMatched(null);
 				handleQuit();
 			}, 2000);
 		} else {
@@ -155,6 +162,11 @@ const Chat = ({ socket }) => {
 			toast("Đã kết thúc cuộc trò chuyện", {
 				type: "success",
 			});
+			newSocket.emit("leave", {});
+			setMatchedUser(null);
+			setIsMatched(null);
+			setAccept(null);
+			setFailMessage("");
 			handleQuit();
 		} else {
 			toast("Cảm ơn vì đã lắng nghe lấy con tim", {
@@ -204,18 +216,11 @@ const Chat = ({ socket }) => {
 		newSocket.on("wait", (data) => {
 			const { A, B } = data;
 			if (A.username == user.username) {
-				setMatchedUser(B);
+				setIsMatched(B);
 			} else {
-				setMatchedUser(A);
+				setIsMatched(A);
 			}
-			console.log(matchedUser);
-		});
-
-		// server gửi về match
-		newSocket.on("match", (data) => {
-			if (data.message === "Sucessfull") {
-				setIsMatched(true);
-			}
+			console.log(isMatched);
 		});
 
 		newSocket.on("fail", (data) => {
@@ -230,16 +235,6 @@ const Chat = ({ socket }) => {
 		newSocket.on("connect", () => {
 			console.log("Connected to server");
 		});
-		// Ngắt kết nối newSocket
-		newSocket.on("disconnect", (data) => {
-			if (data) {
-				handleQuit();
-			}
-		});
-		// Kiểm tra refuse
-		newSocket.on("refuse", (data) => {
-			setRefuseMsg(data);
-		});
 
 		if (entered) {
 			newSocket.emit("find", {});
@@ -250,11 +245,10 @@ const Chat = ({ socket }) => {
 			toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
 				type: "error",
 			});
-			newSocket.emit("leave", {});
-			setFailMessage("");
 			setTimeout(() => {
-				setEntered(false);
-				setMatchedUser(null);
+				setFailMessage("");
+				// setEntered(false);
+				setIsMatched(null);
 			}, 3000);
 		}
 
@@ -267,7 +261,7 @@ const Chat = ({ socket }) => {
 		return () => {
 			newSocket.close();
 		};
-	}, [newSocket, entered, failMessage, isLeavingMsg]);
+	}, [newSocket, entered, failMessage, isLeavingMsg, matchedUser]);
 
 	// useEffect(() => {
 	// 	const handlePopState = () => {
@@ -285,74 +279,77 @@ const Chat = ({ socket }) => {
 	// }, []);
 
 	useEffect(() => {
-		const handleReload = () => {
-			handleQuit();
-			setMatchedUser(null);
-			setFailMessage("");
-		};
-		window.addEventListener("beforeunload", handleReload);
+		window.addEventListener("beforeunload", handleQuit);
 		return () => {
 			window.removeEventListener("beforeunload", handleQuit);
 		};
 	}, []);
 	return (
 		<>
-			{matchedUser &&
-				(accept ? (
-					<div className="flex w-screen max-w-full min-h-screen bg-base-100">
-						<ChatBox
-							isScroll={isScroll}
-							newSocket={newSocket}
-							matchedUser={matchedUser}
-							handleQuit={handleQuit}
-							handleLeave={handleLeave}
-							isMatched={isMatched}
-							isLeavingMsg={isLeavingMsg}
-							setIsLeavingMsg={setIsLeavingMsg}
-							setIsMatched={setIsMatched}
-							user={user}
-							failMessage={failMessage}
-							setFailMessage={setFailMessage}
-						/>
-					</div>
-				) : (
-					<>
-						<PopUp
-							accept={accept}
-							setAccept={setAccept}
-							setMatchedUser={setMatchedUser}
-							newSocket={newSocket}
-							refuseMsg={refuseMsg}
-							setRefuseMsg={setRefuseMsg}
-							handleQuit={handleQuit}
-							failMessage={failMessage}
-							setEntered={setEntered}
-							handleRefuse={handleRefuse}
-						/>
-						{failMessage === "Chúng tôi không tìm thấy ai phù hợp với bạn!" && (
-							<div className="fixed flex items-center justify-center w-full bottom-1/3">
-								<button className="btn btn-wide btn-error" onClick={handleBack}>
-									Thử lại{" "}
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										strokeWidth={1.5}
-										stroke="currentColor"
-										className="size-6"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
-										/>
-									</svg>
-								</button>
+			{isMatched &&
+				(accept
+					? matchedUser && (
+							<div className="flex w-screen max-w-full min-h-screen bg-base-100">
+								<ChatBox
+									isScroll={isScroll}
+									newSocket={newSocket}
+									matchedUser={matchedUser}
+									handleQuit={handleQuit}
+									handleLeave={handleLeave}
+									isMatched={isMatched}
+									isLeavingMsg={isLeavingMsg}
+									setIsLeavingMsg={setIsLeavingMsg}
+									setIsMatched={setIsMatched}
+									user={user}
+									failMessage={failMessage}
+									setFailMessage={setFailMessage}
+								/>
 							</div>
-						)}
-					</>
-				))}
-			{!matchedUser && (
+					  )
+					: !matchedUser && (
+							<>
+								<PopUp
+									accept={accept}
+									setAccept={setAccept}
+									setMatchedUser={setMatchedUser}
+									isMatched={isMatched}
+									setIsMatched={setIsMatched}
+									newSocket={newSocket}
+									refuseMsg={refuseMsg}
+									setRefuseMsg={setRefuseMsg}
+									handleQuit={handleQuit}
+									failMessage={failMessage}
+									setEntered={setEntered}
+									handleRefuse={handleRefuse}
+								/>
+								{failMessage ===
+									"Chúng tôi không tìm thấy ai phù hợp với bạn!" && (
+									<div className="fixed flex items-center justify-center w-full bottom-1/3">
+										<button
+											className="btn btn-wide btn-error"
+											onClick={handleBack}
+										>
+											Thử lại{" "}
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												fill="none"
+												viewBox="0 0 24 24"
+												strokeWidth={1.5}
+												stroke="currentColor"
+												className="size-6"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
+												/>
+											</svg>
+										</button>
+									</div>
+								)}
+							</>
+					  ))}
+			{!isMatched && (
 				<>
 					<div className="flex items-center justify-center w-screen h-screen">
 						<Toast />

@@ -48,6 +48,8 @@ const ChatBody = ({
 		newSocket.on("end", (data) => {
 			console.log(data.message);
 			setNotify(data.message);
+			setChat([]);
+			newSocket.off("message");
 		});
 		return () => {
 			newSocket.off("end");
