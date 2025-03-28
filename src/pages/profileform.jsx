@@ -126,6 +126,9 @@ const Address = ({ setStep, formData, setFormData }) => {
 	const handleTelChange = (e) => {
 		setFormData({ ...formData, phoneNumber: e.target.value });
 	};
+	const handleNickNameChange = (e) => {
+		setFormData({ ...formData, nickName: e.target.value });
+	};
 
 	const handleQuoteChange = (e) => {
 		setFormData({ ...formData, quote: e.target.value });
@@ -139,7 +142,13 @@ const Address = ({ setStep, formData, setFormData }) => {
 			<form className="flex flex-col gap-6 mt-10" onSubmit={Submit2}>
 				<fieldset className="fieldset">
 					<legend className="fieldset-legend">Mình nên gọi bạn là gì ?</legend>
-					<input type="text" placeholder="Nickname" className="w-full input" />
+					<input
+						type="text"
+						placeholder="Nickname"
+						className="w-full input"
+						value={formData.nickName}
+						onChange={handleNickNameChange}
+					/>
 					<p className="fieldset-label">Tuỳ chọn</p>
 				</fieldset>
 				<fieldset className="fieldset">
@@ -573,6 +582,7 @@ const ProfileForm = () => {
 		birthday: "",
 		gender: "",
 		zodiac: "",
+		nickName: "",
 		location: "An Giang",
 		fullName: "",
 		phoneNumber: "",
