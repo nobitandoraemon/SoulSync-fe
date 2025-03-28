@@ -442,7 +442,7 @@ const Tab = ({ tab }) => (
 								<img
 									src={item.value}
 									alt="Zodiac"
-									className="w-full aspect-video"
+									className="w-[75%] h-auto mx-auto my-5 shadow-xl border border-primary rounded-3xl"
 								/>
 							</li>
 						) : item.type === "h2" ? (
@@ -485,8 +485,6 @@ const MatchPage = () => {
 			console.log("Get user data failed");
 		}
 	}, [user]);
-
-
 
 	useEffect(() => {
 		setInterval(() => {

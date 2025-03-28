@@ -45,6 +45,7 @@ const ChatBody = ({
 				setHasNotified(true);
 				toast("Đối phương vừa thả nghìn Like cho bạn 😘", {
 					position: "top-center",
+					autoClose: 3000,
 				});
 			}
 		});
