@@ -5,9 +5,11 @@ import {
 	ChatHeader,
 	Info,
 } from "../../../config/components";
+import { set } from "react-hook-form";
 
 const ChatBox = ({
-	chat,
+	accept,
+	setAccept,
 	matchedUser,
 	setIsMatched,
 	user,
@@ -30,6 +32,8 @@ const ChatBox = ({
 			<div className="z-50 items-center justify-center w-full md:relative">
 				<ChatHeader
 					matchedUser={matchedUser}
+					accept={accept}
+					setAccept={setAccept}
 					user={user}
 					handleLeave={handleLeave}
 					handleQuit={handleQuit}
@@ -42,6 +46,8 @@ const ChatBox = ({
 					newSocket={newSocket}
 					setMatchedUser={setMatchedUser}
 					user={user}
+					accept={accept}
+					setAccept={setAccept}
 					setIsMatched={setIsMatched}
 					matchedUser={matchedUser}
 					handleLeave={handleLeave}

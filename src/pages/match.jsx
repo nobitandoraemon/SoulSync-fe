@@ -489,7 +489,6 @@ const MatchPage = () => {
 	useEffect(() => {
 		const handlePopState = () => {
 			// Điều hướng đến trang /match và reload
-			setEntered(false);
 			window.location.href = "/match";
 		};
 
@@ -505,7 +504,7 @@ const MatchPage = () => {
 	useEffect(() => {
 		setInterval(() => {
 			handleLoading();
-		}, 0);
+		}, 3000);
 		return () => clearInterval(handleLoading);
 	}, []);
 	return isLoading ? (

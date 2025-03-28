@@ -3,12 +3,12 @@ const ChatBody = ({
 	newSocket,
 	user,
 	matchedUser,
-	setIsMatched,
+	setMatchedUser,
 	handleLeave,
-	handleQuit,
 	failMessage,
 	setFailMessage,
-	setMatchedUser,
+	setIsMatched,
+	setAccept,
 }) => {
 	const [chat, setChat] = useState([]);
 	const [notify, setNotify] = useState(null);
@@ -23,10 +23,7 @@ const ChatBody = ({
 	// Xử lí nhận tin nhắn
 
 	const handleMessage = (data) => {
-		if (data) {
-			setFailMessage("");
-			setChat((prevChat) => [...prevChat, data]);
-		}
+		setChat((prevChat) => [...prevChat, data]);
 	};
 
 	// Nhận thông tin chat từ server socket
@@ -38,9 +35,7 @@ const ChatBody = ({
 	}, [newSocket]);
 	useEffect(() => {
 		newSocket.on("disconnect", (data) => {
-			if (data) {
-				newSocket.emit("leave", {});
-			}
+			console.log(data);
 		});
 		return () => {
 			newSocket.off("disconnect");
@@ -48,12 +43,7 @@ const ChatBody = ({
 	}, [newSocket]);
 	useEffect(() => {
 		newSocket.on("end", (data) => {
-			console.log(data.message);
 			setNotify(data.message);
-			newSocket.emit("leave", {});
-			setChat([]);
-			// setMatchedUser(null);
-			newSocket.off("message");
 		});
 		return () => {
 			newSocket.off("end");

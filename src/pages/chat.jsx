@@ -4,6 +4,7 @@ import { cn } from "../lib/utils";
 import { useOutletContext, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { APP_ROUTES } from "../lib/constants";
+import { use } from "react";
 const PopUp = ({
 	setAccept,
 	isMatched,
@@ -40,9 +41,14 @@ const PopUp = ({
 		setMatchedUser(isMatched);
 	};
 
+	// isMatched = temp  -> hoi user accept -> lay isMatched cho Matched user
+
 	const handleRefuse = () => {
 		newSocket.emit("refuse", {});
-		setIsMatched(null);
+		setTimeout(() => {
+			setIsMatched(null);
+			setEntered(true);
+		}, 3000);
 	};
 
 	return (
@@ -139,11 +145,9 @@ const Chat = ({ socket }) => {
 		const quest = window.confirm("Bạn có chắc chắn sẽ huỷ ghép cặp ?");
 		if (quest) {
 			toast("Đang quay lại trang thông tin ...", { type: "info" });
-			newSocket.emit("leave", {});
+			newSocket.emit("refuse", {});
 			setTimeout(() => {
-				setEntered(false);
 				setIsMatched(null);
-				setMatchedUser(null);
 				handleQuit();
 			}, 2000);
 		} else {
@@ -166,7 +170,7 @@ const Chat = ({ socket }) => {
 			newSocket.emit("leave", {});
 			setIsMatched(null);
 			setMatchedUser(null);
-			setAccept(null);
+			setAccept(false);
 			setFailMessage("");
 			handleQuit();
 		} else {
@@ -180,7 +184,7 @@ const Chat = ({ socket }) => {
 	const handleRefuse = () => {
 		newSocket.emit("refuse", {});
 		setTimeout(() => {
-			setEntered(false);
+			setEntered(true);
 			setIsMatched(null);
 			// setMatchedUser(null);
 			window.location.href = "/match";
@@ -189,14 +193,6 @@ const Chat = ({ socket }) => {
 
 	//Loading 1,5s trước khi vào app
 	useEffect(() => {
-		if (!entered) {
-			toast("Vui lòng yêu cầu match tại trang trước đó", {
-				type: "error",
-			});
-			setTimeout(() => {
-				navigate(APP_ROUTES.MATCH);
-			}, 1500);
-		}
 		const loadingInterval = setInterval(() => {
 			handleLoading();
 		}, 1500);
@@ -214,74 +210,69 @@ const Chat = ({ socket }) => {
 		newSocket.auth = { username: user.username };
 		newSocket.connect();
 
-		//nhận thông tin về user B sẽ match -> chuyển đến waiting room
-		newSocket.on("wait", (data) => {
-			const { A, B } = data;
-			if (A.username == user.username) {
-				setIsMatched(B);
-			} else {
-				setIsMatched(A);
-			}
-			console.log(isMatched);
-		});
-
-		newSocket.on("fail", (data) => {
-			const { message } = data;
-			if (message) {
-				setFailMessage(message);
-				console.log(message);
-			}
-		});
-
 		// Kết nối newSocket
 		newSocket.on("connect", () => {
 			console.log("Connected to server");
 		});
+		return () => {
+			newSocket.close();
+		};
+	}, [newSocket]);
 
-		if (entered) {
-			newSocket.emit("find", {});
-		}
-
-		// if (failMessage === "Ghép đôi thất bại!" || isLeavingMsg) {
+	useEffect(() => {
 		if (failMessage === "Ghép đôi thất bại!") {
 			toast("Bạn hoặc người ấy đã ngắt kết nối trước 😥", {
 				type: "error",
 			});
-			setAccept(false);
-			setMatchedUser(null);
+			setIsMatched(null);
 			setTimeout(() => {
 				setFailMessage("");
-				// setEntered(false);
 				setIsMatched(null);
+				setEntered(true);
 			}, 3000);
 		}
+	}, [failMessage, entered, failMessage, matchedUser]);
+	useEffect(() => {
+		//nhận thông tin về user B sẽ match -> chuyển đến waiting room
+		newSocket.on("wait", (data) => {
+			if (data) {
+				setEntered(false);
+
+				const { A, B } = data;
+				if (A.username == user.username) {
+					setIsMatched(B);
+				} else {
+					setIsMatched(A);
+				}
+				console.log(isMatched);
+			}
+		});
 		return () => {
-			newSocket.close();
+			newSocket.off("wait");
 		};
-	}, [newSocket, entered, failMessage, isLeavingMsg, matchedUser]);
-
-	// useEffect(() => {
-	// 	const handlePopState = () => {
-	// 		// Điều hướng đến trang /match và reload
-	// 		window.location.href = "/match";
-	// 	};
-
-	// 	// Lắng nghe sự kiện popstate
-	// 	window.addEventListener("popstate", handlePopState);
-
-	// 	// Cleanup listener khi component unmount
-	// 	return () => {
-	// 		window.removeEventListener("popstate", handlePopState);
-	// 	};
-	// }, []);
+	}, [newSocket]);
+	useEffect(() => {
+		//nhận thông tin về fail khi match
+		newSocket.on("fail", (data) => {
+			const { message } = data;
+			if (message === "Ghép đôi thất bại!") {
+				setAccept(false);
+				setIsMatched(null);
+				setEntered(true);
+			}
+		});
+		return () => {
+			newSocket.off("fail");
+		};
+	}, [newSocket]);
 
 	useEffect(() => {
-		newSocket.emit("leave", {});
-		window.addEventListener("beforeunload", handleQuit);
-		return () => {
-			window.removeEventListener("beforeunload", handleQuit);
-		};
-	}, []);
+		if (entered) {
+			newSocket.emit("find", {});
+			console.log("find");
+		}
+	}, [entered]);
+
 	return (
 		<>
 			{isMatched &&
@@ -290,9 +281,11 @@ const Chat = ({ socket }) => {
 							<div className="flex w-screen max-w-full min-h-screen bg-base-100">
 								<ChatBox
 									isScroll={isScroll}
+									accept={accept}
+									setAccept={setAccept}
 									newSocket={newSocket}
-							matchedUser={matchedUser}
-							setMatchedUser={setMatchedUser}
+									matchedUser={matchedUser}
+									setMatchedUser={setMatchedUser}
 									handleQuit={handleQuit}
 									handleLeave={handleLeave}
 									isMatched={isMatched}
