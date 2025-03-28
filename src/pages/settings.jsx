@@ -587,6 +587,79 @@ const Others = ({ user, formData, setFormData, handleSubmit }) => {
 
 const Public = ({ user, formData, setFormData, handleSubmit }) => {
 	const [type, setType] = useState("text");
+	const handleBirthChange = (e) => {
+		const DateArray = e.target.value.split("-");
+		const Month = DateArray[1];
+		const Day = DateArray[2];
+		const StringNumber = `${Month}.${Day}`;
+		const Indicator = Number(StringNumber);
+		let i = 0;
+		if (user.gender === "Male") {
+			if (Indicator >= 3.21 && Indicator <= 4.19) {
+				i = 1;
+			} else if (Indicator >= 4.2 && Indicator <= 5.2) {
+				i = 3;
+			} else if (Indicator >= 5.21 && Indicator <= 6.2) {
+				i = 5;
+			} else if (Indicator >= 6.21 && Indicator <= 7.22) {
+				i = 7;
+			} else if (Indicator >= 7.23 && Indicator <= 8.22) {
+				i = 9;
+			} else if (Indicator >= 8.23 && Indicator <= 9.22) {
+				i = 11;
+			} else if (Indicator >= 9.23 && Indicator <= 10.22) {
+				i = 13;
+			} else if (Indicator >= 10.23 && Indicator <= 11.21) {
+				i = 15;
+			} else if (Indicator >= 11.22 && Indicator <= 12.21) {
+				i = 17;
+			} else if (
+				(Indicator >= 12.22 && Indicator <= 12.31) ||
+				(Indicator >= 1.01 && Indicator <= 1.19)
+			) {
+				i = 19;
+			} else if (Indicator >= 1.2 && Indicator <= 2.18) {
+				i = 21;
+			} else if (Indicator >= 2.19 && Indicator <= 3.2) {
+				i = 23;
+			}
+		} else if (user.gender === "Female") {
+			if (Indicator >= 3.21 && Indicator <= 4.19) {
+				i = 2;
+			} else if (Indicator >= 4.2 && Indicator <= 5.2) {
+				i = 4;
+			} else if (Indicator >= 5.21 && Indicator <= 6.2) {
+				i = 6;
+			} else if (Indicator >= 6.21 && Indicator <= 7.22) {
+				i = 8;
+			} else if (Indicator >= 7.23 && Indicator <= 8.22) {
+				i = 10;
+			} else if (Indicator >= 8.23 && Indicator <= 9.22) {
+				i = 12;
+			} else if (Indicator >= 9.23 && Indicator <= 10.22) {
+				i = 14;
+			} else if (Indicator >= 10.23 && Indicator <= 11.21) {
+				i = 16;
+			} else if (Indicator >= 11.22 && Indicator <= 12.21) {
+				i = 18;
+			} else if (
+				(Indicator >= 12.22 && Indicator <= 12.31) ||
+				(Indicator >= 1.01 && Indicator <= 1.19)
+			) {
+				i = 20;
+			} else if (Indicator >= 1.2 && Indicator <= 2.18) {
+				i = 22;
+			} else if (Indicator >= 2.19 && Indicator <= 3.2) {
+				i = 24;
+			}
+		}
+
+		setFormData({
+			...formData,
+			birthday: e.target.value,
+			zodiac: i,
+		});
+	};
 
 	const handleTemp = (e) => {
 		e.preventDefault();
@@ -675,9 +748,7 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 									onBlur={() => setType("text")}
 									className="input validator"
 									max="2010-12-31"
-									onChange={(e) =>
-										setFormData({ ...formData, birthday: e.target.value })
-									}
+									onChange={handleBirthChange}
 									title="Must be valid URL"
 									placeholder={
 										formData.birthday
