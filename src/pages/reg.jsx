@@ -43,7 +43,12 @@ const Reg = () => {
 		} catch (err) {
 			console.log(err);
 			toast(`${err.response.data.message}`, { type: "error" });
-			navigate(APP_ROUTES.SIGN_IN);
+			if (err.response.data.message === "Email đã tồn tại.") {
+				setTimeout(() => {
+					toast("Vui lòng đăng nhập...", { type: "info" });
+					navigate(APP_ROUTES.SIGN_IN);
+				}, 3000);
+			}
 		}
 	};
 
