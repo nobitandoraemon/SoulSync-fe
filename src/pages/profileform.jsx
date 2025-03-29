@@ -121,7 +121,7 @@ const Address = ({ setStep, formData, setFormData }) => {
 	const Submit2 = (e) => {
 		e.preventDefault();
 		// console.log(formData);
-		if (!formData.phoneNumber) {
+		if (formData.phoneNumber) {
 			const check = isPossiblePhoneNumber(formData.phoneNumber, "VN");
 			if (check) {
 				if (e.target.checkValidity()) {
