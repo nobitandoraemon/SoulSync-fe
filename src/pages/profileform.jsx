@@ -6,8 +6,11 @@ import { getTokenFromLocalStorage, getUser } from "../lib/common";
 import { toast } from "react-toastify";
 import Upload from "../components/ui/upload";
 import { VietnamProvinces, ZodiacSigns } from "../lib/data";
-import PhoneInput from "react-phone-number-input";
-
+import {
+	isPossiblePhoneNumber,
+	isValidPhoneNumber,
+	validatePhoneNumberLength,
+} from "libphonenumber-js";
 const CompletedBar = () => {
 	return (
 		<div className="w-[23%] h-3 bg-success rounded-full border border-success"></div>
@@ -118,8 +121,15 @@ const Address = ({ setStep, formData, setFormData }) => {
 	const Submit2 = (e) => {
 		e.preventDefault();
 		// console.log(formData);
-		if (e.target.checkValidity()) {
-			setStep(3);
+		if (formData.phoneNumber) {
+			const check = isPossiblePhoneNumber(formData.phoneNumber, "VN");
+			if (check) {
+				if (e.target.checkValidity()) {
+					setStep(3);
+				}
+			} else {
+				alert("Số điện thoại không hợp lệ");
+			}
 		}
 	};
 
@@ -199,6 +209,7 @@ const Address = ({ setStep, formData, setFormData }) => {
 };
 
 const BirthDate = ({ setStep, formData, setFormData }) => {
+	const [type, setType] = useState("text");
 	const submitBirthDate = (e) => {
 		e.preventDefault();
 		// console.log(formData);
@@ -243,10 +254,13 @@ const BirthDate = ({ setStep, formData, setFormData }) => {
 				<fieldset className="fieldset">
 					<legend className="fieldset-legend">Ngày sinh của bạn là gì? </legend>
 					<input
-						type="date"
+						type={type}
+						onFocus={() => setType("date")}
+						onBlur={() => setType("text")}
 						name="date"
 						placeholder="Birth Date"
-						className="w-full input"
+						className="w-full input validator"
+						max="2010-12-31"
 						required
 						value={formData.birthday}
 						onChange={handleBirthChange}

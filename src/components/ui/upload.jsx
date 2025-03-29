@@ -101,7 +101,7 @@ const Upload = ({ avatarLinkChange, formData, setFormData, className }) => {
 		folder: "avatars",
 		tags: ["users", "profile"],
 		context: { alt: "user_uploaded" },
-		// clientAllowedFormats: ["images"],
+		clientAllowedFormats: ["jpg", "png", "jpeg", "gif"],
 		maxImageFileSize: 2000000,
 		// maxImageWidth: 2000,
 		// theme: 'purple',

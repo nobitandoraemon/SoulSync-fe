@@ -13,6 +13,11 @@ import Toast from "../hooks/useToast";
 import { ThemeList, VietnamProvinces, zodiacInfo } from "../lib/data";
 import { ThemeContext } from "../context/themeprovider";
 import { Footer, Header } from "../config/components";
+import {
+	isPossiblePhoneNumber,
+	isValidPhoneNumber,
+	validatePhoneNumberLength,
+} from "libphonenumber-js";
 
 const ChangeImage = ({ formData, setFormData }) => {
 	const CloudinaryUploadWidget = ({
@@ -108,7 +113,8 @@ const ChangeImage = ({ formData, setFormData }) => {
 		folder: "avatars",
 		tags: ["users", "profile"],
 		context: { alt: "user_uploaded" },
-		// clientAllowedFormats: ["images"],
+		clientAllowedFormats: ["jpg", "png", "jpeg", "gif"],
+		// resourceType: ["image"],
 		maxImageFileSize: 2000000,
 		// maxImageWidth: 2000,
 		// theme: 'purple',
@@ -750,7 +756,6 @@ const Public = ({ user, formData, setFormData, handleSubmit }) => {
 									className="input validator"
 									max="2010-12-31"
 									onChange={handleBirthChange}
-									title="Must be valid URL"
 									placeholder={
 										formData.birthday
 											? dayjs(formData.birthday).format("DD/MM/YYYY")
@@ -854,23 +859,30 @@ const SettingPage = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		try {
-			const response = await axios({
-				method: "PUT",
-				url: API_ROUTES.GET_USER + `/${user.username}`,
-				headers: {
-					authorization: `Bearer ${token}`,
-				},
-				data: formData,
-				withCredentials: true,
-			});
-			toast("Cập nhật thành công", { type: "success" });
-			setTimeout(() => {
-				location.reload();
-			}, 1500);
-		} catch (error) {
-			console.error(error);
-			toast("Cập nhật thành bại", { type: "error" });
+		if (formData.phoneNumber) {
+			const check = isPossiblePhoneNumber(formData.phoneNumber, "VN");
+			if (check) {
+				try {
+					const response = await axios({
+						method: "PUT",
+						url: API_ROUTES.GET_USER + `/${user.username}`,
+						headers: {
+							authorization: `Bearer ${token}`,
+						},
+						data: formData,
+						withCredentials: true,
+					});
+					toast("Cập nhật thành công", { type: "success" });
+					setTimeout(() => {
+						location.reload();
+					}, 1500);
+				} catch (error) {
+					console.error(error);
+					toast("Cập nhật thành bại", { type: "error" });
+				}
+			} else {
+				alert("Sđt không hợp lệ");
+			}
 		}
 	};
 
