@@ -16,6 +16,9 @@ const OTPPage = () => {
 	const [isRefresh, setIsRefresh] = useState(false);
 
 	useEffect(() => {
+		if (!isRefresh) {
+			setCounter(120);
+		}
 		let timer = setInterval(() => {
 			setCounter((time) => {
 				if (time === 0) {
@@ -25,11 +28,9 @@ const OTPPage = () => {
 				} else return time - 1;
 			});
 		}, 1000);
-		if (!isRefresh) {
-			setCounter(120);
-		}
+
 		return () => clearInterval(timer);
-	}, []);
+	}, [isRefresh]);
 
 	const navigate = useNavigate();
 
