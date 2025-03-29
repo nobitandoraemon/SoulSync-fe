@@ -859,7 +859,26 @@ const SettingPage = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		if (formData.phoneNumber) {
+		if (!formData.phoneNumber) {
+			try {
+				const response = await axios({
+					method: "PUT",
+					url: API_ROUTES.GET_USER + `/${user.username}`,
+					headers: {
+						authorization: `Bearer ${token}`,
+					},
+					data: formData,
+					withCredentials: true,
+				});
+				toast("Cập nhật thành công", { type: "success" });
+				setTimeout(() => {
+					location.reload();
+				}, 1500);
+			} catch (error) {
+				console.error(error);
+				toast("Cập nhật thành bại", { type: "error" });
+			}
+		} else {
 			const check = isPossiblePhoneNumber(formData.phoneNumber, "VN");
 			if (check) {
 				try {
