@@ -1,47 +1,72 @@
-# SoulSync
+# SoulSync – Frontend
 
-SoulSync is a Web application for FPT University student.
+SoulSync is an anonymous matchmaking web application for FPT University students that connects users based on **zodiac signs, numerology, location, and personal interests**, featuring **real-time chat** and personality analysis.
 
-```bash
-Updating...
+This project was developed for **JS Club – Japanese Software Engineers**.
+
+<img width="948" height="497" alt="SoulSync" src="https://github.com/user-attachments/assets/f2a73806-49fc-467a-92ae-aa4fea01250f" />
+
+---
+
+## ✨ Features
+
+- Anonymous user authentication (Login / Register)
+- User profile management
+- Personality & compatibility analysis
+- Real-time chat with Socket.IO
+- Dark mode / Light mode
+- Fully responsive design (mobile & desktop)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** React 19 + Vite
+- **Styling:** TailwindCSS, DaisyUI
+- **Routing:** React Router v7
+- **Animations:** Motion
+- **State & Forms:** React Hook Form
+- **HTTP Client:** Axios
+- **Real-time:** Socket.IO Client
+- **Media Upload:** Cloudinary
+- **Utilities:** Day.js, js-cookie, libphonenumber-js
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+API=
 ```
 
-# Features
+---
 
-```bash
-Updating...
+## 🚀 Getting Started
+
+1. Clone repository
+2. Install dependencies
+```
+npm install
 ```
 
-## Installation
-
-Use the package manager [npm](https://www.npmjs.com/) to install.
-
-```bash
-npm i
-npm run dev #Start development server
+3. Run development server
+```
+npm run dev
 ```
 
-## Technologies
-
-[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff)](#)
-[![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](#)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](#)
-[![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=react-router&logoColor=white)](#)
-[![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-EC5990?logo=reacthookform&logoColor=fff)](#)
-[![SocketIO](https://img.shields.io/badge/Socket.io-4.1.3-010101??style=flat-square&logo=Socket.io&logoColor=white)](#)
+---
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
-## Author
+This project is for area of expertise at JS Club - Japanese Software Engineers. Feel free to use and modify for learning.
 
-```bash
-Updating...
-```
+---
 
 ## License
 
